@@ -1,7 +1,7 @@
 # booking_clinics
  Medical Clinics Booking for DEPI Project.
 
-## Project Architecture
+### Project Architecture
 - Core Folder
 
   
