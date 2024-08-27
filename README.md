@@ -1,7 +1,7 @@
 # booking_clinics
  Medical Clinics Booking for DEPI Project.
 
- ### [Figma Design]( https://www.figma.com/design/Jrgw3g9ydg0qD5dLIEjFl2/Doctor-Appointment-App-UI-Kit-(Community)?node-id=2-3&t=D3qDlOHx2PZ3gDrt-0)
+ ### 😍 [Figma Design]( https://www.figma.com/design/Jrgw3g9ydg0qD5dLIEjFl2/Doctor-Appointment-App-UI-Kit-(Community)?node-id=2-3&t=D3qDlOHx2PZ3gDrt-0)
 
 ### Project Architecture
 - Core Folder
