@@ -16,5 +16,5 @@
 
 
 ### 🟡 Hint
-- Write comments on your code as much as possible ✍️.
 - Install (Better Comments) extension on your IDE.
+- Write comments on your code as much as possible ✍️.
