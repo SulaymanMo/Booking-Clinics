@@ -12,3 +12,8 @@
 - Feature Example
 
 ![mvvm_feature_example](https://github.com/user-attachments/assets/6312ce90-0f47-4fa3-93f4-61ffa32f0e4e)
+
+
+### ⚠️ Hint
+- Write comments on your code as much as possible ✍️.
+- Install (Better Comments) extension on your IDE.
