@@ -1,4 +1,4 @@
-# booking_clinics
+## Booking Clinics
  Medical Clinics Booking for DEPI Project.
 
  ### 😍 Figma Design 
