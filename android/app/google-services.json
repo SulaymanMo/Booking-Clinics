@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "462247706258",
+    "firebase_url": "https://doctor-app-30d61-default-rtdb.firebaseio.com",
+    "project_id": "doctor-app-30d61",
+    "storage_bucket": "doctor-app-30d61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462247706258:android:9eec2a9b04e971a3e7304b",
+        "android_client_info": {
+          "package_name": "com.example.booking_clinics"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJPO0W-mE_UlbR6eJU57xeqhCdDveCX4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,4 @@
+Each Feature Has 2 Files: 
+    data: model + repo + impl 
+    ui: manager + view + widget
+
