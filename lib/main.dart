@@ -9,7 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
-  // ! _____ App Setup & Initalization _____ ! //
+  // ! _____ App Setup & Initialization _____ ! //
   WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
   await Hive.initFlutter();
