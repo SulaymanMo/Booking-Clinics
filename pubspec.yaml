@@ -42,9 +42,9 @@ dependencies:
   flutter_native_splash: ^2.4.1
 
 flutter_native_splash:
-  color: "#ffffff"
-  background_image_dark_android: "assets/images/splash_logo.png"
-
+  background_image: "assets/images/splash_logo.png"
+  android_12:
+    background_image_android: "assets/images/splash_logo.png"
 
 dev_dependencies:
   flutter_test:
