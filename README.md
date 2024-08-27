@@ -3,7 +3,7 @@
 
  ### 😍 [Figma Design]( https://www.figma.com/design/Jrgw3g9ydg0qD5dLIEjFl2/Doctor-Appointment-App-UI-Kit-(Community)?node-id=2-3&t=D3qDlOHx2PZ3gDrt-0)
 
-### Project Architecture
+### 🏛️ Project Architecture
 - Core Folder
 
 ![core_example](https://github.com/user-attachments/assets/4820fbd4-dec1-4399-844d-2b0c040beda4)
