@@ -4,6 +4,8 @@
 ### Project Architecture
 - Core Folder
 
+![core_example](https://github.com/user-attachments/assets/4820fbd4-dec1-4399-844d-2b0c040beda4)
+
   
 - Feature Example
 
