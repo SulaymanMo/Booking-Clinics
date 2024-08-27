@@ -7,10 +7,13 @@ import 'core/constant/const_string.dart';
 import 'core/helper/service_locator.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future<void> main() async {
   // ! _____ App Setup & Initalization _____ ! //
-  WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(
+    widgetsBinding: WidgetsFlutterBinding.ensureInitialized(),
+  );
   setupServiceLocator();
   await Hive.initFlutter();
   await Firebase.initializeApp(
@@ -20,6 +23,7 @@ Future<void> main() async {
   // ! _____ Open Hive Boxes Here _____ ! //
   await Hive.openBox<Map<dynamic, dynamic>>(ConstString.userAuthBox);
   // ! _____
+  FlutterNativeSplash.remove();
   runApp(const BookingClinics());
 }
 
