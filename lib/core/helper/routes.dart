@@ -1,7 +1,6 @@
-import 'package:booking_clinics/feature/home/ui/view/home_view.dart';
 import 'package:flutter/material.dart';
 import '../constant/const_string.dart';
-
+import '../../feature/home/ui/view/home_view.dart';
 
 // ! _____ App Routes Here (OnGenerate Approach for Example) _____ ! //
 class Routes {
