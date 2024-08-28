@@ -1,6 +1,6 @@
 import 'firebase_options.dart';
 import 'core/helper/routes.dart';
-import 'core/theme/dark_theme.dart';
+import 'package:sizer/sizer.dart';
 import 'core/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'core/constant/const_string.dart';
@@ -32,13 +32,16 @@ class BookingClinics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Booking Clinics',
-      theme: lightTheme(),
-      darkTheme: darkTheme(),
-      debugShowCheckedModeBanner: false,
-      initialRoute: ConstString.registerRoute,
-      onGenerateRoute: Routes.generateRoute,
+    return ResponsiveSizer(
+      builder: (context, orientation, deviceType) {
+        return MaterialApp(
+          title: 'Booking Clinics',
+          theme: lightTheme(),
+          debugShowCheckedModeBanner: false,
+          initialRoute: ConstString.homeRoute,
+          onGenerateRoute: Routes.generateRoute,
+        );
+      },
     );
   }
 }

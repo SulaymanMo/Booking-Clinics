@@ -1,3 +1,4 @@
+import 'package:booking_clinics/home/ui/view/home_view.dart';
 import 'package:flutter/material.dart';
 import '../constant/const_string.dart';
 import '../../feature/auth/ui/view/login_view.dart';
@@ -18,6 +19,10 @@ class Routes {
       case ConstString.activateRoute:
         return MaterialPageRoute(
           builder: (_) => const RegisterView(),
+        );
+      case ConstString.homeRoute:
+        return MaterialPageRoute(
+          builder: (_) => const HomeView(),
         );
       default:
         return MaterialPageRoute(
