@@ -2,7 +2,7 @@ import 'package:sizer/sizer.dart';
 import '../widget/home_appbar.dart';
 import '../widget/carousel_item.dart';
 import 'package:flutter/material.dart';
-import '../../../core/common/input.dart';
+import '../../../../core/common/input.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
