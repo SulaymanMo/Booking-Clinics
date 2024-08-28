@@ -1,8 +1,8 @@
 import 'package:sizer/sizer.dart';
-import '../../../core/common/input.dart';
 import '../widget/home_appbar.dart';
 import '../widget/carousel_item.dart';
 import 'package:flutter/material.dart';
+import '../../../core/common/input.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -28,7 +28,7 @@ class HomeView extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 2.h),
-          children: [
+          children: const [
             CarouselSlider(),
           ],
         ),
