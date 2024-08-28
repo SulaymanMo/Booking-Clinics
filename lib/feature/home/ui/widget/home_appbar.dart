@@ -1,6 +1,6 @@
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
-import '../../../core/constant/const_color.dart';
+import '../../../../core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 
 class AppBarTitle extends StatelessWidget {
