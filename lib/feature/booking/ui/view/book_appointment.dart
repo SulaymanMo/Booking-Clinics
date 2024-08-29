@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/basic_appbar.dart';
+import '../../../../core/common/basic_appbar.dart';
 
 class BookAppointmentView extends StatelessWidget {
   const BookAppointmentView({super.key});
