@@ -38,7 +38,7 @@ class BookingClinics extends StatelessWidget {
           title: 'Booking Clinics',
           theme: lightTheme(),
           debugShowCheckedModeBanner: false,
-          initialRoute: ConstString.homeRoute,
+          initialRoute: ConstString.doctorDetailsRoute,
           onGenerateRoute: Routes.generateRoute,
         );
       },

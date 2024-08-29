@@ -5,7 +5,9 @@ class ConstString {
   static const registerRoute = "/register";
   static const activateRoute = "/activate";
   static const homeRoute = "/home";
-  static const bookingRoute = "/booking";
+
+  static const doctorDetailsRoute = "/doctorDetailsRoute";
+  static const bookAppointmentRoute = "/bookAppointmentRoute";
 
   // ! _____ Hive Boxes & Keys Name _____ ! //
   static const userAuthBox = "USER_AUTH_BOX_NAME";
