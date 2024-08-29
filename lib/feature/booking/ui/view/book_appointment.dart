@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/basic_appbar.dart';
+import '../../../../core/common/basic_appbar.dart';
 
 class BookAppointmentView extends StatelessWidget {
   const BookAppointmentView({super.key});
@@ -8,10 +8,9 @@ class BookAppointmentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppBar(
-        title: 'Book Appointment',
-        actionIcon: Icons.settings,
-        onActionPressed: () {},
+      appBar: const BasicAppBar(title: 'Book Appointment'),
+      body: Container(
+        color: Colors.white,
       ),
     );
   }
