@@ -8,10 +8,9 @@ class BookAppointmentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppBar(
-        title: 'Book Appointment',
-        actionIcon: Icons.settings,
-        onActionPressed: () {},
+      appBar: const BasicAppBar(title: 'Book Appointment'),
+      body: Container(
+        color: Colors.white,
       ),
     );
   }

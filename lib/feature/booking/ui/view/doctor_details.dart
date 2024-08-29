@@ -10,8 +10,11 @@ class DoctorDetailsView extends StatelessWidget {
     return Scaffold(
       appBar: BasicAppBar(
         title: 'Doctor Details',
-        actionIcon: Icons.settings,
+        actionIcon: Icons.favorite_border,
         onActionPressed: () {},
+      ),
+      body: Container(
+        color: Colors.white,
       ),
     );
   }
