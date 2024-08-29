@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:sizer/sizer.dart';
 import '../../../../core/constant/const_color.dart';
+import '../../../../core/constant/images_path.dart';
 
 class RoundedDoctorCard extends StatelessWidget {
   const RoundedDoctorCard({
@@ -8,7 +9,7 @@ class RoundedDoctorCard extends StatelessWidget {
     this.doctorName = 'Dr. David Patel',
     this.doctorSpeciality = 'Dentist',
     this.doctorLocation = 'New York, USA',
-    this.doctorImage = 'assets/images/card_bg.png',
+    this.doctorImage = MyImages.doctorImg,
   });
 
   final String doctorName;
@@ -21,21 +22,22 @@ class RoundedDoctorCard extends StatelessWidget {
     return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(12),
       ),
-      elevation: 4.0,
+      elevation: 2.0,
       child: Container(
         padding: const EdgeInsets.all(10.0),
-        height: 140,
+        height: 17.5.h,
         child: Row(
           children: [
+            // Doctor image
             SizedBox(
               height: double.infinity,
-              width: 110,
+              width: 44.sp,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(10),
                 child: AspectRatio(
-                  aspectRatio: 1.0,
+                  aspectRatio: 1,
                   child: Image.asset(
                     doctorImage,
                     height: double.infinity,
@@ -44,51 +46,52 @@ class RoundedDoctorCard extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 16.0),
+            SizedBox(width: 4.w),
 
-            // Column with multiple texts
+            // Doctor Details
             Expanded(
-              child: SizedBox(
-                height: 140,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      doctorName,
-                      style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    doctorName,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const Divider(),
-                    const SizedBox(height: 1),
-                    Text(
-                      doctorSpeciality,
-                      style: const TextStyle(
-                        fontSize: 15,
+                  ),
+                  const Divider(),
+                  const SizedBox(height: 1),
+                  Text(
+                    doctorSpeciality,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 16.5.sp,
+                      color: MyColors.softGray,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 1.h),
+                  Row(
+                    children: [
+                       Icon(
+                        Icons.location_on,
                         color: MyColors.softGray,
-                        fontWeight: FontWeight.bold,
+                        size: 2.4.h,
                       ),
-                    ),
-                    const SizedBox(height: 8.0),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.location_on,
+                      Text(
+                        ' $doctorLocation',
+                        style: TextStyle(
+                          fontSize: 16.4.sp,
                           color: MyColors.softGray,
-                          size: 15,
                         ),
-                        Text(
-                          doctorLocation,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: MyColors.softGray,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],

@@ -38,7 +38,7 @@ class SectionHeading extends StatelessWidget {
               buttonTitle,
               style: TextStyle(
                 color: textColor,
-                fontSize: 17.sp,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),

@@ -6,6 +6,7 @@ import '../../../../core/common/section_heading.dart';
 import '../../../../core/constant/const_color.dart';
 import '../../../../core/constant/const_string.dart';
 import '../widgets/achievement_column.dart';
+import '../widgets/bottom_nav_btn.dart';
 import '../widgets/reviews_item.dart';
 import '../widgets/rounded_doctor_card.dart';
 
@@ -32,7 +33,7 @@ class DoctorDetailsView extends StatelessWidget {
             children: [
               // Doctor Card
               const RoundedDoctorCard(),
-              const SizedBox(height: 20),
+              SizedBox(height: 2.h),
               // Achievements Row
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -43,70 +44,38 @@ class DoctorDetailsView extends StatelessWidget {
                   AchievementColumn(),
                 ],
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 2.h),
               // About me
               const SectionHeading(title: 'About me', showActionButton: false),
-              const SizedBox(height: 3),
+              SizedBox(height: 1.h),
               Text(
                 ConstString.aboutMeFakeText,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  height: 1.5,
-                  color: MyColors.softGray,
-                ),
+                style: TextStyle(fontSize: 16.sp, color: MyColors.softGray),
               ),
-              const SizedBox(height: 20),
-        
+              SizedBox(height: 2.h),
+
               // Working Time
-              const SectionHeading(
-                  title: 'Working Time', showActionButton: false),
-              const SizedBox(height: 3),
+              const SectionHeading(title: 'Working Time', showActionButton: false),
+              SizedBox(height: 1.h),
               Text(
                 ConstString.workingTimeFakeText,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  color: MyColors.softGray,
-                ),
+                style: TextStyle(fontSize: 16.sp, color: MyColors.softGray),
               ),
               const SizedBox(height: 20),
-        
+
               // Reviews
               const SectionHeading(title: 'Reviews'),
-              const SizedBox(height: 3),
+              SizedBox(height: 1.h),
               const ReviewsItem(),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
-        height: 70,
-        color: Colors.white,
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: MyColors.dark,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
-          ),
-          child: Text(
-            'Book Appointment',
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+      bottomNavigationBar: ButtomNavBtn(onPressed: () {}),
     );
   }
 }
-
-
-// test2
