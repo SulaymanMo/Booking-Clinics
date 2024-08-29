@@ -10,16 +10,16 @@ class CarouselItem extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.hardEdge,
       children: [
-        Container(
-          width: double.infinity,
-          alignment: Alignment.centerLeft,
-          padding: EdgeInsets.only(left: 4.w),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(image),
-            ),
+        Positioned(
+          child: Image.asset(
+            image,
+            fit: BoxFit.fill,
+            width: double.infinity,
+            height: double.infinity,
           ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 4.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,

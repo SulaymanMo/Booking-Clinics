@@ -20,7 +20,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   // ! _____
-  // ! _____ Open Hive Boxes Here _____ ! //
+  // ! _____ Open Hive Boxes Here below... for Example _____ ! //
   await Hive.openBox<Map<dynamic, dynamic>>(ConstString.userAuthBox);
   // ! _____
   FlutterNativeSplash.remove();

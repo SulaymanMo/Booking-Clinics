@@ -10,7 +10,7 @@ ThemeData lightTheme() {
       size: 20.sp,
       color: ConstColor.dark.color,
     ),
-    // ! _____ ListTile _____ ! //
+    // ! _____ AppBar _____ ! //
     appBarTheme: AppBarTheme(
       titleSpacing: 4.w,
       scrolledUnderElevation: 0,
