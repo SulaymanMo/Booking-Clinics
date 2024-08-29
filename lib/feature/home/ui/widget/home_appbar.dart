@@ -15,7 +15,7 @@ class AppBarTitle extends StatelessWidget {
         style: context.textTheme.labelLarge,
       ),
       subtitle: Wrap(
-        spacing: 1.5.w,
+        spacing: 2.w,
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           const Icon(Icons.map_rounded),
