@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 enum ConstColor {
+  main(Color(0xff1C2A3A)),
   primary(Color(0xffA4CFC3)),
-  dark(Color(0xff1C2A3A)),
   texture(Color(0xff9CA3AF)),
   secondary(Color(0xffF3F4F6));
 

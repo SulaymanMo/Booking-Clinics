@@ -30,7 +30,7 @@ class Input extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: onSaved,
-      style: context.textTheme.bodySmall,
+      style: context.regular14,
       onChanged: onChanged,
       controller: controller,
       onTapOutside: (val) => FocusManager.instance.primaryFocus!.unfocus(),
@@ -57,9 +57,7 @@ class Input extends StatelessWidget {
                 color: ConstColor.texture.color,
               )
             : null,
-        labelStyle: TextStyle(
-          fontSize: 15.sp,
-        ),
+        labelStyle: context.regular14,
         hintStyle: context.textTheme.bodySmall?.copyWith(
           color: ConstColor.texture.color,
         ),

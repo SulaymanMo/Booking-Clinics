@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import 'firebase_options.dart';
 import 'core/helper/routes.dart';
 import 'package:sizer/sizer.dart';
@@ -19,7 +21,11 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // ! _____
+  // ! _____ Prevent Device Orientation _____ ! //
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   // ! _____ Open Hive Boxes Here below... for Example _____ ! //
   await Hive.openBox<Map<dynamic, dynamic>>(ConstString.userAuthBox);
   // ! _____
@@ -35,10 +41,19 @@ class BookingClinics extends StatelessWidget {
     return ResponsiveSizer(
       builder: (context, orientation, deviceType) {
         return MaterialApp(
+          builder: (context, child) {
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: const TextScaler.linear(1.12),
+              ),
+              child: child!,
+            );
+          },
           title: 'Booking Clinics',
           theme: lightTheme(),
           debugShowCheckedModeBanner: false,
-          initialRoute: ConstString.doctorDetailsRoute,
+          // initialRoute: ConstString.doctorDetailsRoute,
+          initialRoute: ConstString.homeRoute,
           onGenerateRoute: Routes.generateRoute,
         );
       },

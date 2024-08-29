@@ -20,35 +20,27 @@ class CarouselItem extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(left: 4.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 52.w,
-                child: Text(
-                  "Looking for Specialist Doctor?",
-                  style: TextStyle(
-                    height: 1.25,
-                    fontSize: 19.sp,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              SizedBox(height: 2.h),
-              SizedBox(
-                width: 52.w,
-                child: Text(
-                  "Schedule an appointment with our top doctors.",
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-            ],
+          child: SizedBox(
+            width: 52.w,
+            // child: Column(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            // children: [
+            // Text(
+            //   "Looking for Specialist Doctor?",
+            //   style: context.bold18?.copyWith(
+            //     color: Colors.white,
+            //   ),
+            // ),
+            // SizedBox(height: 2.h),
+            // Text(
+            //   "Schedule an appointment with our top doctors.",
+            //   style: context.regular12?.copyWith(
+            //     color: Colors.white,
+            //   ),
+            // ),
+            // ],
+            // ),
           ),
         ),
         Positioned(
