@@ -51,8 +51,8 @@ class Categories extends StatelessWidget {
               Text(
                 _categories[index],
                 maxLines: 1,
-                overflow: TextOverflow.ellipsis,
                 style: context.bold12,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           );

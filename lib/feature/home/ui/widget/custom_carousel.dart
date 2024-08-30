@@ -1,4 +1,4 @@
-import 'carousel_item.dart';
+import 'list_item.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 
@@ -9,16 +9,20 @@ class CarouselSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 24.h,
+      height: 35.h,
       child: CarouselView(
-        elevation: 4,
+        elevation: 2,
+        shrinkExtent: 90.w,
         itemSnapping: true,
-        shrinkExtent: 95.w,
         itemExtent: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 4.w),
+        backgroundColor: Colors.white,
+        padding: EdgeInsets.symmetric(
+          vertical: 1.h,
+          horizontal: 4.w,
+        ),
         children: List.generate(
           images.length,
-          (index) => CarouselItem(image: images[index]),
+          (index) => ListItem(image: images[index]),
         ),
       ),
     );

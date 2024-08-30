@@ -1,9 +1,9 @@
-import 'package:booking_clinics/feature/home/ui/widget/custom_page_view.dart';
+import 'package:booking_clinics/feature/home/ui/widget/carousel/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/common/input.dart';
 import '../../../../core/common/see_all.dart';
-import '../widget/carousel_slider.dart';
+import '../widget/custom_carousel.dart';
 import '../widget/categories.dart';
 import '../widget/home_appbar.dart';
 
@@ -11,9 +11,9 @@ class HomeNavView extends StatelessWidget {
   const HomeNavView({super.key});
   static const List<String> _images = [
     "assets/images/banner_1.jpg",
-    "assets/images/banner_2.png",
-    "assets/images/banner_3.png",
     "assets/images/banner_5.png",
+    "assets/images/banner_4.png",
+    "assets/images/banner_2.png",
   ];
 
   @override
@@ -30,7 +30,7 @@ class HomeNavView extends StatelessWidget {
             preferredSize: const Size(double.infinity, 0),
             child: Padding(
               padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.h),
-              child: const Input(hint: "What are you looking for?"),
+              child: const Input(hint: "What're you looking for?"),
             ),
           ),
         ),
