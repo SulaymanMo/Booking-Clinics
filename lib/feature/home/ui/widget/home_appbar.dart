@@ -46,7 +46,13 @@ class UpperAppBar extends StatelessWidget {
           style: IconButton.styleFrom(
             backgroundColor: ConstColor.secondary.color,
           ),
-          icon: SvgPicture.asset("assets/icons/notification.svg"),
+          icon: SvgPicture.asset(
+            "assets/icons/notification.svg",
+            colorFilter: ColorFilter.mode(
+              ConstColor.main.color,
+              BlendMode.srcIn,
+            ),
+          ),
         ),
       ),
     );

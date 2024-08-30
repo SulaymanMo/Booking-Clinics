@@ -52,8 +52,11 @@ ThemeData lightTheme() {
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
         ),
+        foregroundColor: ConstColor.textBtn.color,
       ),
     ),
+    // ! _____ OutlinedButton _____ ! //
+    // outlinedButtonTheme: const OutlinedButtonThemeData(),
     // ! _____ Icon Button _____ ! //
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
@@ -63,7 +66,7 @@ ThemeData lightTheme() {
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
-      color: Colors.white70,
+      color: Colors.white,
       shape: const CircularNotchedRectangle(),
       padding: EdgeInsets.symmetric(horizontal: 4.w),
     ),

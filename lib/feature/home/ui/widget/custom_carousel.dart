@@ -9,10 +9,10 @@ class CarouselSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 35.h,
+      height: 32.h,
       child: CarouselView(
         elevation: 2,
-        shrinkExtent: 90.w,
+        shrinkExtent: 95.w,
         itemSnapping: true,
         itemExtent: double.infinity,
         backgroundColor: Colors.white,
