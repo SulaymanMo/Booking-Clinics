@@ -1,4 +1,4 @@
-import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
@@ -14,23 +14,23 @@ class NavView extends StatefulWidget {
 
 class _NavViewState extends State<NavView> {
   int _index = 0;
-  static const List<IconData> _unSelectedIocn = [
-    Icons.home_outlined,
-    Icons.pin_drop_outlined,
-    Icons.calendar_month_outlined,
-    Icons.person_2_outlined,
-  ];
-  static const List<IconData> _selectedIocn = [
-    Icons.home,
-    Icons.pin_drop,
-    Icons.calendar_month,
-    Icons.person_2,
-  ];
-  static const List<Widget> _pages = <Widget>[
-    HomeNavView(),
+  static const List<Widget> _pages = [
     HomeNavView(),
     BookAppointmentView(),
-    HomeNavView(),
+    BookAppointmentView(),
+    BookAppointmentView(),
+  ];
+  static const List<String> _icons = [
+    "assets/icons/home.svg",
+    "assets/icons/location.svg",
+    "assets/icons/calendar.svg",
+    "assets/icons/profile.svg",
+  ];
+  static const List<String> _iconsFill = [
+    "assets/icons/home_fill.svg",
+    "assets/icons/location_fill.svg",
+    "assets/icons/calendar_fill.svg",
+    "assets/icons/profile_fill.svg",
   ];
 
   @override
@@ -45,9 +45,9 @@ class _NavViewState extends State<NavView> {
       //   child: Icon(Icons.add, size: 24.sp),
       // ),
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(left: 6.w, right: 6.w, bottom: 1.5.h),
+        margin: EdgeInsets.only(left: 6.w, right: 6.w, bottom: 1.25.h),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(5.w),
+          borderRadius: BorderRadius.circular(3.25.w),
           child: BottomAppBar(
             // notchMargin: 2.w,
             child: Row(
@@ -61,16 +61,23 @@ class _NavViewState extends State<NavView> {
                     style: IconButton.styleFrom(
                       backgroundColor: _index == index ? Colors.black12 : null,
                     ),
-                    icon: Icon(
-                      _index == index
-                          ? _selectedIocn[index]
-                          : _unSelectedIocn[index],
-                      color: _index == index
-                          ? ConstColor.main.color
-                          : Colors.black38,
+                    icon: SvgPicture.asset(
+                      _index == index ? _iconsFill[index] : _icons[index],
+                      colorFilter: ColorFilter.mode(
+                        ConstColor.main.color,
+                        BlendMode.srcIn,
+                      ),
                     ),
+                    // icon: Icon(
+                    //   _index == index
+                    //       ? _selectedIocn[index]
+                    //       : _unSelectedIocn[index],
+                    //   color: _index == index
+                    //       ? ConstColor.main.color
+                    //       : Colors.black38,
+                    // ),
                   ),
-                  if (index < _pages.length - 1) const Spacer(flex: 1),
+                  if (index < _pages.length - 1) const Spacer(),
                   // ! _____ When notched floating action button are provided _____ ! //
                   // if (index < _pages.length - 1)
                   //   Spacer(

@@ -1,10 +1,11 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 
-class AppBarTitle extends StatelessWidget {
-  const AppBarTitle({super.key});
+class UpperAppBar extends StatelessWidget {
+  const UpperAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +18,10 @@ class AppBarTitle extends StatelessWidget {
           style: context.regular14,
         ),
         subtitle: Wrap(
-          spacing: 2.w,
+          spacing: 1.25.w,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            const Icon(Icons.map_rounded),
+            SvgPicture.asset("assets/icons/location_fill.svg"),
             DropdownButton<int>(
               value: 1,
               isDense: true,
@@ -45,7 +46,7 @@ class AppBarTitle extends StatelessWidget {
           style: IconButton.styleFrom(
             backgroundColor: ConstColor.secondary.color,
           ),
-          icon: const Icon(Icons.notifications),
+          icon: SvgPicture.asset("assets/icons/notification.svg"),
         ),
       ),
     );

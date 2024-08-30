@@ -17,8 +17,8 @@ class Input extends StatelessWidget {
     super.key,
   });
   final String? hint;
-  final IconData? suffix;
-  final IconData? prefix;
+  final Widget? suffix;
+  final Widget? prefix;
   final bool? obscureText;
   final TextInputType? keyboardType;
   final void Function(String?)? onSaved;
@@ -39,27 +39,21 @@ class Input extends StatelessWidget {
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
         filled: true,
+        prefixIconConstraints: BoxConstraints(maxWidth: 20.w),
         isDense: true,
         fillColor: ConstColor.secondary.color,
         hintText: hint,
-        // hintText: "Find Resturants",
-        prefixIcon: prefix != null
-            ? Icon(
-                prefix,
-                size: 20.sp,
-                color: ConstColor.texture.color,
-              )
-            : null,
-        suffixIcon: suffix != null
-            ? Icon(
-                suffix,
-                size: 20.sp,
-                color: ConstColor.texture.color,
-              )
-            : null,
+        prefixIcon: prefix,
+        // suffixIcon: suffix != null
+        //     ? Icon(
+        //         suffix,
+        //         size: 20.sp,
+        //         color: ConstColor.texture.color,
+        //       )
+        //     : null,
         labelStyle: context.regular14,
         hintStyle: context.textTheme.bodySmall?.copyWith(
-          color: ConstColor.texture.color,
+          color: ConstColor.icon.color,
         ),
         floatingLabelStyle: TextStyle(
           fontSize: 16.sp,
