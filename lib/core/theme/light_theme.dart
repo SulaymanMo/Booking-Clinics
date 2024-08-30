@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import 'text_theme.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +56,12 @@ ThemeData lightTheme() {
         ),
       ),
     ),
+    // ! _____ Icon Button _____ ! //
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        iconSize: 20.sp,
+      ),
+    ),
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
@@ -61,14 +69,10 @@ ThemeData lightTheme() {
       shape: const CircularNotchedRectangle(),
       padding: EdgeInsets.symmetric(horizontal: 4.w),
     ),
-    iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(
-        iconSize: 21.sp,
-      ),
-    ),
     // ! _____ Floating Button _____ ! //
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       elevation: 0,
+      highlightElevation: 0,
       shape: CircleBorder(),
       backgroundColor: Colors.white70,
       foregroundColor: Colors.black87,

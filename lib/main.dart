@@ -1,9 +1,8 @@
-import 'package:flutter/services.dart';
-
 import 'firebase_options.dart';
 import 'core/helper/routes.dart';
 import 'package:sizer/sizer.dart';
 import 'core/theme/light_theme.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'core/constant/const_string.dart';
 import 'core/helper/service_locator.dart';
@@ -49,8 +48,8 @@ class BookingClinics extends StatelessWidget {
               child: child!,
             );
           },
-          title: 'Booking Clinics',
           theme: lightTheme(),
+          title: 'Booking Clinics',
           debugShowCheckedModeBanner: false,
           // initialRoute: ConstString.doctorDetailsRoute,
           initialRoute: ConstString.homeRoute,
