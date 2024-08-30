@@ -1,5 +1,3 @@
-import 'package:flutter/services.dart';
-
 import 'text_theme.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';

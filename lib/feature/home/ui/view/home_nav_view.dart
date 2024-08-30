@@ -1,5 +1,6 @@
 import 'package:booking_clinics/feature/home/ui/widget/carousel/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/common/input.dart';
 import '../../../../core/common/see_all.dart';
@@ -24,13 +25,25 @@ class HomeNavView extends StatelessWidget {
           snap: true,
           floating: true,
           automaticallyImplyLeading: false,
-          toolbarHeight: 14.h,
-          flexibleSpace: const AppBarTitle(),
+          toolbarHeight: 14.25.h,
+          flexibleSpace: const UpperAppBar(),
           bottom: PreferredSize(
             preferredSize: const Size(double.infinity, 0),
             child: Padding(
-              padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.h),
-              child: const Input(hint: "What're you looking for?"),
+              padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.25.h),
+              child: Input(
+                hint: "What're you looking for?",
+                prefix: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
+                  child: SvgPicture.asset(
+                    "assets/icons/search.svg",
+                    colorFilter: const ColorFilter.mode(
+                      Colors.black26,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ),
@@ -48,10 +61,10 @@ class HomeNavView extends StatelessWidget {
                   "assets/images/center_3.jpg",
                 ],
               ),
+              SizedBox(height: 8.h),
             ],
           ),
         ),
-        const SliverFillRemaining(),
       ],
     );
   }
