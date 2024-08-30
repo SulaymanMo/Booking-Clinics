@@ -1,3 +1,5 @@
+import 'package:booking_clinics/core/constant/const_color.dart';
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 
@@ -22,25 +24,37 @@ class CarouselItem extends StatelessWidget {
           padding: EdgeInsets.only(left: 4.w),
           child: SizedBox(
             width: 52.w,
-            // child: Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            // children: [
-            // Text(
-            //   "Looking for Specialist Doctor?",
-            //   style: context.bold18?.copyWith(
-            //     color: Colors.white,
-            //   ),
-            // ),
-            // SizedBox(height: 2.h),
-            // Text(
-            //   "Schedule an appointment with our top doctors.",
-            //   style: context.regular12?.copyWith(
-            //     color: Colors.white,
-            //   ),
-            // ),
-            // ],
-            // ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Looking for a Specialist doctor!",
+                  style: context.bold18?.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(height: 2.h),
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: ConstColor.main.color,
+                    textStyle: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  child: const Text("Schedule Now"),
+                ),
+                // Text(
+                //   "Schedule an appointment with our top doctors.",
+                //   style: context.regular14?.copyWith(
+                //     color: Colors.white,
+                //   ),
+                // ),
+              ],
+            ),
           ),
         ),
         Positioned(

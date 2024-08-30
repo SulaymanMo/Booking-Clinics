@@ -2,6 +2,7 @@ import 'package:booking_clinics/feature/home/ui/widget/carousel/carousel_slider.
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
+import '../../../../core/common/header.dart';
 import '../../../../core/common/input.dart';
 import '../../../../core/common/see_all.dart';
 import '../widget/custom_carousel.dart';
@@ -60,6 +61,20 @@ class HomeNavView extends StatelessWidget {
                   "assets/images/center_2.jpg",
                   "assets/images/center_3.jpg",
                 ],
+              ),
+              const Header(
+                title: "Follow Us",
+                subtitle: "Stay in Touch with Us",
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
+                child: Wrap(
+                  alignment: WrapAlignment.spaceEvenly,
+                  children: List.generate(
+                    4,
+                    (index) => SvgPicture.asset("assets/icons/whatsapp.svg"),
+                  ),
+                ),
               ),
               SizedBox(height: 8.h),
             ],

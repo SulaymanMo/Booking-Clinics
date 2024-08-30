@@ -44,48 +44,45 @@ class _NavViewState extends State<NavView> {
       //   onPressed: () {},
       //   child: Icon(Icons.add, size: 24.sp),
       // ),
-      bottomNavigationBar: Container(
-        margin: EdgeInsets.only(left: 6.w, right: 6.w, bottom: 1.25.h),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(3.25.w),
-          child: BottomAppBar(
-            // notchMargin: 2.w,
-            child: Row(
-              children: [
-                for (int index = 0; index < _pages.length; index++) ...[
-                  IconButton(
-                    onPressed: () {
-                      _index = index;
-                      setState(() {});
-                    },
-                    style: IconButton.styleFrom(
-                      backgroundColor: _index == index ? Colors.black12 : null,
-                    ),
-                    icon: SvgPicture.asset(
-                      _index == index ? _iconsFill[index] : _icons[index],
-                      colorFilter: ColorFilter.mode(
-                        ConstColor.main.color,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    // icon: Icon(
-                    //   _index == index
-                    //       ? _selectedIocn[index]
-                    //       : _unSelectedIocn[index],
-                    //   color: _index == index
-                    //       ? ConstColor.main.color
-                    //       : Colors.black38,
-                    // ),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.circular(4.w),
+        child: BottomAppBar(
+          // notchMargin: 2.w,
+          child: Row(
+            children: [
+              for (int index = 0; index < _pages.length; index++) ...[
+                IconButton(
+                  onPressed: () {
+                    _index = index;
+                    setState(() {});
+                  },
+                  style: IconButton.styleFrom(
+                    backgroundColor: _index == index ? Colors.black12 : null,
                   ),
-                  if (index < _pages.length - 1) const Spacer(),
-                  // ! _____ When notched floating action button are provided _____ ! //
-                  // if (index < _pages.length - 1)
-                  //   Spacer(
-                  //     flex: index == (_pages.length ~/ 2) - 1 ? 2 : 1,
-                  //   ),
-                ],
+                  icon: SvgPicture.asset(
+                    _index == index ? _iconsFill[index] : _icons[index],
+                    colorFilter: ColorFilter.mode(
+                      ConstColor.main.color,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  // icon: Icon(
+                  //   _index == index
+                  //       ? _selectedIocn[index]
+                  //       : _unSelectedIocn[index],
+                  //   color: _index == index
+                  //       ? ConstColor.main.color
+                  //       : Colors.black38,
+                  // ),
+                ),
+                if (index < _pages.length - 1) const Spacer(),
+                // ! _____ When notched floating action button are provided _____ ! //
+                // if (index < _pages.length - 1)
+                //   Spacer(
+                //     flex: index == (_pages.length ~/ 2) - 1 ? 2 : 1,
+                //   ),
               ],
-            ),
+            ],
           ),
         ),
       ),
