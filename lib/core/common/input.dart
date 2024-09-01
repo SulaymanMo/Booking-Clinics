@@ -1,3 +1,4 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
@@ -7,7 +8,9 @@ class Input extends StatelessWidget {
   const Input({
     this.suffix,
     this.prefix,
+    this.isDense,
     this.onSaved,
+    this.fillColor,
     this.validator,
     this.onChanged,
     this.controller,
@@ -16,9 +19,12 @@ class Input extends StatelessWidget {
     this.obscureText = false,
     super.key,
   });
+
+  final bool? isDense;
   final String? hint;
   final Widget? suffix;
   final Widget? prefix;
+  final Color? fillColor;
   final bool? obscureText;
   final TextInputType? keyboardType;
   final void Function(String?)? onSaved;
@@ -30,20 +36,30 @@ class Input extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: onSaved,
-      style: context.regular14,
       onChanged: onChanged,
       controller: controller,
+      style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
       onTapOutside: (val) => FocusManager.instance.primaryFocus!.unfocus(),
       validator: validator,
       keyboardType: keyboardType,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
         filled: true,
-        prefixIconConstraints: BoxConstraints(maxWidth: 20.w),
-        isDense: true,
-        fillColor: ConstColor.secondary.color,
         hintText: hint,
-        prefixIcon: prefix,
+        isDense: isDense ?? true,
+        prefixIconConstraints: BoxConstraints(maxWidth: 20.w),
+        fillColor: fillColor ?? ConstColor.secondary.color,
+        prefixIcon: prefix ??
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
+              child: SvgPicture.asset(
+                "assets/icons/search.svg",
+                colorFilter: const ColorFilter.mode(
+                  Colors.black26,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
         // suffixIcon: suffix != null
         //     ? Icon(
         //         suffix,

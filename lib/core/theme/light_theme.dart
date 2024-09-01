@@ -66,7 +66,7 @@ ThemeData lightTheme() {
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
-      color: Colors.white,
+      color: Colors.white70,
       shape: const CircularNotchedRectangle(),
       padding: EdgeInsets.symmetric(horizontal: 4.w),
     ),
@@ -77,6 +77,15 @@ ThemeData lightTheme() {
       shape: CircleBorder(),
       backgroundColor: Colors.white70,
       foregroundColor: Colors.black87,
+    ),
+    // ! _____ Fixed Bottom Sheet _____ ! //
+    bottomSheetTheme: BottomSheetThemeData(
+      constraints: BoxConstraints(
+        maxHeight: 35.h,
+        minHeight: 10.h,
+        minWidth: double.infinity,
+      ),
+      backgroundColor: Colors.white70,
     ),
   );
 }

@@ -1,3 +1,10 @@
+import 'package:booking_clinics/core/helper/service_locator.dart';
+import 'package:booking_clinics/feature/map/data/repo/location_repo/location_repo_imp.dart';
+import 'package:booking_clinics/feature/map/data/repo/map_repo/map_impl.dart';
+import 'package:booking_clinics/feature/map/data/repo/routes_repo/routes_impl.dart';
+import 'package:booking_clinics/feature/map/ui/manager/map_cubit.dart';
+import 'package:booking_clinics/feature/map/ui/view/map_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +21,18 @@ class NavView extends StatefulWidget {
 
 class _NavViewState extends State<NavView> {
   int _index = 0;
-  static const List<Widget> _pages = [
-    HomeNavView(),
-    BookAppointmentView(),
-    BookAppointmentView(),
-    BookAppointmentView(),
+  static final List<Widget> _pages = [
+    const HomeNavView(),
+    BlocProvider(
+      create: (context) => MapCubit(
+        mapRepo: getIt.get<MapImpl>(),
+        routesRepo: getIt.get<RoutesImpl>(),
+        locationRepo: getIt.get<LocationImpl>(),
+      )..predectPlaces(),
+      child: const MapView(),
+    ),
+    const BookAppointmentView(),
+    const BookAppointmentView(),
   ];
   static const List<String> _icons = [
     "assets/icons/home.svg",
@@ -44,45 +58,48 @@ class _NavViewState extends State<NavView> {
       //   onPressed: () {},
       //   child: Icon(Icons.add, size: 24.sp),
       // ),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.circular(4.w),
-        child: BottomAppBar(
-          // notchMargin: 2.w,
-          child: Row(
-            children: [
-              for (int index = 0; index < _pages.length; index++) ...[
-                IconButton(
-                  onPressed: () {
-                    _index = index;
-                    setState(() {});
-                  },
-                  style: IconButton.styleFrom(
-                    backgroundColor: _index == index ? Colors.black12 : null,
-                  ),
-                  icon: SvgPicture.asset(
-                    _index == index ? _iconsFill[index] : _icons[index],
-                    colorFilter: ColorFilter.mode(
-                      ConstColor.main.color,
-                      BlendMode.srcIn,
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.only(bottom: 2.h, left: 4.w, right: 4.w),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(4.w),
+          child: BottomAppBar(
+            // notchMargin: 2.w,
+            child: Row(
+              children: [
+                for (int index = 0; index < _pages.length; index++) ...[
+                  IconButton(
+                    onPressed: () {
+                      _index = index;
+                      setState(() {});
+                    },
+                    style: IconButton.styleFrom(
+                      backgroundColor: _index == index ? Colors.black12 : null,
                     ),
+                    icon: SvgPicture.asset(
+                      _index == index ? _iconsFill[index] : _icons[index],
+                      colorFilter: ColorFilter.mode(
+                        ConstColor.main.color,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    // icon: Icon(
+                    //   _index == index
+                    //       ? _selectedIocn[index]
+                    //       : _unSelectedIocn[index],
+                    //   color: _index == index
+                    //       ? ConstColor.main.color
+                    //       : Colors.black38,
+                    // ),
                   ),
-                  // icon: Icon(
-                  //   _index == index
-                  //       ? _selectedIocn[index]
-                  //       : _unSelectedIocn[index],
-                  //   color: _index == index
-                  //       ? ConstColor.main.color
-                  //       : Colors.black38,
-                  // ),
-                ),
-                if (index < _pages.length - 1) const Spacer(),
-                // ! _____ When notched floating action button are provided _____ ! //
-                // if (index < _pages.length - 1)
-                //   Spacer(
-                //     flex: index == (_pages.length ~/ 2) - 1 ? 2 : 1,
-                //   ),
+                  if (index < _pages.length - 1) const Spacer(),
+                  // ! _____ When notched floating action button are provided _____ ! //
+                  // if (index < _pages.length - 1)
+                  //   Spacer(
+                  //     flex: index == (_pages.length ~/ 2) - 1 ? 2 : 1,
+                  //   ),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),
