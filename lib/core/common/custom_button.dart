@@ -8,7 +8,7 @@ class CustomButton extends StatelessWidget {
     this.color = MyColors.dark,
     this.onTap,
     this.padding = const EdgeInsets.symmetric(vertical: 12),
-    this.textColor = Colors.black,
+    this.textColor = Colors.white,
     this.textSize = 16,
     this.height,
     this.borderRadius = 15,

@@ -7,6 +7,7 @@ import '../../../../core/common/custom_button.dart';
 import '../../../../core/constant/const_color.dart';
 import '../cubit/booking_cubit.dart';
 import '../cubit/booking_state.dart';
+import '../widgets/custom_dialog.dart';
 
 class BookAppointmentView extends StatelessWidget {
   const BookAppointmentView({super.key});
@@ -124,9 +125,16 @@ class BookAppointmentView extends StatelessWidget {
                     textColor: Colors.white,
                     onTap: cubit.selectedHour != null
                         ? () {
-                            print("Selected Date: ${cubit.selectedDate}");
-                            print("Selected Hour: ${cubit.selectedHour}");
-                            // TODO: Show Confirmation Dialog
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AppointmentConfirmationDialog(
+                                  doctorName: 'David Patel',
+                                  appointmentDate: cubit.getFormattedDate(),
+                                  appointmentTime: '${cubit.selectedHour}',
+                                );
+                              },
+                            );
                           }
                         : null,
                   );

@@ -63,11 +63,11 @@ class DoctorDetailsView extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(fontSize: 15.sp, color: MyColors.softGray),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 2.h),
 
             // Reviews
             const SectionHeading(title: 'Reviews'),
-            SizedBox(height: 1.h),
+            SizedBox(height: 0.5.h),
             const ReviewsItem(),
           ],
         ),
@@ -81,8 +81,7 @@ class DoctorDetailsView extends StatelessWidget {
           textColor: Colors.white,
           textSize: 16.sp,
           padding: EdgeInsets.zero,
-          onTap: () {},
-          borderRadius: 40,
+          onTap: () => context.nav.pushNamed(Routes.bookAppointmentRoute),
         ),
       ),
     );

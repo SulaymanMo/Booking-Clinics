@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'booking_state.dart';
 
 class BookAppointmentCubit extends Cubit<BookAppointmentState> {
@@ -34,4 +35,9 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
 
   DateTime get selectedDate => _selectedDate;
   String? get selectedHour => _selectedHour;
+
+  // Method to get the formatted date
+  String getFormattedDate() {
+    return DateFormat('yyyy-MM-dd').format(_selectedDate);
+  }
 }
