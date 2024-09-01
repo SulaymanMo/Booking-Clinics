@@ -20,5 +20,6 @@ class MyColors {
   static const Color softGray = Color(0xff6B7280);
   static const Color dark = Color(0xff1C2A3A);
   static const Color gold = Color(0xffFEB052);
+  static const Color primary = Color(0xffA4CFC3);
 
 }

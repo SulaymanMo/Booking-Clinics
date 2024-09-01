@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import '../constant/const_color.dart';
+
 class SectionHeading extends StatelessWidget {
   const SectionHeading({
     super.key,
-    this.textColor,
+    this.textColor = MyColors.dark,
     required this.title,
     this.buttonTitle = "See All",
     this.showActionButton = true,
@@ -27,7 +29,7 @@ class SectionHeading extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: textColor,
-            fontSize: 19.sp,
+            fontSize: 18.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -38,8 +40,8 @@ class SectionHeading extends StatelessWidget {
               buttonTitle,
               style: TextStyle(
                 color: textColor,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.bold,
+                fontSize: 15.5.sp,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),
