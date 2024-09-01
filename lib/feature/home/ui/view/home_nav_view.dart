@@ -5,6 +5,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../core/common/header.dart';
 import '../../../../core/common/input.dart';
 import '../../../../core/common/see_all.dart';
+import '../../../../core/constant/const_color.dart';
 import '../widget/custom_carousel.dart';
 import '../widget/categories.dart';
 import '../widget/home_appbar.dart';
@@ -32,19 +33,7 @@ class HomeNavView extends StatelessWidget {
             preferredSize: const Size(double.infinity, 0),
             child: Padding(
               padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.25.h),
-              child: Input(
-                hint: "What're you looking for?",
-                prefix: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
-                  child: SvgPicture.asset(
-                    "assets/icons/search.svg",
-                    colorFilter: const ColorFilter.mode(
-                      Colors.black26,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                ),
-              ),
+              child: const Input(hint: "What're you looking for?"),
             ),
           ),
         ),
@@ -72,7 +61,13 @@ class HomeNavView extends StatelessWidget {
                   alignment: WrapAlignment.spaceEvenly,
                   children: List.generate(
                     4,
-                    (index) => SvgPicture.asset("assets/icons/whatsapp.svg"),
+                    (index) => SvgPicture.asset(
+                      "assets/icons/whatsapp.svg",
+                      colorFilter: ColorFilter.mode(
+                        ConstColor.textBtn.color,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                   ),
                 ),
               ),
