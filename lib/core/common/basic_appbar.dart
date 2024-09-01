@@ -28,7 +28,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+        title: Text(title),
         actions: actionIcon != null
             ? [
                 IconButton(
