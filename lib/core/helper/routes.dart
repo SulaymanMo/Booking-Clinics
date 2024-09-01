@@ -9,11 +9,17 @@ class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case ConstString.homeRoute:
-        return MaterialPageRoute(builder: (_) => const NavView());
+        return MaterialPageRoute(
+          builder: (_) => const NavView(),
+        );
       case ConstString.doctorDetailsRoute:
-        return MaterialPageRoute(builder: (_) => const DoctorDetailsView());
+        return MaterialPageRoute(
+          builder: (_) => const DoctorDetailsView(),
+        );
       case ConstString.bookAppointmentRoute:
-        return MaterialPageRoute(builder: (_) => const BookAppointmentView());
+        return MaterialPageRoute(
+          builder: (_) => const BookAppointmentView(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
