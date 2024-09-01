@@ -20,10 +20,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const BookAppointmentView(),
         );
+        
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(
+            body: 
+            Center(
               child: Text('No route defined for ${settings.name}'),
             ),
           ),
