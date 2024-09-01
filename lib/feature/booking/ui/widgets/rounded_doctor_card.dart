@@ -46,7 +46,7 @@ class RoundedDoctorCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 4.w),
+            SizedBox(width: 3.w),
 
             // Doctor Details
             Expanded(
@@ -58,7 +58,7 @@ class RoundedDoctorCard extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 18.sp,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -69,7 +69,7 @@ class RoundedDoctorCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 16.5.sp,
+                      fontSize: 14.5.sp,
                       color: MyColors.softGray,
                       fontWeight: FontWeight.bold,
                     ),
@@ -80,12 +80,12 @@ class RoundedDoctorCard extends StatelessWidget {
                        Icon(
                         Icons.location_on,
                         color: MyColors.softGray,
-                        size: 2.4.h,
+                        size: 2.h,
                       ),
                       Text(
                         ' $doctorLocation',
                         style: TextStyle(
-                          fontSize: 16.4.sp,
+                          fontSize: 14.sp,
                           color: MyColors.softGray,
                         ),
                       ),

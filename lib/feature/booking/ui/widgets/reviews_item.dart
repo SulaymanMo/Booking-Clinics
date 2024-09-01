@@ -52,7 +52,7 @@ class ReviewsItem extends StatelessWidget {
                     Text(
                       name,
                       style: TextStyle(
-                        fontSize: 17.sp,
+                        fontSize: 16.5.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -71,7 +71,7 @@ class ReviewsItem extends StatelessWidget {
               review,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 16.sp, color: MyColors.softGray),
+              style: TextStyle(fontSize: 15.sp, color: MyColors.softGray),
             ),
           ],
         ),

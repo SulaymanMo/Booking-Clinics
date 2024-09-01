@@ -27,7 +27,7 @@ class SectionHeading extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: textColor,
-            fontSize: 19.sp,
+            fontSize: 18.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -38,7 +38,7 @@ class SectionHeading extends StatelessWidget {
               buttonTitle,
               style: TextStyle(
                 color: textColor,
-                fontSize: 16.sp,
+                fontSize: 15.5.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
