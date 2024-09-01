@@ -2,7 +2,7 @@ import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:flutter/material.dart';
 
 class signUp extends StatelessWidget {
-   signUp({super.key});
+  const  signUp({super.key});
 
   @override
   Widget build(BuildContext context) {
