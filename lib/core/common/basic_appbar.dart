@@ -4,12 +4,14 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final IconData? actionIcon;
   final VoidCallback? onActionPressed;
+  final bool showBackArrow;
 
   const BasicAppBar({
     super.key,
     required this.title,
     this.actionIcon,
     this.onActionPressed,
+    this.showBackArrow = true,
   });
 
   @override
@@ -28,11 +30,10 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
+        automaticallyImplyLeading: showBackArrow,
         title: Text(title,
             style: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold
-            )),
+                color: Colors.black, fontWeight: FontWeight.bold)),
         actions: actionIcon != null
             ? [
                 IconButton(

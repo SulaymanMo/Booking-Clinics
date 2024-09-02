@@ -11,6 +11,8 @@ class Routes {
   static const editYourProfile = "/editYourProfile";
   static const doctorDetailsRoute = "/doctorDetailsRoute";
   static const bookAppointmentRoute = "/bookAppointmentRoute";
+  static const userBookingsRoute = "/userBookingsRoute";
+  static const profileScreenRoute = "/profileScreenRoute";
 }
 
 class ConstString {
