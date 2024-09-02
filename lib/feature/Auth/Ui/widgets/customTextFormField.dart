@@ -14,24 +14,23 @@ class Customtextformfield extends StatelessWidget {
       width: 400,
       height: 60,
       child: TextFormField(
-      
         onChanged: onChange,
-        cursorColor: primary,
+        cursorColor: Color(0xff6B7280),
         decoration: InputDecoration(
           prefixIcon: preIcon,
-          contentPadding: EdgeInsets.fromLTRB(30, 10, 10, 10),
-          
-          prefixIconConstraints: BoxConstraints(minHeight: 25,minWidth: 25),
+          filled: true,
+          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+          prefixIconConstraints: BoxConstraints(minHeight: 25, minWidth: 25),
           prefixIconColor: Color(0xff9CA3AF),
           hintText: hint,
           hintStyle: TextStyle(fontSize: 14, color: Color(0xff9CA3AF)),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(width: 1.0, color: Color(0xff9CA3AF)),
+            //borderSide: BorderSide(width: 1.0, color: Color(0xff9CA3AF)),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(width: 2.0, color: Color(0xffA4CFC3)),
+            borderSide: BorderSide(width: 2.0, color: MyColors.dark),
           ),
         ),
       ),

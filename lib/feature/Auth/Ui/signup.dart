@@ -63,7 +63,7 @@ class signUp extends StatelessWidget {
                         hint: "Password"),
                     SizedBox(height: 10),
                     Customevaulatedbutton(title: "Create Account"),
-                      SizedBox(height: 15),
+                    SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -86,13 +86,32 @@ class signUp extends StatelessWidget {
                         ),
                       ],
                     ),
+                    SizedBox(height: 20),
+                    SocialButton(
+                        iconUrl: "assets/icons/Google - Original.svg",
+                        title: "Continue with Google"),
                     SizedBox(height: 10),
-                    SocialButton(iconUrl: "assets/icons/Google - Original.svg", title: "Continue with Google"),
-                    SizedBox(height: 10),
-                    SocialButton(iconUrl:"assets/icons/_Facebook.svg", title:"Continue with Facebook"),
-                    SizedBox(height: 10),
-
-
+                    SocialButton(
+                        iconUrl: "assets/icons/_Facebook.svg",
+                        title: "Continue with Facebook"),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Do you have an account ? ",
+                          style: TextStyle(color: Color(0xff6B7280),fontSize: 14),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            "Sign In",
+                            style: TextStyle(color: Color(0xff1C64F2),
+                            fontSize: 14,fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ],
