@@ -19,6 +19,7 @@ class Customtextformfield extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon: preIcon,
           filled: true,
+          //contentpadding:EdgeInsetsDirectional.all(10)
           contentPadding: EdgeInsets.symmetric(horizontal: 10),
           prefixIconConstraints: BoxConstraints(minHeight: 25, minWidth: 25),
           prefixIconColor: Color(0xff9CA3AF),
