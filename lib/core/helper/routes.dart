@@ -1,4 +1,4 @@
-import 'package:booking_clinics/feature/Auth/data/signup.dart';
+import 'package:booking_clinics/feature/Auth/Ui/signup.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
 import 'package:flutter/material.dart';
