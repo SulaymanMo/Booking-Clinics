@@ -26,6 +26,7 @@ dependencies:
   google_maps_flutter: ^2.9.0
   flutter_native_splash: ^2.4.1
   flutter_polyline_points: ^2.1.0
+  iconsax: ^0.0.8
 
 flutter_native_splash:
   background_image: "assets/images/splash_logo.png"

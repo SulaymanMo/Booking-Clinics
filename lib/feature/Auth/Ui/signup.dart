@@ -1,9 +1,12 @@
+import 'package:booking_clinics/core/common/input.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/customEvaulatedButton.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/customTextFormField.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/socilaButtom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:sizer/sizer.dart';
 
 class signUp extends StatelessWidget {
   const signUp({super.key});
@@ -49,10 +52,14 @@ class signUp extends StatelessWidget {
                           fontSize: 14),
                     ),
                     SizedBox(height: 30),
-                    Customtextformfield(
-                        preIcon: SvgPicture.asset("assets/icons/user.svg",
-                            width: 2, height: 2),
-                        hint: "Your Name"),
+                    const Input(
+                      hint: "Email",
+                      prefix: Iconsax.activity5,
+                    ),
+                    // Customtextformfield(
+                    //     preIcon: SvgPicture.asset("assets/icons/user.svg",
+                    //         width: 2, height: 2),
+                    //     hint: "Your Name"),
                     SizedBox(height: 10),
                     Customtextformfield(
                         preIcon: SvgPicture.asset("assets/icons/sms.svg"),
@@ -100,14 +107,17 @@ class signUp extends StatelessWidget {
                       children: [
                         Text(
                           "Do you have an account ? ",
-                          style: TextStyle(color: Color(0xff6B7280),fontSize: 14),
+                          style:
+                              TextStyle(color: Color(0xff6B7280), fontSize: 14),
                         ),
                         GestureDetector(
                           onTap: () {},
                           child: Text(
                             "Sign In",
-                            style: TextStyle(color: Color(0xff1C64F2),
-                            fontSize: 14,fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                color: Color(0xff1C64F2),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
                       ],

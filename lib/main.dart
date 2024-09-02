@@ -1,4 +1,3 @@
-
 import 'firebase_options.dart';
 import 'core/helper/routes.dart';
 import 'package:sizer/sizer.dart';
@@ -52,7 +51,7 @@ class BookingClinics extends StatelessWidget {
           theme: lightTheme(),
           title: 'Booking Clinics',
           debugShowCheckedModeBanner: false,
- 
+          initialRoute: Routes.signup,
           onGenerateRoute: AppRouter.generateRoute,
         );
       },

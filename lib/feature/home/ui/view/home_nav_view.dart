@@ -1,6 +1,7 @@
 import 'package:booking_clinics/feature/home/ui/widget/carousel/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/common/header.dart';
 import '../../../../core/common/input.dart';
@@ -33,7 +34,10 @@ class HomeNavView extends StatelessWidget {
             preferredSize: Size(double.infinity, 2.5.h),
             child: Padding(
               padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.25.h),
-              child: const Input(hint: "What're you looking for?"),
+              child: Input(
+                hint: "What're you looking for?",
+                prefix: Iconsax.search_normal,
+              ),
             ),
           ),
         ),
