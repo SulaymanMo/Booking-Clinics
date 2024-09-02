@@ -1,3 +1,4 @@
+import 'package:booking_clinics/feature/Auth/Ui/signup.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +17,19 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const DoctorDetailsView(),
         );
+      case Routes.signup:
+        return MaterialPageRoute(
+          builder: (_) => const signUp(),
+        );
       case Routes.bookAppointmentRoute:
         return MaterialPageRoute(
           builder: (_) => const BookAppointmentView(),
         );
-        
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: 
-            Center(
+            body: Center(
               child: Text('No route defined for ${settings.name}'),
             ),
           ),
