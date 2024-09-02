@@ -1,6 +1,7 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
-import 'package:booking_clinics/core/helper/customTextFormField.dart';
+import 'package:booking_clinics/feature/Auth/Ui/widgets/customTextFormField.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class signUp extends StatelessWidget {
   const signUp({super.key});
@@ -34,15 +35,24 @@ class signUp extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Create Account"),
+                    Text("Create Account",
+                    style: TextStyle(fontSize: 20,fontWeight:FontWeight.w600 )),
                     SizedBox(height: 10),
-                    Text("We are here to help you"),
+                    Text("We are here to help you",style: TextStyle(fontWeight: FontWeight.w400,color: Color(0xff6B7280),fontSize: 14),),
+                    SizedBox(height: 30),
                     Customtextformfield(
-                        preIcon: Icon(Icons.person), hint: "Your Name"),
+                        preIcon: SvgPicture.asset("assets/icons/user.svg",width:2,height: 2),
+                        hint: "Your Name"),
+                    SizedBox(height: 10),
                     Customtextformfield(
-                        preIcon: Icon(Icons.person), hint: "Your Name"),
+                        preIcon: SvgPicture.asset("assets/icons/sms.svg"),
+                        hint: "Your Email"),
+                    SizedBox(height: 10),
                     Customtextformfield(
-                        preIcon: Icon(Icons.person), hint: "Your Name"),
+                        preIcon: SvgPicture.asset("assets/icons/lock.svg"),
+                        hint: "Password"),
+                    SizedBox(height: 10),
+                    
                   ],
                 ),
               ],
