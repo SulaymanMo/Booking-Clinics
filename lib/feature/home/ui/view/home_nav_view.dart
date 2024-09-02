@@ -30,7 +30,7 @@ class HomeNavView extends StatelessWidget {
           toolbarHeight: 14.25.h,
           flexibleSpace: const UpperAppBar(),
           bottom: PreferredSize(
-            preferredSize: const Size(double.infinity, 0),
+            preferredSize: Size(double.infinity, 2.5.h),
             child: Padding(
               padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.25.h),
               child: const Input(hint: "What're you looking for?"),

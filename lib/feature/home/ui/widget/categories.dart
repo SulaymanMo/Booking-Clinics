@@ -91,7 +91,7 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 11.h,
+      height: 13.h,
       child: ListView.separated(
         shrinkWrap: true,
         itemCount: _categories.length,
