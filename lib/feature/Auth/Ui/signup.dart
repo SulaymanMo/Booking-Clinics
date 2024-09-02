@@ -1,5 +1,7 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
+import 'package:booking_clinics/feature/Auth/Ui/widgets/customEvaulatedButton.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/customTextFormField.dart';
+import 'package:booking_clinics/feature/Auth/Ui/widgets/socilaButtom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -36,12 +38,20 @@ class signUp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Create Account",
-                    style: TextStyle(fontSize: 20,fontWeight:FontWeight.w600 )),
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w600)),
                     SizedBox(height: 10),
-                    Text("We are here to help you",style: TextStyle(fontWeight: FontWeight.w400,color: Color(0xff6B7280),fontSize: 14),),
+                    Text(
+                      "We are here to help you",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff6B7280),
+                          fontSize: 14),
+                    ),
                     SizedBox(height: 30),
                     Customtextformfield(
-                        preIcon: SvgPicture.asset("assets/icons/user.svg",width:2,height: 2),
+                        preIcon: SvgPicture.asset("assets/icons/user.svg",
+                            width: 2, height: 2),
                         hint: "Your Name"),
                     SizedBox(height: 10),
                     Customtextformfield(
@@ -52,7 +62,37 @@ class signUp extends StatelessWidget {
                         preIcon: SvgPicture.asset("assets/icons/lock.svg"),
                         hint: "Password"),
                     SizedBox(height: 10),
-                    
+                    Customevaulatedbutton(title: "Create Account"),
+                      SizedBox(height: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            child: Divider(color: Color(0xff6B7280)),
+                          ),
+                        ),
+                        Text(
+                          "Or",
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xff6B7280)),
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            child: Divider(color: Color(0xff6B7280)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    SocialButton(iconUrl: "assets/icons/Google - Original.svg", title: "Continue with Google"),
+                    SizedBox(height: 10),
+                    SocialButton(iconUrl:"assets/icons/_Facebook.svg", title:"Continue with Facebook"),
+                    SizedBox(height: 10),
+
+
                   ],
                 ),
               ],

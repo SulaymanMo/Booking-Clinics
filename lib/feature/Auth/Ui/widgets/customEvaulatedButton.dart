@@ -19,7 +19,8 @@ class Customevaulatedbutton extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 19,
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
           color: Colors.white,
         ),
       ),
