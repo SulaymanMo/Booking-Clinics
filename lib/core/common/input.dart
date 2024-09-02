@@ -1,4 +1,5 @@
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
@@ -23,7 +24,7 @@ class Input extends StatelessWidget {
   final bool? isDense;
   final String? hint;
   final Widget? suffix;
-  final Widget? prefix;
+  final IconData? prefix;
   final Color? fillColor;
   final bool? obscureText;
   final TextInputType? keyboardType;
@@ -49,17 +50,16 @@ class Input extends StatelessWidget {
         isDense: isDense ?? true,
         prefixIconConstraints: BoxConstraints(maxWidth: 20.w),
         fillColor: fillColor ?? ConstColor.secondary.color,
-        prefixIcon: prefix ??
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
-              child: SvgPicture.asset(
-                "assets/icons/search.svg",
-                colorFilter: const ColorFilter.mode(
-                  Colors.black26,
-                  BlendMode.srcIn,
+        prefixIcon: prefix != null
+            ? Padding(
+                padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
+                child: Icon(
+                  prefix,
+                  size: 21.sp,
+                  color: ConstColor.icon.color,
                 ),
-              ),
-            ),
+              )
+            : null,
         // suffixIcon: suffix != null
         //     ? Icon(
         //         suffix,
