@@ -69,6 +69,7 @@ class DoctorDetailsView extends StatelessWidget {
             const SectionHeading(title: 'Reviews'),
             SizedBox(height: 0.5.h),
             const ReviewsItem(),
+            
           ],
         ),
       ),

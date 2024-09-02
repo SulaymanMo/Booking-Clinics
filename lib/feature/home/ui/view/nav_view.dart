@@ -1,4 +1,5 @@
 import 'package:booking_clinics/core/helper/service_locator.dart';
+import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
 import 'package:booking_clinics/feature/map/data/repo/location_repo/location_repo_imp.dart';
 import 'package:booking_clinics/feature/map/data/repo/map_repo/map_impl.dart';
 import 'package:booking_clinics/feature/map/data/repo/routes_repo/routes_impl.dart';
@@ -31,9 +32,10 @@ class _NavViewState extends State<NavView> {
       )..predectPlaces(),
       child: const MapView(),
     ),
-    const BookAppointmentView(),
+    const DoctorDetailsView(),
     const BookAppointmentView(),
   ];
+  
   static const List<String> _icons = [
     "assets/icons/home.svg",
     "assets/icons/location.svg",
@@ -65,12 +67,14 @@ class _NavViewState extends State<NavView> {
           child: BottomAppBar(
             // notchMargin: 2.w,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 for (int index = 0; index < _pages.length; index++) ...[
                   IconButton(
                     onPressed: () {
-                      _index = index;
-                      setState(() {});
+                      setState(() {
+                        _index = index;
+                      });
                     },
                     style: IconButton.styleFrom(
                       backgroundColor: _index == index ? Colors.black12 : null,
@@ -91,7 +95,7 @@ class _NavViewState extends State<NavView> {
                     //       : Colors.black38,
                     // ),
                   ),
-                  if (index < _pages.length - 1) const Spacer(),
+                  // if (index < _pages.length - 1) const Spacer(),
                   // ! _____ When notched floating action button are provided _____ ! //
                   // if (index < _pages.length - 1)
                   //   Spacer(

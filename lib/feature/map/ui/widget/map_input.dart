@@ -40,6 +40,7 @@ class MapInput extends StatelessWidget {
         ),
         AnimatedContainer(
           constraints: BoxConstraints(
+            minHeight: 0,
             maxHeight: 40.h,
             minWidth: double.infinity,
           ),
