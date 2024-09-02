@@ -1,4 +1,5 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
+import 'package:booking_clinics/core/helper/customTextFormField.dart';
 import 'package:flutter/material.dart';
 
 class signUp extends StatelessWidget {
@@ -30,9 +31,10 @@ class signUp extends StatelessWidget {
                     Text("Create Account"),
                     SizedBox(height: 10),
                     Text("We are here to help you"),
-                    TextFormField(
-                      
-                    )
+                    Customtextformfield(preIcon:Icon(Icons.person) , hint: "Your Name"),
+                    
+
+                    
                   ],
                 ),
                 
