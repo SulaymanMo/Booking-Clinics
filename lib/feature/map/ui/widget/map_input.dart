@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/common/input.dart';
@@ -36,10 +37,12 @@ class MapInput extends StatelessWidget {
             fillColor: Colors.white70,
             hint: "Search Doctor, Hospital",
             controller: mapCubit.textController,
+            prefix: Iconsax.search_normal,
           ),
         ),
         AnimatedContainer(
           constraints: BoxConstraints(
+            minHeight: 0,
             maxHeight: 40.h,
             minWidth: double.infinity,
           ),

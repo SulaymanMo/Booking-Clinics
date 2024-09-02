@@ -12,43 +12,46 @@ class MapView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mapCubit = context.read<MapCubit>();
-    return BlocBuilder<MapCubit, MapState>(
-      builder: (_, state) {
-        return Stack(
-          children: [
-            GoogleMap(
-              markers: mapCubit.markers,
-              onMapCreated: (controller) async {
-                mapCubit.mapController = controller;
-                await mapCubit.myLocation();
-                // mapCubit.predectPlaces();
-              },
-              compassEnabled: false,
-              zoomControlsEnabled: false,
-              polylines: mapCubit.polylines,
-              initialCameraPosition: const CameraPosition(
-                zoom: 1,
-                target: LatLng(32.430833635256974, 46.26442871931941),
-              ),
-            ),
-            Positioned(
-              top: 2.h,
-              left: 4.w,
-              right: 4.w,
-              child: MapInput(
-                onSelectPlace: (details) async {
-                  mapCubit
-                    ..places.clear()
-                    ..sessionToken = null
-                    ..textController.clear();
-                  List<LatLng> points = await mapCubit.computeRoutes(details);
-                  await mapCubit.displayRoutes(points);
+    return Scaffold(
+      body: BlocBuilder<MapCubit, MapState>(
+        builder: (_, state) {
+          return Stack(
+            children: [
+              GoogleMap(
+                markers: mapCubit.markers,
+                onMapCreated: (controller) async {
+                  mapCubit.mapController = controller;
+                  await mapCubit.myLocation();
+                  // mapCubit.predectPlaces();
                 },
+                compassEnabled: false,
+                zoomControlsEnabled: false,
+                polylines: mapCubit.polylines,
+                initialCameraPosition: const CameraPosition(
+                  zoom: 1,
+                  target: LatLng(32.430833635256974, 46.26442871931941),
+                ),
               ),
-            ),
-          ],
-        );
-      },
+              Positioned(
+                top: 2.h,
+                left: 4.w,
+                right: 4.w,
+                child: MapInput(
+                  onSelectPlace: (details) async {
+                    mapCubit
+                      ..places.clear()
+                      ..sessionToken = null
+                      ..textController.clear();
+                    List<LatLng> points = await mapCubit.computeRoutes(details);
+                    await mapCubit.displayRoutes(points);
+                    // await mapCubit.trackLocation();
+                  },
+                ),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
