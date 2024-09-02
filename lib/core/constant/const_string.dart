@@ -5,7 +5,7 @@ class Routes{
   static const registerRoute = "/register";
   static const activateRoute = "/activate";
   static const homeRoute = "/home";
-
+static const signup = "/signup";
   static const doctorDetailsRoute = "/doctorDetailsRoute";
   static const bookAppointmentRoute = "/bookAppointmentRoute";
 }
