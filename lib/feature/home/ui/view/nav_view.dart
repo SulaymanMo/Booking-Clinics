@@ -5,6 +5,7 @@ import 'package:booking_clinics/feature/map/data/repo/map_repo/map_impl.dart';
 import 'package:booking_clinics/feature/map/data/repo/routes_repo/routes_impl.dart';
 import 'package:booking_clinics/feature/map/ui/manager/map_cubit.dart';
 import 'package:booking_clinics/feature/map/ui/view/map_view.dart';
+import 'package:booking_clinics/feature/profile/ui/view/same_design.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
@@ -33,7 +34,7 @@ class _NavViewState extends State<NavView> {
       child: const MapView(),
     ),
     const DoctorDetailsView(),
-    const BookAppointmentView(),
+    const SameDesign(),
   ];
   
   static const List<String> _icons = [
@@ -52,7 +53,6 @@ class _NavViewState extends State<NavView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
       resizeToAvoidBottomInset: false,
       body: SafeArea(bottom: false, child: _pages[_index]),
       // floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
@@ -60,50 +60,47 @@ class _NavViewState extends State<NavView> {
       //   onPressed: () {},
       //   child: Icon(Icons.add, size: 24.sp),
       // ),
-      bottomNavigationBar: Container(
-        margin: EdgeInsets.only(bottom: 2.h, left: 4.w, right: 4.w),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(4.w),
-          child: BottomAppBar(
-            // notchMargin: 2.w,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                for (int index = 0; index < _pages.length; index++) ...[
-                  IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _index = index;
-                      });
-                    },
-                    style: IconButton.styleFrom(
-                      backgroundColor: _index == index ? Colors.black12 : null,
-                    ),
-                    icon: SvgPicture.asset(
-                      _index == index ? _iconsFill[index] : _icons[index],
-                      colorFilter: ColorFilter.mode(
-                        ConstColor.main.color,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    // icon: Icon(
-                    //   _index == index
-                    //       ? _selectedIocn[index]
-                    //       : _unSelectedIocn[index],
-                    //   color: _index == index
-                    //       ? ConstColor.main.color
-                    //       : Colors.black38,
-                    // ),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.circular(4.w),
+        child: BottomAppBar(
+          // notchMargin: 2.w,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              for (int index = 0; index < _pages.length; index++) ...[
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _index = index;
+                    });
+                  },
+                  style: IconButton.styleFrom(
+                    backgroundColor: _index == index ? Colors.black12 : null,
                   ),
-                  // if (index < _pages.length - 1) const Spacer(),
-                  // ! _____ When notched floating action button are provided _____ ! //
-                  // if (index < _pages.length - 1)
-                  //   Spacer(
-                  //     flex: index == (_pages.length ~/ 2) - 1 ? 2 : 1,
-                  //   ),
-                ],
+                  icon: SvgPicture.asset(
+                    _index == index ? _iconsFill[index] : _icons[index],
+                    colorFilter: ColorFilter.mode(
+                      ConstColor.main.color,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  // icon: Icon(
+                  //   _index == index
+                  //       ? _selectedIocn[index]
+                  //       : _unSelectedIocn[index],
+                  //   color: _index == index
+                  //       ? ConstColor.main.color
+                  //       : Colors.black38,
+                  // ),
+                ),
+                // if (index < _pages.length - 1) const Spacer(),
+                // ! _____ When notched floating action button are provided _____ ! //
+                // if (index < _pages.length - 1)
+                //   Spacer(
+                //     flex: index == (_pages.length ~/ 2) - 1 ? 2 : 1,
+                //   ),
               ],
-            ),
+            ],
           ),
         ),
       ),
