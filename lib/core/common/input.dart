@@ -1,5 +1,3 @@
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
