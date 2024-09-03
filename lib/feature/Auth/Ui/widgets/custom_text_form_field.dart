@@ -2,22 +2,22 @@ import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-class Customtextformfield extends StatelessWidget {
-  Customtextformfield(
-      {required this.preIcon, required this.hint, this.onChange, super.key});
-  String hint;
-  Widget? preIcon;
-  Function(String)? onChange;
+class CustomTextFormField extends StatelessWidget {
+  const CustomTextFormField(
+      { this.preIcon, required this.hint, this.onChange, super.key});
+  final String hint;
+  final Widget? preIcon;
+  final Function(String)? onChange;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return  Container(
       width: 400,
       height: 60,
       child: TextFormField(
         style: TextStyle(fontSize: 15.sp,color: MyColors.dark),
         onChanged: onChange,
-        cursorColor: Color(0xff6B7280),
+        cursorColor: const Color(0xff6B7280),
         decoration: InputDecoration(
           prefixIcon: Padding(
             padding: EdgeInsets.symmetric(horizontal: 1.5.w,),
@@ -30,9 +30,9 @@ class Customtextformfield extends StatelessWidget {
           
           //contentPadding: EdgeInsetsDirectional.all(),
           prefixIconConstraints:const  BoxConstraints(minHeight: 40, minWidth: 30),
-          prefixIconColor: Color(0xff9CA3AF),
+          prefixIconColor:const  Color(0xff9CA3AF),
           hintText: hint,
-          hintStyle: TextStyle(fontSize: 14, color: Color(0xff9CA3AF)),
+          hintStyle: const TextStyle(fontSize: 14, color: Color(0xff9CA3AF)),
           border: buildBorder(),
          enabledBorder: buildBorder(),
          focusedBorder: buildFocusedBorder(),

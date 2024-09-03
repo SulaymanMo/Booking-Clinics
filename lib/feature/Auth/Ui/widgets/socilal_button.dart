@@ -6,7 +6,7 @@ class SocialButton extends StatelessWidget {
   final String iconUrl;
   final String title;
 
-  SocialButton({required this.iconUrl,required this.title, super.key});
+  const SocialButton({required this.iconUrl,required this.title, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class SocialButton extends StatelessWidget {
       
       decoration: BoxDecoration(
       border: Border.all(
-          color: Color(0xff9CA3AF), // Border color
+          color: const Color(0xff9CA3AF), // Border color
           width: 1, // Border width
         ),
         
@@ -27,8 +27,8 @@ class SocialButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(iconUrl),
-          SizedBox(width: 8),
-          Text(title,style: TextStyle(color: MyColors.dark),),
+          const SizedBox(width: 8),
+          Text(title,style: const TextStyle( color: MyColors.dark),),
         ],
       ),
     );
