@@ -15,35 +15,49 @@ class Customtextformfield extends StatelessWidget {
       width: 400,
       height: 60,
       child: TextFormField(
+        style: TextStyle(fontSize: 15.sp,color: MyColors.dark),
         onChanged: onChange,
         cursorColor: Color(0xff6B7280),
         decoration: InputDecoration(
           prefixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 1.w),
-            child: preIcon,
+            padding: EdgeInsets.symmetric(horizontal: 1.5.w,),
+            child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
+              child: preIcon,
+            ),
           ),
           filled: true,
-<<<<<<< HEAD
-          //contentpadding:EdgeInsetsDirectional.all(10)
-          contentPadding: EdgeInsets.symmetric(horizontal: 10),
-          prefixIconConstraints: BoxConstraints(minHeight: 25, minWidth: 25),
-=======
-          // contentPadding: EdgeInsets.symmetric(horizontal: 10),
-          // prefixIconConstraints: BoxConstraints(minHeight: 25, minWidth: 25),
->>>>>>> 725db903eff13a083e8f04b86791ea3ff42ef68c
+          
+          //contentPadding: EdgeInsetsDirectional.all(),
+          prefixIconConstraints:const  BoxConstraints(minHeight: 40, minWidth: 30),
           prefixIconColor: Color(0xff9CA3AF),
           hintText: hint,
           hintStyle: TextStyle(fontSize: 14, color: Color(0xff9CA3AF)),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            //borderSide: BorderSide(width: 1.0, color: Color(0xff9CA3AF)),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(width: 2.0, color: MyColors.dark),
-          ),
+          border: buildBorder(),
+         enabledBorder: buildBorder(),
+         focusedBorder: buildFocusedBorder(),
+        
         ),
       ),
+    );
+  }
+  OutlineInputBorder buildBorder() {
+    return OutlineInputBorder(
+      borderSide: BorderSide(
+        width: 0.8.sp,
+        color: Colors.black12,
+      ),
+      borderRadius: BorderRadius.circular(3.5.w),
+    );
+  }
+
+  OutlineInputBorder buildFocusedBorder() {
+    return OutlineInputBorder(
+      borderSide: BorderSide(
+        width: 0.8.sp,
+        color: Colors.deepPurple,
+      ),
+      borderRadius: BorderRadius.circular(3.5.w),
     );
   }
 }

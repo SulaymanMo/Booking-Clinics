@@ -23,7 +23,7 @@ class signUp extends StatelessWidget {
                 SizedBox(height: 50),
                 Image.asset('assets/images/logo.png', height: 66, width: 66),
                 SizedBox(height: 10),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -52,14 +52,14 @@ class signUp extends StatelessWidget {
                           fontSize: 14),
                     ),
                     SizedBox(height: 30),
-                    const Input(
-                      hint: "Email",
-                      prefix: Iconsax.activity5,
-                    ),
-                    // Customtextformfield(
-                    //     preIcon: SvgPicture.asset("assets/icons/user.svg",
-                    //         width: 2, height: 2),
-                    //     hint: "Your Name"),
+                    // const Input(
+                    //   hint: "Your Name",
+                    //   prefix:Icon(sa),
+                    // ),
+                    Customtextformfield(
+                        preIcon: SvgPicture.asset("assets/icons/user.svg",
+                          ),
+                        hint: "Your Name"),
                     SizedBox(height: 10),
                     Customtextformfield(
                         preIcon: SvgPicture.asset("assets/icons/sms.svg"),
