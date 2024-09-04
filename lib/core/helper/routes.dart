@@ -1,4 +1,5 @@
 import 'package:booking_clinics/feature/Auth/Ui/edit_your_profile.dart';
+import 'package:booking_clinics/feature/Auth/Ui/signin.dart';
 import 'package:booking_clinics/feature/Auth/Ui/signup.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
@@ -21,6 +22,10 @@ class AppRouter {
       case Routes.signup:
         return MaterialPageRoute(
           builder: (_) => const SignUp(),
+        );
+        case Routes.signin:
+        return MaterialPageRoute(
+          builder: (_) => const SignIn(),
         );
         case Routes.editYourProfile:
         return MaterialPageRoute(

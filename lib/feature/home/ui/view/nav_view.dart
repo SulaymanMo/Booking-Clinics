@@ -12,7 +12,6 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/feature/home/ui/view/home_nav_view.dart';
-import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 
 class NavView extends StatefulWidget {
   const NavView({super.key});

@@ -16,10 +16,10 @@ final Color primary = ConstColor.primary.color;
 final Color secondary = ConstColor.secondary.color;
 
 class MyColors {
+  static const Color blue = Color(0xff1C64F2);
   static const Color lightGray = Color(0xffF3F4F6);
   static const Color softGray = Color(0xff6B7280);
   static const Color dark = Color(0xff1C2A3A);
   static const Color gold = Color(0xffFEB052);
   static const Color primary = Color(0xffA4CFC3);
-
 }
