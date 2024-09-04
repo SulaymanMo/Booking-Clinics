@@ -1,9 +1,11 @@
+import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_evaulated_button.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_text_form_field.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/socilal_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sizer/sizer.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -17,88 +19,90 @@ class SignUp extends StatelessWidget {
           child: Form(
             child: ListView(
               children: [
-                const SizedBox(height: 50),
+                SizedBox(height: 5.h),
                 Image.asset('assets/images/logo.png', height: 66, width: 66),
-                const SizedBox(height: 10),
-                const Row(
+                SizedBox(height: 3.h),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "Health",
-                      style: TextStyle(fontSize: 20, color: Color(0xff6B7280)),
+                      style: TextStyle(
+                          fontSize: 20.sp, color: const Color(0xff6B7280)),
                     ),
                     Text(
                       "Pal",
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20.sp),
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 2.5.h),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Create Account",
+                    Text("Create Account",
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600)),
-                    const SizedBox(height: 10),
-                    const Text(
+                            fontSize: 20.sp, fontWeight: FontWeight.w600)),
+                    SizedBox(height: 2.h),
+                    Text(
                       "We are here to help you",
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff6B7280),
-                          fontSize: 14),
+                          color: const Color(0xff6B7280),
+                          fontSize: 15.sp),
                     ),
-                    const SizedBox(height: 30),
+                    SizedBox(height: 2.5.h),
                     // const Input(
                     //   hint: "Your Name",
                     //   prefix:Icon(sa),
                     // ),
                     CustomTextFormField(
-                        preIcon: SvgPicture.asset("assets/icons/user.svg",
-                          ),
+                        preIcon: SvgPicture.asset(
+                          "assets/icons/user.svg",
+                        ),
                         hint: "Your Name"),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 1.5.h),
                     CustomTextFormField(
                         preIcon: SvgPicture.asset("assets/icons/sms.svg"),
                         hint: "Your Email"),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 1.5.h),
                     CustomTextFormField(
                         preIcon: SvgPicture.asset("assets/icons/lock.svg"),
                         hint: "Password"),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 1.5.h),
                     const CustomEvaulatedButton(title: "Create Account"),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 2.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
                           child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            margin: EdgeInsets.symmetric(horizontal: 5.w),
                             child: const Divider(color: Color(0xff6B7280)),
                           ),
                         ),
-                        const Text(
+                        Text(
                           "Or",
-                          style:
-                              TextStyle(fontSize: 16, color: Color(0xff6B7280)),
+                          style: TextStyle(
+                              fontSize: 16.sp, color: const Color(0xff6B7280)),
                         ),
                         Expanded(
                           child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            margin: EdgeInsets.symmetric(horizontal: 5.w),
                             child: const Divider(color: Color(0xff6B7280)),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 2.h),
                     const SocialButton(
                         iconUrl: "assets/icons/Google - Original.svg",
                         title: "Continue with Google"),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 1.h),
                     const SocialButton(
                         iconUrl: "assets/icons/_Facebook.svg",
                         title: "Continue with Facebook"),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 2.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -109,13 +113,13 @@ class SignUp extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                              Navigator.pushNamed(context, Routes.signin);
+                            Navigator.pushNamed(context, Routes.signin);
                           },
-                          child: const Text(
+                          child: Text(
                             "Sign In",
                             style: TextStyle(
-                                color: Color(0xff1C64F2),
-                                fontSize: 14,
+                                color: MyColors.blue,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500),
                           ),
                         ),

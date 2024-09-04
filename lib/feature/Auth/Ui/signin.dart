@@ -49,8 +49,8 @@ class SignIn extends StatelessWidget {
                       "Hope you’re doing fine.",
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff6B7280),
-                          fontSize: 14.sp),
+                          color: const Color(0xff6B7280),
+                          fontSize: 15.sp),
                     ),
                     SizedBox(height: 3.h),
                     CustomTextFormField(
@@ -95,7 +95,9 @@ class SignIn extends StatelessWidget {
                         title: "Sign In with Facebook"),
                     SizedBox(height: 2.h),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                          Navigator.pushNamed(context, Routes.forgetPassword);
+                      },
                       child: Text(
                         "Forgot password?",
                         style: TextStyle(

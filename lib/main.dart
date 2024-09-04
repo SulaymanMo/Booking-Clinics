@@ -53,7 +53,7 @@ class BookingClinics extends StatelessWidget {
           title: 'Booking Clinics',
           debugShowCheckedModeBanner: false,
           //initialRoute: Routes.editYourProfile,
-          initialRoute: Routes.signin,
+          initialRoute: Routes.forgetPassword,
           onGenerateRoute: AppRouter.generateRoute,
         );
       },
