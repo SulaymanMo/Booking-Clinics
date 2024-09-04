@@ -27,8 +27,8 @@ class SignUp extends StatelessWidget {
                   children: [
                     Text(
                       "Health",
-                      style:
-                          TextStyle(fontSize: 20.sp, color: Color(0xff6B7280)),
+                      style: TextStyle(
+                          fontSize: 20.sp, color: const Color(0xff6B7280)),
                     ),
                     Text(
                       "Pal",
@@ -48,7 +48,7 @@ class SignUp extends StatelessWidget {
                       "We are here to help you",
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff6B7280),
+                          color: const Color(0xff6B7280),
                           fontSize: 15.sp),
                     ),
                     SizedBox(height: 2.5.h),
@@ -71,38 +71,38 @@ class SignUp extends StatelessWidget {
                         hint: "Password"),
                     SizedBox(height: 1.5.h),
                     const CustomEvaulatedButton(title: "Create Account"),
-                      SizedBox(height: 2.h),
+                    SizedBox(height: 2.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
                           child: Container(
-                            margin:  EdgeInsets.symmetric(horizontal: 5.w),
+                            margin: EdgeInsets.symmetric(horizontal: 5.w),
                             child: const Divider(color: Color(0xff6B7280)),
                           ),
                         ),
-                         Text(
+                        Text(
                           "Or",
-                          style:
-                              TextStyle(fontSize: 16.sp, color: Color(0xff6B7280)),
+                          style: TextStyle(
+                              fontSize: 16.sp, color: const Color(0xff6B7280)),
                         ),
                         Expanded(
                           child: Container(
-                            margin:  EdgeInsets.symmetric(horizontal: 5.w),
+                            margin: EdgeInsets.symmetric(horizontal: 5.w),
                             child: const Divider(color: Color(0xff6B7280)),
                           ),
                         ),
                       ],
                     ),
-                     SizedBox(height: 2.h),
+                    SizedBox(height: 2.h),
                     const SocialButton(
                         iconUrl: "assets/icons/Google - Original.svg",
                         title: "Continue with Google"),
-                     SizedBox(height: 1.h),
+                    SizedBox(height: 1.h),
                     const SocialButton(
                         iconUrl: "assets/icons/_Facebook.svg",
                         title: "Continue with Facebook"),
-                     SizedBox(height: 2.h),
+                    SizedBox(height: 2.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -115,7 +115,7 @@ class SignUp extends StatelessWidget {
                           onTap: () {
                             Navigator.pushNamed(context, Routes.signin);
                           },
-                          child:  Text(
+                          child: Text(
                             "Sign In",
                             style: TextStyle(
                                 color: MyColors.blue,
