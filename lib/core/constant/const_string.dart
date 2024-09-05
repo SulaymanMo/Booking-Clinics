@@ -1,13 +1,16 @@
-class Routes{
+class Routes {
   // ! _____ App Routes _____ ! //
   static const onboardingRoute = "/";
-  static const loginRoute = "/login";
-  static const registerRoute = "/register";
   static const activateRoute = "/activate";
   static const homeRoute = "/home";
-  static const signup = "/signup";
+  static const signup = "/signUp";
+  static const signin = "/signin";
+  static const forgetPassword = "/forgetPassword";
+  static const editYourProfile = "/editYourProfile";
   static const doctorDetailsRoute = "/doctorDetailsRoute";
   static const bookAppointmentRoute = "/bookAppointmentRoute";
+  static const userBookingsRoute = "/userBookingsRoute";
+  static const profileScreenRoute = "/profileScreenRoute";
 }
 
 class ConstString {
@@ -18,11 +21,10 @@ class ConstString {
   static const userCont = "USER_CONTAINER_NAME";
 
   // ! _____ Texts _____ ! //
-  static const aboutMeFakeText = "Dr. David Patel, a dedicated cardiologist, brings a wealth of experience to Golden Gate Cardiology Center in Golden Gate, CA.";
+  static const aboutMeFakeText =
+      "Dr. David Patel, a dedicated cardiologist, brings a wealth of experience to Golden Gate Cardiology Center in Golden Gate, CA.";
   static const workingTimeFakeText = "Monday - Friday, 9:00 AM - 7:00 PM";
-  static const reviewFakeText = 'Dr. Patel is a true professional who genuinely cares about his patients. I highly recommend Dr. Patel to anyone seeking exceptional cardiac care.';
+  static const reviewFakeText =
+      'Dr. Patel is a true professional who genuinely cares about his patients. I highly recommend Dr. Patel to anyone seeking exceptional cardiac care.';
   static const bookAppointment = 'Book Appointment';
-
-
-
 }
