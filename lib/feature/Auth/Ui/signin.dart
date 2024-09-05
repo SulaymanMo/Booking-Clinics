@@ -4,17 +4,18 @@ import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_evaulated_button.
 import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_text_form_field.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/socilal_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+class SignIn extends StatelessWidget {
+  const SignIn({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Padding(
+  
           padding: const EdgeInsets.all(20),
           child: Form(
             child: ListView(
@@ -40,28 +41,18 @@ class SignUp extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Create Account",
+                    Text("Hi, Welcome Back! ",
                         style: TextStyle(
                             fontSize: 20.sp, fontWeight: FontWeight.w600)),
                     SizedBox(height: 2.h),
                     Text(
-                      "We are here to help you",
+                      "Hope you’re doing fine.",
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: const Color(0xff6B7280),
                           fontSize: 15.sp),
                     ),
-                    SizedBox(height: 2.5.h),
-                    // const Input(
-                    //   hint: "Your Name",
-                    //   prefix:Icon(sa),
-                    // ),
-                    CustomTextFormField(
-                        preIcon: SvgPicture.asset(
-                          "assets/icons/user.svg",
-                        ),
-                        hint: "Your Name"),
-                    SizedBox(height: 1.5.h),
+                    SizedBox(height: 3.h),
                     CustomTextFormField(
                         preIcon: SvgPicture.asset("assets/icons/sms.svg"),
                         hint: "Your Email"),
@@ -69,15 +60,20 @@ class SignUp extends StatelessWidget {
                     CustomTextFormField(
                         preIcon: SvgPicture.asset("assets/icons/lock.svg"),
                         hint: "Password"),
-                    SizedBox(height: 1.5.h),
-                    const CustomEvaulatedButton(title: "Create Account"),
-                    SizedBox(height: 2.h),
+                    SizedBox(height: 3.h),
+                    CustomEvaulatedButton(
+                      title: "Sign In",
+                      onPressed: () {
+                        //context.nav.pushNamed(Routes.editYourProfile);
+                      },
+                    ),
+                    SizedBox(height: 2.5.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
                           child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 5.w),
+                            margin:  EdgeInsets.symmetric(horizontal: 5.w),
                             child: const Divider(color: Color(0xff6B7280)),
                           ),
                         ),
@@ -94,39 +90,53 @@ class SignUp extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 2.h),
+                    SizedBox(height: 2.5.h),
                     const SocialButton(
                         iconUrl: "assets/icons/Google - Original.svg",
-                        title: "Continue with Google"),
-                    SizedBox(height: 1.h),
+                        title: "Sign In with Google"),
+                    SizedBox(height: 1.5.h),
                     const SocialButton(
                         iconUrl: "assets/icons/_Facebook.svg",
-                        title: "Continue with Facebook"),
+                        title: "Sign In with Facebook"),
+                    SizedBox(height: 2.h),
+                    GestureDetector(
+                      onTap: () {
+                          Navigator.pushNamed(context, Routes.forgetPassword);
+                      },
+                      child: Text(
+                        "Forgot password?",
+                        style: TextStyle(
+                            color: MyColors.blue,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
                     SizedBox(height: 2.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          "Do you have an account ? ",
-                          style:
-                              TextStyle(color: Color(0xff6B7280), fontSize: 14),
+                        Text(
+                          "Don’t have an account yet?",
+                          style: TextStyle(
+                              color: const Color(0xff6B7280), fontSize: 14.sp),
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, Routes.signin);
+                            Navigator.pushNamed(context, Routes.signup);
                           },
                           child: Text(
-                            "Sign In",
+                            " Sign up",
                             style: TextStyle(
-                                color: MyColors.blue,
+                                color: const Color(0xff1C64F2),
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w500),
                           ),
                         ),
                       ],
                     ),
+                    //SizedBox(height: 2.h),
                   ],
-                ),
+                )
               ],
             ),
           ),
