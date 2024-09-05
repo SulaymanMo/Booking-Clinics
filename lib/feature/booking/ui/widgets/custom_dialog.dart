@@ -7,7 +7,8 @@ import 'package:sizer/sizer.dart';
 
 class AppointmentConfirmationDialog extends StatelessWidget {
   final String doctorName;
-  final String appointmentDate;
+ 
+ final String appointmentDate;
   final String appointmentTime;
 
   const AppointmentConfirmationDialog({
