@@ -11,6 +11,7 @@ class Routes {
   static const bookAppointmentRoute = "/bookAppointmentRoute";
   static const userBookingsRoute = "/userBookingsRoute";
   static const profileScreenRoute = "/profileScreenRoute";
+  static const seeAll = "/see_all";
 }
 
 class ConstString {

@@ -56,7 +56,7 @@ class HomeNavView extends StatelessWidget {
                 ],
               ),
               const Header(
-                title: "Follow Us",
+                title: "Follow HealthPal",
                 subtitle: "Stay in Touch with Us",
               ),
               Padding(

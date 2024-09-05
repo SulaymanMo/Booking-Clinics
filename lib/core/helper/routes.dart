@@ -3,6 +3,7 @@ import 'package:booking_clinics/feature/Auth/Ui/signin.dart';
 import 'package:booking_clinics/feature/Auth/Ui/signup.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
+import 'package:booking_clinics/feature/see_all/ui/view/see_all_view.dart';
 import 'package:flutter/material.dart';
 import '../../feature/Auth/Ui/edit_your_profile.dart';
 import '../constant/const_string.dart';
@@ -46,6 +47,10 @@ class AppRouter {
       case Routes.editYourProfile:
         return MaterialPageRoute(
           builder: (_) => const EditYourProfile(),
+        );
+      case Routes.seeAll:
+        return MaterialPageRoute(
+          builder: (_) => const SeeAllView(),
         );
         
       default:
