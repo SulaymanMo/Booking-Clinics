@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
@@ -19,7 +20,9 @@ class ListHeader extends StatelessWidget {
         children: [
           Text(title, style: context.bold16),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.nav.pushNamed(Routes.seeAll);
+            },
             child: const Text("See All"),
           ),
         ],
