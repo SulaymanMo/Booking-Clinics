@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
 
 class CustomEvaulatedButton extends StatelessWidget {
-      const CustomEvaulatedButton({required this.title,super.key});
+      const CustomEvaulatedButton({required this.title,this.onPressed,super.key});
   final String title;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CustomEvaulatedButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         title,
         style: const TextStyle(

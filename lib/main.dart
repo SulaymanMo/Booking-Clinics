@@ -52,8 +52,8 @@ class BookingClinics extends StatelessWidget {
           theme: lightTheme(),
           title: 'Booking Clinics',
           debugShowCheckedModeBanner: false,
-          //initialRoute: Routes.editYourProfile,
-          initialRoute: Routes.forgetPassword,
+          initialRoute: Routes.editYourProfile,
+          //initialRoute: Routes.forgetPassword,
           onGenerateRoute: AppRouter.generateRoute,
         );
       },
