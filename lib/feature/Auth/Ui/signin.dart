@@ -61,7 +61,12 @@ class SignIn extends StatelessWidget {
                         preIcon: SvgPicture.asset("assets/icons/lock.svg"),
                         hint: "Password"),
                     SizedBox(height: 3.h),
-                    const CustomEvaulatedButton(title: "Sign In"),
+                    CustomEvaulatedButton(
+                      title: "Sign In",
+                      onPressed: () {
+                        //context.nav.pushNamed(Routes.editYourProfile);
+                      },
+                    ),
                     SizedBox(height: 2.5.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -1,8 +1,6 @@
 class Routes {
   // ! _____ App Routes _____ ! //
   static const onboardingRoute = "/";
-  static const loginRoute = "/login";
-  static const registerRoute = "/register";
   static const activateRoute = "/activate";
   static const homeRoute = "/home";
   static const signup = "/signUp";
