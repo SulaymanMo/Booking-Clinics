@@ -85,7 +85,7 @@ ThemeData lightTheme() {
         minHeight: 10.h,
         minWidth: double.infinity,
       ),
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.white,
     ),
   );
 }

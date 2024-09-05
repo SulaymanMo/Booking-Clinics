@@ -5,7 +5,7 @@ import 'package:booking_clinics/feature/map/data/repo/map_repo/map_impl.dart';
 import 'package:booking_clinics/feature/map/data/repo/routes_repo/routes_impl.dart';
 import 'package:booking_clinics/feature/map/ui/manager/map_cubit.dart';
 import 'package:booking_clinics/feature/map/ui/view/map_view.dart';
-import 'package:booking_clinics/feature/profile/ui/view/same_design.dart';
+import 'package:booking_clinics/feature/profile/ui/view/profile_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
@@ -34,7 +34,7 @@ class _NavViewState extends State<NavView> {
       child: const MapView(),
     ),
     const DoctorDetailsView(),
-    const SameDesign(),
+    const ProfileView(),
   ];
   
   static const List<String> _icons = [

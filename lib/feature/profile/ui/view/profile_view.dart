@@ -1,21 +1,23 @@
 import 'package:sizer/sizer.dart';
-import '../../../../core/common/profile_image.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/helper/bottom_sheet.dart';
 import '../widget/custom_expansion.dart';
+import '../../../../core/common/profile_image.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
 
-class SameDesign extends StatelessWidget {
-  const SameDesign({super.key});
+class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 6.w, right: 6.w),
+    return Align(
+      alignment: const Alignment(0, 0.25),
       child: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
         child: Column(
           children: [
-            SizedBox(height: 4.h),
+            SizedBox(height: 2.h),
             Text("Profile", style: context.semi20),
             SizedBox(height: 4.h),
             const ProfileImage(),
@@ -23,13 +25,28 @@ class SameDesign extends StatelessWidget {
             Text("Sulayman Mo Ali", style: context.bold16),
             SizedBox(height: 0.5.h),
             Text(
-              "+201026520786",
+              "+20 1026520786",
               style: context.regular14?.copyWith(
                 color: ConstColor.icon.color,
               ),
             ),
             SizedBox(height: 4.h),
             const CustomExpansionList(),
+            ListTile(
+              onTap: () {
+                customBtnSheet(context);
+              },
+              title: Text(
+                "Log Out",
+                style: TextStyle(
+                  fontSize: 15.sp,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              contentPadding: EdgeInsets.symmetric(horizontal: 2.w),
+              leading: const Icon(Icons.logout_outlined),
+            ),
           ],
         ),
       ),
