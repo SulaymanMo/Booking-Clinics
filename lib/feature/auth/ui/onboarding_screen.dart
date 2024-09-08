@@ -45,20 +45,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 return Column(
                   children: [
                     SizedBox(
-                      width: 500.w,
-                      height: 550,
+                      width: 100.w,
+                      height: 67.h,
                       child: Image.asset(
                         contents[i].image,
                         fit: BoxFit.cover,
                       ),
                     ),
                     SizedBox(height: 2.h),
-                    Text(
-                      contents[i].title,
-                      style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xff374151)),
+                    Flexible(
+                      child: Text(
+                        contents[i].title,
+                        style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xff374151)),
+                      ),
                     ),
                     SizedBox(height: 1.5.h),
                     Text(
@@ -80,9 +82,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
           ),
+
           // Evaluated button
           Container(
-            height: 50,
+            height: 6.h,
             margin:const  EdgeInsets.symmetric(horizontal: 30, vertical: 10),
             width: double.infinity,
             child: ElevatedButton(
@@ -128,12 +131,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 );
               },
-              child:const  Text(
+              child: Text(
                 "Skip",
-                style: TextStyle(color: Colors.grey, fontSize: 16),
+                style: TextStyle(color: Colors.grey, fontSize: 17.sp),
               ),
             ),
-          const SizedBox(height: 20), // Adjust for spacing at the bottom
+          SizedBox(height: 1.5.h), // Adjust for spacing at the bottom
         ],
       ),
     );
