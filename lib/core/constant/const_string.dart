@@ -7,6 +7,7 @@ class Routes {
   static const homeRoute = "/home";
   static const signup = "/signUp";
   static const signin = "/signin";
+  static const onboarding = "/onboarding";
   static const forgetPassword = "/forgetPassword";
   static const editYourProfile = "/editYourProfile";
   static const doctorDetailsRoute = "/doctorDetailsRoute";
