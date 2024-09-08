@@ -1,3 +1,7 @@
+import 'dart:collection';
+
+import 'package:booking_clinics/core/constant/const_string.dart';
+
 import 'text_theme.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +16,7 @@ ThemeData lightTheme() {
     appBarTheme: AppBarTheme(
       titleSpacing: 4.w,
       scrolledUnderElevation: 0,
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(4.w),
@@ -21,6 +25,22 @@ ThemeData lightTheme() {
       iconTheme: IconThemeData(
         size: 20.sp,
         color: ConstColor.main.color,
+      ),
+    ),
+    // ! _____ TabBar _____ ! //
+    tabBarTheme: TabBarTheme(
+      dividerHeight: 0,
+      labelColor: Colors.white,
+      tabAlignment: TabAlignment.start,
+      indicatorSize: TabBarIndicatorSize.tab,
+      labelPadding: EdgeInsets.symmetric(horizontal: 0.5.w),
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+      // overlayColor: WidgetStateProperty.resolveWith(callback),
+      indicator: ShapeDecoration(
+        color: ConstColor.main.color,
+        shape: StadiumBorder(
+          side: BorderSide(color: ConstColor.main.color),
+        ),
       ),
     ),
     // ! _____ Text Theme _____ ! //
@@ -55,8 +75,6 @@ ThemeData lightTheme() {
         foregroundColor: ConstColor.textBtn.color,
       ),
     ),
-    // ! _____ OutlinedButton _____ ! //
-    // outlinedButtonTheme: const OutlinedButtonThemeData(),
     // ! _____ Icon Button _____ ! //
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
@@ -66,7 +84,7 @@ ThemeData lightTheme() {
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
-      color: Colors.white,
+      // color: Colors.white,
       shape: const CircularNotchedRectangle(),
       padding: EdgeInsets.symmetric(horizontal: 4.w),
     ),
@@ -85,7 +103,7 @@ ThemeData lightTheme() {
         minHeight: 10.h,
         minWidth: double.infinity,
       ),
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.white,
     ),
   );
 }

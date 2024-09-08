@@ -16,7 +16,7 @@ class CustomEvaulatedButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
       ),
-      onPressed: onPressed,
+      onPressed: onPressed ?? () {},
       child: Text(
         title,
         style: const TextStyle(

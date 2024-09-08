@@ -1,11 +1,12 @@
-import 'package:booking_clinics/feature/Auth/Ui/edit_your_profile.dart';
 import 'package:booking_clinics/feature/Auth/Ui/forget_password.dart';
 import 'package:booking_clinics/feature/Auth/Ui/onboarding_screen.dart';
 import 'package:booking_clinics/feature/Auth/Ui/signin.dart';
 import 'package:booking_clinics/feature/Auth/Ui/signup.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
+import 'package:booking_clinics/feature/see_all/ui/view/see_all_view.dart';
 import 'package:flutter/material.dart';
+import '../../feature/Auth/Ui/edit_your_profile.dart';
 import '../constant/const_string.dart';
 import '../../feature/home/ui/view/nav_view.dart';
 
@@ -46,11 +47,39 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const BookAppointmentView(),
         );
-
+      // Auth
+      /*
+      case Routes.onboardingRoute:
+        return MaterialPageRoute(
+          builder: (_) => const Onboarding(),
+        );
+      */
+      case Routes.signin:
+        return MaterialPageRoute(
+          builder: (_) => const SignIn(),
+        );
+      case Routes.signup:
+        return MaterialPageRoute(
+          builder: (_) => const SignUp(),
+        );
+      case Routes.forgetPassword:
+        return MaterialPageRoute(
+          builder: (_) => const ForgetPassword(),
+        );
+      case Routes.editYourProfile:
+        return MaterialPageRoute(
+          builder: (_) => const EditYourProfile(),
+        );
+      case Routes.seeAll:
+        return MaterialPageRoute(
+          builder: (_) => const SeeAllView(),
+        );
+        
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(
+            body: 
+            Center(
               child: Text('No route defined for ${settings.name}'),
             ),
           ),

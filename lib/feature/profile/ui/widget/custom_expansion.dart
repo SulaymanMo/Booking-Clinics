@@ -1,8 +1,9 @@
-import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:booking_clinics/feature/profile/ui/widget/settings_item.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constant/const_color.dart';
-import 'package:booking_clinics/core/common/input.dart';
+import 'custom_expansion_text.dart';
+import 'edit_item.dart';
 
 class CustomExpansionList extends StatefulWidget {
   const CustomExpansionList({super.key});
@@ -19,7 +20,6 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
     "Settings",
     "Help and Support",
     "Terms and Conditions",
-    "Log Out",
   ];
 
   final List<IconData> _icons = [
@@ -29,7 +29,15 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
     Icons.settings_outlined,
     Icons.help_center_outlined,
     Icons.security_outlined,
-    Icons.logout_outlined,
+  ];
+
+  static const List<Widget> _widgets = [
+    EditItem(),
+    CustomExpansionText(),
+    CustomExpansionText(),
+    SettingsItem(),
+    CustomExpansionText(),
+    CustomExpansionText(),
   ];
 
   @override
@@ -47,7 +55,10 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
           backgroundColor: Colors.white,
           headerBuilder: (_, isExpanded) {
             return ListTile(
-              leading: Icon(_icons[index]),
+              leading: Icon(
+                _icons[index],
+              ),
+              contentPadding: EdgeInsets.symmetric(horizontal: 2.w),
               title: Text(
                 _headers[index],
                 style: TextStyle(
@@ -58,9 +69,9 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
               ),
             );
           },
-          body: const ListTile(
-            contentPadding: EdgeInsets.zero,
-            title: EditProfile(),
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+            child: _widgets[index],
           ),
         ),
       ),
@@ -68,36 +79,4 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
   }
 }
 
-class EditProfile extends StatelessWidget {
-  const EditProfile({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            const Flexible(child: Input(hint: "First Name")),
-            SizedBox(width: 3.w),
-            const Flexible(child: Input(hint: "Last Name")),
-          ],
-        ),
-        SizedBox(height: 3.w),
-        const Input(hint: "Phone Number"),
-        SizedBox(height: 3.w),
-        ElevatedButton(
-          onPressed: () {},
-          style:
-              ElevatedButton.styleFrom(backgroundColor: ConstColor.secondary.color),
-          child: Text(
-            "Change",
-            style: context.regular14?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: ConstColor.main.color,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
