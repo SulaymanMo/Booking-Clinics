@@ -1,7 +1,3 @@
-import 'dart:collection';
-
-import 'package:booking_clinics/core/constant/const_string.dart';
-
 import 'text_theme.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';

@@ -14,72 +14,29 @@ import '../../feature/home/ui/view/nav_view.dart';
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.homeRoute:
-        return MaterialPageRoute(
-          builder: (_) => const NavView(),
-        );
+      case Routes.navRoute:
+        return MaterialPageRoute(builder: (_) => const NavView());
       case Routes.doctorDetailsRoute:
-        return MaterialPageRoute(
-          builder: (_) => const DoctorDetailsView(),
-        );
+        return MaterialPageRoute(builder: (_) => const DoctorDetailsView());
       case Routes.signup:
-        return MaterialPageRoute(
-          builder: (_) => const SignUp(),
-        );
-        case Routes.signin:
-        return MaterialPageRoute(
-          builder: (_) => const SignIn(),
-        );
-        case Routes.onboarding:
-        return MaterialPageRoute(
-          builder: (_) => const OnboardingScreen(),
-        );
-        case Routes.forgetPassword:
-        return MaterialPageRoute(
-          builder: (_) => const ForgetPassword(),
-        );
-        case Routes.editYourProfile:
-        return MaterialPageRoute(
-          builder: (_) => const EditYourProfile(),
-        );
-
-      case Routes.bookAppointmentRoute:
-        return MaterialPageRoute(
-          builder: (_) => const BookAppointmentView(),
-        );
-      // Auth
-      /*
-      case Routes.onboardingRoute:
-        return MaterialPageRoute(
-          builder: (_) => const Onboarding(),
-        );
-      */
+        return MaterialPageRoute(builder: (_) => const SignUp());
       case Routes.signin:
-        return MaterialPageRoute(
-          builder: (_) => const SignIn(),
-        );
-      case Routes.signup:
-        return MaterialPageRoute(
-          builder: (_) => const SignUp(),
-        );
+        return MaterialPageRoute(builder: (_) => const SignIn());
+      case Routes.onboarding:
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.forgetPassword:
-        return MaterialPageRoute(
-          builder: (_) => const ForgetPassword(),
-        );
+        return MaterialPageRoute(builder: (_) => const ForgetPassword());
       case Routes.editYourProfile:
-        return MaterialPageRoute(
-          builder: (_) => const EditYourProfile(),
-        );
+        return MaterialPageRoute(builder: (_) => const EditYourProfile());
+      case Routes.bookAppointmentRoute:
+        return MaterialPageRoute(builder: (_) => const BookAppointmentView());
       case Routes.seeAll:
-        return MaterialPageRoute(
-          builder: (_) => const SeeAllView(),
-        );
-        
+        return MaterialPageRoute(builder: (_) => const SeeAllView());
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: 
-            Center(
+            body: Center(
               child: Text('No route defined for ${settings.name}'),
             ),
           ),
