@@ -1,4 +1,5 @@
 import 'package:booking_clinics/feature/Auth/Ui/forget_password.dart';
+import 'package:booking_clinics/feature/Auth/Ui/onboarding_screen.dart';
 import 'package:booking_clinics/feature/Auth/Ui/signin.dart';
 import 'package:booking_clinics/feature/Auth/Ui/signup.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
@@ -21,6 +22,27 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const DoctorDetailsView(),
         );
+      case Routes.signup:
+        return MaterialPageRoute(
+          builder: (_) => const SignUp(),
+        );
+        case Routes.signin:
+        return MaterialPageRoute(
+          builder: (_) => const SignIn(),
+        );
+        case Routes.onboarding:
+        return MaterialPageRoute(
+          builder: (_) => const OnboardingScreen(),
+        );
+        case Routes.forgetPassword:
+        return MaterialPageRoute(
+          builder: (_) => const ForgetPassword(),
+        );
+        case Routes.editYourProfile:
+        return MaterialPageRoute(
+          builder: (_) => const EditYourProfile(),
+        );
+
       case Routes.bookAppointmentRoute:
         return MaterialPageRoute(
           builder: (_) => const BookAppointmentView(),
