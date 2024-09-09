@@ -2,16 +2,17 @@ class Routes {
   // ! _____ App Routes _____ ! //
   static const onboardingRoute = "/";
   static const activateRoute = "/activate";
-  static const homeRoute = "/home";
+  static const navRoute = "/home";
   static const signup = "/signUp";
   static const signin = "/signin";
+  static const onboarding = "/onboarding";
   static const forgetPassword = "/forgetPassword";
   static const editYourProfile = "/editYourProfile";
   static const doctorDetailsRoute = "/doctorDetailsRoute";
   static const bookAppointmentRoute = "/bookAppointmentRoute";
   static const userBookingsRoute = "/userBookingsRoute";
   static const profileScreenRoute = "/profileScreenRoute";
-  static const seeAll = "/see_all";
+  static const seeAll = "/seeAll";
 }
 
 class ConstString {
