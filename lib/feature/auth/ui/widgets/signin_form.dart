@@ -39,24 +39,17 @@ class _SigninFormState extends State<SigninForm> {
               preIcon: SvgPicture.asset("assets/icons/lock.svg"),
               hint: "Password"),
           SizedBox(height: 3.h),
-
           _isLoading
               ? const CircularProgressIndicator()
               : CustomElevatedButton(
-            title: "Create Account",
-            onPressed: _signIn,
-          ),
-
-          // CustomElevatedButton(
-          //   title: "Sign In",
-          //   onPressed: () {
-          //     context.nav.pushNamed(Routes.navRoute);
-          //   },
-          // ),
+                  title: "Create Account",
+                  onPressed: _signIn,
+                ),
         ],
       ),
     );
   }
+
   void _signIn() async {
     if (formState.currentState!.validate()) {
       setState(() => _isLoading = true);
@@ -64,16 +57,17 @@ class _SigninFormState extends State<SigninForm> {
       User? user = await _authService.loginWithEmailAndPassword(
         emailController.text.trim(),
         passwordController.text.trim(),
+        context,
       );
 
       setState(() => _isLoading = false);
-
-      if (user != null) {
+      if (user != null && user.emailVerified) {
         context.nav.pushNamedAndRemoveUntil(Routes.navRoute, (route) => false);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Sign Up Failed. Please try again.____'),
+            content: Text('Email or Password is incorrect'),
+            backgroundColor: Colors.red,
           ),
         );
       }

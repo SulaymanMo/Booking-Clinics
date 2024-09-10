@@ -53,8 +53,8 @@ class SignIn extends StatelessWidget {
                     iconUrl: "assets/icons/_Facebook.svg",
                     title: "Sign In with Facebook"),
                 SizedBox(height: 2.h),
-                GestureDetector(
-                  onTap: () => context.nav.pushNamed(Routes.forgetPassword),
+                TextButton(
+                  onPressed: () => context.nav.pushNamed(Routes.forgetPassword),
                   child: Text(
                     "Forgot password?",
                     textAlign: TextAlign.center,

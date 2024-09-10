@@ -1,6 +1,6 @@
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/helper/bottom_sheet.dart';
+import '../../../../core/helper/logout_btn_sheet.dart';
 import '../widget/custom_expansion.dart';
 import '../../../../core/common/profile_image.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
@@ -34,7 +34,13 @@ class ProfileView extends StatelessWidget {
             const CustomExpansionList(),
             ListTile(
               onTap: () {
-                customBtnSheet(context);
+                showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const LogoutBottomSheet();
+                  },
+                );
+                // showLogoutBtnSheet(context);
               },
               title: Text(
                 "Log Out",
