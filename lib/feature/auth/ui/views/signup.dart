@@ -4,9 +4,8 @@ import 'package:booking_clinics/feature/Auth/Ui/widgets/socilal_button.dart';
 import 'package:booking_clinics/feature/auth/ui/widgets/logo_header.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
-import 'widgets/or_divider.dart';
-import 'widgets/signup_form.dart';
+import '../widgets/or_divider.dart';
+import '../widgets/signup_form.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});

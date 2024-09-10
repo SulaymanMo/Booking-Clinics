@@ -1,15 +1,12 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_elevated_button.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_text_form_field.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/socilal_button.dart';
 import 'package:booking_clinics/feature/auth/ui/widgets/logo_header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
-
-import 'widgets/or_divider.dart';
+import '../widgets/or_divider.dart';
+import '../widgets/signin_form.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -42,20 +39,9 @@ class SignIn extends StatelessWidget {
                       fontSize: 15.sp),
                 ),
                 SizedBox(height: 3.h),
-                CustomTextFormField(
-                    preIcon: SvgPicture.asset("assets/icons/sms.svg"),
-                    hint: "Your Email"),
-                SizedBox(height: 1.5.h),
-                CustomTextFormField(
-                    preIcon: SvgPicture.asset("assets/icons/lock.svg"),
-                    hint: "Password"),
-                SizedBox(height: 3.h),
-                CustomElevatedButton(
-                  title: "Sign In",
-                  onPressed: () {
-                    context.nav.pushNamed(Routes.navRoute);
-                  },
-                ),
+
+                const SigninForm(),
+
                 SizedBox(height: 2.h),
                 const OrDivider(),
                 SizedBox(height: 2.h),
@@ -68,9 +54,7 @@ class SignIn extends StatelessWidget {
                     title: "Sign In with Facebook"),
                 SizedBox(height: 2.h),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, Routes.forgetPassword);
-                  },
+                  onTap: () => context.nav.pushNamed(Routes.forgetPassword),
                   child: Text(
                     "Forgot password?",
                     textAlign: TextAlign.center,
@@ -81,18 +65,19 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 2.h),
+                // Don’t have an account yet
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "Don’t have an account yet?",
                       style: TextStyle(
-                          color: const Color(0xff6B7280), fontSize: 14.sp),
+                        color: const Color(0xff6B7280),
+                        fontSize: 14.sp,
+                      ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.signup);
-                      },
+                      onTap: () => context.nav.pushNamed(Routes.signup),
                       child: Text(
                         " Sign up",
                         style: TextStyle(

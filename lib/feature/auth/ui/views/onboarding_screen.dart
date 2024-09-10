@@ -1,8 +1,9 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
-import 'package:booking_clinics/feature/Auth/Ui/signin.dart';
 import 'package:booking_clinics/feature/Auth/data/onboarding_content.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
+import 'signin.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
