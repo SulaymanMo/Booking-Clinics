@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
 
-class CustomEvaulatedButton extends StatelessWidget {
-      const CustomEvaulatedButton({required this.title,this.onPressed,super.key});
+class CustomElevatedButton extends StatelessWidget {
+      const CustomElevatedButton({required this.title,this.onPressed,super.key});
   final String title;
-  final VoidCallback? onPressed;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {

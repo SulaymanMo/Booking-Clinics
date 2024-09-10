@@ -11,15 +11,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // ! _____ App Setup & Initialization _____ ! //
   FlutterNativeSplash.preserve(
     widgetsBinding: WidgetsFlutterBinding.ensureInitialized(),
   );
   setupServiceLocator();
   await Hive.initFlutter();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
   // ! _____ Prevent Device Orientation _____ ! //
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -54,7 +54,7 @@ class BookingClinics extends StatelessWidget {
           initialRoute: Routes.onboarding,
           //initialRoute: Routes.forgetPassword,
           onGenerateRoute: AppRouter.generateRoute,
-        //  home: signUp(),
+          //  home: signUp(),
         );
       },
     );

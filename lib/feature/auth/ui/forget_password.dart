@@ -1,4 +1,4 @@
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_evaulated_button.dart';
+import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_elevated_button.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -57,7 +57,7 @@ class ForgetPassword extends StatelessWidget {
                   preIcon: SvgPicture.asset("assets/icons/sms.svg"),
                   hint: "Your Email"),
               SizedBox(height: 3.h),
-              const CustomEvaulatedButton(title: "Verify"),
+              const CustomElevatedButton(title: "Verify"),
               SizedBox(height: 11.h),
             ],
           ),
