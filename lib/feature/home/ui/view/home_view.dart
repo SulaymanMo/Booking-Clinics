@@ -1,12 +1,9 @@
 import 'package:booking_clinics/feature/home/ui/widget/carousel/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../core/common/header.dart';
 import '../../../../core/common/input.dart';
 import '../../../../core/common/see_all.dart';
-import '../../../../core/constant/const_color.dart';
 import '../widget/custom_carousel.dart';
 import '../widget/categories.dart';
 import '../widget/home_appbar.dart';

@@ -1,7 +1,7 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_evaulated_button.dart';
+import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_elevated_button.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_text_form_field.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/socilal_button.dart';
 import 'package:booking_clinics/feature/auth/ui/widgets/logo_header.dart';
@@ -50,7 +50,7 @@ class SignIn extends StatelessWidget {
                     preIcon: SvgPicture.asset("assets/icons/lock.svg"),
                     hint: "Password"),
                 SizedBox(height: 3.h),
-                CustomEvaulatedButton(
+                CustomElevatedButton(
                   title: "Sign In",
                   onPressed: () {
                     context.nav.pushNamed(Routes.navRoute);
