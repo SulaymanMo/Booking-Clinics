@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/constant/const_string.dart';
-import '../../data/firebase_auth.dart';
+import '../../../../core/service/firebase_service/firebase_auth.dart';
 import 'custom_elevated_button.dart';
 import 'custom_text_form_field.dart';
 
@@ -62,6 +62,8 @@ class _SigninFormState extends State<SigninForm> {
 
       setState(() => _isLoading = false);
       if (user != null && user.emailVerified) {
+        // fetch patient object from firestore
+        // save patient object in hive
         context.nav.pushNamedAndRemoveUntil(Routes.navRoute, (route) => false);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

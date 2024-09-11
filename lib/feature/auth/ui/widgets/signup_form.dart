@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
-import '../../data/firebase_auth.dart';
+import '../../../../core/models/patient.dart';
+import '../../../../core/service/firebase_service/firebase_auth.dart';
+import '../../../../core/service/firebase_service/firebase_firestore.dart';
 import 'custom_elevated_button.dart';
 import 'custom_text_form_field.dart';
 
@@ -69,6 +71,20 @@ class _SignupFormState extends State<SignupForm> {
       setState(() => _isLoading = false);
 
       if (user != null) {
+        // Create a new Patient object
+        Patient newPatient = Patient(
+          uid: user.uid,
+          name: nameController.text.trim(),
+          email: emailController.text.trim(),
+          phone: '',
+          birthDate: '',
+          profileImg: '',
+        );
+
+        // Save the patient object to Firestore
+        FirebaseFirestoreService firestoreService = FirebaseFirestoreService();
+        await firestoreService.addPatient(newPatient);
+
         context.nav.pushNamedAndRemoveUntil(Routes.signin, (route) => false);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

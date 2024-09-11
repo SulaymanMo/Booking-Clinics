@@ -71,16 +71,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           fontSize: 15.sp, color: const Color(0xff6B7280)),
                     ),
                     SizedBox(height: 2.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        contents.length,
-                        (index) => buildDot(index, context),
-                      ),
-                    ),
+
                   ],
                 );
               },
+            ),
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              contents.length,
+                  (index) => buildDot(index, context),
             ),
           ),
 
