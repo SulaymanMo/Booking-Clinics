@@ -26,19 +26,19 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SignUp(),
         );
-        case Routes.signin:
+      case Routes.signin:
         return MaterialPageRoute(
           builder: (_) => const SignIn(),
         );
-        case Routes.onboarding:
+      case Routes.onboarding:
         return MaterialPageRoute(
           builder: (_) => const OnboardingScreen(),
         );
-        case Routes.forgetPassword:
+      case Routes.forgetPassword:
         return MaterialPageRoute(
           builder: (_) => const ForgetPassword(),
         );
-        case Routes.editYourProfile:
+      case Routes.editYourProfile:
         return MaterialPageRoute(
           builder: (_) => const EditYourProfile(),
         );
@@ -48,12 +48,12 @@ class AppRouter {
           builder: (_) => const BookAppointmentView(),
         );
       // Auth
-      /*
+
       case Routes.onboardingRoute:
         return MaterialPageRoute(
-          builder: (_) => const Onboarding(),
+          builder: (_) => const OnboardingScreen(),
         );
-      */
+
       case Routes.signin:
         return MaterialPageRoute(
           builder: (_) => const SignIn(),
@@ -74,12 +74,11 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SeeAllView(),
         );
-        
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: 
-            Center(
+            body: Center(
               child: Text('No route defined for ${settings.name}'),
             ),
           ),
