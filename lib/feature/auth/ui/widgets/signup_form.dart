@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
-import '../../data/firebase_auth.dart';
+import '../../../../core/service/firebase_service/firebase_auth.dart';
 import 'custom_elevated_button.dart';
 import 'custom_text_form_field.dart';
 

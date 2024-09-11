@@ -1,4 +1,4 @@
-import 'feature/auth/data/firebase_auth.dart';
+import 'core/service/firebase_service/firebase_auth.dart';
 import 'firebase_options.dart';
 import 'core/helper/routes.dart';
 import 'package:sizer/sizer.dart';

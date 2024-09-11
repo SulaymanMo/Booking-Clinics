@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../data/firebase_auth.dart';
+import '../../../../core/service/firebase_service/firebase_auth.dart';
 import '../widgets/logo_header.dart';
 
 class ForgetPassword extends StatefulWidget {
