@@ -71,7 +71,7 @@ class _SignupFormState extends State<SignupForm> {
       setState(() => _isLoading = false);
 
       if (user != null) {
-        // Create a new Patient object with relevant details
+        // Create a new Patient object
         Patient newPatient = Patient(
           uid: user.uid,
           name: nameController.text.trim(),
@@ -82,8 +82,8 @@ class _SignupFormState extends State<SignupForm> {
         );
 
         // Save the patient object to Firestore
-        FirebaseFirestoreService _firestoreService = FirebaseFirestoreService();
-        await _firestoreService.addPatient(newPatient);
+        FirebaseFirestoreService firestoreService = FirebaseFirestoreService();
+        await firestoreService.addPatient(newPatient);
 
         context.nav.pushNamedAndRemoveUntil(Routes.signin, (route) => false);
       } else {

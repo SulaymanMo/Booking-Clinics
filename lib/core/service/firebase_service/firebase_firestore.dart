@@ -18,7 +18,7 @@ class FirebaseFirestoreService {
     }
   }
 
-  /// Updates specific fields in a user document.
+  /// Updates specific fields in a patient document.
   Future<void> updatePatientFields(
       String uid, Map<String, dynamic> updatedFields) async {
     try {
@@ -32,7 +32,7 @@ class FirebaseFirestoreService {
     }
   }
 
-  /// Replaces the entire user document with a new user object.
+  // Updates a patient document.
   Future<void> updateUser(Patient patient) async {
     try {
       await _firestore
