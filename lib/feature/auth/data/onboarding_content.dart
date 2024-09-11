@@ -1,26 +1,26 @@
-class OnbordingContent {
+class OnboardingContent {
   String image;
   String title;
   String discription;
 
-  OnbordingContent({ required this.image,required this.title,required this.discription});
+  OnboardingContent({ required this.image,required this.title,required this.discription});
 }
 
-List<OnbordingContent> contents = [
-  OnbordingContent(
+List<OnboardingContent> contents = [
+  OnboardingContent(
     title: 'Meet Doctors Online',
     image: 'assets/images/onboardingone.png',
     discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"
     "Consultations."
   ),
-  OnbordingContent(
+  OnboardingContent(
     title: 'Connect with Specialists',
     image: 'assets/images/onboardingsec.png',
     discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"
     "Consultations."
   
   ),
-  OnbordingContent(
+  OnboardingContent(
     title: 'Thousands of Online Specialists',
     image: 'assets/images/onboarding3.png',
     discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"

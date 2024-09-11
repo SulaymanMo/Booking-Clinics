@@ -1,15 +1,11 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/const_string.dart';
-import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_evaulated_button.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_text_form_field.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/socilal_button.dart';
 import 'package:booking_clinics/feature/auth/ui/widgets/logo_header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
-
-import 'widgets/or_divider.dart';
+import '../widgets/or_divider.dart';
+import '../widgets/signup_form.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -40,26 +36,10 @@ class SignUp extends StatelessWidget {
                       fontSize: 15.sp),
                 ),
                 SizedBox(height: 2.5.h),
-                CustomTextFormField(
-                    preIcon: SvgPicture.asset(
-                      "assets/icons/user.svg",
-                    ),
-                    hint: "Your Name"),
-                SizedBox(height: 1.5.h),
-                CustomTextFormField(
-                    preIcon: SvgPicture.asset("assets/icons/sms.svg"),
-                    hint: "Your Email"),
-                SizedBox(height: 1.5.h),
-                CustomTextFormField(
-                    preIcon: SvgPicture.asset("assets/icons/lock.svg"),
-                    hint: "Password"),
-                SizedBox(height: 1.5.h),
-                CustomEvaulatedButton(
-                  title: "Create Account",
-                  onPressed: () {
-                    //context.nav.pushNamed(Routes.editYourProfile);
-                  },
-                ),
+
+                // Form
+                const SignupForm(),
+
                 SizedBox(height: 2.h),
                 const OrDivider(),
                 SizedBox(height: 2.h),
@@ -100,3 +80,4 @@ class SignUp extends StatelessWidget {
     );
   }
 }
+

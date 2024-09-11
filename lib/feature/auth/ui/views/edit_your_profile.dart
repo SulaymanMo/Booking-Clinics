@@ -1,7 +1,7 @@
 import 'package:booking_clinics/core/common/basic_appbar.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_congauth_dialog.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_evaulated_button.dart';
+import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_elevated_button.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -57,7 +57,7 @@ class EditYourProfile extends StatelessWidget {
               SizedBox(height: 1.5.h),
               CustomTextFormField(
                 hint: "Date of Birth",
-                suffixicon: SizedBox(
+                suffixIcon: SizedBox(
                   height: 24,
                   width: 24,
                   child: SvgPicture.asset("assets/icons/calendar_fill.svg"),
@@ -66,16 +66,17 @@ class EditYourProfile extends StatelessWidget {
               SizedBox(height: 1.5.h),
               const CustomTextFormField(hint: "Gender"),
               SizedBox(height: 3.h),
-              CustomEvaulatedButton(title: "Save",onPressed: (){
-                showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return const CustomCongAuthDialog(
-                                  
-                                );
-                              },
-                            );
-              },),
+              CustomElevatedButton(
+                title: "Save",
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return const CustomCongAuthDialog();
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),

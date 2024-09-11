@@ -1,3 +1,4 @@
+import 'core/service/firebase_service/firebase_auth.dart';
 import 'firebase_options.dart';
 import 'core/helper/routes.dart';
 import 'package:sizer/sizer.dart';
@@ -11,6 +12,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // ! _____ App Setup & Initialization _____ ! //
   FlutterNativeSplash.preserve(
     widgetsBinding: WidgetsFlutterBinding.ensureInitialized(),
@@ -18,9 +21,7 @@ Future<void> main() async {
   );
   setupServiceLocator();
   await Hive.initFlutter();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
   // ! _____ Prevent Device Orientation _____ ! //
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -28,13 +29,17 @@ Future<void> main() async {
   ]);
   // ! _____ Open Hive Boxes Here below... for Example _____ ! //
   await Hive.openBox<Map<dynamic, dynamic>>(ConstString.userAuthBox);
+
+  bool isUserLoggedIn = await FirebaseAuthService().isLoggedIn();
   // ! _____
   FlutterNativeSplash.remove();
-  runApp(const BookingClinics());
+  runApp(BookingClinics(isUserLoggedIn: isUserLoggedIn));
 }
 
 class BookingClinics extends StatelessWidget {
-  const BookingClinics({super.key});
+  const BookingClinics({super.key, required this.isUserLoggedIn});
+
+  final bool isUserLoggedIn;
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +57,9 @@ class BookingClinics extends StatelessWidget {
           theme: lightTheme(),
           title: 'Booking Clinics',
           debugShowCheckedModeBanner: false,
-          initialRoute: Routes.onboarding,
-          //initialRoute: Routes.forgetPassword,
+          initialRoute: isUserLoggedIn ? Routes.navRoute : Routes.onboarding,
           onGenerateRoute: AppRouter.generateRoute,
-        //  home: signUp(),
+          //  home: signUp(),
         );
       },
     );

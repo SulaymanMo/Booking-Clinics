@@ -1,12 +1,12 @@
-import 'package:booking_clinics/feature/Auth/Ui/forget_password.dart';
-import 'package:booking_clinics/feature/Auth/Ui/onboarding_screen.dart';
-import 'package:booking_clinics/feature/Auth/Ui/signin.dart';
-import 'package:booking_clinics/feature/Auth/Ui/signup.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
 import 'package:booking_clinics/feature/see_all/ui/view/see_all_view.dart';
 import 'package:flutter/material.dart';
-import '../../feature/Auth/Ui/edit_your_profile.dart';
+import '../../feature/auth/ui/views/edit_your_profile.dart';
+import '../../feature/auth/ui/views/forget_password.dart';
+import '../../feature/auth/ui/views/onboarding_screen.dart';
+import '../../feature/auth/ui/views/signin.dart';
+import '../../feature/auth/ui/views/signup.dart';
 import '../constant/const_string.dart';
 import '../../feature/home/ui/view/nav_view.dart';
 
