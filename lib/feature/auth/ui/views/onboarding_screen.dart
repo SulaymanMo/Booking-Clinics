@@ -1,8 +1,9 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
-import 'package:booking_clinics/feature/Auth/Ui/signin.dart';
 import 'package:booking_clinics/feature/Auth/data/onboarding_content.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
+import 'signin.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -45,27 +46,29 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 return Column(
                   children: [
                     SizedBox(
-                      width: 500.w,
-                      height: 550,
+                      width: 100.w,
+                      height: 67.h,
                       child: Image.asset(
                         contents[i].image,
                         fit: BoxFit.cover,
                       ),
                     ),
                     SizedBox(height: 2.h),
-                    Text(
-                      contents[i].title,
-                      style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xff374151)),
+                    Flexible(
+                      child: Text(
+                        contents[i].title,
+                        style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xff374151)),
+                      ),
                     ),
                     SizedBox(height: 1.5.h),
                     Text(
                       contents[i].discription,
                       textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 15.sp, color:const  Color(0xff6B7280)),
+                      style: TextStyle(
+                          fontSize: 15.sp, color: const Color(0xff6B7280)),
                     ),
                     SizedBox(height: 2.h),
                     Row(
@@ -80,10 +83,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
           ),
+
           // Evaluated button
           Container(
-            height: 50,
-            margin:const  EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            height: 6.h,
+            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
             width: double.infinity,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -124,16 +128,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (_) =>const  SignIn(),
+                    builder: (_) => const SignIn(),
                   ),
                 );
               },
-              child:const  Text(
+              child: Text(
                 "Skip",
-                style: TextStyle(color: Colors.grey, fontSize: 16),
+                style: TextStyle(color: Colors.grey, fontSize: 17.sp),
               ),
             ),
-          const SizedBox(height: 20), // Adjust for spacing at the bottom
+          SizedBox(height: 1.5.h), // Adjust for spacing at the bottom
         ],
       ),
     );
@@ -143,7 +147,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Container(
       height: 10,
       width: currentIndex == index ? 40 : 10,
-      margin:const  EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: currentIndex == index ? MyColors.dark : ConstColor.textBtn.color,

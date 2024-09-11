@@ -11,7 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
-import 'package:booking_clinics/feature/home/ui/view/home_nav_view.dart';
+import 'package:booking_clinics/feature/home/ui/view/home_view.dart';
 
 class NavView extends StatefulWidget {
   const NavView({super.key});
@@ -23,7 +23,7 @@ class NavView extends StatefulWidget {
 class _NavViewState extends State<NavView> {
   int _index = 0;
   static final List<Widget> _pages = [
-    const HomeNavView(),
+    const HomeView(),
     BlocProvider(
       create: (context) => MapCubit(
         mapRepo: getIt.get<MapImpl>(),
@@ -54,14 +54,10 @@ class _NavViewState extends State<NavView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(bottom: false, child: _pages[_index]),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {},
-      //   child: Icon(Icons.add, size: 24.sp),
-      // ),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.circular(4.w),
         child: BottomAppBar(
+          height: 7.5.h,
           // notchMargin: 2.w,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
