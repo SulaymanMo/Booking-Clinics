@@ -12,7 +12,7 @@ class SeeAllView extends StatefulWidget {
 }
 
 class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
-  final double _fixedHeight = 14.h;
+  final double _fixedHeight = 16.h;
   late final TabController _tabController;
 
   @override
@@ -39,26 +39,58 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
           flexibleSpace: FlexibleSpaceBar(
             background: Padding(
               padding: EdgeInsets.only(
-                top: _fixedHeight - 3.5.h,
+                top: _fixedHeight - (_fixedHeight / 2.75),
                 left: 4.w,
                 right: 4.w,
               ),
-              child: const Input(hint: "Search", prefix: Iconsax.search_normal),
+              child: const Input(
+                hint: "Search",
+                prefix: Iconsax.search_normal,
+              ),
             ),
           ),
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(_fixedHeight / 2 - 2.h),
-            child: TabBar(
-              isScrollable: true,
-              controller: _tabController,
-              padding: EdgeInsets.only(top: _fixedHeight / 2),
-              tabs: List.generate(
-                8,
-                (index) => Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 4.w),
-                  child: Tab(text: "Index $index", height: 5.h),
+            preferredSize: Size.fromHeight(_fixedHeight / 2),
+            child: Column(
+              children: [
+                TabBar(
+                  isScrollable: true,
+                  controller: _tabController,
+                  padding: EdgeInsets.only(
+                    top: _fixedHeight / 2,
+                    left: 4.w,
+                    right: 4.w,
+                    bottom: 1.h,
+                  ),
+                  tabs: List.generate(
+                    8,
+                    (index) => Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4.w),
+                      child: Tab(text: "Index $index", height: 5.h),
+                    ),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 4.w),
+                  child: Row(
+                    children: [
+                      Text(
+                        "532 founds",
+                        style: context.bold16,
+                      ),
+                      const Spacer(),
+                      Text(
+                        "Default",
+                        style: context.semi14?.copyWith(
+                          color: Colors.black38,
+                        ),
+                      ),
+                      SizedBox(width: 2.w),
+                      const Icon(Icons.filter_list, color: Colors.black38),
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
         ),
@@ -75,3 +107,17 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
     );
   }
 }
+
+
+// register, login, active 
+// ? User
+/* 
+! DoctorModel: id, name, specialist, clinicName, categoryType, 
+!                   location, rate(double), reviews(int)
+*/ 
+// Medical Clinic Model: id, lat, lng, name, images
+// ! 
+// User Model: id, name, email, phone, profile image, 
+// list of doctors, list of clinics, booking list
+// ! 
+// Booking Model: id, date, day, 
