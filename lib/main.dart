@@ -17,6 +17,7 @@ Future<void> main() async {
   // ! _____ App Setup & Initialization _____ ! //
   FlutterNativeSplash.preserve(
     widgetsBinding: WidgetsFlutterBinding.ensureInitialized(),
+
   );
   setupServiceLocator();
   await Hive.initFlutter();
