@@ -62,6 +62,8 @@ class _SigninFormState extends State<SigninForm> {
 
       setState(() => _isLoading = false);
       if (user != null && user.emailVerified) {
+        // fetch patient object from firestore
+        // save patient object in hive
         context.nav.pushNamedAndRemoveUntil(Routes.navRoute, (route) => false);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

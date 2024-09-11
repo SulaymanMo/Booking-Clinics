@@ -1,23 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../models/patient.dart';
 
 class FirebaseFirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final String _usersCollection = 'users';
+  final String _patientsCollection = 'patients';
 
-  /// Adds a new user to the users collection.
-  Future<void> addUser(Map<String, dynamic> userData) async {
+  /// Adds a new patient to the patients collection.
+  Future<void> addPatient(Patient patient) async {
     try {
-      await _firestore.collection(_usersCollection).add(userData);
+      await _firestore
+          .collection(_patientsCollection)
+          .doc(patient.uid)
+          .set(patient.toJson());
     } catch (e) {
-      print('Error adding user: $e');
+      print('Error adding patient: $e');
       rethrow;
     }
   }
 
   /// Updates specific fields in a user document.
-  Future<void> updateUserFields(String userId, Map<String, dynamic> updatedFields) async {
+  Future<void> updatePatientFields(
+      String uid, Map<String, dynamic> updatedFields) async {
     try {
-      await _firestore.collection(_usersCollection).doc(userId).update(updatedFields);
+      await _firestore
+          .collection(_patientsCollection)
+          .doc(uid)
+          .update(updatedFields);
     } catch (e) {
       print('Error updating user fields: $e');
       rethrow;
@@ -25,9 +33,12 @@ class FirebaseFirestoreService {
   }
 
   /// Replaces the entire user document with a new user object.
-  Future<void> updateUser(String userId, Map<String, dynamic> userData) async {
+  Future<void> updateUser(Patient patient) async {
     try {
-      await _firestore.collection(_usersCollection).doc(userId).set(userData);
+      await _firestore
+          .collection(_patientsCollection)
+          .doc(patient.uid)
+          .set(patient.toJson());
     } catch (e) {
       print('Error updating user: $e');
       rethrow;
