@@ -62,20 +62,39 @@ ThemeData darkTheme() {
       style: ElevatedButton.styleFrom(
         foregroundColor: ConstColor.dark.color,
         backgroundColor: ConstColor.primary.color,
+        // shape: RoundedRectangleBorder(
+        //   borderRadius: BorderRadius.circular(3.25.w),
+        // ),
         textStyle: TextStyle(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    ),
+    // ! _____ OutlinedButton _____ ! //
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: ConstColor.iconDark.color,
+        foregroundColor: ConstColor.secondary.color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(3.w),
+          side: BorderSide(color: ConstColor.dark.color),
+        ),
+        textStyle: TextStyle(
+          inherit: false,
           fontSize: 14.sp,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w500,
         ),
       ),
     ),
     // ! _____ TextButton _____ ! //
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
+        foregroundColor: ConstColor.blue.color,
         textStyle: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
         ),
-        foregroundColor: ConstColor.icon.color,
       ),
     ),
     // ! _____ Icon Button _____ ! //

@@ -9,7 +9,7 @@ class OnboardingContent {
 List<OnboardingContent> contents = [
   OnboardingContent(
     title: 'Meet Doctors Online',
-    image: 'assets/images/onboardingone.png',
+    image: 'assets/images/onboarding3.png',
     discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"
     "Consultations."
   ),

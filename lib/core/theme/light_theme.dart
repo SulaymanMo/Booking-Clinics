@@ -58,20 +58,41 @@ ThemeData lightTheme() {
     // ! _____ ElevatedButton _____ ! //
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        foregroundColor: ConstColor.secondary.color,
+        backgroundColor: ConstColor.dark.color,
+        // shape: RoundedRectangleBorder(
+        //   borderRadius: BorderRadius.circular(3.25.w),
+        // ),
         textStyle: TextStyle(
           fontSize: 16.sp,
           fontWeight: FontWeight.w500,
         ),
       ),
     ),
+    // ! _____ OutlinedButton _____ ! //
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: ConstColor.secondary.color,
+        foregroundColor: ConstColor.iconDark.color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(3.w),
+          side: BorderSide(color: ConstColor.secondary.color),
+        ),
+        textStyle: TextStyle(
+          inherit: false,
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    ),
     // ! _____ TextButton _____ ! //
-    textButtonTheme: TextButtonThemeData(
+     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
+        foregroundColor: ConstColor.blue.color,
         textStyle: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
         ),
-        foregroundColor: ConstColor.textBtn.color,
       ),
     ),
     // ! _____ Icon Button _____ ! //
