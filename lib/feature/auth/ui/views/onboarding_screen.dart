@@ -1,8 +1,10 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/feature/Auth/data/onboarding_content.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../home/ui/widget/carousel/carousel_indicator.dart';
 import 'signin.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -57,21 +59,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Flexible(
                       child: Text(
                         contents[i].title,
-                        style: TextStyle(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xff374151)),
+                        style: context.bold18,
                       ),
                     ),
                     SizedBox(height: 1.5.h),
-                    Text(
-                      contents[i].discription,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 15.sp, color: const Color(0xff6B7280)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 6.w),
+                      child: Text(
+                        contents[i].discription,
+                        textAlign: TextAlign.center,
+                        style: context.regular14,
+                      ),
                     ),
                     SizedBox(height: 2.h),
-
                   ],
                 );
               },
@@ -82,30 +82,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
               contents.length,
-                  (index) => buildDot(index, context),
+              (index) => CarouselIndicator(currentIndex == index),
             ),
           ),
 
           // Evaluated button
-          Container(
-            height: 6.h,
-            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-            width: double.infinity,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.h),
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: MyColors.dark,
-                minimumSize: const Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
+              style: context.theme.elevatedButtonTheme.style?.copyWith(
+                minimumSize: WidgetStatePropertyAll(
+                  Size(double.infinity, 5.75.h),
                 ),
               ),
               child: Text(
-                  currentIndex == contents.length - 1 ? "Continue" : "Next",
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  )),
+                currentIndex == contents.length - 1 ? "Continue" : "Next",
+                style: context.medium16?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: ConstColor.dark.color,
+                ),
+              ),
               onPressed: () {
                 if (currentIndex == contents.length - 1) {
                   Navigator.pushReplacement(
@@ -124,7 +120,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           // Skip button (Only show when not on the last page)
-          if (currentIndex != contents.length - 1)
+          // if (currentIndex != contents.length - 1)
             TextButton(
               onPressed: () {
                 Navigator.pushReplacement(
@@ -136,7 +132,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
               child: Text(
                 "Skip",
-                style: TextStyle(color: Colors.grey, fontSize: 17.sp),
+                style: TextStyle(
+                  fontSize: 15.sp,
+                  color: ConstColor.icon.color,
+                ),
               ),
             ),
           SizedBox(height: 1.5.h), // Adjust for spacing at the bottom
