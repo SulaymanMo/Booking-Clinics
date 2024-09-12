@@ -6,7 +6,7 @@ import 'package:booking_clinics/core/theme/dark_text_theme.dart';
 ThemeData darkTheme() {
   return ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(seedColor: ConstColor.dark.color),
+    colorScheme: ColorScheme.fromSeed(seedColor: ConstColor.primary.color),
     scaffoldBackgroundColor: ConstColor.dark.color,
     // ! _____ AppBar _____ ! //
     appBarTheme: AppBarTheme(
@@ -60,9 +60,11 @@ ThemeData darkTheme() {
     // ! _____ ElevatedButton _____ ! //
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        foregroundColor: ConstColor.dark.color,
+        backgroundColor: ConstColor.primary.color,
         textStyle: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
+          fontSize: 14.sp,
+          fontWeight: FontWeight.bold,
         ),
       ),
     ),

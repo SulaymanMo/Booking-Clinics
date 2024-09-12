@@ -23,16 +23,7 @@ class EditItem extends StatelessWidget {
         SizedBox(height: 3.w),
         ElevatedButton(
           onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: ConstColor.secondary.color,
-          ),
-          child: Text(
-            "Change",
-            style: context.regular14?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: ConstColor.main.color,
-            ),
-          ),
+          child: Text("Change"),
         ),
       ],
     );

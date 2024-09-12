@@ -95,8 +95,8 @@ class Input extends StatelessWidget {
   OutlineInputBorder buildFocusedBorder() {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        width: 0.8.sp,
-        color: Colors.deepPurple,
+        width: 1.5.sp,
+        color: Colors.black,
       ),
       borderRadius: BorderRadius.circular(3.5.w),
     );

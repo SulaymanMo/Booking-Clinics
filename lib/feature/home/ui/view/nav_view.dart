@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/helper/service_locator.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
 import 'package:booking_clinics/feature/map/data/repo/location_repo/location_repo_imp.dart';
@@ -74,7 +75,7 @@ class _NavViewState extends State<NavView> {
                     backgroundColor: _index == index
                         ? MediaQuery.of(context).platformBrightness ==
                                 Brightness.dark
-                            ? Colors.white30
+                            ? ConstColor.primary.color
                             : Colors.black12
                         : null,
                   ),

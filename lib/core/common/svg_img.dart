@@ -12,7 +12,7 @@ class SvgImage extends StatelessWidget {
       image,
       colorFilter: ColorFilter.mode(
         MediaQuery.of(context).platformBrightness == Brightness.light
-            ? ConstColor.main.color
+            ? ConstColor.icon.color
             : ConstColor.secondary.color,
         BlendMode.srcIn,
       ),
