@@ -114,7 +114,7 @@ class Categories extends StatelessWidget {
                 maxLines: 1,
                 style: context.bold12?.copyWith(
                   fontSize: 12.5.sp,
-                  color: ConstColor.main.color,
+                  // color: ConstColor.main.color,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),

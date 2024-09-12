@@ -10,11 +10,7 @@ class ListHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        top: 1.5.h,
-        left: 4.w,
-        right: 4.w,
-      ),
+      padding: EdgeInsets.only(top: 1.5.h, left: 4.w, right: 4.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

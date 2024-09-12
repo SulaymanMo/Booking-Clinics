@@ -43,9 +43,12 @@ ThemeData lightTheme() {
     textTheme: textTheme(),
     fontFamily: "Inter_Light",
     // ! _____ ListTile _____ ! //
-    listTileTheme: const ListTileThemeData(
+    listTileTheme: ListTileThemeData(
       dense: true,
+      textColor: Colors.black54,
       contentPadding: EdgeInsets.zero,
+      iconColor: ConstColor.main.color,
+      leadingAndTrailingTextStyle: const TextStyle(color: Colors.white),
     ),
     // ! _____ Icon _____ ! //
     iconTheme: IconThemeData(
@@ -75,12 +78,13 @@ ThemeData lightTheme() {
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
         iconSize: 20.sp,
+        // backgroundColor: Colors.black12,
       ),
     ),
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
-      // color: Colors.white,
+      color: Colors.grey.shade50,
       shape: const CircularNotchedRectangle(),
       padding: EdgeInsets.symmetric(horizontal: 4.w),
     ),

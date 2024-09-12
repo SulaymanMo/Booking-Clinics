@@ -47,7 +47,9 @@ class Input extends StatelessWidget {
         hintText: hint,
         isDense: isDense ?? true,
         prefixIconConstraints: BoxConstraints(maxWidth: 20.w),
-        fillColor: fillColor ?? ConstColor.secondary.color,
+        fillColor: MediaQuery.of(context).platformBrightness == Brightness.light
+            ? ConstColor.secondary.color
+            : ConstColor.iconDark.color,
         prefixIcon: prefix != null
             ? Padding(
                 padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),

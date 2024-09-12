@@ -20,64 +20,66 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          snap: true,
-          floating: true,
-          automaticallyImplyLeading: false,
-          toolbarHeight: 14.25.h,
-          flexibleSpace: const UpperAppBar(),
-          bottom: PreferredSize(
-            preferredSize: Size(double.infinity, 2.5.h),
-            child: Padding(
-              padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.25.h),
-              child: const Input(
-                hint: "What're you looking for?",
-                prefix: Iconsax.search_normal,
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            snap: true,
+            floating: true,
+            toolbarHeight: 14.h,
+            automaticallyImplyLeading: false,
+            flexibleSpace: const UpperAppBar(),
+            bottom: PreferredSize(
+              preferredSize: Size(double.infinity, 2.5.h),
+              child: Padding(
+                padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.25.h),
+                child: const Input(
+                  hint: "What're you looking for?",
+                  prefix: Iconsax.search_normal,
+                ),
               ),
             ),
           ),
-        ),
-        SliverList(
-          delegate: SliverChildListDelegate(
-            [
-              const CustomPageView(images: _images),
-              const ListHeader(title: "Categories"),
-              const Categories(),
-              const ListHeader(title: "Nearby Medical Centers"),
-              const CarouselSlider(
-                images: [
-                  "assets/images/center_1.jpg",
-                  "assets/images/center_2.jpg",
-                  "assets/images/center_3.jpg",
-                ],
-              ),
-              // const Header(
-              //   title: "Follow HealthPal",
-              //   subtitle: "Stay in Touch with Us",
-              // ),
-              // Padding(
-              //   padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
-              //   child: Wrap(
-              //     alignment: WrapAlignment.spaceEvenly,
-              //     children: List.generate(
-              //       4,
-              //       (index) => SvgPicture.asset(
-              //         "assets/icons/whatsapp.svg",
-              //         colorFilter: ColorFilter.mode(
-              //           ConstColor.textBtn.color,
-              //           BlendMode.srcIn,
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              SizedBox(height: 8.h),
-            ],
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                const CustomPageView(images: _images),
+                const ListHeader(title: "Categories"),
+                const Categories(),
+                const ListHeader(title: "Nearby Medical Centers"),
+                const CarouselSlider(
+                  images: [
+                    "assets/images/center_1.jpg",
+                    "assets/images/center_2.jpg",
+                    "assets/images/center_3.jpg",
+                  ],
+                ),
+                // const Header(
+                //   title: "Follow HealthPal",
+                //   subtitle: "Stay in Touch with Us",
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
+                //   child: Wrap(
+                //     alignment: WrapAlignment.spaceEvenly,
+                //     children: List.generate(
+                //       4,
+                //       (index) => SvgPicture.asset(
+                //         "assets/icons/whatsapp.svg",
+                //         colorFilter: ColorFilter.mode(
+                //           ConstColor.textBtn.color,
+                //           BlendMode.srcIn,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                SizedBox(height: 8.h),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

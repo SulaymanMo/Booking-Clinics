@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import '../../../../../core/helper/service_locator.dart';
 import 'map_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -18,7 +17,7 @@ class MapImpl implements MapRepo {
   }) async {
     try {
       Response<Map<String, dynamic>>? response = await getIt.get<Dio>().post(
-          "$_baseUrl/autocomplete/json?input=$input&sessiontoken=$sessionToken&key=$_key");
+          "$_baseUrl/autocomplete/json?input=$input&type=health&region=eg&sessiontoken=$sessionToken&key=$_key");
       List? data = response.data?["predictions"];
       List<PlaceAutocompleteModel> places = [];
       if (data != null) {

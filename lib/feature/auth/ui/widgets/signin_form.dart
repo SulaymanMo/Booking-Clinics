@@ -30,9 +30,10 @@ class _SigninFormState extends State<SigninForm> {
       child: Column(
         children: [
           CustomTextFormField(
-              controller: emailController,
-              preIcon: SvgPicture.asset("assets/icons/sms.svg"),
-              hint: "Your Email"),
+            controller: emailController,
+            preIcon: SvgPicture.asset("assets/icons/sms.svg"),
+            hint: "Your Email",
+          ),
           SizedBox(height: 1.5.h),
           CustomTextFormField(
               controller: passwordController,

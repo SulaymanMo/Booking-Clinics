@@ -5,6 +5,9 @@ enum ConstColor {
   primary(Color(0xffA4CFC3)),
   icon(Color(0xff9CA3AF)),
   textBtn(Color(0xff6B7280)),
+
+  iconDark(Color(0xff262A34)),
+  dark(Color(0xff1C1C1C)),
   secondary(Color(0xffF3F4F6));
 
   final Color color;

@@ -7,11 +7,11 @@ import 'package:booking_clinics/feature/map/ui/manager/map_cubit.dart';
 import 'package:booking_clinics/feature/map/ui/view/map_view.dart';
 import 'package:booking_clinics/feature/profile/ui/view/profile_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
-import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/feature/home/ui/view/home_view.dart';
+
+import '../../../../core/common/svg_img.dart';
 
 class NavView extends StatefulWidget {
   const NavView({super.key});
@@ -35,7 +35,7 @@ class _NavViewState extends State<NavView> {
     const DoctorDetailsView(),
     const ProfileView(),
   ];
-  
+
   static const List<String> _icons = [
     "assets/icons/home.svg",
     "assets/icons/location.svg",
@@ -52,8 +52,9 @@ class _NavViewState extends State<NavView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: _index == 1,
       resizeToAvoidBottomInset: false,
-      body: SafeArea(bottom: false, child: _pages[_index]),
+      body: _pages[_index],
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.circular(4.w),
         child: BottomAppBar(
@@ -70,14 +71,15 @@ class _NavViewState extends State<NavView> {
                     });
                   },
                   style: IconButton.styleFrom(
-                    backgroundColor: _index == index ? Colors.black12 : null,
+                    backgroundColor: _index == index
+                        ? MediaQuery.of(context).platformBrightness ==
+                                Brightness.dark
+                            ? Colors.white30
+                            : Colors.black12
+                        : null,
                   ),
-                  icon: SvgPicture.asset(
-                    _index == index ? _iconsFill[index] : _icons[index],
-                    colorFilter: ColorFilter.mode(
-                      ConstColor.main.color,
-                      BlendMode.srcIn,
-                    ),
+                  icon: SvgImage(
+                    image: index == _index ? _iconsFill[index] : _icons[index],
                   ),
                   // icon: Icon(
                   //   _index == index
