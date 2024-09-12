@@ -1,4 +1,4 @@
-import 'package:booking_clinics/core/common/deopdown.dart';
+import 'package:booking_clinics/core/common/dropdown.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
 

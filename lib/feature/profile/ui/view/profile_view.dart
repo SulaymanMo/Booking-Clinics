@@ -46,7 +46,6 @@ class ProfileView extends StatelessWidget {
                 "Log Out",
                 style: TextStyle(
                   fontSize: 15.sp,
-                  color: Colors.black54,
                   fontWeight: FontWeight.w400,
                 ),
               ),

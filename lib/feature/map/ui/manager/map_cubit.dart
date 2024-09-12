@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'dart:async';
+import 'package:booking_clinics/core/models/doctor_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +43,49 @@ class MapCubit extends Cubit<MapState> {
   final List<PlaceAutocompleteModel> places = [];
   late final TextEditingController textController;
 
+  Future<void> getDoctors() async {
+    try {
+      BitmapDescriptor icon = await _setupCustomMarker();
+      final QuerySnapshot query =
+          await FirebaseFirestore.instance.collection('doctors').get();
+      final List<DoctorModel> doctors = query.docs.map((doc) {
+        return DoctorModel.fromJson(doc.data() as Map<String, dynamic>);
+      }).toList();
+      if (doctors.isNotEmpty) {
+        for (int i = 0; i <= doctors.length; i++) {
+          markers.add(
+            Marker(
+              icon: icon,
+              markerId: MarkerId(doctors[i].id),
+              position: LatLng(
+                doctors[i].location["latitude"],
+                doctors[i].location["longitude"],
+              ),
+              infoWindow: InfoWindow(title: doctors[i].name),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      emit(MapFailure("fetch doctors failed"));
+    }
+  }
+
+  // ! styling map
+  Future<String> setupMapStyle(BuildContext context) async {
+    return await DefaultAssetBundle.of(context).loadString(
+      "assets/map_style/default.json",
+    );
+  }
+
+  // ! styling markers
+  Future<BitmapDescriptor> _setupCustomMarker() async {
+    return await BitmapDescriptor.asset(
+      ImageConfiguration.empty,
+      "assets/images/marker.png",
+    );
+  }
+
   // ! Feature(0)
   Future<bool> checkPermissions() async {
     bool enabled = await locationRepo.checkLocationService();
@@ -67,9 +112,10 @@ class MapCubit extends Cubit<MapState> {
           await mapController.animateCamera(
             CameraUpdate.newLatLngZoom(
               LatLng(success.latitude!, success.longitude!),
-              17,
+              12,
             ),
           );
+          await getDoctors();
           emit(MapSuccess());
         },
       );

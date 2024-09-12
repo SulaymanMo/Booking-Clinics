@@ -1,3 +1,5 @@
+import 'package:booking_clinics/core/constant/const_color.dart';
+
 import 'list_item.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +17,10 @@ class CarouselSlider extends StatelessWidget {
         shrinkExtent: 95.w,
         itemSnapping: true,
         itemExtent: double.infinity,
-        backgroundColor: Colors.white,
+        backgroundColor:
+            MediaQuery.of(context).platformBrightness == Brightness.light
+                ? Colors.white
+                : ConstColor.iconDark.color,
         padding: EdgeInsets.symmetric(
           vertical: 1.h,
           horizontal: 4.w,

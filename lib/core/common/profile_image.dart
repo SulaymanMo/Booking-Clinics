@@ -13,7 +13,7 @@ class ProfileImage extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 20.w,
-          backgroundColor: Colors.black,
+          backgroundColor: ConstColor.iconDark.color,
           child: Icon(Iconsax.user, size: 20.w, color: Colors.white),
         ),
         Positioned(
