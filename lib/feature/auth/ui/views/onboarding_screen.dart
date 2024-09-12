@@ -97,10 +97,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               child: Text(
                 currentIndex == contents.length - 1 ? "Continue" : "Next",
-                style: context.medium16?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: ConstColor.dark.color,
-                ),
               ),
               onPressed: () {
                 if (currentIndex == contents.length - 1) {
@@ -121,23 +117,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           // Skip button (Only show when not on the last page)
           // if (currentIndex != contents.length - 1)
-            TextButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const SignIn(),
-                  ),
-                );
-              },
-              child: Text(
-                "Skip",
-                style: TextStyle(
-                  fontSize: 15.sp,
-                  color: ConstColor.icon.color,
+          TextButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const SignIn(),
                 ),
+              );
+            },
+            child: Text(
+              "Skip",
+              style: TextStyle(
+                fontSize: 15.sp,
+                color: ConstColor.icon.color,
               ),
             ),
+          ),
           SizedBox(height: 1.5.h), // Adjust for spacing at the bottom
         ],
       ),

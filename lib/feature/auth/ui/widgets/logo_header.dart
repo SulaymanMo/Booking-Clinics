@@ -9,7 +9,7 @@ class LogoHeader extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: 2.h),
-        Image.asset('assets/images/logo.png', height: 66, width: 66),
+        Image.asset('assets/images/logo.png', height: 66, width: 66,),
         SizedBox(height: 2.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +21,7 @@ class LogoHeader extends StatelessWidget {
             Text("Pal", style: TextStyle(fontSize: 20.sp)),
           ],
         ),
-        SizedBox(height: 1.h),
+        SizedBox(height: 3.h),
       ],
     );
   }
