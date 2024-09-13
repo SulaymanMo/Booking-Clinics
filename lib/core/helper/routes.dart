@@ -17,7 +17,9 @@ class AppRouter {
       case Routes.navRoute:
         return MaterialPageRoute(builder: (_) => const NavView());
       case Routes.doctorDetailsRoute:
-        return MaterialPageRoute(builder: (_) => const DoctorDetailsView());
+        return MaterialPageRoute(
+          builder: (_) => DoctorDetailsView(doctorId: settings.arguments as String)
+        );
       case Routes.signup:
         return MaterialPageRoute(builder: (_) => const SignUp());
       case Routes.signin:

@@ -35,7 +35,7 @@ class _AppointmentViewState extends State<AppointmentView>
       body: TabBarView(
         controller: _tabController,
         children: [
-          buildUpcomingBookings(), // Done
+          buildUpcomingBookings(),
           buildCompletedBookings(),
           buildCanceledBookings(),
         ],

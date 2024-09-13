@@ -24,10 +24,10 @@ ThemeData lightTheme() {
       ),
     ),
     // ! _____ TabBar _____ ! //
+
     tabBarTheme: TabBarTheme(
-      dividerHeight: 0,
+      dividerHeight: 0.6,
       labelColor: Colors.white,
-      tabAlignment: TabAlignment.start,
       indicatorSize: TabBarIndicatorSize.tab,
       labelPadding: EdgeInsets.symmetric(horizontal: 0.5.w),
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
@@ -39,6 +39,7 @@ ThemeData lightTheme() {
         ),
       ),
     ),
+
     // ! _____ Text Theme _____ ! //
     textTheme: textTheme(),
     fontFamily: "Inter_Light",

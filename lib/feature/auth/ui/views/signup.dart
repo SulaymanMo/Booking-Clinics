@@ -1,5 +1,4 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
-import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/socilal_button.dart';
 import 'package:booking_clinics/feature/auth/ui/widgets/logo_header.dart';

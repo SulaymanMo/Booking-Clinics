@@ -1,6 +1,5 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/helper/service_locator.dart';
-import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
 import 'package:booking_clinics/feature/map/data/repo/location_repo/location_repo_imp.dart';
 import 'package:booking_clinics/feature/map/data/repo/map_repo/map_impl.dart';
 import 'package:booking_clinics/feature/map/data/repo/routes_repo/routes_impl.dart';
@@ -11,8 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/feature/home/ui/view/home_view.dart';
-
 import '../../../../core/common/svg_img.dart';
+import '../../../appointment/ui/appointment_view.dart';
 
 class NavView extends StatefulWidget {
   const NavView({super.key});
@@ -33,7 +32,7 @@ class _NavViewState extends State<NavView> {
       )..predectPlaces(),
       child: const MapView(),
     ),
-    const DoctorDetailsView(),
+    const AppointmentView(),
     const ProfileView(),
   ];
 

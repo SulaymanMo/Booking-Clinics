@@ -13,10 +13,7 @@ class BookingAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: const Text(
         'My Bookings',
-        style: TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.bold,
-        ),
+        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
       ),
       bottom: TabBar(
         controller: _tabController,
@@ -30,6 +27,5 @@ class BookingAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize =>
-      const Size.fromHeight(kToolbarHeight + kTextTabBarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + kTextTabBarHeight);
 }

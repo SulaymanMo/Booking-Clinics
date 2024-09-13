@@ -1,6 +1,7 @@
 import 'package:booking_clinics/core/common/custom_button.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/common/basic_appbar.dart';
 import '../../../../core/common/section_heading.dart';
@@ -11,14 +12,15 @@ import '../widgets/reviews_item.dart';
 import '../widgets/rounded_doctor_card.dart';
 
 class DoctorDetailsView extends StatelessWidget {
-  const DoctorDetailsView({super.key});
+  final String doctorId;
+  const DoctorDetailsView({super.key, required this.doctorId});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppBar(
         title: 'Doctor Details',
-        actionIcon: Icons.favorite_border,
+        actionIcon: Iconsax.heart,
         onActionPressed: () {},
       ),
       body: Container(
@@ -54,8 +56,7 @@ class DoctorDetailsView extends StatelessWidget {
             SizedBox(height: 2.h),
 
             // Working Time
-            const SectionHeading(
-                title: 'Working Time', showActionButton: false),
+            const SectionHeading(title: 'Working Time', showActionButton: false),
             SizedBox(height: 1.h),
             Text(
               ConstString.workingTimeFakeText,
