@@ -1,5 +1,6 @@
 import 'package:booking_clinics/core/common/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import '../../../core/constant/const_color.dart';
 import 'widgets/booking_appbar.dart';
 import 'widgets/build_booking_card.dart';
@@ -44,34 +45,41 @@ class _AppointmentViewState extends State<AppointmentView>
 
   Widget buildUpcomingBookings() {
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
+      padding: EdgeInsets.only(top: 1.h, left: 4.w, right: 4.w, bottom: 2.h),
       itemCount: 4,
-      separatorBuilder: (_, __) => const SizedBox(height: 4),
+      separatorBuilder: (_, __) => SizedBox(height: 1.5.h),
       itemBuilder: (_, __) => buildBookingCard(
+        context,
         date: 'May 22, 2023 - 10:00 AM',
         doctorName: 'Dr. James Robinson',
         specialization: 'Orthopedic Surgery',
         clinic: 'Elite Ortho Clinic, USA',
         imageUrl: 'assets/images/banner_2.png',
-        buttons: const Row(
+        buttons: Row(
           children: [
-             Expanded(
+            Expanded(
               child: CustomButton(
                 text: 'Cancel',
                 color: MyColors.gray,
-                textSize: 13,
-                padding: EdgeInsets.all(12),
+                textSize: 14.sp,
+                padding: EdgeInsets.all(3.25.w),
                 textColor: MyColors.dark2,
               ),
             ),
-            SizedBox(width: 20),
+            SizedBox(width: 3.w),
             Expanded(
               child: CustomButton(
                 text: 'Reschedule',
-                color: MyColors.dark,
-                textSize: 13,
-                padding: EdgeInsets.all(12),
-                textColor: Colors.white,
+                color:
+                    MediaQuery.of(context).platformBrightness == Brightness.dark
+                        ? ConstColor.primary.color
+                        : MyColors.dark2,
+                textSize: 14.sp,
+                padding: EdgeInsets.all(3.25.w),
+                textColor:
+                    MediaQuery.of(context).platformBrightness == Brightness.dark
+                        ? ConstColor.dark.color
+                        : ConstColor.secondary.color,
               ),
             ),
           ],
@@ -82,34 +90,41 @@ class _AppointmentViewState extends State<AppointmentView>
 
   Widget buildCompletedBookings() {
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
+      padding: EdgeInsets.only(top: 1.h, left: 4.w, right: 4.w, bottom: 2.h),
       itemCount: 4,
-      separatorBuilder: (_, __) => const SizedBox(height: 4),
+      separatorBuilder: (_, __) => SizedBox(height: 1.5.h),
       itemBuilder: (_, __) => buildBookingCard(
+        context,
         date: 'March 12, 2023 - 11:00 AM',
         doctorName: 'Dr. Sarah Johnson',
         specialization: 'Gynecologist',
         clinic: 'Women\'s Health Clinic, USA',
         imageUrl: 'assets/images/banner_2.png',
-        buttons: const Row(
+        buttons: Row(
           children: [
             Expanded(
               child: CustomButton(
                 text: 'Re-Book',
-                color: MyColors.gray,
-                textSize: 13,
-                padding: EdgeInsets.all(12),
-                textColor: MyColors.dark2,
+                color: ConstColor.secondary.color,
+                textSize: 14.sp,
+                padding: EdgeInsets.all(3.25.w),
+                textColor: ConstColor.dark.color,
               ),
             ),
-            SizedBox(width: 20),
+            SizedBox(width: 3.w),
             Expanded(
               child: CustomButton(
                 text: 'Add Review',
-                color: MyColors.dark,
-                textSize: 13,
-                padding: EdgeInsets.all(12),
-                textColor: Colors.white,
+                color:
+                    MediaQuery.of(context).platformBrightness == Brightness.dark
+                        ? ConstColor.primary.color
+                        : MyColors.dark2,
+                textSize: 14.sp,
+                padding: EdgeInsets.all(3.25.w),
+                textColor:
+                    MediaQuery.of(context).platformBrightness == Brightness.dark
+                        ? ConstColor.dark.color
+                        : ConstColor.secondary.color,
               ),
             ),
           ],
@@ -120,24 +135,31 @@ class _AppointmentViewState extends State<AppointmentView>
 
   Widget buildCanceledBookings() {
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
+      padding: EdgeInsets.only(top: 1.h, left: 4.w, right: 4.w, bottom: 2.h),
       itemCount: 4,
-      separatorBuilder: (_, __) => const SizedBox(height: 4),
+      separatorBuilder: (_, __) => SizedBox(height: 1.5.h),
       itemBuilder: (_, __) => buildBookingCard(
+        context,
         date: 'March 12, 2023 - 11:00 AM',
         doctorName: 'Dr. Sarah Johnson',
         specialization: 'Gynecologist',
         clinic: 'Women\'s Health Clinic, USA',
         imageUrl: 'assets/images/banner_2.png',
-        buttons: const Row(
+        buttons: Row(
           children: [
             Expanded(
               child: CustomButton(
                 text: 'Re-Book',
-                color: MyColors.dark,
-                textSize: 13,
-                padding: EdgeInsets.all(15),
-                textColor: Colors.white,
+                color:
+                    MediaQuery.of(context).platformBrightness == Brightness.dark
+                        ? ConstColor.primary.color
+                        : MyColors.dark2,
+                textSize: 14.5.sp,
+                padding: EdgeInsets.all(3.25.w),
+                textColor:
+                    MediaQuery.of(context).platformBrightness == Brightness.dark
+                        ? ConstColor.dark.color
+                        : ConstColor.secondary.color,
               ),
             ),
           ],

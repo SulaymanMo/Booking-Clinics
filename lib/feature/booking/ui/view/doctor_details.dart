@@ -39,12 +39,10 @@ class DoctorDetailsView extends StatelessWidget {
               return Center(child: Text(state.error));
             } else if (state is DoctorLoaded && state.doctors.isNotEmpty) {
               final doctor = state.doctors.first;
-
               return Container(
                 width: context.mediaQuery.size.width,
                 height: context.mediaQuery.size.height,
-                padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                color: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
                 child: ListView(
                   children: [
                     // Doctor Card
@@ -60,35 +58,40 @@ class DoctorDetailsView extends StatelessWidget {
                     SizedBox(height: 2.h),
                     // About me
                     const SectionHeading(
-                        title: 'About me', showActionButton: false),
+                      title: 'About me',
+                      showActionButton: false,
+                    ),
                     SizedBox(height: 1.h),
                     Text(
                       doctor.about ?? "No information provided.",
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 15.sp, color: MyColors.softGray),
+                      style: context.regular14,
                     ),
                     SizedBox(height: 2.h),
 
                     // Working Time
                     const SectionHeading(
-                        title: 'Working Time', showActionButton: false),
+                      title: 'Working Time',
+                      showActionButton: false,
+                    ),
                     SizedBox(height: 1.h),
                     Text(
                       doctor.workingHours ?? "Not available",
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 15.sp, color: MyColors.softGray),
+                      style: context.regular14,
                     ),
                     SizedBox(height: 2.h),
 
                     // Reviews
-                    const SectionHeading(title: 'Reviews', showActionButton: false),
-                    SizedBox(height: 0.5.h),
+                    const SectionHeading(
+                      title: 'Reviews',
+                      showActionButton: false,
+                    ),
+                    SizedBox(height: 1.h),
                     // const ReviewsItem(),
-                    ListView.builder(
+                    ListView.separated(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: doctor.reviews.length,
@@ -98,6 +101,7 @@ class DoctorDetailsView extends StatelessWidget {
                         rating: doctor.reviews[index].rating.toString(),
                         review: doctor.reviews[index].content,
                       ),
+                      separatorBuilder: (_, index) => SizedBox(height: 1.5.h),
                     )
                   ],
                 ),
@@ -108,7 +112,7 @@ class DoctorDetailsView extends StatelessWidget {
           },
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+          padding: EdgeInsets.fromLTRB(4.w, 0, 4.w, 1.5.h),
           child: CustomButton(
             text: 'Book Appointment',
             height: 15.w,

@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
 import '../constant/const_color.dart';
 
@@ -5,10 +6,10 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.text,
-    this.color = MyColors.dark,
+    this.color,
     this.onTap,
     this.padding = const EdgeInsets.symmetric(vertical: 12),
-    this.textColor = Colors.white,
+    this.textColor,
     this.textSize = 16,
     this.height,
     this.borderRadius = 15,
@@ -23,7 +24,10 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: color,
+      color: color ??
+          (MediaQuery.of(context).platformBrightness == Brightness.dark
+              ? ConstColor.primary.color
+              : ConstColor.dark.color),
       borderRadius: BorderRadius.circular(borderRadius!),
       child: InkWell(
         onTap: onTap ?? () {},
@@ -38,10 +42,13 @@ class CustomButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+              style: context.medium14?.copyWith(
                 fontSize: textSize,
-                color: textColor,
+                color: textColor ??
+                    (MediaQuery.of(context).platformBrightness ==
+                            Brightness.dark
+                        ? ConstColor.dark.color
+                        : ConstColor.secondary.color),
               ),
             ),
           ),
