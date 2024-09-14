@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -13,11 +14,6 @@ class RoundedDoctorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      elevation: 2.0,
       child: Container(
         padding: const EdgeInsets.all(10.0),
         height: 17.5.h,
@@ -43,10 +39,7 @@ class RoundedDoctorCard extends StatelessWidget {
                     doctor.name.isNotEmpty ? doctor.name : 'No Name',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: context.bold16,
                   ),
                   const Divider(),
                   const SizedBox(height: 1),
@@ -58,11 +51,7 @@ class RoundedDoctorCard extends StatelessWidget {
                           : 'Specialty Not Provided',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        color: MyColors.softGray,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: context.semi14,
                     ),
                   ),
                   SizedBox(height: 1.h),
@@ -79,10 +68,7 @@ class RoundedDoctorCard extends StatelessWidget {
                           doctor.address != null
                               ? doctor.address!
                               : 'No Address',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            color: MyColors.softGray,
-                          ),
+                          style: context.regular14,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),

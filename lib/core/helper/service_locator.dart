@@ -1,3 +1,4 @@
+import 'package:booking_clinics/feature/see_all/data/see_all_repo_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
@@ -15,6 +16,7 @@ void setupServiceLocator() {
   );
   getIt.registerLazySingleton<MapImpl>(() => MapImpl());
   getIt.registerLazySingleton<RoutesImpl>(() => RoutesImpl());
+  getIt.registerLazySingleton<SeeAllRepoImpl>(() => SeeAllRepoImpl());
 
   // ! _____ Services _____ ! //
   getIt.registerLazySingleton<Dio>(() => Dio());

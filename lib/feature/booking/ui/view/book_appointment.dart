@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
@@ -19,18 +20,17 @@ class BookAppointmentView extends StatelessWidget {
       child: Scaffold(
         appBar: const BasicAppBar(title: 'Book Appointment'),
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Date Picker
               Text(
                 'Select Date',
-                style: TextStyle(fontSize: 19.sp, fontWeight: FontWeight.bold),
+                style: context.bold18,
               ),
-              SizedBox(height: 2.w),
+              SizedBox(height: 1.5.h),
               Card(
-                elevation: 3,
                 child: BlocBuilder<BookAppointmentCubit, BookAppointmentState>(
                   builder: (context, state) {
                     DateTime selectedDate = state is DateSelectedState
@@ -54,13 +54,13 @@ class BookAppointmentView extends StatelessWidget {
                         formatButtonVisible: false,
                         titleCentered: true,
                       ),
-                      calendarStyle: const CalendarStyle(
+                      calendarStyle: CalendarStyle(
                         selectedDecoration: BoxDecoration(
-                          color: MyColors.dark,
+                          color: ConstColor.dark.color,
                           shape: BoxShape.circle,
                         ),
                         todayDecoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: ConstColor.icon.color,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -68,14 +68,14 @@ class BookAppointmentView extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: 5.w),
+              SizedBox(height: 2.h),
 
               // Hour Picker
               Text(
                 'Select Hour',
-                style: TextStyle(fontSize: 19.sp, fontWeight: FontWeight.bold),
+                style: context.bold18,
               ),
-              SizedBox(height: 2.w),
+              SizedBox(height: 1.5.h),
               Expanded(
                 child: BlocBuilder<BookAppointmentCubit, BookAppointmentState>(
                   builder: (context, state) {
@@ -99,8 +99,8 @@ class BookAppointmentView extends StatelessWidget {
                           text: hour,
                           textSize: 14.sp,
                           color: selectedHour == hour
-                              ? MyColors.dark
-                              : Colors.grey[200],
+                              ? ConstColor.dark.color
+                              : ConstColor.secondary.color,
                           textColor: selectedHour == hour
                               ? Colors.white
                               : Colors.black,
@@ -119,10 +119,7 @@ class BookAppointmentView extends StatelessWidget {
                   final cubit = context.read<BookAppointmentCubit>();
                   return CustomButton(
                     text: "Confirm",
-                    color: cubit.selectedHour != null
-                        ? MyColors.dark
-                        : MyColors.softGray,
-                    textColor: Colors.white,
+                    textSize: 16.sp,
                     onTap: cubit.selectedHour != null
                         ? () {
                             showDialog(

@@ -10,6 +10,11 @@ ThemeData darkTheme() {
     scaffoldBackgroundColor: ConstColor.dark.color,
     // ! _____ AppBar _____ ! //
     appBarTheme: AppBarTheme(
+      titleTextStyle: TextStyle(
+        fontSize: 18.sp,
+        color: Colors.white,
+        fontWeight: FontWeight.w500,
+      ),
       titleSpacing: 4.w,
       scrolledUnderElevation: 0,
       backgroundColor: ConstColor.dark.color,
@@ -23,23 +28,33 @@ ThemeData darkTheme() {
         color: ConstColor.secondary.color,
       ),
     ),
-    // ! _____ Card Theme _____ ! //
-    cardColor: ConstColor.dark.color,
     // ! _____ TabBar _____ ! //
     tabBarTheme: TabBarTheme(
       dividerHeight: 0,
       labelColor: Colors.white,
-      //tabAlignment: TabAlignment.start,
+      dividerColor: Colors.transparent,
       indicatorSize: TabBarIndicatorSize.tab,
+      unselectedLabelColor: ConstColor.icon.color,
+      labelStyle: TextStyle(
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w500,
+      ),
+      unselectedLabelStyle: TextStyle(fontSize: 14.sp),
       labelPadding: EdgeInsets.symmetric(horizontal: 0.5.w),
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
-      // overlayColor: WidgetStateProperty.resolveWith(callback),
       indicator: ShapeDecoration(
         color: ConstColor.dark.color,
         shape: StadiumBorder(
           side: BorderSide(color: ConstColor.secondary.color),
         ),
       ),
+    ),
+    // ! _____ Card Theme _____ ! //
+    cardTheme: CardTheme(
+      elevation: 3,
+      margin: EdgeInsets.zero,
+      clipBehavior: Clip.hardEdge,
+      color: ConstColor.iconDark.color,
     ),
     // ! _____ Text Theme _____ ! //
     textTheme: darkTextTheme(),
@@ -90,7 +105,7 @@ ThemeData darkTheme() {
     // ! _____ TextButton _____ ! //
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: ConstColor.blue.color,
+        foregroundColor: ConstColor.primary.color,
         textStyle: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
@@ -101,7 +116,8 @@ ThemeData darkTheme() {
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
         iconSize: 20.sp,
-        // backgroundColor: Colors.white30,
+        backgroundColor: Colors.white10,
+        foregroundColor: ConstColor.secondary.color,
       ),
     ),
     // ! _____ Bottom App Bar _____ ! //
@@ -127,6 +143,18 @@ ThemeData darkTheme() {
         minWidth: double.infinity,
       ),
       backgroundColor: Colors.white,
+    ),
+    // ! _____ Vertical & Horizontal Divider Theme _____ ! //
+    dividerTheme: DividerThemeData(
+      space: 2.h,
+      color: ConstColor.textBtn.color,
+    ),
+    // ! _____ Dialog Theme _____ ! //
+    dialogTheme: DialogTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      backgroundColor: ConstColor.dark.color,
     ),
   );
 }

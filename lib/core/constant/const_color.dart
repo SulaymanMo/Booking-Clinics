@@ -6,7 +6,7 @@ enum ConstColor {
   icon(Color(0xff9CA3AF)),
   textBtn(Color(0xff6B7280)),
 
-  blue(Color(0xff5468FF)),
+  blue(Color(0xff0c8ce9)),
   iconDark(Color(0xff262A34)),
   dark(Color(0xff1C1C1C)),
   secondary(Color(0xffF3F4F6));
@@ -14,10 +14,6 @@ enum ConstColor {
   final Color color;
   const ConstColor(this.color);
 }
-
-// ? _____ Showcase for How to Use ConstColor _____ ? //
-final Color primary = ConstColor.primary.color;
-final Color secondary = ConstColor.secondary.color;
 
 class MyColors {
   static const Color blue = Color(0xff1C64F2);

@@ -28,13 +28,9 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       child: AppBar(
-        backgroundColor: Colors.white,
         centerTitle: true,
         automaticallyImplyLeading: showBackArrow,
-        title: Text(
-          title,
-          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
+        title: Text(title),
         actions: actionIcon != null
             ? [
                 IconButton(

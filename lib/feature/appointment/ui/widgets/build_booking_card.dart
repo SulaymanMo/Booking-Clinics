@@ -1,7 +1,10 @@
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import '../../../../core/constant/const_color.dart';
 
-Widget buildBookingCard({
+Widget buildBookingCard(
+  BuildContext context, {
   required String date,
   required String doctorName,
   required String specialization,
@@ -9,82 +12,61 @@ Widget buildBookingCard({
   required String imageUrl,
   required Widget buttons,
 }) {
-  return Material(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-    color: Colors.white,
-    elevation: 6,
+  return Card(
     child: Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(3.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            date,
-            style: const TextStyle(
-              color: MyColors.dark,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 4),
-          const Divider(),
+          Text(date, style: context.semi14),
+          Divider(height: 3.h),
           Row(
             children: [
-              Expanded(
-                flex: 2,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    imageUrl,
-                    height: 115,
-                    fit: BoxFit.cover,
-                  ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(3.w),
+                child: Image.asset(
+                  imageUrl,
+                  width: 35.w,
+                  height: 35.w,
+                  fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(width: 8),
               Expanded(
-                flex: 3,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Doctor Name
-                    Text(
-                      doctorName,
-                      maxLines: 1,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 2.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Doctor Name
+                      Text(
+                        doctorName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: context.bold16,
                       ),
-                    ),
-                    const SizedBox(height: 6),
-                    // Specialization
-                    Text(
-                      specialization,
-                      style: const TextStyle(
-                        color: MyColors.softGray,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
+                      SizedBox(height: 2.w),
+                      // Specialization
+                      Text(
+                        specialization,
+                        style: context.regular14,
                       ),
-                    ),
-                    const SizedBox(height: 5),
-                    // Clinic
-                    Text(
-                      clinic,
-                      style: const TextStyle(
-                        color: MyColors.softGray,
-                        // fontSize: 12,
+                      SizedBox(height: 1.w),
+                      // Clinic
+                      Text(
+                        clinic,
+                        style: const TextStyle(
+                          color: MyColors.softGray,
+                          // fontSize: 12,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 2),
-          const Divider(),
-          const SizedBox(height: 4),
+          Divider(height: 3.h),
           buttons,
         ],
       ),
