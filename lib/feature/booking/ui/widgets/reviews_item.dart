@@ -2,6 +2,7 @@ import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../../core/common/custom_network_img.dart';
 import '../../../../core/constant/const_color.dart';
 import '../../../../core/constant/const_string.dart';
 
@@ -34,16 +35,12 @@ class ReviewsItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(50)),
-                  child: Image(
-                    image: image != null
-                        ? NetworkImage(image!)
-                        : const AssetImage(MyImages.doctorImg),
-                    height: 7.5.h,
-                    width: 7.5.h,
-                    fit: BoxFit.cover,
-                  ),
+                CustomNetworkImage(
+                  imageUrl: image,
+                  height: 7.5.h,
+                  width: 7.5.h,
+                  fallbackAsset: MyImages.boyAvatar,
+                  borderRadius: 50,
                 ),
                 SizedBox(width: 3.w),
                 Column(
@@ -58,7 +55,7 @@ class ReviewsItem extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Icon(Icons.star, color: MyColors.gold, size: 20.sp),
+                        Icon(Icons.star_rounded, color: MyColors.gold, size: 21.sp),
                         Text(rating, style: TextStyle(fontSize: 15.5.sp)),
                       ],
                     ),
@@ -69,9 +66,10 @@ class ReviewsItem extends StatelessWidget {
             SizedBox(height: 1.h),
             Text(
               review,
-              maxLines: 3,
+              maxLines: 4,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 15.sp, color: MyColors.softGray),
+              textAlign: TextAlign.start,
+              style: TextStyle(fontSize: 16.sp, color: MyColors.softGray),
             ),
           ],
         ),
