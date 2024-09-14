@@ -1,6 +1,5 @@
 import 'package:booking_clinics/core/common/custom_button.dart';
 import 'package:flutter/material.dart';
-
 import '../../../core/constant/const_color.dart';
 import 'widgets/booking_appbar.dart';
 import 'widgets/build_booking_card.dart';
@@ -35,7 +34,7 @@ class _AppointmentViewState extends State<AppointmentView>
       body: TabBarView(
         controller: _tabController,
         children: [
-          buildUpcomingBookings(), // Done
+          buildUpcomingBookings(),
           buildCompletedBookings(),
           buildCanceledBookings(),
         ],

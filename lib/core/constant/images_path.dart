@@ -3,4 +3,8 @@ class MyImages{
   static const String doctorImg = 'assets/images/doctor_img.png';
   static const String successDialog = 'assets/images/success_dialog.png';
 
+  // Icons
+  static const String doctorAvatar = 'assets/images/doctorAvatar.png';
+  static const String boyAvatar = 'assets/images/boyAvatar.png';
+
 }

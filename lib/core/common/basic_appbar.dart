@@ -31,9 +31,10 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: Colors.white,
         centerTitle: true,
         automaticallyImplyLeading: showBackArrow,
-        title: Text(title,
-            style: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold)),
+        title: Text(
+          title,
+          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
         actions: actionIcon != null
             ? [
                 IconButton(

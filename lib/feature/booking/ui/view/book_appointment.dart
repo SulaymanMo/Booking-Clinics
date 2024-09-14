@@ -128,7 +128,7 @@ class BookAppointmentView extends StatelessWidget {
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return AppointmentConfirmationDialog(
+                                return AppointmentDialog(
                                   doctorName: 'David Patel',
                                   appointmentDate: cubit.getFormattedDate(),
                                   appointmentTime: '${cubit.selectedHour}',

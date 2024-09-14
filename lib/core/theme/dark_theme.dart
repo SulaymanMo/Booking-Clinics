@@ -29,7 +29,7 @@ ThemeData darkTheme() {
     tabBarTheme: TabBarTheme(
       dividerHeight: 0,
       labelColor: Colors.white,
-      tabAlignment: TabAlignment.start,
+      //tabAlignment: TabAlignment.start,
       indicatorSize: TabBarIndicatorSize.tab,
       labelPadding: EdgeInsets.symmetric(horizontal: 0.5.w),
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),

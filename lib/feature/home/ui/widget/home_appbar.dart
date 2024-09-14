@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/common/dropdown.dart';
@@ -28,7 +29,13 @@ class UpperAppBar extends StatelessWidget {
           ],
         ),
         trailing: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            // for testing
+            context.nav.pushNamed(
+              Routes.doctorDetailsRoute,
+              arguments: 'A3EOhkb1xqdJe2q1Xw4q', // doctor id
+            );
+          },
           // style: IconButton.styleFrom(
           // backgroundColor: ConstColor.secondary.color,
           // ),

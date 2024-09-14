@@ -1,10 +1,10 @@
 import 'dart:math';
 import 'dart:async';
-import 'package:booking_clinics/core/models/doctor_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
+import '../../../../data/models/doctor_model.dart';
 import '../../data/model/location_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/repo/map_repo/map_repo.dart';
