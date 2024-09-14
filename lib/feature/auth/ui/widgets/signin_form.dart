@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/constant/const_string.dart';
-import '../../../../data/remote/firebase_auth.dart';
+import '../../../../data/services/remote/firebase_auth.dart';
 import 'custom_elevated_button.dart';
 
 class SigninForm extends StatefulWidget {

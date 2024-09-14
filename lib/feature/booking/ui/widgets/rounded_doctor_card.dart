@@ -1,9 +1,9 @@
 import 'package:booking_clinics/core/constant/images_path.dart';
-import 'package:booking_clinics/core/models/doctor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/common/custom_network_img.dart';
 import '../../../../core/constant/const_color.dart';
+import '../../../../data/models/doctor_model.dart';
 
 class RoundedDoctorCard extends StatelessWidget {
   const RoundedDoctorCard({super.key, required this.doctor});

@@ -1,4 +1,4 @@
-import '../../../../core/models/doctor_model.dart';
+import '../../../../data/models/doctor_model.dart';
 
 abstract class DoctorState {}
 

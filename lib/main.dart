@@ -1,5 +1,5 @@
 import 'package:booking_clinics/core/theme/dark_theme.dart';
-import 'data/remote/firebase_auth.dart';
+import 'data/services/remote/firebase_auth.dart';
 import 'firebase_options.dart';
 import 'core/helper/routes.dart';
 import 'package:sizer/sizer.dart';
