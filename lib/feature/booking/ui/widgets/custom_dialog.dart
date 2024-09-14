@@ -5,13 +5,13 @@ import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-class AppointmentConfirmationDialog extends StatelessWidget {
+class AppointmentDialog extends StatelessWidget {
   final String doctorName;
  
  final String appointmentDate;
   final String appointmentTime;
 
-  const AppointmentConfirmationDialog({
+  const AppointmentDialog({
     super.key,
     required this.doctorName,
     required this.appointmentDate,
@@ -53,9 +53,7 @@ class AppointmentConfirmationDialog extends StatelessWidget {
             ),
             // Edit Appointment Link
             TextButton(
-              onPressed: () {
-                // Add your logic here
-              },
+              onPressed: () => context.nav.pop(),
               child: Text(
                 'Edit your appointment',
                 style: TextStyle(

@@ -10,7 +10,7 @@ import '../../../../core/common/basic_appbar.dart';
 import '../../../../core/common/section_heading.dart';
 import '../../../../core/constant/const_color.dart';
 import '../../../../core/constant/const_string.dart';
-import '../../../../core/service/firebase_service/firebase_firestore.dart';
+import '../../../../data/services/remote/firebase_firestore.dart';
 import '../widgets/achievement_column.dart';
 import '../widgets/reviews_item.dart';
 import '../widgets/rounded_doctor_card.dart';

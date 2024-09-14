@@ -1,6 +1,6 @@
 import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:sizer/sizer.dart';
-import '../service/firebase_service/firebase_auth.dart';
+import '../../data/services/remote/firebase_auth.dart';
 import '../common/custom_button.dart';
 import '../constant/const_color.dart';
 import 'package:flutter/material.dart';

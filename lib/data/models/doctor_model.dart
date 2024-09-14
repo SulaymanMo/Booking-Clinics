@@ -1,6 +1,5 @@
-import 'package:booking_clinics/core/models/review.dart';
-
 import 'booking.dart';
+import 'review.dart';
 
 final class DoctorModel {
   final String id, name, speciality, email;

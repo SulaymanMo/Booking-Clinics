@@ -5,8 +5,7 @@ import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_elevated_button.d
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
-
-import '../../../../core/service/firebase_service/firebase_auth.dart';
+import '../../../../data/services/remote/firebase_auth.dart';
 import '../widgets/logo_header.dart';
 
 class ForgetPassword extends StatefulWidget {
