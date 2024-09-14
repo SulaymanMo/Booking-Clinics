@@ -33,7 +33,7 @@ class UpperAppBar extends StatelessWidget {
             // for testing
             context.nav.pushNamed(
               Routes.doctorDetailsRoute,
-              arguments: 'doctorIdHere',
+              arguments: 'A3EOhkb1xqdJe2q1Xw4q', // doctor id
             );
           },
           // style: IconButton.styleFrom(
