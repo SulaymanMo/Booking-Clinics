@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/service/firebase_service/firebase_firestore.dart';
+import '../../../../data/remote/firebase_firestore.dart';
 import 'doc_details_state.dart';
 
 class DoctorCubit extends Cubit<DoctorState> {

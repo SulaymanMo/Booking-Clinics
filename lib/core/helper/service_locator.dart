@@ -4,7 +4,7 @@ import 'package:location/location.dart';
 import '../../feature/map/data/repo/location_repo/location_repo_imp.dart';
 import '../../feature/map/data/repo/map_repo/map_impl.dart';
 import '../../feature/map/data/repo/routes_repo/routes_impl.dart';
-import '../service/hive_service/local_storage.dart';
+import '../../data/local/local_storage.dart';
 
 final GetIt getIt = GetIt.instance;
 

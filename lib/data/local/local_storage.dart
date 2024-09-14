@@ -7,7 +7,7 @@ final class LocalStorage<T> {
     await Hive.openBox<T>(boxName);
   }
 
-  // ? _____ Put or Upadate Data _____ ? //
+  // ? _____ Put or Update Data _____ ? //
   Future<void> save({
     required String box,
     required String key,

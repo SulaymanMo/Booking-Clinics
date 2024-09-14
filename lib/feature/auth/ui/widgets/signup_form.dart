@@ -6,8 +6,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/common/input.dart';
 import '../../../../core/models/patient.dart';
-import '../../../../core/service/firebase_service/firebase_auth.dart';
-import '../../../../core/service/firebase_service/firebase_firestore.dart';
+import '../../../../data/remote/firebase_auth.dart';
+import '../../../../data/remote/firebase_firestore.dart';
 import 'custom_elevated_button.dart';
 
 class SignupForm extends StatefulWidget {
