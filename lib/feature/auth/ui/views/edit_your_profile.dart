@@ -1,20 +1,63 @@
 import 'package:booking_clinics/core/common/basic_appbar.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_congauth_dialog.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_elevated_button.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_text_form_field.dart';
+import 'package:booking_clinics/data/models/patient.dart';
+import 'package:booking_clinics/feature/auth/ui/widgets/custom_elevated_button.dart';
+import 'package:booking_clinics/feature/auth/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 
-class EditYourProfile extends StatelessWidget {
-  const EditYourProfile({super.key});
+class EditYourProfile extends StatefulWidget {
+  final Patient patient; 
+
+  const EditYourProfile({super.key, required this.patient});
+
+  @override
+  State<EditYourProfile> createState() => _EditYourProfileState();
+}
+
+class _EditYourProfileState extends State<EditYourProfile> {
+  late TextEditingController nameController;
+  late TextEditingController emailController;
+  late TextEditingController phoneController;
+  late TextEditingController birthDateController;
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController(text: widget.patient.name);
+    emailController = TextEditingController(text: widget.patient.email);
+    phoneController = TextEditingController(text: widget.patient.phone);
+    birthDateController = TextEditingController(text: widget.patient.birthDate);
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    birthDateController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _updatePatientData() async {
+    final updatedPatient = Patient(
+      uid: widget.patient.uid,
+      name: nameController.text,
+      email: emailController.text,
+      phone: phoneController.text,
+      birthDate: birthDateController.text,
+      profileImg: widget.patient.profileImg, 
+    );
+
+    
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppBar(title: "Fill Your Profile"),
+      appBar: const BasicAppBar(title: "Edit Your Profile"),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -29,8 +72,10 @@ class EditYourProfile extends StatelessWidget {
                     CircleAvatar(
                       radius: 20.w,
                       backgroundColor: ConstColor.icon.color,
-                      child:
-                          Icon(Iconsax.user, size: 20.w, color: Colors.white),
+                      backgroundImage: NetworkImage(widget.patient.profileImg),
+                      child: widget.patient.profileImg.isEmpty
+                          ? Icon(Iconsax.user, size: 20.w, color: Colors.white)
+                          : null,
                     ),
                     Positioned(
                       right: 0,
@@ -47,15 +92,24 @@ class EditYourProfile extends StatelessWidget {
                   ],
                 ),
               ),
-              /*change photo */
               SizedBox(height: 3.h),
-              const CustomTextFormField(hint: "Your Name"),
-              SizedBox(height: 1.5.h),
-              const CustomTextFormField(hint: "Nickname"),
-              SizedBox(height: 1.5.h),
-              const CustomTextFormField(hint: "name@example.com"),
+              CustomTextFormField(
+                controller: nameController,
+                hint: "Your Name",
+              ),
               SizedBox(height: 1.5.h),
               CustomTextFormField(
+                controller: emailController,
+                hint: "name@example.com",
+              ),
+              SizedBox(height: 1.5.h),
+              CustomTextFormField(
+                controller: phoneController,
+                hint: "Phone Number",
+              ),
+              SizedBox(height: 1.5.h),
+              CustomTextFormField(
+                controller: birthDateController,
                 hint: "Date of Birth",
                 suffixIcon: SizedBox(
                   height: 24,
@@ -63,19 +117,10 @@ class EditYourProfile extends StatelessWidget {
                   child: SvgPicture.asset("assets/icons/calendar_fill.svg"),
                 ),
               ),
-              SizedBox(height: 1.5.h),
-              const CustomTextFormField(hint: "Gender"),
               SizedBox(height: 3.h),
               CustomElevatedButton(
                 title: "Save",
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return const CustomCongAuthDialog();
-                    },
-                  );
-                },
+                onPressed: _updatePatientData, // Call the update function
               ),
             ],
           ),
