@@ -1,10 +1,12 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/helper/service_locator.dart';
+import 'package:booking_clinics/data/services/remote/firebase_auth.dart';
 import 'package:booking_clinics/feature/map/data/repo/location_repo/location_repo_imp.dart';
 import 'package:booking_clinics/feature/map/data/repo/map_repo/map_impl.dart';
 import 'package:booking_clinics/feature/map/data/repo/routes_repo/routes_impl.dart';
 import 'package:booking_clinics/feature/map/ui/manager/map_cubit.dart';
 import 'package:booking_clinics/feature/map/ui/view/map_view.dart';
+import 'package:booking_clinics/feature/profile/ui/manager/profile_cubit.dart';
 import 'package:booking_clinics/feature/profile/ui/view/profile_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -33,7 +35,11 @@ class _NavViewState extends State<NavView> {
       child: const MapView(),
     ),
     const AppointmentView(),
-    const ProfileView(),
+    BlocProvider<ProfileCubit>(
+      create: (_) =>
+          ProfileCubit(getIt.get<FirebaseAuthService>())..getPatientData(),
+      child: const ProfileView(),
+    ),
   ];
 
   static const List<IconData> _icons = [

@@ -5,6 +5,7 @@ import 'package:booking_clinics/core/constant/const_color.dart';
 
 class Input extends StatelessWidget {
   const Input({
+    this.label,
     this.suffix,
     this.prefix,
     this.isDense,
@@ -20,6 +21,7 @@ class Input extends StatelessWidget {
   });
 
   final bool? isDense;
+  final String? label;
   final String? hint;
   final Widget? suffix;
   final IconData? prefix;
@@ -37,7 +39,7 @@ class Input extends StatelessWidget {
       onSaved: onSaved,
       onChanged: onChanged,
       controller: controller,
-      style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
+      style: TextStyle(fontSize: 14.5.sp, fontWeight: FontWeight.w400),
       onTapOutside: (val) => FocusManager.instance.primaryFocus!.unfocus(),
       validator: validator,
       keyboardType: keyboardType,
@@ -45,7 +47,8 @@ class Input extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
         hintText: hint,
-        isDense: isDense ?? true,
+        label: label != null ? Text(label!) : null,
+        isDense: label != null ? false : true,
         prefixIconConstraints: BoxConstraints(maxWidth: 20.w),
         fillColor: MediaQuery.of(context).platformBrightness == Brightness.light
             ? ConstColor.secondary.color
@@ -67,13 +70,14 @@ class Input extends StatelessWidget {
         //         color: ConstColor.texture.color,
         //       )
         //     : null,
-        labelStyle: context.regular14,
+        labelStyle: context.regular14?.copyWith(
+          color: ConstColor.icon.color,
+        ),
         hintStyle: context.textTheme.bodySmall?.copyWith(
           color: ConstColor.icon.color,
         ),
-        floatingLabelStyle: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
+        floatingLabelStyle: context.semi16?.copyWith(
+          color: ConstColor.primary.color,
         ),
         border: buildBorder(),
         enabledBorder: buildBorder(),

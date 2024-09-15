@@ -1,16 +1,15 @@
-import 'package:booking_clinics/core/common/basic_appbar.dart';
-import 'package:booking_clinics/core/constant/const_color.dart';
+import 'package:booking_clinics/core/common/custom_button.dart';
+import 'package:booking_clinics/core/common/input.dart';
+import 'package:booking_clinics/core/common/profile_image.dart';
 import 'package:booking_clinics/data/models/patient.dart';
-import 'package:booking_clinics/feature/auth/ui/widgets/custom_elevated_button.dart';
-import 'package:booking_clinics/feature/auth/ui/widgets/custom_text_form_field.dart';
+import 'package:booking_clinics/feature/profile/ui/manager/profile_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 
 class EditYourProfile extends StatefulWidget {
-  final Patient patient; 
-
+  final Patient patient;
   const EditYourProfile({super.key, required this.patient});
 
   @override
@@ -26,6 +25,7 @@ class _EditYourProfileState extends State<EditYourProfile> {
   @override
   void initState() {
     super.initState();
+    context.read<ProfileCubit>().getPatientData();
     nameController = TextEditingController(text: widget.patient.name);
     emailController = TextEditingController(text: widget.patient.email);
     phoneController = TextEditingController(text: widget.patient.phone);
@@ -42,7 +42,7 @@ class _EditYourProfileState extends State<EditYourProfile> {
   }
 
   Future<void> _updatePatientData() async {
-    final updatedPatient = Patient(
+    Patient(
       uid: widget.patient.uid,
       name: nameController.text,
       email: emailController.text,
@@ -52,80 +52,61 @@ class _EditYourProfileState extends State<EditYourProfile> {
       bookings: [],
       favorites: [],
     );
-
-    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppBar(title: "Edit Your Profile"),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: ListView(
-            children: [
-              SizedBox(height: 5.h),
-              /*change photo*/
-              Center(
-                child: Stack(
-                  clipBehavior: Clip.hardEdge,
-                  children: [
-                    CircleAvatar(
-                      radius: 20.w,
-                      backgroundColor: ConstColor.icon.color,
-                      backgroundImage: NetworkImage(widget.patient.profileImg),
-                      child: widget.patient.profileImg.isEmpty
-                          ? Icon(Iconsax.user, size: 20.w, color: Colors.white)
-                          : null,
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 6.w,
-                      child: Container(
-                        padding: EdgeInsets.all(1.2.w),
-                        decoration: BoxDecoration(
-                          color: ConstColor.main.color,
-                          borderRadius: BorderRadius.circular(3.w),
-                        ),
-                        child: const Icon(Icons.edit, color: Colors.white),
-                      ),
-                    ),
-                  ],
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Fill your Profile"),
+      ),
+      body: Align(
+        alignment: const Alignment(0, -0.75),
+        child: ListView(
+          shrinkWrap: true,
+          padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+          children: [
+            /*change photo*/
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ProfileImage(
+                  onTap: () async {},
                 ),
-              ),
-              SizedBox(height: 3.h),
-              CustomTextFormField(
-                controller: nameController,
-                hint: "Your Name",
-              ),
-              SizedBox(height: 1.5.h),
-              CustomTextFormField(
-                controller: emailController,
-                hint: "name@example.com",
-              ),
-              SizedBox(height: 1.5.h),
-              CustomTextFormField(
-                controller: phoneController,
-                hint: "Phone Number",
-              ),
-              SizedBox(height: 1.5.h),
-              CustomTextFormField(
-                controller: birthDateController,
-                hint: "Date of Birth",
-                suffixIcon: SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: SvgPicture.asset("assets/icons/calendar_fill.svg"),
-                ),
-              ),
-              SizedBox(height: 3.h),
-              CustomElevatedButton(
-                title: "Save",
-                onPressed: _updatePatientData, // Call the update function
-              ),
-            ],
-          ),
+              ],
+            ),
+            SizedBox(height: 4.h),
+            Input(
+              hint: "Full Name",
+              prefix: Iconsax.user,
+              controller: nameController,
+            ),
+            SizedBox(height: 1.5.h),
+            Input(
+              prefix: Iconsax.sms,
+              hint: "mail@example.com",
+              controller: emailController,
+            ),
+            SizedBox(height: 1.5.h),
+            Input(
+              hint: "Phone Number",
+              prefix: Iconsax.mobile,
+              controller: phoneController,
+            ),
+            SizedBox(height: 1.5.h),
+            Input(
+              hint: "Date of Birth",
+              prefix: Iconsax.calendar,
+              controller: birthDateController,
+            ),
+            SizedBox(height: 4.h),
+            CustomButton(
+              text: 'Update',
+              onTap: _updatePatientData,
+              textSize: 14.5.sp,
+            ),
+          ],
         ),
       ),
     );

@@ -159,5 +159,31 @@ ThemeData lightTheme() {
       ),
       backgroundColor: ConstColor.secondary.color,
     ),
+    // ! _____ Switch Theme _____ ! //
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith(
+        (state) {
+          if (state.contains(WidgetState.selected)) {
+            return ConstColor.dark.color;
+          } else {
+            return ConstColor.icon.color;
+          }
+        },
+      ),
+      trackOutlineColor: WidgetStateProperty.resolveWith(
+        (state) {
+          return Colors.white;
+        },
+      ),
+      trackColor: WidgetStateProperty.resolveWith(
+        (state) {
+          if (state.contains(WidgetState.selected)) {
+            return ConstColor.primary.color;
+          } else {
+            return ConstColor.secondary.color;
+          }
+        },
+      ),
+    ),
   );
 }
