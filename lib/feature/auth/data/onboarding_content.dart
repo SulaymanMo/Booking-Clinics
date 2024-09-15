@@ -8,22 +8,22 @@ class OnboardingContent {
 
 List<OnboardingContent> contents = [
   OnboardingContent(
-    title: 'Meet Doctors Online',
-    image: 'assets/images/onboarding3.png',
-    discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"
-    "Consultations."
+      title: 'Meet Doctors Online',
+      image: 'assets/images/onboarding3.png',
+      discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"
+          "Consultations."
   ),
   OnboardingContent(
-    title: 'Connect with Specialists',
-    image: 'assets/images/onboardingsec.png',
-    discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"
-    "Consultations."
-  
+      title: 'Connect with Specialists',
+      image: 'assets/images/onboardingsec.png',
+      discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"
+          "Consultations."
+
   ),
   OnboardingContent(
-    title: 'Thousands of Online Specialists',
-    image: 'assets/images/onboarding3.png',
-    discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"
-    "Consultations."
+      title: 'Thousands of Online Specialists',
+      image: 'assets/images/onboarding3.png',
+      discription: "Connect with Specialized Doctors Online for ""Convenient and Comprehensive Medical"
+          "Consultations."
   ),
 ];

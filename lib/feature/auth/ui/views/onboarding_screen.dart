@@ -1,10 +1,9 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/feature/Auth/data/onboarding_content.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
 import '../../../home/ui/widget/carousel/carousel_indicator.dart';
+import '../../data/onboarding_content.dart';
 import 'signin.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -77,6 +76,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              contents.length,
+              (index) => buildDot(index, context),
+            ),
+          ),
+
+          SizedBox(height: 2.h),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -125,7 +133,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           // Skip button (Only show when not on the last page)
-          // if (currentIndex != contents.length - 1)
+          //if (currentIndex != contents.length - 1)
           TextButton(
             onPressed: () {
               Navigator.pushReplacement(
@@ -137,10 +145,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             },
             child: Text(
               "Skip",
-              style: TextStyle(
-                fontSize: 15.sp,
-                color: ConstColor.icon.color,
-              ),
+              style: TextStyle(color: Colors.grey, fontSize: 17.sp),
             ),
           ),
           SizedBox(height: 1.5.h), // Adjust for spacing at the bottom

@@ -36,7 +36,10 @@ class UpperAppBar extends StatelessWidget {
             // for testing
             context.nav.pushNamed(
               Routes.doctorDetailsRoute,
-              arguments: 'A3EOhkb1xqdJe2q1Xw4q', // doctor id
+              arguments: {
+                'doctorId': 'A3EOhkb1xqdJe2q1Xw4q',
+                'patientName': 'Mohamed Hassan',
+              },
             );
           },
           style: context.theme.iconButtonTheme.style,

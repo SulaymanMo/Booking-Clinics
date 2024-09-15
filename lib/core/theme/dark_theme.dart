@@ -113,6 +113,7 @@ ThemeData darkTheme() {
       ),
     ),
     // ! _____ Icon Button _____ ! //
+    /*
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
         iconSize: 20.sp,
@@ -120,6 +121,7 @@ ThemeData darkTheme() {
         foregroundColor: ConstColor.secondary.color,
       ),
     ),
+     */
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
