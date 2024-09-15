@@ -16,30 +16,18 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 11.0,
-            spreadRadius: 1.0,
-            offset: Offset(0, 1),
-          ),
-        ],
-      ),
-      child: AppBar(
-        centerTitle: true,
-        automaticallyImplyLeading: showBackArrow,
-        title: Text(title),
-        actions: actionIcon != null
-            ? [
-                IconButton(
-                  icon: Icon(actionIcon),
-                  onPressed: onActionPressed,
-                ),
-              ]
-            : [],
-      ),
+    return AppBar(
+      centerTitle: true,
+      automaticallyImplyLeading: showBackArrow,
+      title: Text(title),
+      actions: actionIcon != null
+          ? [
+              IconButton(
+                icon: Icon(actionIcon),
+                onPressed: onActionPressed,
+              ),
+            ]
+          : [],
     );
   }
 

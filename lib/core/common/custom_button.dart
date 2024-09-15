@@ -42,7 +42,7 @@ class CustomButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: context.medium14?.copyWith(
+              style: context.bold12?.copyWith(
                 fontSize: textSize,
                 color: textColor ??
                     (MediaQuery.of(context).platformBrightness ==

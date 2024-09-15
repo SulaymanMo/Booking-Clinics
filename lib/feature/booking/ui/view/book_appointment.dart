@@ -137,7 +137,8 @@ class BookAppointmentView extends StatelessWidget {
                   final cubit = context.read<BookAppointmentCubit>();
                   return CustomButton(
                     text: "Confirm",
-                    textSize: 16.sp,
+                    textSize: 17.sp,
+                    height: 15.w,
                     onTap: cubit.selectedHour != null
                         ? () async {
                             // start loading

@@ -17,14 +17,14 @@ import '../widgets/rounded_doctor_card.dart';
 
 class DoctorDetailsView extends StatelessWidget {
   final String doctorId;
+  final String patientName;
 
-  const DoctorDetailsView({super.key, required this.doctorId});
+  const DoctorDetailsView({super.key, required this.doctorId, required this.patientName});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          DoctorCubit(FirebaseFirestoreService())..fetchDoctorById(doctorId),
+      create: (context) => DoctorCubit(FirebaseFirestoreService())..fetchDoctorById(doctorId),
       child: Scaffold(
         appBar: BasicAppBar(
           title: 'Doctor Details',
@@ -44,7 +44,6 @@ class DoctorDetailsView extends StatelessWidget {
                 width: context.mediaQuery.size.width,
                 height: context.mediaQuery.size.height,
                 padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                color: Colors.white,
                 child: ListView(
                   children: [
                     // Doctor Card
@@ -59,28 +58,24 @@ class DoctorDetailsView extends StatelessWidget {
                     ),
                     SizedBox(height: 2.h),
                     // About me
-                    const SectionHeading(
-                        title: 'About me', showActionButton: false),
+                    const SectionHeading(title: 'About me', showActionButton: false),
                     SizedBox(height: 1.h),
                     Text(
                       doctor.about ?? "No information provided.",
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 15.sp, color: MyColors.softGray),
+                      style: context.regular14,
                     ),
                     SizedBox(height: 2.h),
 
                     // Working Time
-                    const SectionHeading(
-                        title: 'Working Time', showActionButton: false),
+                    const SectionHeading(title: 'Working Time', showActionButton: false),
                     SizedBox(height: 1.h),
                     Text(
                       doctor.workingHours ?? "Not available",
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 15.sp, color: MyColors.softGray),
+                      style: context.regular14,
                     ),
                     SizedBox(height: 2.h),
 
@@ -88,7 +83,7 @@ class DoctorDetailsView extends StatelessWidget {
                     const SectionHeading(title: 'Reviews', showActionButton: false),
                     SizedBox(height: 0.5.h),
                     // const ReviewsItem(),
-                    ListView.builder(
+                    ListView.separated(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: doctor.reviews.length,
@@ -98,7 +93,9 @@ class DoctorDetailsView extends StatelessWidget {
                         rating: doctor.reviews[index].rating.toString(),
                         review: doctor.reviews[index].content,
                       ),
-                    )
+                      separatorBuilder: (_, index) => SizedBox(height: 1.5.h),
+                    ),
+                    SizedBox(height: 0.5.h),
                   ],
                 ),
               );
@@ -109,17 +106,35 @@ class DoctorDetailsView extends StatelessWidget {
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-          child: CustomButton(
-            text: 'Book Appointment',
-            height: 15.w,
-            color: MyColors.dark,
-            textColor: Colors.white,
-            textSize: 16.sp,
-            padding: EdgeInsets.zero,
-            onTap: () => context.nav.pushNamed(Routes.bookAppointmentRoute),
+          child: BlocBuilder<DoctorCubit, DoctorState>(
+            builder: (context, state) {
+              if (state is DoctorLoaded && state.doctors.isNotEmpty) {
+                final doctor = state.doctors.first;
+                return CustomButton(
+                  text: 'Book Appointment',
+                  height: 15.w,
+                  textSize: 17.sp,
+                  padding: EdgeInsets.zero,
+                  onTap: () => context.nav.pushNamed(
+                    Routes.bookAppointmentRoute,
+                    arguments: {
+                      'doctorId': doctor.id,
+                      'doctorName': doctor.name,
+                      'doctorImageUrl': doctor.imageUrl?? '',
+                      'doctorSpeciality': doctor.speciality,
+                      'doctorAddress': doctor.address?? '' ,
+                      'patientName': patientName,
+                    },
+                  ),
+                );
+              } else {
+                return const SizedBox();
+              }
+            },
           ),
         ),
       ),
     );
   }
 }
+

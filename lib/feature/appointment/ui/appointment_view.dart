@@ -47,7 +47,8 @@ class _AppointmentViewState extends State<AppointmentView>
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
       itemCount: 4,
       separatorBuilder: (_, __) => const SizedBox(height: 4),
-      itemBuilder: (_, __) => buildBookingCard(
+      itemBuilder: (context, index) => buildBookingCard(
+        context,
         date: 'May 22, 2023 - 10:00 AM',
         doctorName: 'Dr. James Robinson',
         specialization: 'Orthopedic Surgery',
@@ -85,7 +86,8 @@ class _AppointmentViewState extends State<AppointmentView>
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
       itemCount: 4,
       separatorBuilder: (_, __) => const SizedBox(height: 4),
-      itemBuilder: (_, __) => buildBookingCard(
+      itemBuilder: (context, index) => buildBookingCard(
+        context,
         date: 'March 12, 2023 - 11:00 AM',
         doctorName: 'Dr. Sarah Johnson',
         specialization: 'Gynecologist',
@@ -123,7 +125,8 @@ class _AppointmentViewState extends State<AppointmentView>
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
       itemCount: 4,
       separatorBuilder: (_, __) => const SizedBox(height: 4),
-      itemBuilder: (_, __) => buildBookingCard(
+      itemBuilder: (context, index) => buildBookingCard(
+        context,
         date: 'March 12, 2023 - 11:00 AM',
         doctorName: 'Dr. Sarah Johnson',
         specialization: 'Gynecologist',
