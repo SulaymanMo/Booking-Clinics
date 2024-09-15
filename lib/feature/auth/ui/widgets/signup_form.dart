@@ -81,6 +81,8 @@ class _SignupFormState extends State<SignupForm> {
           phone: '',
           birthDate: '',
           profileImg: '',
+          bookings: [],
+          favorites: [],
         );
 
         // Save the patient object to Firestore

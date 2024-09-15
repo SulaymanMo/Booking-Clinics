@@ -1,5 +1,10 @@
+import 'package:booking_clinics/data/models/booking.dart';
+import 'package:booking_clinics/data/models/favorite.dart';
+
 class Patient {
   final String uid, name, email, phone, birthDate, profileImg;
+  final List<Booking> bookings;
+  final List<Favorite> favorites;
 
   const Patient({
     required this.uid,
@@ -8,6 +13,8 @@ class Patient {
     required this.phone,
     required this.birthDate,
     required this.profileImg,
+    required this.bookings,
+    required this.favorites,
   });
 
   factory Patient.fromJson(Map<String, dynamic> json) {
@@ -18,6 +25,8 @@ class Patient {
       phone: json["phone"],
       birthDate: json["birth_date"],
       profileImg: json["profile_image"],
+      bookings: List<Booking>.from(json["bookings"].map((x) => Booking.fromJson(x))),
+      favorites: List<Favorite>.from(json["favorites"].map((x) => Favorite.fromJson(x))),
     );
   }
 
@@ -29,6 +38,8 @@ class Patient {
       "phone": phone,
       "birth_date": birthDate,
       "profile_image": profileImg,
+      "bookings": List<dynamic>.from(bookings.map((x) => x.toJson())),
+      "favorites": List<dynamic>.from(favorites.map((x) => x.toJson())),
     };
   }
 }
