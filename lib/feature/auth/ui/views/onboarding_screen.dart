@@ -1,10 +1,9 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/feature/Auth/data/onboarding_content.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
 import '../../../home/ui/widget/carousel/carousel_indicator.dart';
+import '../../data/onboarding_content.dart';
 import 'signin.dart';
 
 class OnboardingScreen extends StatefulWidget {

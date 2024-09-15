@@ -1,4 +1,3 @@
-// temporary Patient model
 class Patient {
   final String uid, name, email, phone, birthDate, profileImg;
 
