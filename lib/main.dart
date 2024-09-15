@@ -56,7 +56,7 @@ class BookingClinics extends StatelessWidget {
           darkTheme: darkTheme(),
           title: 'Booking Clinics',
           debugShowCheckedModeBanner: false,
-          initialRoute: !isUserLoggedIn ? Routes.navRoute : Routes.onboarding,
+          initialRoute: isUserLoggedIn ? Routes.navRoute : Routes.onboarding,
           onGenerateRoute: AppRouter.generateRoute,
           //  home: signUp(),
         );

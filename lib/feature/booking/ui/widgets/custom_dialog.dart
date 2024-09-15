@@ -1,6 +1,5 @@
 import 'package:booking_clinics/core/common/custom_button.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
-import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +7,8 @@ import 'package:sizer/sizer.dart';
 
 class AppointmentDialog extends StatelessWidget {
   final String doctorName;
-
-  final String appointmentDate;
+ 
+ final String appointmentDate;
   final String appointmentTime;
 
   const AppointmentDialog({
@@ -36,10 +35,7 @@ class AppointmentDialog extends StatelessWidget {
             // Congratulation Text
             Text(
               'Congratulations!',
-              style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
-                  color: MyColors.dark),
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: MyColors.dark),
             ),
             SizedBox(height: 3.w),
             // Appointment Details
@@ -53,10 +49,7 @@ class AppointmentDialog extends StatelessWidget {
             CustomButton(
               text: 'Done',
               borderRadius: 30,
-              onTap: () => context.nav.pushNamedAndRemoveUntil(
-                Routes.navRoute,
-                (route) => false,
-              ),
+              onTap: () => context.nav.pop(),
             ),
             // Edit Appointment Link
             TextButton(

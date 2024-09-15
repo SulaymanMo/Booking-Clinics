@@ -7,10 +7,10 @@ import 'package:booking_clinics/feature/map/ui/manager/map_cubit.dart';
 import 'package:booking_clinics/feature/map/ui/view/map_view.dart';
 import 'package:booking_clinics/feature/profile/ui/view/profile_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/feature/home/ui/view/home_view.dart';
-import '../../../../core/common/svg_img.dart';
 import '../../../appointment/ui/appointment_view.dart';
 
 class NavView extends StatefulWidget {
@@ -36,17 +36,17 @@ class _NavViewState extends State<NavView> {
     const ProfileView(),
   ];
 
-  static const List<String> _icons = [
-    "assets/icons/home.svg",
-    "assets/icons/location.svg",
-    "assets/icons/calendar.svg",
-    "assets/icons/profile.svg",
+  static const List<IconData> _icons = [
+    Iconsax.home,
+    Iconsax.location4,
+    Iconsax.calendar_1,
+    Iconsax.user4,
   ];
-  static const List<String> _iconsFill = [
-    "assets/icons/home_fill.svg",
-    "assets/icons/location_fill.svg",
-    "assets/icons/calendar_fill.svg",
-    "assets/icons/profile_fill.svg",
+  static const List<IconData> _iconsFill = [
+    Iconsax.home1,
+    Iconsax.location5,
+    Iconsax.calendar5,
+    Icons.person,
   ];
 
   @override
@@ -71,15 +71,22 @@ class _NavViewState extends State<NavView> {
                     });
                   },
                   style: IconButton.styleFrom(
-                    backgroundColor: _index == index
-                        ? MediaQuery.of(context).platformBrightness ==
+                    backgroundColor: _index == index &&
+                            MediaQuery.of(context).platformBrightness ==
                                 Brightness.dark
-                            ? ConstColor.primary.color
-                            : Colors.black12
-                        : null,
+                        ? ConstColor.primary.color
+                        : _index == index
+                            ? ConstColor.secondary.color
+                            : Colors.transparent,
                   ),
-                  icon: SvgImage(
-                    image: index == _index ? _iconsFill[index] : _icons[index],
+                  icon: Icon(
+                    index == _index ? _iconsFill[index] : _icons[index],
+                    color: MediaQuery.of(context).platformBrightness ==
+                            Brightness.dark
+                        ? _index == index
+                            ? ConstColor.dark.color
+                            : ConstColor.secondary.color
+                        : ConstColor.dark.color,
                   ),
                   // icon: Icon(
                   //   _index == index

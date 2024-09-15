@@ -1,9 +1,9 @@
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/common/custom_network_img.dart';
-import '../../../../core/constant/const_color.dart';
 import '../../../../core/constant/const_string.dart';
 
 class ReviewsItem extends StatelessWidget {
@@ -23,9 +23,8 @@ class ReviewsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white70,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(12, 15, 12, 15),
+        padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,15 +47,12 @@ class ReviewsItem extends StatelessWidget {
                   children: [
                     Text(
                       name,
-                      style: TextStyle(
-                        fontSize: 16.5.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: context.semi16,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.star_rounded, color: MyColors.gold, size: 21.sp),
-                        Text(rating, style: TextStyle(fontSize: 15.5.sp)),
+                        const Icon(Icons.star_rounded, color: Colors.orangeAccent),
+                        Text(rating, style: context.regular14),
                       ],
                     ),
                   ],
@@ -69,7 +65,7 @@ class ReviewsItem extends StatelessWidget {
               maxLines: 4,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.start,
-              style: TextStyle(fontSize: 16.sp, color: MyColors.softGray),
+              style: context.regular14,
             ),
           ],
         ),

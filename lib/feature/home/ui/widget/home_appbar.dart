@@ -1,8 +1,8 @@
 import 'package:booking_clinics/core/constant/const_string.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/common/dropdown.dart';
-import 'package:booking_clinics/core/common/svg_img.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 
 class UpperAppBar extends StatelessWidget {
@@ -21,9 +21,12 @@ class UpperAppBar extends StatelessWidget {
         subtitle: Wrap(
           spacing: 1.25.w,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: const [
-            SvgImage(image: "assets/icons/location_fill.svg"),
-            DropDown(
+          children: [
+            Icon(
+              Iconsax.location5,
+              color: context.theme.iconTheme.color,
+            ),
+            const DropDown(
               titles: ["Cairo, EGY", "Settle, USA"],
             ),
           ],
@@ -39,10 +42,8 @@ class UpperAppBar extends StatelessWidget {
               },
             );
           },
-          // style: IconButton.styleFrom(
-          // backgroundColor: ConstColor.secondary.color,
-          // ),
-          icon: const SvgImage(image: "assets/icons/notification.svg"),
+          style: context.theme.iconButtonTheme.style,
+          icon: const Icon(Iconsax.notification5),
         ),
       ),
     );

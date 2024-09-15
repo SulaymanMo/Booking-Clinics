@@ -77,12 +77,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              contents.length,
+              (index) => buildDot(index, context),
+            ),
+          ),
+
+          SizedBox(height: 2.h),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
               contents.length,
-              (index) => CarouselIndicator(currentIndex == index),
+              (index) => CarouselIndicator(
+                currentIndex == index,
+                color: MediaQuery.of(context).platformBrightness == Brightness.dark
+                ? currentIndex == index
+                    ? Colors.white
+                    : Colors.white70
+                : currentIndex == index
+                    ? ConstColor.iconDark.color
+                    : ConstColor.icon.color,
+              ),
             ),
           ),
 
@@ -116,7 +134,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           // Skip button (Only show when not on the last page)
-          // if (currentIndex != contents.length - 1)
+          //if (currentIndex != contents.length - 1)
           TextButton(
             onPressed: () {
               Navigator.pushReplacement(
@@ -128,10 +146,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             },
             child: Text(
               "Skip",
-              style: TextStyle(
-                fontSize: 15.sp,
-                color: ConstColor.icon.color,
-              ),
+              style: TextStyle(color: Colors.grey, fontSize: 17.sp),
             ),
           ),
           SizedBox(height: 1.5.h), // Adjust for spacing at the bottom

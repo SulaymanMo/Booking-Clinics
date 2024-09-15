@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
@@ -72,8 +73,8 @@ class AchievementItem extends StatelessWidget {
             ),
             child: Icon(icon, color: MyColors.dark, size: 4.h),
           ),
-          Text(number, style: const TextStyle(fontWeight: FontWeight.bold)),
-          Text(text, style: const TextStyle(color: MyColors.softGray)),
+          Text(number, style: context.semi14),
+          Text(text, style: context.regular14),
         ],
       ),
     );

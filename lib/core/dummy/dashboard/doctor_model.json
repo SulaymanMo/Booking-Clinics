@@ -4,7 +4,7 @@
     "gender": "male, female",
     "specialist": "doctor specialist",
     "profile_image": "image link url",
-    "clinic_center": {
+    "clinics": {
         "id": 0,
         "location": "eyes center, mansoura",
         "lat": 3.22222,
