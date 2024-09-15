@@ -1,4 +1,6 @@
-import 'feature/auth/data/firebase_auth.dart';
+import 'package:booking_clinics/core/theme/dark_theme.dart';
+
+import 'core/service/firebase_service/firebase_auth.dart';
 import 'firebase_options.dart';
 import 'core/helper/routes.dart';
 import 'package:sizer/sizer.dart';
@@ -12,16 +14,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // ! _____ App Setup & Initialization _____ ! //
   FlutterNativeSplash.preserve(
     widgetsBinding: WidgetsFlutterBinding.ensureInitialized(),
-
   );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   setupServiceLocator();
   await Hive.initFlutter();
-
   // ! _____ Prevent Device Orientation _____ ! //
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -55,9 +54,10 @@ class BookingClinics extends StatelessWidget {
             );
           },
           theme: lightTheme(),
+          darkTheme: darkTheme(),
           title: 'Booking Clinics',
           debugShowCheckedModeBanner: false,
-          initialRoute: isUserLoggedIn ? Routes.navRoute : Routes.onboarding,
+          initialRoute: !isUserLoggedIn ? Routes.navRoute : Routes.onboarding,
           onGenerateRoute: AppRouter.generateRoute,
           //  home: signUp(),
         );

@@ -1,3 +1,5 @@
+import 'package:booking_clinics/core/constant/const_color.dart';
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -12,17 +14,17 @@ class OrDivider extends StatelessWidget {
         Expanded(
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 5.w),
-            child: const Divider(color: Color(0xff6B7280)),
+            child: Divider(color: ConstColor.icon.color),
           ),
         ),
         Text(
           "or",
-          style: TextStyle(fontSize: 17.sp, color: const Color(0xff6B7280)),
+          style: context.medium16?.copyWith(color: ConstColor.icon.color),
         ),
         Expanded(
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 5.w),
-            child: const Divider(color: Color(0xff6B7280)),
+            child: Divider(color: ConstColor.icon.color),
           ),
         ),
       ],

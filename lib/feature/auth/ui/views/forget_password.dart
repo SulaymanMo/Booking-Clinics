@@ -1,11 +1,12 @@
+import 'package:booking_clinics/core/common/input.dart';
+import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_elevated_button.dart';
-import 'package:booking_clinics/feature/Auth/Ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../data/firebase_auth.dart';
+import '../../../../core/service/firebase_service/firebase_auth.dart';
 import '../widgets/logo_header.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -28,40 +29,37 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       appBar: AppBar(),
       body: Form(
         key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: ListView(
-            children: [
-              const LogoHeader(),
-              Text(
-                textAlign: TextAlign.center,
-                "Forget Password?",
-                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
+        child: ListView(
+          padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 6.w),
+          children: [
+            const LogoHeader(),
+            Text(
+              textAlign: TextAlign.center,
+              "Forget Password?",
+              style: context.semi20,
+            ),
+            SizedBox(height: 2.h),
+            Text(
+              "Enter your Email, we will send you a verification code.",
+              style: context.regular14?.copyWith(
+                color: ConstColor.icon.color,
               ),
-              SizedBox(height: 2.h),
-              Text(
-                "Enter your Email, we will send you a verification code.",
-                style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xff6B7280),
-                    fontSize: 15.sp),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 3.h),
-              CustomTextFormField(
-                controller: _emailController,
-                preIcon: SvgPicture.asset("assets/icons/sms.svg"),
-                hint: "Your Email",
-              ),
-              SizedBox(height: 3.h),
-              _isLoading
-                  ? const CircularProgressIndicator()
-                  : CustomElevatedButton(
-                      title: "Verify",
-                      onPressed: _resetPassword,
-                    ),
-            ],
-          ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 4.h),
+            Input(
+              hint: "Your Email",
+              prefix: Iconsax.sms,
+              controller: _emailController,
+            ),
+            SizedBox(height: 3.h),
+            _isLoading
+                ? const CircularProgressIndicator()
+                : CustomElevatedButton(
+                    title: "Verify",
+                    onPressed: _resetPassword,
+                  ),
+          ],
         ),
       ),
     );

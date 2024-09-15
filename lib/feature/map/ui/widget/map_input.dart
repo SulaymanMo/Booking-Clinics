@@ -34,7 +34,7 @@ class MapInput extends StatelessWidget {
             ],
           ),
           child: Input(
-            fillColor: Colors.white70,
+            fillColor: Colors.white,
             hint: "Search Doctor, Hospital",
             controller: mapCubit.textController,
             prefix: Iconsax.search_normal,

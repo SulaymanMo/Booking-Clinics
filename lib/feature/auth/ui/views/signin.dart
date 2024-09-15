@@ -15,81 +15,73 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Form(
-            child: ListView(
-              children: [
-                const LogoHeader(),
-                Text(
-                  "Hi, Welcome Back! ",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
+        child: Form(
+          child: ListView(
+            shrinkWrap: true,
+            padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+            children: [
+              const LogoHeader(),
+              Text(
+                "Hi, Welcome Back! ",
+                textAlign: TextAlign.center,
+                style: context.semi20,
+              ),
+              SizedBox(height: 1.h),
+              Text(
+                "Hope you’re doing fine.",
+                textAlign: TextAlign.center,
+                style: context.regular14?.copyWith(
+                  color: ConstColor.icon.color,
                 ),
-                SizedBox(height: 2.h),
-                Text(
-                  "Hope you’re doing fine.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xff6B7280),
-                      fontSize: 15.sp),
-                ),
-                SizedBox(height: 3.h),
+              ),
+              SizedBox(height: 4.h),
 
-                const SigninForm(),
+              const SigninForm(),
 
-                SizedBox(height: 2.h),
-                const OrDivider(),
-                SizedBox(height: 2.h),
-                const SocialButton(
-                    iconUrl: "assets/icons/Google - Original.svg",
-                    title: "Sign In with Google"),
-                SizedBox(height: 1.5.h),
-                const SocialButton(
-                    iconUrl: "assets/icons/_Facebook.svg",
-                    title: "Sign In with Facebook"),
-                SizedBox(height: 2.h),
-                TextButton(
-                  onPressed: () => context.nav.pushNamed(Routes.forgetPassword),
-                  child: Text(
-                    "Forgot password?",
-                    textAlign: TextAlign.center,
+              SizedBox(height: 2.h),
+              const OrDivider(),
+              SizedBox(height: 2.h),
+              const SocialButton(
+                iconUrl: "assets/icons/Google - Original.svg",
+                title: "Sign In with Google",
+              ),
+              SizedBox(height: 1.5.h),
+              const SocialButton(
+                iconUrl: "assets/icons/_Facebook.svg",
+                title: "Sign In with Facebook",
+              ),
+              SizedBox(height: 2.h),
+              TextButton(
+                onPressed: () => context.nav.pushNamed(Routes.forgetPassword),
+                child: const Text("Forgot password?"),
+              ),
+              SizedBox(height: 2.h),
+              // Don’t have an account yet
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don’t have an account yet?",
                     style: TextStyle(
-                        color: MyColors.blue,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500),
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: ConstColor.icon.color,
+                    ),
                   ),
-                ),
-                SizedBox(height: 2.h),
-                // Don’t have an account yet
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don’t have an account yet?",
+                  GestureDetector(
+                    onTap: () => context.nav.pushNamed(Routes.signup),
+                    child: Text(
+                      " Sign up",
                       style: TextStyle(
-                        color: const Color(0xff6B7280),
                         fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        color: ConstColor.blue.color,
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () => context.nav.pushNamed(Routes.signup),
-                      child: Text(
-                        " Sign up",
-                        style: TextStyle(
-                            color: const Color(0xff1C64F2),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
+                  ),
+                ],
+              )
+            ],
           ),
         ),
       ),

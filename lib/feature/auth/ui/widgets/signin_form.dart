@@ -1,12 +1,12 @@
+import 'package:booking_clinics/core/common/input.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/constant/const_string.dart';
-import '../../data/firebase_auth.dart';
+import '../../../../core/service/firebase_service/firebase_auth.dart';
 import 'custom_elevated_button.dart';
-import 'custom_text_form_field.dart';
 
 class SigninForm extends StatefulWidget {
   const SigninForm({super.key});
@@ -29,15 +29,17 @@ class _SigninFormState extends State<SigninForm> {
       key: formState,
       child: Column(
         children: [
-          CustomTextFormField(
-              controller: emailController,
-              preIcon: SvgPicture.asset("assets/icons/sms.svg"),
-              hint: "Your Email"),
+          Input(
+            controller: emailController,
+            prefix: Iconsax.sms,
+            hint: "Your Email",
+          ),
           SizedBox(height: 1.5.h),
-          CustomTextFormField(
-              controller: passwordController,
-              preIcon: SvgPicture.asset("assets/icons/lock.svg"),
-              hint: "Password"),
+          Input(
+            controller: passwordController,
+            prefix: Iconsax.lock,
+            hint: "Password",
+          ),
           SizedBox(height: 3.h),
           _isLoading
               ? const CircularProgressIndicator()
@@ -62,6 +64,8 @@ class _SigninFormState extends State<SigninForm> {
 
       setState(() => _isLoading = false);
       if (user != null && user.emailVerified) {
+        // fetch patient object from firestore
+        // save patient object in hive
         context.nav.pushNamedAndRemoveUntil(Routes.navRoute, (route) => false);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

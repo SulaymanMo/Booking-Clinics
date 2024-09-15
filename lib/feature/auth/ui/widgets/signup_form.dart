@@ -2,11 +2,13 @@ import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
-import '../../data/firebase_auth.dart';
+import '../../../../core/common/input.dart';
+import '../../../../core/models/patient.dart';
+import '../../../../core/service/firebase_service/firebase_auth.dart';
+import '../../../../core/service/firebase_service/firebase_firestore.dart';
 import 'custom_elevated_button.dart';
-import 'custom_text_form_field.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -30,21 +32,23 @@ class _SignupFormState extends State<SignupForm> {
       key: formState,
       child: Column(
         children: [
-          CustomTextFormField(
-            controller: nameController,
-            preIcon: SvgPicture.asset("assets/icons/user.svg"),
+          Input(
             hint: "Your Name",
+            prefix: Iconsax.user,
+            controller: nameController,
           ),
           SizedBox(height: 1.5.h),
-          CustomTextFormField(
-              controller: emailController,
-              preIcon: SvgPicture.asset("assets/icons/sms.svg"),
-              hint: "Your Email"),
+          Input(
+            hint: "Your Email",
+            prefix: Iconsax.sms,
+            controller: emailController,
+          ),
           SizedBox(height: 1.5.h),
-          CustomTextFormField(
-              controller: passwordController,
-              preIcon: SvgPicture.asset("assets/icons/lock.svg"),
-              hint: "Password"),
+          Input(
+            hint: "Password",
+            prefix: Iconsax.lock,
+            controller: passwordController,
+          ),
           SizedBox(height: 1.5.h),
           _isLoading
               ? const CircularProgressIndicator()
@@ -69,6 +73,20 @@ class _SignupFormState extends State<SignupForm> {
       setState(() => _isLoading = false);
 
       if (user != null) {
+        // Create a new Patient object
+        Patient newPatient = Patient(
+          uid: user.uid,
+          name: nameController.text.trim(),
+          email: emailController.text.trim(),
+          phone: '',
+          birthDate: '',
+          profileImg: '',
+        );
+
+        // Save the patient object to Firestore
+        FirebaseFirestoreService firestoreService = FirebaseFirestoreService();
+        await firestoreService.addPatient(newPatient);
+
         context.nav.pushNamedAndRemoveUntil(Routes.signin, (route) => false);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

@@ -43,9 +43,12 @@ ThemeData lightTheme() {
     textTheme: textTheme(),
     fontFamily: "Inter_Light",
     // ! _____ ListTile _____ ! //
-    listTileTheme: const ListTileThemeData(
+    listTileTheme: ListTileThemeData(
       dense: true,
+      textColor: Colors.black54,
       contentPadding: EdgeInsets.zero,
+      iconColor: ConstColor.main.color,
+      leadingAndTrailingTextStyle: const TextStyle(color: Colors.white),
     ),
     // ! _____ Icon _____ ! //
     iconTheme: IconThemeData(
@@ -55,32 +58,54 @@ ThemeData lightTheme() {
     // ! _____ ElevatedButton _____ ! //
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        foregroundColor: ConstColor.secondary.color,
+        backgroundColor: ConstColor.dark.color,
+        // shape: RoundedRectangleBorder(
+        //   borderRadius: BorderRadius.circular(3.25.w),
+        // ),
         textStyle: TextStyle(
           fontSize: 16.sp,
           fontWeight: FontWeight.w500,
         ),
       ),
     ),
+    // ! _____ OutlinedButton _____ ! //
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: ConstColor.secondary.color,
+        foregroundColor: ConstColor.iconDark.color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(3.w),
+          side: BorderSide(color: ConstColor.secondary.color),
+        ),
+        textStyle: TextStyle(
+          inherit: false,
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    ),
     // ! _____ TextButton _____ ! //
-    textButtonTheme: TextButtonThemeData(
+     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
+        foregroundColor: ConstColor.blue.color,
         textStyle: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
         ),
-        foregroundColor: ConstColor.textBtn.color,
       ),
     ),
     // ! _____ Icon Button _____ ! //
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
         iconSize: 20.sp,
+        // backgroundColor: Colors.black12,
       ),
     ),
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
-      // color: Colors.white,
+      color: Colors.grey.shade50,
       shape: const CircularNotchedRectangle(),
       padding: EdgeInsets.symmetric(horizontal: 4.w),
     ),
