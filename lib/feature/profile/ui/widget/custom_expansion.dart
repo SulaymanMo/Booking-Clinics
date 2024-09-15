@@ -1,4 +1,3 @@
-import 'edit_item.dart';
 import 'package:sizer/sizer.dart';
 import 'custom_expansion_text.dart';
 import 'package:iconsax/iconsax.dart';
@@ -15,7 +14,6 @@ class CustomExpansionList extends StatefulWidget {
 
 class _CustomExpansionListState extends State<CustomExpansionList> {
   static const List<String> _headers = [
-    "Edit Profile",
     "Favorite",
     "Notifications",
     "Settings",
@@ -24,7 +22,6 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
   ];
 
   final List<IconData> _icons = [
-    Iconsax.user,
     Iconsax.heart,
     Iconsax.notification,
     Iconsax.setting,
@@ -33,7 +30,6 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
   ];
 
   static const List<Widget> _widgets = [
-    EditItem(),
     CustomExpansionText(),
     CustomExpansionText(),
     SettingsItem(),

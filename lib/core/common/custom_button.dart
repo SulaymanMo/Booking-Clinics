@@ -1,5 +1,6 @@
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import '../constant/const_color.dart';
 
 class CustomButton extends StatelessWidget {
@@ -43,7 +44,8 @@ class CustomButton extends StatelessWidget {
             child: Text(
               text,
               style: context.bold12?.copyWith(
-                fontSize: textSize,
+                fontSize: textSize ?? 14.sp,
+                fontWeight: FontWeight.w600,
                 color: textColor ??
                     (MediaQuery.of(context).platformBrightness ==
                             Brightness.dark
