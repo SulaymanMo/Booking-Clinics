@@ -17,9 +17,13 @@ class AppRouter {
       case Routes.navRoute:
         return MaterialPageRoute(builder: (_) => const NavView());
       case Routes.doctorDetailsRoute:
-        return MaterialPageRoute(
-          builder: (_) => DoctorDetailsView(doctorId: settings.arguments as String)
-        );
+        return MaterialPageRoute(builder: (_) {
+          final args = settings.arguments as Map<String, dynamic>;
+          return DoctorDetailsView(
+            doctorId: args['doctorId'],
+            patientName: args['patientName'],
+          );
+        });
       case Routes.signup:
         return MaterialPageRoute(builder: (_) => const SignUp());
       case Routes.signin:
@@ -31,7 +35,17 @@ class AppRouter {
       case Routes.editYourProfile:
         return MaterialPageRoute(builder: (_) => const EditYourProfile());
       case Routes.bookAppointmentRoute:
-        return MaterialPageRoute(builder: (_) => const BookAppointmentView());
+        return MaterialPageRoute(builder: (_) {
+          final args = settings.arguments as Map<String, dynamic>;
+          return BookAppointmentView(
+            doctorId: args['doctorId'],
+            doctorName: args['doctorName'],
+            doctorSpeciality: args['doctorSpeciality'],
+            doctorAddress: args['doctorAddress'],
+            doctorImageUrl: args['doctorImageUrl'],
+            patientName: args['patientName'],
+          );
+        });
       case Routes.seeAll:
         return MaterialPageRoute(builder: (_) => const SeeAllView());
 

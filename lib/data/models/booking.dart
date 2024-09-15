@@ -5,7 +5,8 @@ class Booking {
       docImageUrl,
       date,
       time,
-      bookingStatus;
+      bookingStatus,
+      patientName;
 
   const Booking({
     required this.docName,
@@ -15,6 +16,7 @@ class Booking {
     required this.date,
     required this.time,
     required this.bookingStatus,
+    required this.patientName,
   });
 
   factory Booking.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class Booking {
       date: json['date'],
       time: json['time'],
       bookingStatus: json['bookingStatus'],
+      patientName: json['patientName'],
     );
   }
 
@@ -38,6 +41,7 @@ class Booking {
       'date': date,
       'time': time,
       'bookingStatus': bookingStatus,
+      'patientName': patientName,
     };
   }
 }

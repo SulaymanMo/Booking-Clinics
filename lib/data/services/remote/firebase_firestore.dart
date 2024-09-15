@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../models/booking.dart';
 import '../../models/doctor_model.dart';
 import '../../models/patient.dart';
 
@@ -21,8 +22,7 @@ class FirebaseFirestoreService {
   }
 
   /// Updates specific fields in a patient document.
-  Future<void> updatePatientFields(
-      String uid, Map<String, dynamic> updatedFields) async {
+  Future<void> updatePatientFields(String uid, Map<String, dynamic> updatedFields) async {
     try {
       await _firestore
           .collection(_patientsCollection)
@@ -70,6 +70,35 @@ class FirebaseFirestoreService {
       return null;
     } catch (e) {
       print('Error fetching doctor by ID: $e');
+      rethrow;
+    }
+  }
+
+  /// Fetches a Patient by ID.
+  Future<Patient?> getPatientById(String patientId) async {
+    try {
+      final docSnapshot = await _firestore.collection(_patientsCollection).doc(patientId).get();
+      if (docSnapshot.exists) {
+        return Patient.fromJson(docSnapshot.data() as Map<String, dynamic>);
+      }
+      return null;
+    } catch (e) {
+      print('Error fetching doctor by ID: $e');
+      rethrow;
+    }
+  }
+
+  /// Adds a booking to the patient's list of bookings in Firestore.
+  Future<void> addBookingToPatient(String patientUid, Booking booking) async {
+    try {
+      await _firestore
+          .collection(_patientsCollection)
+          .doc(patientUid)
+          .update({
+        'bookings': FieldValue.arrayUnion([booking.toJson()]),
+      });
+    } catch (e) {
+      print('Error adding booking: $e');
       rethrow;
     }
   }

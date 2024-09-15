@@ -46,7 +46,7 @@ class _AppointmentViewState extends State<AppointmentView>
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
       itemCount: 4,
-      separatorBuilder: (_, __) => const SizedBox(height: 4),
+      separatorBuilder: (_, __) => const SizedBox(height: 6),
       itemBuilder: (_, __) => buildBookingCard(
         date: 'May 22, 2023 - 10:00 AM',
         doctorName: 'Dr. James Robinson',
@@ -84,7 +84,7 @@ class _AppointmentViewState extends State<AppointmentView>
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
       itemCount: 4,
-      separatorBuilder: (_, __) => const SizedBox(height: 4),
+      separatorBuilder: (_, __) => const SizedBox(height: 6),
       itemBuilder: (_, __) => buildBookingCard(
         date: 'March 12, 2023 - 11:00 AM',
         doctorName: 'Dr. Sarah Johnson',
@@ -122,7 +122,7 @@ class _AppointmentViewState extends State<AppointmentView>
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
       itemCount: 4,
-      separatorBuilder: (_, __) => const SizedBox(height: 4),
+      separatorBuilder: (_, __) => const SizedBox(height: 6),
       itemBuilder: (_, __) => buildBookingCard(
         date: 'March 12, 2023 - 11:00 AM',
         doctorName: 'Dr. Sarah Johnson',
