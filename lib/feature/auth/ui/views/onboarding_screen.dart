@@ -91,7 +91,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
               contents.length,
-              (index) => CarouselIndicator(currentIndex == index),
+              (index) => CarouselIndicator(
+                currentIndex == index,
+                color: MediaQuery.of(context).platformBrightness == Brightness.dark
+                ? currentIndex == index
+                    ? Colors.white
+                    : Colors.white70
+                : currentIndex == index
+                    ? ConstColor.iconDark.color
+                    : ConstColor.icon.color,
+              ),
             ),
           ),
 

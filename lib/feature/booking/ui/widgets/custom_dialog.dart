@@ -1,17 +1,16 @@
 import 'package:booking_clinics/core/common/custom_button.dart';
-import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-class AppointmentConfirmationDialog extends StatelessWidget {
+class AppointmentDialog extends StatelessWidget {
   final String doctorName;
- 
- final String appointmentDate;
+
+  final String appointmentDate;
   final String appointmentTime;
 
-  const AppointmentConfirmationDialog({
+  const AppointmentDialog({
     super.key,
     required this.doctorName,
     required this.appointmentDate,
@@ -21,30 +20,27 @@ class AppointmentConfirmationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
-      ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 26, 20, 10),
+        padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             // Success Image
             Image.asset(MyImages.successDialog, height: 35.w, width: 35.w),
-            SizedBox(height: 4.w),
+            SizedBox(height: 2.h),
             // Congratulation Text
             Text(
               'Congratulations!',
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: MyColors.dark),
+              style: context.semi20,
             ),
-            SizedBox(height: 3.w),
+            SizedBox(height: 1.h),
             // Appointment Details
             Text(
               'Your appointment with Dr. $doctorName is confirmed for $appointmentDate, at $appointmentTime.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 15.5.sp, color: Colors.grey),
+              style: context.regular14,
             ),
-            SizedBox(height: 5.w),
+            SizedBox(height: 3.h),
             // Done Button
             CustomButton(
               text: 'Done',
@@ -52,17 +48,10 @@ class AppointmentConfirmationDialog extends StatelessWidget {
               onTap: () => context.nav.pop(),
             ),
             // Edit Appointment Link
+            SizedBox(height: 0.5.h),
             TextButton(
-              onPressed: () {
-                // Add your logic here
-              },
-              child: Text(
-                'Edit your appointment',
-                style: TextStyle(
-                  fontSize: 15.sp,
-                  color: Colors.lightBlueAccent,
-                ),
-              ),
+              onPressed: () => context.nav.pop(),
+              child: const Text('Edit your appointment'),
             ),
           ],
         ),

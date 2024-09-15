@@ -10,34 +10,52 @@ ThemeData lightTheme() {
     scaffoldBackgroundColor: Colors.white,
     // ! _____ AppBar _____ ! //
     appBarTheme: AppBarTheme(
+      titleTextStyle: TextStyle(
+        fontSize: 18.sp,
+        color: Colors.black,
+        fontWeight: FontWeight.w500,
+      ),
       titleSpacing: 4.w,
       scrolledUnderElevation: 0,
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(4.w),
-        bottomRight: Radius.circular(4.w),
-      )),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(4.w),
+          bottomRight: Radius.circular(4.w),
+        ),
+      ),
       iconTheme: IconThemeData(
         size: 20.sp,
-        color: ConstColor.main.color,
+        color: ConstColor.icon.color,
       ),
     ),
     // ! _____ TabBar _____ ! //
     tabBarTheme: TabBarTheme(
-      dividerHeight: 0,
+      dividerHeight: 0.6,
       labelColor: Colors.white,
-      tabAlignment: TabAlignment.start,
+      dividerColor: Colors.transparent,
       indicatorSize: TabBarIndicatorSize.tab,
+      unselectedLabelColor: ConstColor.textBtn.color,
+      splashFactory: NoSplash.splashFactory,
+      labelStyle: TextStyle(
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w500,
+      ),
+      unselectedLabelStyle: TextStyle(fontSize: 14.sp),
       labelPadding: EdgeInsets.symmetric(horizontal: 0.5.w),
-      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
-      // overlayColor: WidgetStateProperty.resolveWith(callback),
       indicator: ShapeDecoration(
         color: ConstColor.main.color,
         shape: StadiumBorder(
           side: BorderSide(color: ConstColor.main.color),
         ),
       ),
+    ),
+    // ! _____ Card Theme _____ ! //
+    cardTheme: const CardTheme(
+      elevation: 3,
+      color: Colors.white,
+      margin: EdgeInsets.zero,
+      clipBehavior: Clip.hardEdge,
     ),
     // ! _____ Text Theme _____ ! //
     textTheme: textTheme(),
@@ -53,7 +71,7 @@ ThemeData lightTheme() {
     // ! _____ Icon _____ ! //
     iconTheme: IconThemeData(
       size: 20.sp,
-      color: ConstColor.main.color,
+      color: ConstColor.dark.color,
     ),
     // ! _____ ElevatedButton _____ ! //
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -86,9 +104,9 @@ ThemeData lightTheme() {
       ),
     ),
     // ! _____ TextButton _____ ! //
-     textButtonTheme: TextButtonThemeData(
+    textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: ConstColor.blue.color,
+        foregroundColor: ConstColor.textBtn.color,
         textStyle: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
@@ -99,13 +117,14 @@ ThemeData lightTheme() {
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
         iconSize: 20.sp,
-        // backgroundColor: Colors.black12,
+        foregroundColor: ConstColor.dark.color,
+        backgroundColor: ConstColor.secondary.color,
       ),
     ),
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
-      color: Colors.grey.shade50,
+      color: Colors.white,
       shape: const CircularNotchedRectangle(),
       padding: EdgeInsets.symmetric(horizontal: 4.w),
     ),
@@ -125,6 +144,18 @@ ThemeData lightTheme() {
         minWidth: double.infinity,
       ),
       backgroundColor: Colors.white,
+    ),
+    // ! _____ Vertical & Horizontal Divider Theme _____ ! //
+    dividerTheme: DividerThemeData(
+      space: 2.h,
+      color: MyColors.gray,
+    ),
+    // ! _____ Dialog Theme _____ ! //
+    dialogTheme: DialogTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      backgroundColor: ConstColor.secondary.color,
     ),
   );
 }

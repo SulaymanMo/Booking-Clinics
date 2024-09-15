@@ -1,4 +1,3 @@
-import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

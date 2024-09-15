@@ -1,50 +1,31 @@
+import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import '../../../../core/common/custom_network_img.dart';
 import '../../../../core/constant/const_color.dart';
-import '../../../../core/constant/images_path.dart';
+import '../../../../data/models/doctor_model.dart';
 
 class RoundedDoctorCard extends StatelessWidget {
-  const RoundedDoctorCard({
-    super.key,
-    this.doctorName = 'Dr. David Patel',
-    this.doctorSpeciality = 'Dentist',
-    this.doctorLocation = 'New York, USA',
-    this.doctorImage = MyImages.doctorImg,
-  });
+  const RoundedDoctorCard({super.key, required this.doctor});
 
-  final String doctorName;
-  final String doctorSpeciality;
-  final String doctorLocation;
-  final String doctorImage;
+  final DoctorModel doctor;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      elevation: 2.0,
       child: Container(
         padding: const EdgeInsets.all(10.0),
         height: 17.5.h,
         child: Row(
           children: [
             // Doctor image
-            SizedBox(
+            CustomNetworkImage(
+              imageUrl: doctor.imageUrl,
               height: double.infinity,
               width: 44.sp,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: Image.asset(
-                    doctorImage,
-                    height: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              borderRadius: 10,
+              fallbackAsset: MyImages.doctorAvatar,
             ),
             SizedBox(width: 3.w),
 
@@ -53,40 +34,43 @@ class RoundedDoctorCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Name
                   Text(
-                    doctorName,
+                    doctor.name.isNotEmpty ? doctor.name : 'No Name',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: context.bold16,
                   ),
                   const Divider(),
                   const SizedBox(height: 1),
-                  Text(
-                    doctorSpeciality,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 14.5.sp,
-                      color: MyColors.softGray,
-                      fontWeight: FontWeight.bold,
+                  // Speciality
+                  Flexible(
+                    child: Text(
+                      doctor.speciality.isNotEmpty
+                          ? doctor.speciality
+                          : 'Specialty Not Provided',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.semi14,
                     ),
                   ),
                   SizedBox(height: 1.h),
+                  // Address
                   Row(
                     children: [
-                       Icon(
+                      Icon(
                         Icons.location_on,
                         color: MyColors.softGray,
                         size: 2.h,
                       ),
-                      Text(
-                        ' $doctorLocation',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: MyColors.softGray,
+                      Flexible(
+                        child: Text(
+                          doctor.address != null
+                              ? doctor.address!
+                              : 'No Address',
+                          style: context.regular14,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],

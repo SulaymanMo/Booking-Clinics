@@ -1,9 +1,10 @@
-import 'package:booking_clinics/feature/profile/ui/widget/settings_item.dart';
+import 'edit_item.dart';
 import 'package:sizer/sizer.dart';
+import 'custom_expansion_text.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constant/const_color.dart';
-import 'custom_expansion_text.dart';
-import 'edit_item.dart';
+import 'package:booking_clinics/feature/profile/ui/widget/settings_item.dart';
 
 class CustomExpansionList extends StatefulWidget {
   const CustomExpansionList({super.key});
@@ -23,12 +24,12 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
   ];
 
   final List<IconData> _icons = [
-    Icons.person_2_outlined,
-    Icons.favorite_outline,
-    Icons.notifications_outlined,
-    Icons.settings_outlined,
-    Icons.help_center_outlined,
-    Icons.security_outlined,
+    Iconsax.user,
+    Iconsax.heart,
+    Iconsax.notification,
+    Iconsax.setting,
+    Iconsax.message_question,
+    Iconsax.security4,
   ];
 
   static const List<Widget> _widgets = [

@@ -1,6 +1,5 @@
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
-
 import '../constant/const_color.dart';
 
 class SectionHeading extends StatelessWidget {
@@ -27,22 +26,14 @@ class SectionHeading extends StatelessWidget {
           title,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color: textColor,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.bold,
-          ),
+          style: context.bold18,
         ),
         if (showActionButton)
           TextButton(
             onPressed: onPressed ?? () {},
             child: Text(
               buttonTitle,
-              style: TextStyle(
-                color: MyColors.softGray,
-                fontSize: 15.5.sp,
-                fontWeight: FontWeight.w500,
-              ),
+              style: context.regular14,
             ),
           ),
       ],

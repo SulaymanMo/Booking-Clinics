@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../models/doctor_model.dart';
 import '../../models/patient.dart';
 
 class FirebaseFirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final String _patientsCollection = 'patients';
+  final String _doctorsCollection = 'doctors';
 
   /// Adds a new patient to the patients collection.
   Future<void> addPatient(Patient patient) async {
@@ -41,6 +43,33 @@ class FirebaseFirestoreService {
           .set(patient.toJson());
     } catch (e) {
       print('Error updating user: $e');
+      rethrow;
+    }
+  }
+
+  /// Fetches all doctors from the doctors collection.
+  Future<List<DoctorModel>> getDoctors() async {
+    try {
+      final querySnapshot = await _firestore.collection(_doctorsCollection).get();
+      return querySnapshot.docs
+          .map((doc) => DoctorModel.fromJson(doc.data()))
+          .toList();
+    } catch (e) {
+      print('Error fetching doctors: $e');
+      rethrow;
+    }
+  }
+
+  /// Fetches a doctor by ID from the doctors collection.
+  Future<DoctorModel?> getDoctorById(String doctorId) async {
+    try {
+      final docSnapshot = await _firestore.collection(_doctorsCollection).doc(doctorId).get();
+      if (docSnapshot.exists) {
+        return DoctorModel.fromJson(docSnapshot.data() as Map<String, dynamic>);
+      }
+      return null;
+    } catch (e) {
+      print('Error fetching doctor by ID: $e');
       rethrow;
     }
   }
