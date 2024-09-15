@@ -35,12 +35,12 @@ class FirebaseFirestoreService {
   }
 
   // Updates a patient document.
-  Future<void> updateUser(Patient patient) async {
+  Future<void> updateUser(updatedPatient) async {
     try {
       await _firestore
           .collection(_patientsCollection)
-          .doc(patient.uid)
-          .set(patient.toJson());
+          .doc(updatedPatient.uid)
+          .set(updatedPatient.toJson());
     } catch (e) {
       print('Error updating user: $e');
       rethrow;
