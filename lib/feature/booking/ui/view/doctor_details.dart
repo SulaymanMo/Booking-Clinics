@@ -8,7 +8,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/common/basic_appbar.dart';
 import '../../../../core/common/section_heading.dart';
-import '../../../../core/constant/const_color.dart';
 import '../../../../core/constant/const_string.dart';
 import '../../../../data/services/remote/firebase_firestore.dart';
 import '../widgets/achievement_column.dart';
