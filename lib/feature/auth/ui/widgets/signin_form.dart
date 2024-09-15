@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/constant/const_string.dart';
+import '../../../../data/models/patient.dart';
+import '../../../../data/services/local/shared_pref_storage.dart';
 import '../../../../data/services/remote/firebase_auth.dart';
+import '../../../../data/services/remote/firebase_firestore.dart';
 import 'custom_elevated_button.dart';
 
 class SigninForm extends StatefulWidget {
@@ -65,8 +68,12 @@ class _SigninFormState extends State<SigninForm> {
       setState(() => _isLoading = false);
       if (user != null && user.emailVerified) {
         // fetch patient object from firestore
-        // save patient object in hive
-        context.nav.pushNamedAndRemoveUntil(Routes.navRoute, (route) => false);
+        Patient? patient = await FirebaseFirestoreService().getPatientById(user.uid);
+        if (patient != null) {
+          // save patient object in SharedPreference
+          await SharedPrefServices().savePatient(patient);
+          context.nav.pushNamedAndRemoveUntil(Routes.navRoute, (route) => false);
+        }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
