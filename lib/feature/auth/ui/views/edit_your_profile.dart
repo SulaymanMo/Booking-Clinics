@@ -48,7 +48,9 @@ class _EditYourProfileState extends State<EditYourProfile> {
       email: emailController.text,
       phone: phoneController.text,
       birthDate: birthDateController.text,
-      profileImg: widget.patient.profileImg, 
+      profileImg: widget.patient.profileImg,
+      bookings: [],
+      favorites: [],
     );
 
     
