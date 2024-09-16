@@ -91,6 +91,7 @@ class OnboardingDotNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Positioned(
       bottom: 40,
       left: 25,
@@ -99,7 +100,7 @@ class OnboardingDotNavigation extends StatelessWidget {
         count: 3,
         effect: ExpandingDotsEffect(
           dotHeight: 6,
-          activeDotColor: ConstColor.primary.color,
+          activeDotColor: isDark ? ConstColor.primary.color : Colors.black,
         ),
       ),
     );

@@ -6,7 +6,7 @@ class LogoHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Column(
       children: [
         SizedBox(height: 2.h),
