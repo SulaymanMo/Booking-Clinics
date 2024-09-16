@@ -6,10 +6,15 @@ class LogoHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         SizedBox(height: 2.h),
-        Image.asset('assets/images/logo.png', height: 66, width: 66,),
+        Image.asset(
+          isDark ? 'assets/images/logo_white.png' : 'assets/images/logo.png',
+          height: 66,
+          width: 66,
+        ),
         SizedBox(height: 2.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

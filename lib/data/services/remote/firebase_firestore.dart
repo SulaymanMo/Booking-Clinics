@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../models/booking.dart';
 import '../../models/doctor_model.dart';
+import '../../models/favorite.dart';
 import '../../models/patient.dart';
 
 class FirebaseFirestoreService {
@@ -102,4 +103,48 @@ class FirebaseFirestoreService {
       rethrow;
     }
   }
+
+  Future<void> addFavoriteToPatient(String patientId, Favorite favorite) async {
+    try {
+      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+
+      // Add the favorite to the favorites array
+      await patientRef.update({
+        'favorites': FieldValue.arrayUnion([favorite.toJson()]),
+      });
+    } catch (e) {
+      throw Exception('Failed to add favorite: $e');
+    }
+  }
+
+  Future<List<Favorite>> getFavoritesForPatient(String patientId) async {
+    try {
+      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+      final doc = await patientRef.get();
+      if (doc.exists) {
+        final data = doc.data();
+        if (data != null && data['favorites'] != null) {
+          final favoritesJson = List<Map<String, dynamic>>.from(data['favorites']);
+          return favoritesJson.map((json) => Favorite.fromJson(json)).toList();
+        }
+      }
+      return [];
+    } catch (e) {
+      throw Exception('Failed to get favorites: $e');
+    }
+  }
+
+  Future<void> removeFavoriteFromPatient(String patientId, Favorite favorite) async {
+    try {
+      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+
+      // Remove the favorite from the favorites array
+      await patientRef.update({
+        'favorites': FieldValue.arrayRemove([favorite.toJson()]),
+      });
+    } catch (e) {
+      throw Exception('Failed to remove favorite: $e');
+    }
+  }
+
 }

@@ -49,7 +49,7 @@ class _SignupFormState extends State<SignupForm> {
             prefix: Iconsax.lock,
             controller: passwordController,
           ),
-          SizedBox(height: 1.5.h),
+          SizedBox(height: 3.h),
           _isLoading
               ? const CircularProgressIndicator()
               : CustomElevatedButton(

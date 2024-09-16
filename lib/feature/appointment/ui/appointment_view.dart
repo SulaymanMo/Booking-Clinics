@@ -34,19 +34,19 @@ class _AppointmentViewState extends State<AppointmentView>
       body: TabBarView(
         controller: _tabController,
         children: [
-          buildUpcomingBookings(),
-          buildCompletedBookings(),
-          buildCanceledBookings(),
+          buildUpcomingBookings(context),
+          buildCompletedBookings(context),
+          buildCanceledBookings(context),
         ],
       ),
     );
   }
 
-  Widget buildUpcomingBookings() {
+  Widget buildUpcomingBookings(BuildContext context) {
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
       itemCount: 4,
-      separatorBuilder: (_, __) => const SizedBox(height: 4),
+      separatorBuilder: (_, __) => const SizedBox(height: 6),
       itemBuilder: (context, index) => buildBookingCard(
         context,
         date: 'May 22, 2023 - 10:00 AM',
@@ -56,7 +56,7 @@ class _AppointmentViewState extends State<AppointmentView>
         imageUrl: 'assets/images/banner_2.png',
         buttons: const Row(
           children: [
-             Expanded(
+            Expanded(
               child: CustomButton(
                 text: 'Cancel',
                 color: MyColors.gray,
@@ -81,11 +81,11 @@ class _AppointmentViewState extends State<AppointmentView>
     );
   }
 
-  Widget buildCompletedBookings() {
+  Widget buildCompletedBookings(BuildContext context) {
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
       itemCount: 4,
-      separatorBuilder: (_, __) => const SizedBox(height: 4),
+      separatorBuilder: (_, __) => const SizedBox(height: 6),
       itemBuilder: (context, index) => buildBookingCard(
         context,
         date: 'March 12, 2023 - 11:00 AM',
@@ -120,11 +120,11 @@ class _AppointmentViewState extends State<AppointmentView>
     );
   }
 
-  Widget buildCanceledBookings() {
+  Widget buildCanceledBookings(BuildContext context) {
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
       itemCount: 4,
-      separatorBuilder: (_, __) => const SizedBox(height: 4),
+      separatorBuilder: (_, __) => const SizedBox(height: 6),
       itemBuilder: (context, index) => buildBookingCard(
         context,
         date: 'March 12, 2023 - 11:00 AM',

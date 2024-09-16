@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/models/patient.dart';
 import '../../feature/auth/ui/views/edit_your_profile.dart';
 import '../../feature/auth/ui/views/forget_password.dart';
-import '../../feature/auth/ui/views/onboarding_screen.dart';
+import '../../feature/auth/ui/views/onboarding_screen2.dart';
 import '../../feature/auth/ui/views/signin.dart';
 import '../../feature/auth/ui/views/signup.dart';
 import '../../feature/profile/ui/manager/profile_cubit.dart';
@@ -37,7 +37,7 @@ class AppRouter {
       case Routes.signin:
         return MaterialPageRoute(builder: (_) => const SignIn());
       case Routes.onboarding:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+        return MaterialPageRoute(builder: (_) => const OnBoarding());
       case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPassword());
       case Routes.editYourProfile:
