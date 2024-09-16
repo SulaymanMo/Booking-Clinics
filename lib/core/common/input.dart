@@ -39,7 +39,7 @@ class Input extends StatelessWidget {
       onSaved: onSaved,
       onChanged: onChanged,
       controller: controller,
-      style: TextStyle(fontSize: 14.5.sp, fontWeight: FontWeight.w400),
+      style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
       onTapOutside: (val) => FocusManager.instance.primaryFocus!.unfocus(),
       validator: validator,
       keyboardType: keyboardType,
@@ -55,7 +55,7 @@ class Input extends StatelessWidget {
             : ConstColor.iconDark.color,
         prefixIcon: prefix != null
             ? Padding(
-                padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
+                padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.5.h),
                 child: Icon(
                   prefix,
                   size: 21.sp,

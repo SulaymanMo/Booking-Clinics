@@ -9,8 +9,8 @@ import '../../../../core/constant/const_color.dart';
 import '../../../../data/models/booking.dart';
 import '../../../../data/services/remote/firebase_auth.dart';
 import '../../../../data/services/remote/firebase_firestore.dart';
-import '../cubit/booking_cubit.dart';
-import '../cubit/booking_state.dart';
+import '../../cubit/booking_cubit.dart';
+import '../../cubit/booking_state.dart';
 import '../widgets/custom_dialog.dart';
 
 class BookAppointmentView extends StatelessWidget {

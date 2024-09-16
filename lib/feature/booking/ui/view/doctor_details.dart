@@ -1,7 +1,5 @@
 import 'package:booking_clinics/core/common/custom_button.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/feature/booking/ui/cubit/doc_details_cubit.dart';
-import 'package:booking_clinics/feature/booking/ui/cubit/doc_details_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -9,6 +7,8 @@ import 'package:sizer/sizer.dart';
 import '../../../../core/common/section_heading.dart';
 import '../../../../core/constant/const_string.dart';
 import '../../../../data/services/remote/firebase_firestore.dart';
+import '../../cubit/doc_details_cubit.dart';
+import '../../cubit/doc_details_state.dart';
 import '../widgets/achievement_column.dart';
 import '../widgets/reviews_item.dart';
 import '../widgets/rounded_doctor_card.dart';
