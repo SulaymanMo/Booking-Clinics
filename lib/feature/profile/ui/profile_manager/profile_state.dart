@@ -4,7 +4,7 @@ sealed class ProfileState {
   const ProfileState();
 }
 
-// ! State for profile page
+// ! States for profile page
 final class ProfileInitial extends ProfileState {}
 
 final class ProfileLoading extends ProfileState {}
@@ -19,15 +19,12 @@ final class ProfileFailure extends ProfileState {
   const ProfileFailure(this.error);
 }
 
-// ! State for upadte page
+// ! States for edit page
 final class UpdateProfileInitial extends ProfileState {}
 
 final class UpdateProfileLoading extends ProfileState {}
 
-final class UpdateProfileSuccess extends ProfileState {
-  final Patient model;
-  const UpdateProfileSuccess(this.model);
-}
+final class UpdateProfileSuccess extends ProfileState {}
 
 final class UpdateProfileFailure extends ProfileState {
   final String error;

@@ -3,12 +3,13 @@ import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
 class AppointmentDialog extends StatelessWidget {
   final String doctorName;
- 
- final String appointmentDate;
+
+  final String appointmentDate;
   final String appointmentTime;
 
   const AppointmentDialog({
@@ -30,12 +31,15 @@ class AppointmentDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             // Success Image
-            Image.asset(MyImages.successDialog, height: 35.w, width: 35.w),
+            SvgPicture.asset(MyImages.successDialog, height: 35.w, width: 35.w),
             SizedBox(height: 4.w),
             // Congratulation Text
             Text(
               'Congratulations!',
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: MyColors.dark),
+              style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold,
+                  color: MyColors.dark),
             ),
             SizedBox(height: 3.w),
             // Appointment Details

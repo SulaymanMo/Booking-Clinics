@@ -34,6 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: Column(
         children: [
+          
           Expanded(
             child: PageView.builder(
               controller: _controller,
@@ -46,9 +47,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               itemBuilder: (_, i) {
                 return Column(
                   children: [
+                    
                     SizedBox(
-                      width: 100.w,
-                      height: 67.h,
+                      height: 65.h,
+                      width: double.infinity,
                       child: Image.asset(
                         contents[i].image,
                         fit: BoxFit.cover,
@@ -76,33 +78,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              contents.length,
-              (index) => buildDot(index, context),
-            ),
-          ),
-
-          SizedBox(height: 2.h),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              contents.length,
-              (index) => CarouselIndicator(
-                currentIndex == index,
-                color: MediaQuery.of(context).platformBrightness == Brightness.dark
-                ? currentIndex == index
-                    ? Colors.white
-                    : Colors.white70
-                : currentIndex == index
-                    ? ConstColor.iconDark.color
-                    : ConstColor.icon.color,
+          // SizedBox(height: 2.h),
+          Container(
+            height: 10.w,
+            color: Colors.red,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                contents.length,
+                (index) => CarouselIndicator(
+                  currentIndex == index,
+                  color: MediaQuery.of(context).platformBrightness ==
+                          Brightness.dark
+                      ? currentIndex == index
+                          ? Colors.white
+                          : Colors.white70
+                      : currentIndex == index
+                          ? ConstColor.iconDark.color
+                          : ConstColor.icon.color,
+                ),
               ),
             ),
           ),
-
           // Evaluated button
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.h),
@@ -145,23 +142,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             },
             child: Text(
               "Skip",
-              style: TextStyle(color: Colors.grey, fontSize: 17.sp),
+              style: context.regular14,
             ),
           ),
           SizedBox(height: 1.5.h), // Adjust for spacing at the bottom
         ],
-      ),
-    );
-  }
-
-  Container buildDot(int index, BuildContext context) {
-    return Container(
-      height: 10,
-      width: currentIndex == index ? 40 : 10,
-      margin: const EdgeInsets.only(right: 5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? MyColors.dark : ConstColor.textBtn.color,
       ),
     );
   }

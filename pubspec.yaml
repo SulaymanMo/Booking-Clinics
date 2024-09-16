@@ -27,12 +27,15 @@ dependencies:
   flutter_polyline_points: ^2.1.0
   iconsax: ^0.0.8
   shared_preferences:
+  cached_network_image: ^3.4.0
 
   # firebase
   firebase_core: ^3.3.0
   cloud_firestore:
   firebase_storage:
   firebase_auth:
+  image_picker: ^1.1.2
+  path: ^1.9.0
 
 flutter_native_splash:
   background_image: "assets/images/splash_logo.png"

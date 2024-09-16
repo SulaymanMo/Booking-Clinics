@@ -8,6 +8,7 @@ class Input extends StatelessWidget {
     this.label,
     this.suffix,
     this.prefix,
+    this.enabled,
     this.isDense,
     this.onSaved,
     this.fillColor,
@@ -20,6 +21,7 @@ class Input extends StatelessWidget {
     super.key,
   });
 
+  final bool? enabled;
   final bool? isDense;
   final String? label;
   final String? hint;
@@ -44,6 +46,7 @@ class Input extends StatelessWidget {
       validator: validator,
       keyboardType: keyboardType,
       obscureText: obscureText ?? false,
+      enabled: enabled,
       decoration: InputDecoration(
         filled: true,
         hintText: hint,
@@ -81,6 +84,7 @@ class Input extends StatelessWidget {
         ),
         border: buildBorder(),
         enabledBorder: buildBorder(),
+        disabledBorder: buildBorder(),
         focusedBorder: buildFocusedBorder(),
       ),
     );

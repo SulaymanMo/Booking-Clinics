@@ -1,9 +1,10 @@
+import 'package:booking_clinics/feature/profile/ui/image_manager/pick_image_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/helper/logout_btn_sheet.dart';
 import '../../../auth/ui/views/edit_your_profile.dart';
-import '../manager/profile_cubit.dart';
+import '../profile_manager/profile_cubit.dart';
 import '../widget/custom_expansion.dart';
 import '../../../../core/common/profile_image.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
@@ -18,7 +19,10 @@ class ProfileView extends StatelessWidget {
       alignment: const Alignment(0, 0.25),
       child: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
-        child: BlocBuilder<ProfileCubit, ProfileState>(
+        child: BlocConsumer<ProfileCubit, ProfileState>(
+          listener: (_, state) {
+            if (state is UpdateProfileLoading) {}
+          },
           builder: (_, state) {
             if (state is ProfileSuccess) {
               return Column(
@@ -27,8 +31,11 @@ class ProfileView extends StatelessWidget {
                   Text("Profile", style: context.semi20),
                   SizedBox(height: 4.h),
                   ProfileImage(
+                    image: state.model.profileImg.isEmpty
+                        ? null
+                        : NetworkImage(state.model.profileImg),
                     onTap: () async {
-                      await navToEditPage(context, state);
+                      await navToEditPage(context);
                     },
                   ),
                   SizedBox(height: 2.h),
@@ -74,12 +81,14 @@ class ProfileView extends StatelessWidget {
                   style: context.semi16,
                 ),
               );
-            } else {
+            } else if (state is ProfileLoading) {
               return Center(
                 child: CircularProgressIndicator(
                   color: ConstColor.primary.color,
                 ),
               );
+            } else {
+              return Center();
             }
           },
         ),
@@ -89,17 +98,21 @@ class ProfileView extends StatelessWidget {
 
   Future<dynamic> navToEditPage(
     BuildContext context,
-    ProfileSuccess state,
   ) async {
     return await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) {
-          return BlocProvider<ProfileCubit>.value(
-            value: context.read<ProfileCubit>(),
-            child: EditYourProfile(
-              patient: state.model,
-            ),
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider<ProfileCubit>.value(
+                value: context.read<ProfileCubit>(),
+              ),
+              BlocProvider<PickImageCubit>(
+                create: (_) => PickImageCubit(),
+              ),
+            ],
+            child: const EditYourProfile(),
           );
         },
       ),

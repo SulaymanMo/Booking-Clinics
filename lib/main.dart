@@ -1,4 +1,6 @@
+import 'package:booking_clinics/core/helper/observer.dart';
 import 'package:booking_clinics/core/theme/dark_theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'data/services/remote/firebase_auth.dart';
 import 'firebase_options.dart';
 import 'core/helper/routes.dart';
@@ -20,6 +22,7 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   setupServiceLocator();
   await Hive.initFlutter();
+  Bloc.observer = Observer();
   // ! _____ Prevent Device Orientation _____ ! //
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

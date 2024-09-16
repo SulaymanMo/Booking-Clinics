@@ -1,62 +1,51 @@
-import 'package:booking_clinics/core/common/custom_button.dart';
 import 'package:booking_clinics/core/common/input.dart';
 import 'package:booking_clinics/core/common/profile_image.dart';
-import 'package:booking_clinics/data/models/patient.dart';
-import 'package:booking_clinics/feature/profile/ui/manager/profile_cubit.dart';
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
+import '../../../profile/ui/image_manager/pick_image_cubit.dart';
+import '../../../profile/ui/profile_manager/profile_cubit.dart';
 
 class EditYourProfile extends StatefulWidget {
-  final Patient patient;
-  const EditYourProfile({super.key, required this.patient});
+  const EditYourProfile({super.key});
 
   @override
   State<EditYourProfile> createState() => _EditYourProfileState();
 }
 
 class _EditYourProfileState extends State<EditYourProfile> {
-  late TextEditingController nameController;
+  late TextEditingController _nameController;
   late TextEditingController emailController;
-  late TextEditingController phoneController;
-  late TextEditingController birthDateController;
+  late TextEditingController _phoneController;
+  late TextEditingController _birthController;
 
   @override
   void initState() {
     super.initState();
-    context.read<ProfileCubit>().getPatientData();
-    nameController = TextEditingController(text: widget.patient.name);
-    emailController = TextEditingController(text: widget.patient.email);
-    phoneController = TextEditingController(text: widget.patient.phone);
-    birthDateController = TextEditingController(text: widget.patient.birthDate);
+    context.read<ProfileCubit>().getUserData();
+    _nameController = TextEditingController();
+    emailController = TextEditingController();
+    _phoneController = TextEditingController();
+    _birthController = TextEditingController();
   }
 
   @override
   void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    phoneController.dispose();
-    birthDateController.dispose();
     super.dispose();
-  }
-
-  Future<void> _updatePatientData() async {
-    Patient(
-      uid: widget.patient.uid,
-      name: nameController.text,
-      email: emailController.text,
-      phone: phoneController.text,
-      birthDate: birthDateController.text,
-      profileImg: widget.patient.profileImg,
-      bookings: [],
-      favorites: [],
-    );
+    _nameController.dispose();
+    emailController.dispose();
+    _phoneController.dispose();
+    _birthController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final ProfileCubit cubit = context.read<ProfileCubit>();
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Fill your Profile"),
@@ -67,48 +56,142 @@ class _EditYourProfileState extends State<EditYourProfile> {
           shrinkWrap: true,
           padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
           children: [
-            /*change photo*/
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ProfileImage(
-                  onTap: () async {},
+                BlocConsumer<PickImageCubit, PickImageState>(
+                  listener: (_, state) {
+                    if (state is PickImageSuccess) {
+                      context.read<ProfileCubit>().image = state.image;
+                    }
+                  },
+                  builder: (_, state) {
+                    if (state is PickImageSuccess) {
+                      return ProfileImage(
+                        image: FileImage(state.image),
+                        onTap: () async {
+                          await context
+                              .read<PickImageCubit>()
+                              .pickImageFromGallery();
+                        },
+                      );
+                    } else {
+                      return ProfileImage(
+                        onTap: () async {
+                          await context
+                              .read<PickImageCubit>()
+                              .pickImageFromGallery();
+                        },
+                      );
+                    }
+                  },
                 ),
               ],
             ),
-            SizedBox(height: 4.h),
+            SizedBox(height: 8.h),
             Input(
-              hint: "Full Name",
-              prefix: Iconsax.user,
-              controller: nameController,
-            ),
-            SizedBox(height: 1.5.h),
-            Input(
+              enabled: false,
               prefix: Iconsax.sms,
               hint: "mail@example.com",
               controller: emailController,
             ),
             SizedBox(height: 1.5.h),
             Input(
+              hint: "Full Name",
+              prefix: Iconsax.user,
+              controller: _nameController,
+            ),
+            SizedBox(height: 1.5.h),
+            Input(
               hint: "Phone Number",
               prefix: Iconsax.mobile,
-              controller: phoneController,
+              controller: _phoneController,
             ),
             SizedBox(height: 1.5.h),
             Input(
               hint: "Date of Birth",
               prefix: Iconsax.calendar,
-              controller: birthDateController,
+              controller: _birthController,
             ),
             SizedBox(height: 4.h),
-            CustomButton(
-              text: 'Update',
-              onTap: _updatePatientData,
-              textSize: 14.5.sp,
+            BlocListener<ProfileCubit, ProfileState>(
+              listener: (context, state) {
+                if (state is UpdateProfileSuccess) {
+                  successDialog(context);
+                }
+              },
+              child: ElevatedButton(
+                onPressed: () async {
+                  await _onClick(cubit, context);
+                },
+                child:
+                    context.watch<ProfileCubit>().state is UpdateProfileLoading
+                        ? const CircularProgressIndicator()
+                        : const Text("Update"),
+              ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void successDialog(BuildContext context) {
+    showDialog(
+      // barrierDismissible: true,
+      context: context,
+      builder: (s) {
+        return Dialog(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(
+                  "assets/images/success.svg",
+                  width: 35.w,
+                  height: 35.w,
+                ),
+                SizedBox(height: 2.h),
+                Text("Update Successful", style: context.bold18),
+                SizedBox(height: 1.h),
+                Text(
+                  "Your profile has been updated successfully!",
+                  textAlign: TextAlign.center,
+                  style: context.regular14,
+                ),
+                SizedBox(height: 4.h),
+                ElevatedButton(
+                  onPressed: () {
+                    context.nav.pop();
+                  },
+                  child: const Text("Done"),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onClick(ProfileCubit cubit, BuildContext context) async {
+    Map<String, dynamic> data = {};
+    if (_nameController.text.trim().isNotEmpty) {
+      data["name"] = _nameController.text.trim();
+    }
+    if (_phoneController.text.trim().isNotEmpty) {
+      data["phone"] = _phoneController.text.trim();
+    }
+    if (_birthController.text.trim().isNotEmpty) {
+      data["birth_date"] = _birthController.text.trim();
+    }
+    if (cubit.downLoadUrl != null) {
+      data["profile_image"] = cubit.downLoadUrl;
+    }
+    if (data.isEmpty && cubit.image == null) return;
+    await cubit.updateUserData(data);
+    await cubit.getUserData();
   }
 }
