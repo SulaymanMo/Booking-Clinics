@@ -6,7 +6,6 @@ import 'package:booking_clinics/feature/map/data/repo/map_repo/map_impl.dart';
 import 'package:booking_clinics/feature/map/data/repo/routes_repo/routes_impl.dart';
 import 'package:booking_clinics/feature/map/ui/manager/map_cubit.dart';
 import 'package:booking_clinics/feature/map/ui/view/map_view.dart';
-import 'package:booking_clinics/feature/profile/ui/manager/profile_cubit.dart';
 import 'package:booking_clinics/feature/profile/ui/view/profile_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -14,6 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/feature/home/ui/view/home_view.dart';
 import '../../../appointment/ui/appointment_view.dart';
+import '../../../profile/ui/profile_manager/profile_cubit.dart';
 
 class NavView extends StatefulWidget {
   const NavView({super.key});
@@ -37,7 +37,7 @@ class _NavViewState extends State<NavView> {
     const AppointmentView(),
     BlocProvider<ProfileCubit>(
       create: (_) =>
-          ProfileCubit(getIt.get<FirebaseAuthService>())..getPatientData(),
+          ProfileCubit(getIt.get<FirebaseAuthService>())..getUserData(),
       child: const ProfileView(),
     ),
   ];

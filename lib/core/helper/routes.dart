@@ -3,13 +3,12 @@ import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
 import 'package:booking_clinics/feature/see_all/ui/view/see_all_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/patient.dart';
 import '../../feature/auth/ui/views/edit_your_profile.dart';
 import '../../feature/auth/ui/views/forget_password.dart';
 import '../../feature/auth/ui/views/onboarding_screen2.dart';
 import '../../feature/auth/ui/views/signin.dart';
 import '../../feature/auth/ui/views/signup.dart';
-import '../../feature/profile/ui/manager/profile_cubit.dart';
+import '../../feature/profile/ui/profile_manager/profile_cubit.dart';
 import '../../feature/see_all/data/see_all_repo_impl.dart';
 import '../../feature/see_all/ui/cubit/seeall_cubit.dart';
 import '../constant/const_string.dart';
@@ -44,7 +43,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => BlocProvider<ProfileCubit>.value(
             value: context.read<ProfileCubit>(),
-            child: EditYourProfile(patient: settings.arguments as Patient),
+            child: const EditYourProfile(),
           ),
         );
       case Routes.bookAppointmentRoute:

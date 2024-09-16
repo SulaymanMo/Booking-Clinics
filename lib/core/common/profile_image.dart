@@ -4,8 +4,9 @@ import 'package:iconsax/iconsax.dart';
 import 'package:flutter/material.dart';
 
 class ProfileImage extends StatelessWidget {
+  final ImageProvider? image;
   final Future<void> Function()? onTap;
-  const ProfileImage({this.onTap, super.key});
+  const ProfileImage({this.onTap, this.image, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,11 @@ class ProfileImage extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 20.w,
+            backgroundImage: image,
             backgroundColor: ConstColor.iconDark.color,
-            child: Icon(Iconsax.user, size: 20.w, color: Colors.white),
+            child: image == null
+                ? Icon(Iconsax.user, size: 20.w, color: Colors.white)
+                : null,
           ),
           Positioned(
             right: 0,
