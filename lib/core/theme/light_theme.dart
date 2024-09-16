@@ -15,6 +15,7 @@ ThemeData lightTheme() {
         color: Colors.black,
         fontWeight: FontWeight.w500,
       ),
+      centerTitle: true,
       titleSpacing: 4.w,
       scrolledUnderElevation: 0,
       backgroundColor: Colors.white,
