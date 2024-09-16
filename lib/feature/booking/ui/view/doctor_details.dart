@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../core/common/basic_appbar.dart';
 import '../../../../core/common/section_heading.dart';
 import '../../../../core/constant/const_string.dart';
 import '../../../../data/services/remote/firebase_firestore.dart';
@@ -23,12 +22,40 @@ class DoctorDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DoctorCubit(FirebaseFirestoreService())..fetchDoctorById(doctorId),
+      create: (context) {
+        final doctorCubit = DoctorCubit(FirebaseFirestoreService());
+        doctorCubit.fetchDoctorById(doctorId);
+        doctorCubit.fetchFavorites(patientName);
+        return doctorCubit;
+      },
       child: Scaffold(
-        appBar: BasicAppBar(
-          title: 'Doctor Details',
-          actionIcon: Iconsax.heart,
-          onActionPressed: () {},
+        appBar: AppBar(
+          title: const Text('Doctor Details'),
+          actions: [
+            Builder(builder: (context) {
+              return BlocBuilder<DoctorCubit, DoctorState>(
+                builder: (context, state) {
+                  if (state is DoctorLoaded && state.doctors.isNotEmpty) {
+                    final doctor = state.doctors.first;
+                    final isFavorite = context
+                        .read<DoctorCubit>()
+                        .isFavoriteDoctor(doctor.name);
+                    return IconButton(
+                      icon: Icon(isFavorite ? Iconsax.heart5 : Iconsax.heart),
+                      onPressed: () {
+                        final doctorCubit = context.read<DoctorCubit>();
+                        doctorCubit.toggleDoctorFavoriteStatus(doctor);
+                      },
+                    );
+                  }
+                  return IconButton(
+                    icon: const Icon(Iconsax.heart),
+                    onPressed: (){},
+                  );
+                },
+              );
+            }),
+          ],
         ),
         body: BlocBuilder<DoctorCubit, DoctorState>(
           builder: (context, state) {
@@ -57,7 +84,8 @@ class DoctorDetailsView extends StatelessWidget {
                     ),
                     SizedBox(height: 2.h),
                     // About me
-                    const SectionHeading(title: 'About me', showActionButton: false),
+                    const SectionHeading(
+                        title: 'About me', showActionButton: false),
                     SizedBox(height: 1.h),
                     Text(
                       doctor.about ?? "No information provided.",
@@ -68,7 +96,8 @@ class DoctorDetailsView extends StatelessWidget {
                     SizedBox(height: 2.h),
 
                     // Working Time
-                    const SectionHeading(title: 'Working Time', showActionButton: false),
+                    const SectionHeading(
+                        title: 'Working Time', showActionButton: false),
                     SizedBox(height: 1.h),
                     Text(
                       doctor.workingHours ?? "Not available",
@@ -79,7 +108,8 @@ class DoctorDetailsView extends StatelessWidget {
                     SizedBox(height: 2.h),
 
                     // Reviews
-                    const SectionHeading(title: 'Reviews', showActionButton: false),
+                    const SectionHeading(
+                        title: 'Reviews', showActionButton: false),
                     SizedBox(height: 0.5.h),
                     // const ReviewsItem(),
                     ListView.separated(
@@ -119,9 +149,9 @@ class DoctorDetailsView extends StatelessWidget {
                     arguments: {
                       'doctorId': doctor.id,
                       'doctorName': doctor.name,
-                      'doctorImageUrl': doctor.imageUrl?? '',
+                      'doctorImageUrl': doctor.imageUrl ?? '',
                       'doctorSpeciality': doctor.speciality,
-                      'doctorAddress': doctor.address?? '' ,
+                      'doctorAddress': doctor.address ?? '',
                       'patientName': patientName,
                     },
                   ),
@@ -136,4 +166,3 @@ class DoctorDetailsView extends StatelessWidget {
     );
   }
 }
-

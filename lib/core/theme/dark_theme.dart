@@ -16,6 +16,7 @@ ThemeData darkTheme() {
         fontWeight: FontWeight.w500,
       ),
       titleSpacing: 4.w,
+      centerTitle: true,
       scrolledUnderElevation: 0,
       backgroundColor: ConstColor.dark.color,
       shape: RoundedRectangleBorder(

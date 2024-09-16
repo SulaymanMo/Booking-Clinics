@@ -157,20 +157,20 @@ class BookAppointmentView extends StatelessWidget {
                             // Add the booking to Firestore
                             try {
                               FirebaseFirestoreService().addBookingToPatient(patientUid!, newBooking);
+
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AppointmentDialog(
+                                    doctorName: doctorName,
+                                    appointmentDate: cubit.getFormattedDate(),
+                                    appointmentTime: '${cubit.selectedHour}',
+                                  );
+                                },
+                              );
                             } catch (e) {
                               print('Error ______ $e');
                             }
-
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AppointmentDialog(
-                                  doctorName: doctorName,
-                                  appointmentDate: cubit.getFormattedDate(),
-                                  appointmentTime: '${cubit.selectedHour}',
-                                );
-                              },
-                            );
                           }
                         : null,
                   );
