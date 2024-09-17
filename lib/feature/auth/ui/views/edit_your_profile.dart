@@ -126,10 +126,10 @@ class _EditYourProfileState extends State<EditYourProfile> {
                   onPressed: () async {
                     await _onClick(cubit, context);
                   },
-                  child:
-                      context.watch<ProfileCubit>().state is UpdateProfileLoading
-                          ? const CircularProgressIndicator()
-                          : const Text("Update"),
+                  child: context.watch<ProfileCubit>().state
+                          is UpdateProfileLoading
+                      ? const CircularProgressIndicator()
+                      : const Text("Update"),
                 ),
               ),
             ],
@@ -180,7 +180,7 @@ class _EditYourProfileState extends State<EditYourProfile> {
   }
 
   Future<void> _onClick(ProfileCubit cubit, BuildContext context) async {
-    await cubit.uploadImage();
+    if (cubit.image != null) await cubit.uploadImage();
 
     Map<String, dynamic> data = {};
     if (_nameController.text.trim().isNotEmpty) {
@@ -197,6 +197,11 @@ class _EditYourProfileState extends State<EditYourProfile> {
     }
     if (data.isEmpty && cubit.image == null) return;
     await cubit.updateUserData(data);
-    await cubit.getUserData();
+    if (cubit.state is UpdateProfileSuccess) {
+      _nameController.clear();
+      _phoneController.clear();
+      _birthController.clear();
+      await cubit.getUserData();
+    }
   }
 }

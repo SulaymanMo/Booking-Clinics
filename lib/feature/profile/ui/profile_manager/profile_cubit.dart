@@ -55,11 +55,12 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   // ! Update user data
   Future<void> updateUserData(Map<String, dynamic> data) async {
-    emit(UpdateProfileLoading());
     try {
-      //await uploadImage();
+      // if (data.isEmpty && image == null) return;
+      print("object ========================");
+      emit(UpdateProfileLoading());
+      // await uploadImage();
       final String? uid = await _service.getUid();
-      if (data.isEmpty && image == null) return;
       await _firestore.collection('patients').doc(uid).update(data);
 
       image = null;
