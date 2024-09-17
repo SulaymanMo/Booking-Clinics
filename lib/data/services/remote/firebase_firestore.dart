@@ -147,4 +147,26 @@ class FirebaseFirestoreService {
     }
   }
 
+  Future<List<Booking>> getBookingsForPatient(String patientId) async {
+
+    try {
+      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+      final docSnapshot = await patientRef.get();
+
+      if (docSnapshot.exists) {
+        final data = docSnapshot.data();
+        if (data != null && data['bookings'] != null) {
+          // Convert the list of JSON bookings into a List<Booking> object
+          final bookingsJson = List<Map<String, dynamic>>.from(data['bookings']);
+          return bookingsJson.map((json) => Booking.fromJson(json)).toList();
+        }
+      }
+      // If no bookings exist, return an empty list
+      return [];
+    } catch (e) {
+      print('Error fetching bookings: $e');
+      throw Exception('Failed to get bookings for patient: $e');
+    }
+  }
+
 }
