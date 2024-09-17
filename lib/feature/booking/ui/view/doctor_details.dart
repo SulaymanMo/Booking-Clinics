@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/common/section_heading.dart';
+import '../../../../core/constant/const_color.dart';
 import '../../../../core/constant/const_string.dart';
 import '../../cubit/doc_details_cubit.dart';
 import '../widgets/achievement_column.dart';
@@ -52,7 +53,11 @@ class DoctorDetailsView extends StatelessWidget {
       body: BlocBuilder<DoctorCubit, DoctorState>(
         builder: (_, state) {
           if (state is DoctorLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(
+              child: CircularProgressIndicator(
+                color: ConstColor.primary.color,
+              ),
+            );
           } else if (state is DoctorError) {
             return Center(child: Text(state.error));
           } else if (state is DoctorLoaded && state.doctors.isNotEmpty) {
