@@ -52,11 +52,11 @@ ThemeData lightTheme() {
       ),
     ),
     // ! _____ Card Theme _____ ! //
-    cardTheme: const CardTheme(
-      elevation: 3,
-      color: Colors.white,
+    cardTheme: CardTheme(
+      elevation: 4,
       margin: EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
+      color: ConstColor.secondary.color,
     ),
     // ! _____ Text Theme _____ ! //
     textTheme: textTheme(),

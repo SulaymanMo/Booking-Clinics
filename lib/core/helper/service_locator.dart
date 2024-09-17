@@ -1,4 +1,5 @@
 import 'package:booking_clinics/data/services/remote/firebase_auth.dart';
+import 'package:booking_clinics/data/services/remote/firebase_firestore.dart';
 import 'package:booking_clinics/feature/see_all/data/see_all_repo_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -26,5 +27,8 @@ void setupServiceLocator() {
   );
   getIt.registerLazySingleton<FirebaseAuthService>(
     () => FirebaseAuthService(),
+  );
+  getIt.registerLazySingleton<FirebaseFirestoreService>(
+    () => FirebaseFirestoreService(),
   );
 }
