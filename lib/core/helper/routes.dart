@@ -1,3 +1,4 @@
+import 'package:booking_clinics/data/services/remote/firebase_firestore.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
 import 'package:booking_clinics/feature/see_all/ui/view/see_all_view.dart';
@@ -8,6 +9,7 @@ import '../../feature/auth/ui/views/forget_password.dart';
 import '../../feature/auth/ui/views/onboarding_screen2.dart';
 import '../../feature/auth/ui/views/signin.dart';
 import '../../feature/auth/ui/views/signup.dart';
+import '../../feature/booking/cubit/doc_details_cubit.dart';
 import '../../feature/profile/ui/profile_manager/profile_cubit.dart';
 import '../../feature/see_all/data/see_all_repo_impl.dart';
 import '../../feature/see_all/ui/cubit/seeall_cubit.dart';
@@ -25,9 +27,14 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) {
             final args = settings.arguments as Map<String, dynamic>;
-            return DoctorDetailsView(
-              doctorId: args['doctorId'],
-              patientName: args['patientName'],
+            return BlocProvider<DoctorCubit>(
+              create: (_) => DoctorCubit(getIt.get<FirebaseFirestoreService>())
+                ..fetchFavorites(args["patientName"])
+                ..fetchDoctorById(args["doctorId"]),
+              child: DoctorDetailsView(
+                doctorId: args['doctorId'],
+                patientName: args['patientName'],
+              ),
             );
           },
         );
