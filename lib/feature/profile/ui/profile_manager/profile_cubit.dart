@@ -36,7 +36,8 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   // ! upload image to storage
-  Future<void> _uploadImage() async {
+  Future<void> uploadImage() async {
+    emit(UpdateProfileLoading());
     try {
       if (image == null) return;
       String fileName = basename(image!.path);
@@ -56,11 +57,10 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> updateUserData(Map<String, dynamic> data) async {
     emit(UpdateProfileLoading());
     try {
-      await _uploadImage();
+      //await uploadImage();
       final String? uid = await _service.getUid();
       if (data.isEmpty && image == null) return;
       await _firestore.collection('patients').doc(uid).update(data);
-      print("$downLoadUrl =======================================");
 
       image = null;
       downLoadUrl = null;

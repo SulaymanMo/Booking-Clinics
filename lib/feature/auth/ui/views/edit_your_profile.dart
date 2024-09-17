@@ -21,6 +21,7 @@ class _EditYourProfileState extends State<EditYourProfile> {
   late TextEditingController emailController;
   late TextEditingController _phoneController;
   late TextEditingController _birthController;
+  late GlobalKey<FormState> _formState;
 
   @override
   void initState() {
@@ -30,6 +31,7 @@ class _EditYourProfileState extends State<EditYourProfile> {
     emailController = TextEditingController();
     _phoneController = TextEditingController();
     _birthController = TextEditingController();
+    _formState = GlobalKey<FormState>();
   }
 
   @override
@@ -39,6 +41,7 @@ class _EditYourProfileState extends State<EditYourProfile> {
     emailController.dispose();
     _phoneController.dispose();
     _birthController.dispose();
+    _formState.currentState?.dispose();
   }
 
   @override
@@ -46,91 +49,91 @@ class _EditYourProfileState extends State<EditYourProfile> {
     final ProfileCubit cubit = context.read<ProfileCubit>();
     return Scaffold(
       extendBody: true,
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Fill your Profile"),
-      ),
-      body: Align(
-        alignment: const Alignment(0, -0.75),
-        child: ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                BlocConsumer<PickImageCubit, PickImageState>(
-                  listener: (_, state) {
-                    if (state is PickImageSuccess) {
-                      context.read<ProfileCubit>().image = state.image;
-                    }
-                  },
-                  builder: (_, state) {
-                    if (state is PickImageSuccess) {
-                      return ProfileImage(
-                        image: FileImage(state.image),
-                        onTap: () async {
-                          await context
-                              .read<PickImageCubit>()
-                              .pickImageFromGallery();
-                        },
-                      );
-                    } else {
-                      return ProfileImage(
-                        onTap: () async {
-                          await context
-                              .read<PickImageCubit>()
-                              .pickImageFromGallery();
-                        },
-                      );
-                    }
-                  },
-                ),
-              ],
-            ),
-            SizedBox(height: 8.h),
-            Input(
-              enabled: false,
-              prefix: Iconsax.sms,
-              hint: "mail@example.com",
-              controller: emailController,
-            ),
-            SizedBox(height: 1.5.h),
-            Input(
-              hint: "Full Name",
-              prefix: Iconsax.user,
-              controller: _nameController,
-            ),
-            SizedBox(height: 1.5.h),
-            Input(
-              hint: "Phone Number",
-              prefix: Iconsax.mobile,
-              controller: _phoneController,
-            ),
-            SizedBox(height: 1.5.h),
-            Input(
-              hint: "Date of Birth",
-              prefix: Iconsax.calendar,
-              controller: _birthController,
-            ),
-            SizedBox(height: 4.h),
-            BlocListener<ProfileCubit, ProfileState>(
-              listener: (context, state) {
-                if (state is UpdateProfileSuccess) {
-                  successDialog(context);
-                }
-              },
-              child: ElevatedButton(
-                onPressed: () async {
-                  await _onClick(cubit, context);
-                },
-                child:
-                    context.watch<ProfileCubit>().state is UpdateProfileLoading
-                        ? const CircularProgressIndicator()
-                        : const Text("Update"),
+      appBar: AppBar(centerTitle: true, title: const Text("Fill your Profile")),
+      body: Form(
+        key: _formState,
+        child: Align(
+          alignment: const Alignment(0, -0.75),
+          child: ListView(
+            shrinkWrap: true,
+            padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  BlocConsumer<PickImageCubit, PickImageState>(
+                    listener: (_, state) {
+                      if (state is PickImageSuccess) {
+                        context.read<ProfileCubit>().image = state.image;
+                      }
+                    },
+                    builder: (_, state) {
+                      if (state is PickImageSuccess) {
+                        return ProfileImage(
+                          image: FileImage(state.image),
+                          onTap: () async {
+                            await context
+                                .read<PickImageCubit>()
+                                .pickImageFromGallery();
+                          },
+                        );
+                      } else {
+                        return ProfileImage(
+                          onTap: () async {
+                            await context
+                                .read<PickImageCubit>()
+                                .pickImageFromGallery();
+                          },
+                        );
+                      }
+                    },
+                  ),
+                ],
               ),
-            ),
-          ],
+              SizedBox(height: 8.h),
+              Input(
+                enabled: false,
+                prefix: Iconsax.sms,
+                hint: "mail@example.com",
+                controller: emailController,
+              ),
+              SizedBox(height: 1.5.h),
+              Input(
+                hint: "Full Name",
+                prefix: Iconsax.user,
+                controller: _nameController,
+              ),
+              SizedBox(height: 1.5.h),
+              Input(
+                hint: "Phone Number",
+                prefix: Iconsax.mobile,
+                controller: _phoneController,
+              ),
+              SizedBox(height: 1.5.h),
+              Input(
+                hint: "Date of Birth",
+                prefix: Iconsax.calendar,
+                controller: _birthController,
+              ),
+              SizedBox(height: 4.h),
+              BlocListener<ProfileCubit, ProfileState>(
+                listener: (context, state) {
+                  if (state is UpdateProfileSuccess) {
+                    successDialog(context);
+                  }
+                },
+                child: ElevatedButton(
+                  onPressed: () async {
+                    await _onClick(cubit, context);
+                  },
+                  child:
+                      context.watch<ProfileCubit>().state is UpdateProfileLoading
+                          ? const CircularProgressIndicator()
+                          : const Text("Update"),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -177,6 +180,8 @@ class _EditYourProfileState extends State<EditYourProfile> {
   }
 
   Future<void> _onClick(ProfileCubit cubit, BuildContext context) async {
+    await cubit.uploadImage();
+
     Map<String, dynamic> data = {};
     if (_nameController.text.trim().isNotEmpty) {
       data["name"] = _nameController.text.trim();
