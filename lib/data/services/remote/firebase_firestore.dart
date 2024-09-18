@@ -125,7 +125,11 @@ class FirebaseFirestoreService {
         final data = doc.data();
         if (data != null && data['favorites'] != null) {
           final favoritesJson = List<Map<String, dynamic>>.from(data['favorites']);
+          print("fetched favorites: $favoritesJson");
           return favoritesJson.map((json) => Favorite.fromJson(json)).toList();
+        } else {
+          print("No favorites found for patient: $patientId");
+          return [];
         }
       }
       return [];

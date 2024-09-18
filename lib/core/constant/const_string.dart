@@ -13,6 +13,7 @@ class Routes {
   static const userBookingsRoute = "/userBookingsRoute";
   static const profileScreenRoute = "/profileScreenRoute";
   static const seeAll = "/seeAll";
+  static const favoriteView = "/favoriteView";
 }
 
 class ConstString {

@@ -24,11 +24,7 @@ class ReviewsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shadowColor: Colors.black12,
-      child: Container(
-        decoration: BoxDecoration(
-          // borderRadius: BorderRadius.circular(10),
-          // boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 5, spreadRadius: 2)],
-        ),
+      child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
