@@ -53,7 +53,11 @@ class AppointmentDialog extends StatelessWidget {
             CustomButton(
               text: 'Done',
               borderRadius: 30,
-              onTap: () => context.nav.pop(),
+              onTap: () {
+                context.nav.pop();
+                context.nav.pop();
+                context.nav.pop();
+              }
             ),
             // Edit Appointment Link
             TextButton(

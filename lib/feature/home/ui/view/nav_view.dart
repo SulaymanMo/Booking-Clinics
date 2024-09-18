@@ -36,8 +36,7 @@ class _NavViewState extends State<NavView> {
     ),
     const AppointmentView(),
     BlocProvider<ProfileCubit>(
-      create: (_) =>
-          ProfileCubit(getIt.get<FirebaseAuthService>())..getUserData(),
+      create: (_) => ProfileCubit(getIt.get<FirebaseAuthService>())..getUserData(),
       child: const ProfileView(),
     ),
   ];
@@ -65,21 +64,17 @@ class _NavViewState extends State<NavView> {
         borderRadius: BorderRadius.circular(4.w),
         child: BottomAppBar(
           height: 7.5.h,
-          // notchMargin: 2.w,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               for (int index = 0; index < _pages.length; index++) ...[
                 IconButton(
                   onPressed: () {
-                    setState(() {
-                      _index = index;
-                    });
+                    setState(() => _index = index);
                   },
                   style: IconButton.styleFrom(
                     backgroundColor: _index == index &&
-                            MediaQuery.of(context).platformBrightness ==
-                                Brightness.dark
+                            MediaQuery.of(context).platformBrightness == Brightness.dark
                         ? ConstColor.primary.color
                         : _index == index
                             ? ConstColor.secondary.color
@@ -87,28 +82,13 @@ class _NavViewState extends State<NavView> {
                   ),
                   icon: Icon(
                     index == _index ? _iconsFill[index] : _icons[index],
-                    color: MediaQuery.of(context).platformBrightness ==
-                            Brightness.dark
+                    color: MediaQuery.of(context).platformBrightness == Brightness.dark
                         ? _index == index
                             ? ConstColor.dark.color
                             : ConstColor.secondary.color
                         : ConstColor.dark.color,
                   ),
-                  // icon: Icon(
-                  //   _index == index
-                  //       ? _selectedIocn[index]
-                  //       : _unSelectedIocn[index],
-                  //   color: _index == index
-                  //       ? ConstColor.main.color
-                  //       : Colors.black38,
-                  // ),
                 ),
-                // if (index < _pages.length - 1) const Spacer(),
-                // ! _____ When notched floating action button are provided _____ ! //
-                // if (index < _pages.length - 1)
-                //   Spacer(
-                //     flex: index == (_pages.length ~/ 2) - 1 ? 2 : 1,
-                //   ),
               ],
             ],
           ),
