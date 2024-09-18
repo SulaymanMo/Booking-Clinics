@@ -10,6 +10,7 @@ import '../../feature/auth/ui/views/onboarding_screen2.dart';
 import '../../feature/auth/ui/views/signin.dart';
 import '../../feature/auth/ui/views/signup.dart';
 import '../../feature/booking/cubit/doc_details_cubit.dart';
+import '../../feature/favorite/favorite_view.dart';
 import '../../feature/profile/ui/profile_manager/profile_cubit.dart';
 import '../../feature/see_all/data/see_all_repo_impl.dart';
 import '../../feature/see_all/ui/cubit/seeall_cubit.dart';
@@ -46,6 +47,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const OnBoarding());
       case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPassword());
+      case Routes.favoriteView:
+        return MaterialPageRoute(builder: (_) => const FavoriteView());
       case Routes.editYourProfile:
         return MaterialPageRoute(
           builder: (context) => BlocProvider<ProfileCubit>.value(
