@@ -20,11 +20,16 @@ ThemeData darkTheme() {
       scrolledUnderElevation: 0,
       backgroundColor: ConstColor.dark.color,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(4.w),
-        bottomRight: Radius.circular(4.w),
-      )),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(4.w),
+          bottomRight: Radius.circular(4.w),
+        ),
+      ),
       iconTheme: IconThemeData(
+        size: 20.sp,
+        color: ConstColor.secondary.color,
+      ),
+      actionsIconTheme: IconThemeData(
         size: 20.sp,
         color: ConstColor.secondary.color,
       ),
@@ -114,7 +119,6 @@ ThemeData darkTheme() {
       ),
     ),
     // ! _____ Icon Button _____ ! //
-    /*
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
         iconSize: 20.sp,
@@ -122,7 +126,6 @@ ThemeData darkTheme() {
         foregroundColor: ConstColor.secondary.color,
       ),
     ),
-     */
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,

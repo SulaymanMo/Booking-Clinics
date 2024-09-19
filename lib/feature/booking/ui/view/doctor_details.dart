@@ -27,25 +27,34 @@ class DoctorDetailsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Doctor Details'),
+        leading: BackButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+          ),
+        ),
         actions: [
-          BlocBuilder<DoctorCubit, DoctorState>(
-            builder: (_, state) {
-              if (state is DoctorLoaded && state.doctors.isNotEmpty) {
-                final doctor = state.doctors.first;
-                final isFavorite = context.read<DoctorCubit>().isFavoriteDoctor(doctor.name);
+          Padding(
+            padding: EdgeInsets.only(right: 3.w),
+            child: BlocBuilder<DoctorCubit, DoctorState>(
+              builder: (_, state) {
+                if (state is DoctorLoaded && state.doctors.isNotEmpty) {
+                  final doctor = state.doctors.first;
+                  final isFavorite =
+                      context.read<DoctorCubit>().isFavoriteDoctor(doctor.name);
+                  return IconButton(
+                    icon: Icon(isFavorite ? Iconsax.heart5 : Iconsax.heart),
+                    onPressed: () {
+                      final doctorCubit = context.read<DoctorCubit>();
+                      doctorCubit.toggleDoctorFavoriteStatus(doctor);
+                    },
+                  );
+                }
                 return IconButton(
-                  icon: Icon(isFavorite ? Iconsax.heart5 : Iconsax.heart),
-                  onPressed: () {
-                    final doctorCubit = context.read<DoctorCubit>();
-                    doctorCubit.toggleDoctorFavoriteStatus(doctor);
-                  },
+                  icon: const Icon(Iconsax.heart),
+                  onPressed: () {},
                 );
-              }
-              return IconButton(
-                icon: const Icon(Iconsax.heart),
-                onPressed: () {},
-              );
-            },
+              },
+            ),
           ),
         ],
       ),
@@ -86,7 +95,8 @@ class DoctorDetailsView extends StatelessWidget {
                 SizedBox(height: 2.h),
 
                 // Working Time
-                const SectionHeading(title: 'Working Time', showActionButton: false),
+                const SectionHeading(
+                    title: 'Working Time', showActionButton: false),
                 SizedBox(height: 1.h),
                 Text(
                   doctor.workingHours ?? "Not available",

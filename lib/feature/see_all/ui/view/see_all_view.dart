@@ -3,8 +3,8 @@ import '../cubit/seeall_cubit.dart';
 import '../widget/see_all_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/common/loading_indicator.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/core/constant/const_color.dart';
 
 class SeeAllView extends StatefulWidget {
   const SeeAllView({super.key});
@@ -61,7 +61,13 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
           centerTitle: true,
           toolbarHeight: 7.h,
           title: Text("All Doctors", style: context.bold18),
+          leading: BackButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+            ),
+          ),
           bottom: TabBar(
+            onTap: (val) {},
             isScrollable: true,
             controller: _tabController,
             tabAlignment: TabAlignment.start,
@@ -99,11 +105,7 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
                       child: Text(state.error),
                     );
                   } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: ConstColor.primary.color,
-                      ),
-                    );
+                    return const LoadingIndicator();
                   }
                 },
               );
@@ -114,6 +116,8 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
     );
   }
 }
+
+
 
 //  body: TabBarView(
 //           controller: _tabController,
