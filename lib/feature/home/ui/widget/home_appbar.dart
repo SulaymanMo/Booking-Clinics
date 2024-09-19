@@ -1,9 +1,9 @@
-import 'package:booking_clinics/core/constant/const_string.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/common/dropdown.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:booking_clinics/core/constant/const_string.dart';
 
 class UpperAppBar extends StatelessWidget {
   const UpperAppBar({super.key});
@@ -14,10 +14,7 @@ class UpperAppBar extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 4.w),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
-        title: Text(
-          "Location",
-          style: context.regular14,
-        ),
+        title: Text("Location", style: context.regular14),
         subtitle: Wrap(
           spacing: 1.25.w,
           crossAxisAlignment: WrapCrossAlignment.center,

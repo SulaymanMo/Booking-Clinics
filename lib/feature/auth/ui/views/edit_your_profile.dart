@@ -49,7 +49,15 @@ class _EditYourProfileState extends State<EditYourProfile> {
     final ProfileCubit cubit = context.read<ProfileCubit>();
     return Scaffold(
       extendBody: true,
-      appBar: AppBar(centerTitle: true, title: const Text("Fill your Profile")),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Fill your Profile"),
+        leading: BackButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+          ),
+        ),
+      ),
       body: Form(
         key: _formState,
         child: Align(
