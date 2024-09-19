@@ -4,7 +4,6 @@ import 'package:sizer/sizer.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-
 import '../../../../core/common/custom_network_img.dart';
 import '../../../../core/constant/images_path.dart';
 import '../../../../data/services/remote/firebase_auth.dart';
@@ -17,7 +16,7 @@ class SeeAllTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: doctors.length,
-      padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 2.h),
+      padding: EdgeInsets.only(top: 1.h, left: 4.w, right: 4.w, bottom: 2.h),
       itemBuilder: (_, index) {
         return InkWell(
           onTap: () async {
@@ -79,7 +78,8 @@ class SeeAllTab extends StatelessWidget {
                           IntrinsicHeight(
                             child: Row(
                               children: [
-                                const Icon(Iconsax.star1, color: Colors.orangeAccent),
+                                const Icon(Iconsax.star1,
+                                    color: Colors.orangeAccent),
                                 SizedBox(width: 1.w),
                                 Text(
                                   "${doctors[index].rating}",

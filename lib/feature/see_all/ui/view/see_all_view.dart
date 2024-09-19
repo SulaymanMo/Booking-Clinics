@@ -1,5 +1,5 @@
 import 'package:sizer/sizer.dart';
-import '../cubit/seeall_cubit.dart';
+import '../manager/seeall_cubit.dart';
 import '../widget/see_all_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +7,8 @@ import '../../../../core/common/loading_indicator.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 
 class SeeAllView extends StatefulWidget {
-  const SeeAllView({super.key});
+  final int? firstIndex;
+  const SeeAllView({this.firstIndex = 0, super.key});
 
   @override
   State<SeeAllView> createState() => _SeeAllViewState();
@@ -18,7 +19,6 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
   late final TabController _tabController;
   static const List<String> _specialty = [
     "All",
-    "General",
     "cardiologist",
     "Dentistry",
     "Dermatology",
@@ -32,7 +32,11 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     context.read<SeeAllCubit>().invokeAllDoctors();
-    _tabController = TabController(length: _specialty.length, vsync: this);
+    _tabController = TabController(
+      vsync: this,
+      length: _specialty.length,
+      initialIndex: widget.firstIndex ?? 0,
+    );
     _tabController.addListener(() {
       if (_tabController.index == 0) {
         context.read<SeeAllCubit>().invokeAllDoctors();
