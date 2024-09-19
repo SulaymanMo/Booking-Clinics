@@ -13,7 +13,7 @@ import '../../feature/booking/cubit/doc_details_cubit.dart';
 import '../../feature/favorite/favorite_view.dart';
 import '../../feature/profile/ui/profile_manager/profile_cubit.dart';
 import '../../feature/see_all/data/see_all_repo_impl.dart';
-import '../../feature/see_all/ui/cubit/seeall_cubit.dart';
+import '../../feature/see_all/ui/manager/seeall_cubit.dart';
 import '../constant/const_string.dart';
 import '../../feature/home/ui/view/nav_view.dart';
 import 'service_locator.dart';
@@ -72,7 +72,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider<SeeAllCubit>(
             create: (_) => SeeAllCubit(getIt.get<SeeAllRepoImpl>()),
-            child: const SeeAllView(),
+            child: SeeAllView(firstIndex: settings.arguments as int?),
           ),
         );
       default:

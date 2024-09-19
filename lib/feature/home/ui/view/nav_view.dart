@@ -1,12 +1,14 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/helper/service_locator.dart';
 import 'package:booking_clinics/data/services/remote/firebase_auth.dart';
+import 'package:booking_clinics/feature/home/ui/manager/all_doctors/all_doctors_cubit.dart';
 import 'package:booking_clinics/feature/map/data/repo/location_repo/location_repo_imp.dart';
 import 'package:booking_clinics/feature/map/data/repo/map_repo/map_impl.dart';
 import 'package:booking_clinics/feature/map/data/repo/routes_repo/routes_impl.dart';
 import 'package:booking_clinics/feature/map/ui/manager/map_cubit.dart';
 import 'package:booking_clinics/feature/map/ui/view/map_view.dart';
 import 'package:booking_clinics/feature/profile/ui/view/profile_view.dart';
+import 'package:booking_clinics/feature/see_all/data/see_all_repo_impl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
@@ -25,9 +27,14 @@ class NavView extends StatefulWidget {
 class _NavViewState extends State<NavView> {
   int _index = 0;
   static final List<Widget> _pages = [
-    const HomeView(),
+    BlocProvider<AllDoctorsCubit>(
+      create: (_) => AllDoctorsCubit(
+        getIt.get<SeeAllRepoImpl>(),
+      )..invokeAllDoctors(),
+      child: const HomeView(),
+    ),
     BlocProvider(
-      create: (context) => MapCubit(
+      create: (_) => MapCubit(
         mapRepo: getIt.get<MapImpl>(),
         routesRepo: getIt.get<RoutesImpl>(),
         locationRepo: getIt.get<LocationImpl>(),
@@ -36,7 +43,8 @@ class _NavViewState extends State<NavView> {
     ),
     const AppointmentView(),
     BlocProvider<ProfileCubit>(
-      create: (_) => ProfileCubit(getIt.get<FirebaseAuthService>())..getUserData(),
+      create: (_) =>
+          ProfileCubit(getIt.get<FirebaseAuthService>())..getUserData(),
       child: const ProfileView(),
     ),
   ];
@@ -74,7 +82,8 @@ class _NavViewState extends State<NavView> {
                   },
                   style: IconButton.styleFrom(
                     backgroundColor: _index == index &&
-                            MediaQuery.of(context).platformBrightness == Brightness.dark
+                            MediaQuery.of(context).platformBrightness ==
+                                Brightness.dark
                         ? ConstColor.primary.color
                         : _index == index
                             ? ConstColor.secondary.color
@@ -82,7 +91,8 @@ class _NavViewState extends State<NavView> {
                   ),
                   icon: Icon(
                     index == _index ? _iconsFill[index] : _icons[index],
-                    color: MediaQuery.of(context).platformBrightness == Brightness.dark
+                    color: MediaQuery.of(context).platformBrightness ==
+                            Brightness.dark
                         ? _index == index
                             ? ConstColor.dark.color
                             : ConstColor.secondary.color
