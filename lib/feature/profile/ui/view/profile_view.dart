@@ -1,5 +1,7 @@
+import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:booking_clinics/feature/profile/ui/image_manager/pick_image_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/helper/logout_btn_sheet.dart';
@@ -39,10 +41,7 @@ class ProfileView extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 2.h),
-                  Text(
-                    state.model.name,
-                    style: context.bold16,
-                  ),
+                  Text(state.model.name, style: context.bold16),
                   SizedBox(height: 0.5.h),
                   Text(
                     state.model.phone,
@@ -51,7 +50,20 @@ class ProfileView extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 4.h),
+
+                  // Favorite
+                  ListTile(
+                    onTap: () => context.nav.pushNamed(Routes.favoriteView),
+                    title: Text(
+                      "Favorite",
+                      style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+                    ),
+                    leading: const Icon(Iconsax.heart,),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 2.w),
+                  ),
+                  // List of settings
                   const CustomExpansionList(),
+                  // Log Out
                   ListTile(
                     onTap: () {
                       showModalBottomSheet(
@@ -60,14 +72,10 @@ class ProfileView extends StatelessWidget {
                           return const LogoutBottomSheet();
                         },
                       );
-                      // showLogoutBtnSheet(context);
                     },
                     title: Text(
                       "Log Out",
-                      style: TextStyle(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
+                      style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
                     ),
                     leading: const Icon(Icons.logout_outlined),
                     contentPadding: EdgeInsets.symmetric(horizontal: 2.w),
@@ -76,10 +84,7 @@ class ProfileView extends StatelessWidget {
               );
             } else if (state is ProfileFailure) {
               return Center(
-                child: Text(
-                  state.error,
-                  style: context.semi16,
-                ),
+                child: Text(state.error, style: context.semi16),
               );
             } else if (state is ProfileLoading) {
               return Center(
@@ -96,9 +101,7 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Future<dynamic> navToEditPage(
-    BuildContext context,
-  ) async {
+  Future<dynamic> navToEditPage(BuildContext context) async {
     return await Navigator.push(
       context,
       MaterialPageRoute(

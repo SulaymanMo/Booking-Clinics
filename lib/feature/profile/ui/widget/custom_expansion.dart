@@ -14,7 +14,6 @@ class CustomExpansionList extends StatefulWidget {
 
 class _CustomExpansionListState extends State<CustomExpansionList> {
   static const List<String> _headers = [
-    "Favorite",
     "Notifications",
     "Settings",
     "Help and Support",
@@ -22,7 +21,6 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
   ];
 
   final List<IconData> _icons = [
-    Iconsax.heart,
     Iconsax.notification,
     Iconsax.setting,
     Iconsax.message_question,
@@ -30,7 +28,6 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
   ];
 
   static const List<Widget> _widgets = [
-    CustomExpansionText(),
     CustomExpansionText(),
     SettingsItem(),
     CustomExpansionText(),
@@ -43,8 +40,7 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
       elevation: 0,
       expandIconColor: ConstColor.icon.color,
       expandedHeaderPadding: EdgeInsets.zero,
-      dividerColor:
-          MediaQuery.of(context).platformBrightness == Brightness.light
+      dividerColor: MediaQuery.of(context).platformBrightness == Brightness.light
               ? ConstColor.secondary.color
               : ConstColor.dark.color,
       expansionCallback: (int index, bool isExpanded) {},
@@ -63,11 +59,7 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
               contentPadding: EdgeInsets.symmetric(horizontal: 2.w),
               title: Text(
                 _headers[index],
-                style: TextStyle(
-                  fontSize: 15.sp,
-                  // color: Colors.black54,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
               ),
             );
           },

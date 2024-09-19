@@ -32,8 +32,7 @@ class DoctorDetailsView extends StatelessWidget {
             builder: (_, state) {
               if (state is DoctorLoaded && state.doctors.isNotEmpty) {
                 final doctor = state.doctors.first;
-                final isFavorite =
-                    context.read<DoctorCubit>().isFavoriteDoctor(doctor.name);
+                final isFavorite = context.read<DoctorCubit>().isFavoriteDoctor(doctor.name);
                 return IconButton(
                   icon: Icon(isFavorite ? Iconsax.heart5 : Iconsax.heart),
                   onPressed: () {
@@ -54,9 +53,7 @@ class DoctorDetailsView extends StatelessWidget {
         builder: (_, state) {
           if (state is DoctorLoading) {
             return Center(
-              child: CircularProgressIndicator(
-                color: ConstColor.primary.color,
-              ),
+              child: CircularProgressIndicator(color: ConstColor.primary.color),
             );
           } else if (state is DoctorError) {
             return Center(child: Text(state.error));
@@ -89,8 +86,7 @@ class DoctorDetailsView extends StatelessWidget {
                 SizedBox(height: 2.h),
 
                 // Working Time
-                const SectionHeading(
-                    title: 'Working Time', showActionButton: false),
+                const SectionHeading(title: 'Working Time', showActionButton: false),
                 SizedBox(height: 1.h),
                 Text(
                   doctor.workingHours ?? "Not available",
@@ -103,7 +99,6 @@ class DoctorDetailsView extends StatelessWidget {
                 // Reviews
                 const SectionHeading(title: 'Reviews', showActionButton: false),
                 SizedBox(height: 0.5.h),
-                // const ReviewsItem(),
                 ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,

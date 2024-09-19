@@ -103,8 +103,7 @@ class BookAppointmentView extends StatelessWidget {
                         : cubit.selectedHour;
 
                     return GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         childAspectRatio: 2.5,
                         crossAxisSpacing: 10.0,

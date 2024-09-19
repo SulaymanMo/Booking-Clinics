@@ -123,7 +123,6 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
 //           ),
 //         ),
 
-
 //  PreferredSize(
 //             preferredSize: Size.fromHeight(_fixedHeight / 1.75),
 //             child: Column(
@@ -157,26 +156,26 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
 //                     ),
 //                   ),
 //                 ),
-                // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
-                //   child: Row(
-                //     children: [
-                //       Text(
-                //         "532 founds",
-                //         style: context.bold14,
-                //       ),
-                //       const Spacer(),
-                //       Text(
-                //         "Default",
-                //         style: context.semi14?.copyWith(
-                //           color: Colors.black38,
-                //         ),
-                //       ),
-                //       SizedBox(width: 2.w),
-                //       const Icon(Icons.filter_list, color: Colors.black38),
-                //     ],
-                //   ),
-                // ),
-            //   ],
-            // ),
-          // )
+// Padding(
+//   padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
+//   child: Row(
+//     children: [
+//       Text(
+//         "532 founds",
+//         style: context.bold14,
+//       ),
+//       const Spacer(),
+//       Text(
+//         "Default",
+//         style: context.semi14?.copyWith(
+//           color: Colors.black38,
+//         ),
+//       ),
+//       SizedBox(width: 2.w),
+//       const Icon(Icons.filter_list, color: Colors.black38),
+//     ],
+//   ),
+// ),
+//   ],
+// ),
+// )
