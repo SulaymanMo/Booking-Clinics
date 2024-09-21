@@ -1,4 +1,3 @@
-import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/common/rate.dart';
@@ -26,9 +25,9 @@ class ListItem extends StatelessWidget {
             height: 20.h,
             width: double.infinity,
           ),
-          errorWidget: (_, url, error) => Icon(
-            Iconsax.close_square,
-            size: 24.sp,
+          errorWidget: (_, url, error) => Image.asset(
+            "assets/images/center_2.jpg",
+            fit: BoxFit.cover,
           ),
           errorListener: (val) => debugPrint('$val'),
         ),
@@ -46,7 +45,7 @@ class ListItem extends StatelessWidget {
               Text(
                 "(${doctor.speciality})",
                 style: context.medium14?.copyWith(
-                  color: ConstColor.textBtn.color,
+                  color: ConstColor.icon.color,
                 ),
               ),
             ],
@@ -54,7 +53,7 @@ class ListItem extends StatelessWidget {
           subtitle: Text(
             doctor.address ?? "",
             style: context.medium14?.copyWith(
-              color: ConstColor.textBtn.color,
+              color: ConstColor.icon.color,
             ),
           ),
           trailing: const Rate(),

@@ -41,14 +41,16 @@ class _NavViewState extends State<NavView> {
       )..predectPlaces(),
       child: const MapView(),
     ),
+
     const AppointmentView(),
+    
     BlocProvider<ProfileCubit>(
-      create: (_) =>
-          ProfileCubit(getIt.get<FirebaseAuthService>())..getUserData(),
+      create: (_) => ProfileCubit(
+        getIt.get<FirebaseAuthService>(),
+      )..getUserData(),
       child: const ProfileView(),
     ),
   ];
-
   static const List<IconData> _icons = [
     Iconsax.home,
     Iconsax.location4,

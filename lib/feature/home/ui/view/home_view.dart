@@ -1,11 +1,12 @@
-import 'package:booking_clinics/feature/home/ui/widget/carousel/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/common/input.dart';
 import '../../../../core/common/see_all.dart';
+import '../widget/carousel/carousel_slider.dart';
 import '../widget/custom_carousel.dart';
 import '../widget/categories.dart';
+import '../widget/custom_search.dart';
 import '../widget/home_appbar.dart';
 
 class HomeView extends StatelessWidget {
@@ -33,7 +34,14 @@ class HomeView extends StatelessWidget {
               preferredSize: Size(double.infinity, 2.5.h),
               child: Padding(
                 padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.25.h),
-                child: const Input(
+                child: Input(
+                  onTap: () {
+                    showSearch(
+                      context: context,
+                      delegate: CustomSearch(),
+                    );
+                  },
+                  readOnly: true,
                   hint: "What're you looking for?",
                   prefix: Iconsax.search_normal,
                 ),

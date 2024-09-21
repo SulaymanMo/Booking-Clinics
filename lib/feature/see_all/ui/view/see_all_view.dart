@@ -1,6 +1,6 @@
 import 'package:sizer/sizer.dart';
-import '../manager/seeall_cubit.dart';
 import '../widget/see_all_tab.dart';
+import '../manager/seeall_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/common/loading_indicator.dart';
@@ -15,7 +15,6 @@ class SeeAllView extends StatefulWidget {
 }
 
 class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
-  // final double _fixedHeight = 16.h;
   late final TabController _tabController;
   static const List<String> _specialty = [
     "All",
@@ -31,21 +30,23 @@ class _SeeAllViewState extends State<SeeAllView> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    context.read<SeeAllCubit>().invokeAllDoctors();
     _tabController = TabController(
       vsync: this,
       length: _specialty.length,
       initialIndex: widget.firstIndex ?? 0,
     );
-    _tabController.addListener(() {
-      if (_tabController.index == 0) {
-        context.read<SeeAllCubit>().invokeAllDoctors();
-      } else {
-        context
+    _onChangeTap();
+    _tabController.addListener(() async {
+      await _onChangeTap();
+    });
+  }
+
+  Future<void> _onChangeTap() async {
+    _tabController.index == 0
+        ? await context.read<SeeAllCubit>().invokeAllDoctors()
+        : await context
             .read<SeeAllCubit>()
             .invokeBySpecialty(_specialty[_tabController.index]);
-      }
-    });
   }
 
   @override

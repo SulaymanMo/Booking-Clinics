@@ -1,5 +1,6 @@
 import 'package:booking_clinics/data/services/remote/firebase_auth.dart';
 import 'package:booking_clinics/data/services/remote/firebase_firestore.dart';
+import 'package:booking_clinics/feature/home/data/repo/home_repo_impl.dart';
 import 'package:booking_clinics/feature/see_all/data/see_all_repo_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -18,6 +19,7 @@ void setupServiceLocator() {
   );
   getIt.registerLazySingleton<MapImpl>(() => MapImpl());
   getIt.registerLazySingleton<RoutesImpl>(() => RoutesImpl());
+  getIt.registerLazySingleton<HomeRepoImpl>(() => HomeRepoImpl());
   getIt.registerLazySingleton<SeeAllRepoImpl>(() => SeeAllRepoImpl());
 
   // ! _____ Services _____ ! //
