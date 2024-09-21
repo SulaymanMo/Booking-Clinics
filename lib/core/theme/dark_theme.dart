@@ -1,12 +1,13 @@
+import 'custom_borders.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../constant/const_color.dart';
-import 'package:booking_clinics/core/theme/dark_text_theme.dart';
+import 'package:booking_clinics/core/theme/text_theme.dart';
 
 ThemeData darkTheme() {
   return ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(seedColor: ConstColor.primary.color),
+    colorScheme: ColorScheme.dark(primary: ConstColor.primary.color),
     scaffoldBackgroundColor: ConstColor.dark.color,
     // ! _____ AppBar _____ ! //
     appBarTheme: AppBarTheme(
@@ -63,7 +64,7 @@ ThemeData darkTheme() {
       color: ConstColor.iconDark.color,
     ),
     // ! _____ Text Theme _____ ! //
-    textTheme: darkTextTheme(),
+    textTheme: textTheme(),
     fontFamily: "Inter_Light",
     // ! _____ ListTile _____ ! //
     listTileTheme: ListTileThemeData(
@@ -119,13 +120,13 @@ ThemeData darkTheme() {
       ),
     ),
     // ! _____ Icon Button _____ ! //
-    iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(
-        iconSize: 20.sp,
-        backgroundColor: Colors.white10,
-        foregroundColor: ConstColor.secondary.color,
-      ),
-    ),
+    // iconButtonTheme: IconButtonThemeData(
+    //   style: IconButton.styleFrom(
+    //     iconSize: 20.sp,
+    //     backgroundColor: Colors.white10,
+    //     foregroundColor: ConstColor.secondary.color,
+    //   ),
+    // ),
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
@@ -187,6 +188,34 @@ ThemeData darkTheme() {
           }
         },
       ),
+    ),
+    // ! _____ Input Theme _____ ! //
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      isDense: true,
+      fillColor: ConstColor.iconDark.color,
+      hintStyle: TextStyle(
+        fontSize: 14.5.sp,
+        fontWeight: FontWeight.w400,
+        color: ConstColor.icon.color,
+      ),
+      labelStyle: TextStyle(
+        fontSize: 14.5.sp,
+        fontWeight: FontWeight.w400,
+        color: ConstColor.icon.color,
+      ),
+      floatingLabelStyle: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w600,
+        color: ConstColor.primary.color,
+      ),
+      iconColor: ConstColor.icon.color,
+      prefixIconColor: ConstColor.icon.color,
+      border: buildBorder(),
+      enabledBorder: buildBorder(),
+      disabledBorder: buildBorder(),
+      focusedErrorBorder: buildBorder(),
+      focusedBorder: buildFocusedBorder(),
     ),
   );
 }

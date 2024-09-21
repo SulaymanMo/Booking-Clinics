@@ -1,4 +1,5 @@
 import 'text_theme.dart';
+import 'custom_borders.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
@@ -6,7 +7,7 @@ import 'package:booking_clinics/core/constant/const_color.dart';
 ThemeData lightTheme() {
   return ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(seedColor: ConstColor.main.color),
+    colorScheme: ColorScheme.light(primary: ConstColor.primary.color),
     scaffoldBackgroundColor: Colors.white,
     // ! _____ AppBar _____ ! //
     appBarTheme: AppBarTheme(
@@ -115,13 +116,13 @@ ThemeData lightTheme() {
       ),
     ),
     // ! _____ Icon Button _____ ! //
-    iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(
-        iconSize: 20.sp,
-        foregroundColor: ConstColor.dark.color,
-        backgroundColor: ConstColor.secondary.color,
-      ),
-    ),
+    // iconButtonTheme: IconButtonThemeData(
+    //   style: IconButton.styleFrom(
+    //     iconSize: 20.sp,
+    //     foregroundColor: ConstColor.dark.color,
+    //     backgroundColor: ConstColor.secondary.color,
+    //   ),
+    // ),
     // ! _____ Bottom App Bar _____ ! //
     bottomAppBarTheme: BottomAppBarTheme(
       height: 6.5.h,
@@ -183,6 +184,34 @@ ThemeData lightTheme() {
           }
         },
       ),
+    ),
+    // ! _____ Input Theme _____ ! //
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      isDense: true,
+      fillColor: ConstColor.secondary.color,
+      hintStyle: TextStyle(
+        fontSize: 14.5.sp,
+        fontWeight: FontWeight.w400,
+        color: ConstColor.icon.color,
+      ),
+      labelStyle: TextStyle(
+        fontSize: 14.5.sp,
+        fontWeight: FontWeight.w400,
+        color: ConstColor.icon.color,
+      ),
+      floatingLabelStyle: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w600,
+        color: ConstColor.primary.color,
+      ),
+      iconColor: ConstColor.icon.color,
+      prefixIconColor: ConstColor.icon.color,
+      border: buildBorder(),
+      enabledBorder: buildBorder(),
+      disabledBorder: buildBorder(),
+      focusedErrorBorder: buildBorder(),
+      focusedBorder: buildFocusedBorder(),
     ),
   );
 }

@@ -136,7 +136,9 @@ class _EditYourProfileState extends State<EditYourProfile> {
                   },
                   child: context.watch<ProfileCubit>().state
                           is UpdateProfileLoading
-                      ? const CircularProgressIndicator()
+                      ? const CircularProgressIndicator(
+                          color: Colors.black,
+                        )
                       : const Text("Update"),
                 ),
               ),

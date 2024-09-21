@@ -1,5 +1,7 @@
 import 'package:booking_clinics/core/helper/observer.dart';
 import 'package:booking_clinics/core/theme/dark_theme.dart';
+import 'package:booking_clinics/feature/home/data/repo/home_repo_impl.dart';
+import 'package:booking_clinics/feature/home/ui/manager/search/search_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'data/services/remote/firebase_auth.dart';
 import 'firebase_options.dart';
@@ -46,22 +48,25 @@ class BookingClinics extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveSizer(
       builder: (context, orientation, deviceType) {
-        return MaterialApp(
-          builder: (context, child) {
-            return MediaQuery(
-              data: MediaQuery.of(context).copyWith(
-                textScaler: const TextScaler.linear(1.125),
-              ),
-              child: child!,
-            );
-          },
-          theme: lightTheme(),
-          darkTheme: darkTheme(),
-          title: 'Booking Clinics',
-          debugShowCheckedModeBanner: false,
-          initialRoute: isUserLoggedIn ? Routes.navRoute : Routes.onboarding,
-          onGenerateRoute: AppRouter.generateRoute,
-          //  home: signUp(),
+        return BlocProvider(
+          create: (_) => SearchCubit(getIt.get<HomeRepoImpl>()),
+          child: MaterialApp(
+            builder: (_, child) {
+              return MediaQuery(
+                data: MediaQuery.of(context).copyWith(
+                  textScaler: const TextScaler.linear(1.125),
+                ),
+                child: child!,
+              );
+            },
+            theme: lightTheme(),
+            darkTheme: darkTheme(),
+            title: 'Booking Clinics',
+            debugShowCheckedModeBanner: false,
+            initialRoute: isUserLoggedIn ? Routes.navRoute : Routes.onboarding,
+            onGenerateRoute: AppRouter.generateRoute,
+            //  home: signUp(),
+          ),
         );
       },
     );
