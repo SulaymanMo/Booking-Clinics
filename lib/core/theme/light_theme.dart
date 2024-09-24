@@ -68,6 +68,15 @@ ThemeData lightTheme() {
       textColor: Colors.black54,
       contentPadding: EdgeInsets.zero,
       iconColor: ConstColor.main.color,
+      titleTextStyle: TextStyle(
+        inherit: false,
+        fontSize: 15.5.sp,
+        fontWeight: FontWeight.w600,
+      ),
+      subtitleTextStyle: TextStyle(
+        inherit: false,
+        fontSize: 14.sp,
+      ),
       leadingAndTrailingTextStyle: const TextStyle(color: Colors.white),
     ),
     // ! _____ Icon _____ ! //

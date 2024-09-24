@@ -8,7 +8,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class ListItem extends StatelessWidget {
   final DoctorModel doctor;
-  const ListItem({required this.doctor, super.key});
+  final void Function()? computeRoute;
+  const ListItem({this.computeRoute, required this.doctor, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,26 +38,44 @@ class ListItem extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(horizontal: 4.w),
           title: Row(
             children: [
-              Text(
-                "${doctor.name},",
-                style: context.semi16,
+              Flexible(
+                child: Text(
+                  "${doctor.name},",
+                  overflow: TextOverflow.ellipsis,
+                  style: context.semi16,
+                ),
               ),
               SizedBox(width: 2.w),
               Text(
-                "(${doctor.speciality})",
+                doctor.speciality,
+                overflow: TextOverflow.ellipsis,
                 style: context.medium14?.copyWith(
                   color: ConstColor.icon.color,
                 ),
               ),
             ],
           ),
-          subtitle: Text(
-            doctor.address ?? "",
-            style: context.medium14?.copyWith(
-              color: ConstColor.icon.color,
-            ),
+          subtitle: Row(
+            children: [
+              Flexible(
+                child: Text(
+                  doctor.address ?? "",
+                  overflow: TextOverflow.ellipsis,
+                  style: context.medium14?.copyWith(
+                    color: ConstColor.icon.color,
+                  ),
+                ),
+              ),
+              SizedBox(width: 2.w),
+              if (computeRoute != null) const Rate()
+            ],
           ),
-          trailing: const Rate(),
+          trailing: computeRoute != null
+              ? IconButton(
+                  onPressed: computeRoute,
+                  icon: const Icon(Icons.directions),
+                )
+              : const Rate(),
         ),
         const Spacer(),
       ],

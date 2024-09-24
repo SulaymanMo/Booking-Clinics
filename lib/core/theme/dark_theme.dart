@@ -72,6 +72,15 @@ ThemeData darkTheme() {
       textColor: Colors.white,
       contentPadding: EdgeInsets.zero,
       iconColor: ConstColor.icon.color,
+      titleTextStyle: TextStyle(
+        inherit: false,
+        fontSize: 15.5.sp,
+        fontWeight: FontWeight.w600,
+      ),
+      subtitleTextStyle: TextStyle(
+        inherit: false,
+        fontSize: 14.sp,
+      ),
       leadingAndTrailingTextStyle: const TextStyle(color: Colors.white),
     ),
     // ! _____ Icon _____ ! //
