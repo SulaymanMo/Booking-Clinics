@@ -37,7 +37,7 @@ class BookingService {
       throw Exception('Failed to fetch bookings');
     }
   }
-
+///
   Future<void> updateBookingStatus(String bookingId, String newStatus) async {
     try {
       String? patientId = await FirebaseAuthService().getUid();
