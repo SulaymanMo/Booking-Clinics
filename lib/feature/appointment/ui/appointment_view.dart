@@ -37,7 +37,8 @@ class BookingService {
       throw Exception('Failed to fetch bookings');
     }
   }
-///
+
+  ///
   Future<void> updateBookingStatus(String bookingId, String newStatus) async {
     try {
       String? patientId = await FirebaseAuthService().getUid();
@@ -136,7 +137,7 @@ class _AppointmentViewState extends State<AppointmentView>
               specialization: booking['docSpeciality'],
               clinic: booking['docAddress'],
               imageUrl: booking['docImageUrl'],
-              buttons: _buildActionButtons(status),
+              buttons: _buildActionButtons(status,booking),
             );
           },
         );
@@ -145,12 +146,12 @@ class _AppointmentViewState extends State<AppointmentView>
   }
 
   // Build action buttons dynamically based on status
-  Widget _buildActionButtons(String status) {
+  Widget _buildActionButtons(String status, Map<String, dynamic> booking) {
     final isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     if (status == 'Pending') {
       return Row(
         children: [
-          const Expanded(
+            Expanded(
             child: CustomButton(
               text: 'Cancel',
               color: MyColors.gray,
@@ -196,15 +197,15 @@ class _AppointmentViewState extends State<AppointmentView>
     } else if (status == 'Completed') {
       return Row(
         children: [
-          const Expanded(
+          Expanded(
             child: CustomButton(
               text: 'Re-Book',
               color: MyColors.gray,
               textSize: 13,
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               textColor: MyColors.dark2,
               onTap: () async {
-                await _bookingService.updateBookingStatus('Pending');
+                await _bookingService.updateBookingStatus(booking['id'],'Pending');
                 setState(() {});
               },
             ),
@@ -232,7 +233,7 @@ class _AppointmentViewState extends State<AppointmentView>
               padding: const EdgeInsets.all(15),
               textColor: isDark ? MyColors.dark : Colors.white,
               onTap: () async {
-                await _bookingService.updateBookingStatus('Pending');
+                await _bookingService.updateBookingStatus(booking['id'],'Pending');
                 setState(() {});
               },
             ),
