@@ -1,4 +1,6 @@
 import 'package:booking_clinics/core/common/custom_button.dart';
+import 'package:booking_clinics/data/models/booking.dart';
+import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constant/const_color.dart';
@@ -14,21 +16,53 @@ class BookingService {
     try {
       String? patientId = await FirebaseAuthService().getUid();
 
-      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+      final patientRef =
+          _firestore.collection(_patientsCollection).doc(patientId);
       final docSnapshot = await patientRef.get();
 
       if (docSnapshot.exists) {
         final data = docSnapshot.data();
         if (data != null && data['bookings'] != null) {
-          final bookingsJson = List<Map<String, dynamic>>.from(data['bookings']);
+          final bookingsJson =
+              List<Map<String, dynamic>>.from(data['bookings']);
           // Filter bookings by status
-          return bookingsJson.where((booking) => booking['bookingStatus'] == status).toList();
+          return bookingsJson
+              .where((booking) => booking['bookingStatus'] == status)
+              .toList();
         }
       }
       return [];
     } catch (e) {
-      print('Error fetching bookings: $e');
+      print('Error fetching bookings : $e');
       throw Exception('Failed to fetch bookings');
+    }
+  }
+///
+  Future<void> updateBookingStatus(String bookingId, String newStatus) async {
+    try {
+      String? patientId = await FirebaseAuthService().getUid();
+
+      final patientRef =
+          _firestore.collection(_patientsCollection).doc(patientId);
+      final docSnapshot = await patientRef.get();
+
+      if (docSnapshot.exists) {
+        final data = docSnapshot.data();
+        if (data != null && data['bookings'] != null) {
+          List<dynamic> bookings = data['bookings'];
+
+          for (var booking in bookings) {
+            if (booking['id'] == bookingId) {
+              booking['bookingStatus'] = newStatus;
+              break;
+            }
+          }
+          await patientRef.update({'bookings': bookings});
+        }
+      }
+    } catch (e) {
+      print('Error updating booking status: $e');
+      throw Exception('Failed to update booking status');
     }
   }
 }
@@ -66,7 +100,7 @@ class _AppointmentViewState extends State<AppointmentView>
         children: [
           buildBookingsTab(context, 'Pending'),
           buildBookingsTab(context, 'Completed'),
-          buildBookingsTab(context, 'Canceled'), 
+          buildBookingsTab(context, 'Canceled'),
         ],
       ),
     );
@@ -87,7 +121,6 @@ class _AppointmentViewState extends State<AppointmentView>
         }
 
         final bookings = snapshot.data!;
-
 
         return ListView.separated(
           padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
@@ -124,6 +157,11 @@ class _AppointmentViewState extends State<AppointmentView>
               textSize: 13,
               padding: EdgeInsets.all(12),
               textColor: MyColors.dark2,
+              onTap: () async {
+                await _bookingService.updateBookingStatus(
+                    booking['id'], 'Cancel');
+                setState(() {});
+              },
             ),
           ),
           const SizedBox(width: 20),
@@ -133,7 +171,24 @@ class _AppointmentViewState extends State<AppointmentView>
               color: isDark ? MyColors.primary : MyColors.dark,
               textSize: 13,
               padding: const EdgeInsets.all(12),
-              textColor: isDark ? MyColors.dark: Colors.white,
+              textColor: isDark ? MyColors.dark : Colors.white,
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BookAppointmentView(
+                      doctorId:
+                          booking['doctorId'], // Access from the booking map
+                      doctorName: booking['docName'],
+                      doctorSpeciality: booking['docSpeciality'],
+                      doctorAddress: booking['docAddress'],
+                      doctorImageUrl: booking['docImageUrl'],
+                      patientName: booking['patientName'],
+                    ),
+                  ),
+                );
+                setState(() {});
+              },
             ),
           ),
         ],
@@ -148,6 +203,10 @@ class _AppointmentViewState extends State<AppointmentView>
               textSize: 13,
               padding: EdgeInsets.all(12),
               textColor: MyColors.dark2,
+              onTap: () async {
+                await _bookingService.updateBookingStatus('Pending');
+                setState(() {});
+              },
             ),
           ),
           const SizedBox(width: 20),
@@ -157,7 +216,7 @@ class _AppointmentViewState extends State<AppointmentView>
               color: isDark ? MyColors.primary : MyColors.dark,
               textSize: 13,
               padding: const EdgeInsets.all(12),
-              textColor: isDark ? MyColors.dark: Colors.white,
+              textColor: isDark ? MyColors.dark : Colors.white,
             ),
           ),
         ],
@@ -171,7 +230,11 @@ class _AppointmentViewState extends State<AppointmentView>
               color: isDark ? MyColors.primary : MyColors.dark,
               textSize: 13,
               padding: const EdgeInsets.all(15),
-              textColor: isDark ? MyColors.dark: Colors.white,
+              textColor: isDark ? MyColors.dark : Colors.white,
+              onTap: () async {
+                await _bookingService.updateBookingStatus('Pending');
+                setState(() {});
+              },
             ),
           ),
         ],
