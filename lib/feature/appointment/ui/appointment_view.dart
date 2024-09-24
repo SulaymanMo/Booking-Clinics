@@ -33,7 +33,7 @@ class BookingService {
       }
       return [];
     } catch (e) {
-      print('Error fetching bookings: $e');
+      print('Error fetching bookings : $e');
       throw Exception('Failed to fetch bookings');
     }
   }
