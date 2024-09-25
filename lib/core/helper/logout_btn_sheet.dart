@@ -11,14 +11,17 @@ class LogoutBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkTheme = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    bool isDarkTheme =
+        MediaQuery.of(context).platformBrightness == Brightness.dark;
 
     return Container(
       padding: const EdgeInsets.all(25),
-
       decoration: BoxDecoration(
-        color: isDarkTheme? MyColors.dark : Colors.white,
-        borderRadius: BorderRadius.circular(25),
+        color: isDarkTheme ? MyColors.dark : Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(4.w),
+          topRight: Radius.circular(4.w),
+        ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

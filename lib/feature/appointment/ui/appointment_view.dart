@@ -14,15 +14,19 @@ class BookingService {
     try {
       String? patientId = await FirebaseAuthService().getUid();
 
-      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+      final patientRef =
+          _firestore.collection(_patientsCollection).doc(patientId);
       final docSnapshot = await patientRef.get();
 
       if (docSnapshot.exists) {
         final data = docSnapshot.data();
         if (data != null && data['bookings'] != null) {
-          final bookingsJson = List<Map<String, dynamic>>.from(data['bookings']);
+          final bookingsJson =
+              List<Map<String, dynamic>>.from(data['bookings']);
           // Filter bookings by status
-          return bookingsJson.where((booking) => booking['bookingStatus'] == status).toList();
+          return bookingsJson
+              .where((booking) => booking['bookingStatus'] == status)
+              .toList();
         }
       }
       return [];
@@ -66,7 +70,7 @@ class _AppointmentViewState extends State<AppointmentView>
         children: [
           buildBookingsTab(context, 'Pending'),
           buildBookingsTab(context, 'Completed'),
-          buildBookingsTab(context, 'Canceled'), 
+          buildBookingsTab(context, 'Canceled'),
         ],
       ),
     );
@@ -87,7 +91,6 @@ class _AppointmentViewState extends State<AppointmentView>
         }
 
         final bookings = snapshot.data!;
-
 
         return ListView.separated(
           padding: const EdgeInsets.fromLTRB(12, 8, 12, 90),
@@ -133,7 +136,7 @@ class _AppointmentViewState extends State<AppointmentView>
               color: isDark ? MyColors.primary : MyColors.dark,
               textSize: 13,
               padding: const EdgeInsets.all(12),
-              textColor: isDark ? MyColors.dark: Colors.white,
+              textColor: isDark ? MyColors.dark : Colors.white,
             ),
           ),
         ],
@@ -157,7 +160,7 @@ class _AppointmentViewState extends State<AppointmentView>
               color: isDark ? MyColors.primary : MyColors.dark,
               textSize: 13,
               padding: const EdgeInsets.all(12),
-              textColor: isDark ? MyColors.dark: Colors.white,
+              textColor: isDark ? MyColors.dark : Colors.white,
             ),
           ),
         ],
@@ -171,7 +174,7 @@ class _AppointmentViewState extends State<AppointmentView>
               color: isDark ? MyColors.primary : MyColors.dark,
               textSize: 13,
               padding: const EdgeInsets.all(15),
-              textColor: isDark ? MyColors.dark: Colors.white,
+              textColor: isDark ? MyColors.dark : Colors.white,
             ),
           ),
         ],

@@ -18,12 +18,9 @@ class UpperAppBar extends StatelessWidget {
         subtitle: Wrap(
           spacing: 1.25.w,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            Icon(
-              Iconsax.location5,
-              color: context.theme.iconTheme.color,
-            ),
-            const DropDown(
+          children: const [
+            Icon(Iconsax.location5),
+            DropDown(
               titles: ["Cairo, EGY", "Settle, USA"],
             ),
           ],

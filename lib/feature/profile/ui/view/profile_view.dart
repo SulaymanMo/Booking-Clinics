@@ -56,9 +56,12 @@ class ProfileView extends StatelessWidget {
                     onTap: () => context.nav.pushNamed(Routes.favoriteView),
                     title: Text(
                       "Favorite",
-                      style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 15.sp, fontWeight: FontWeight.w400),
                     ),
-                    leading: const Icon(Iconsax.heart,),
+                    leading: const Icon(
+                      Iconsax.heart,
+                    ),
                     contentPadding: EdgeInsets.symmetric(horizontal: 2.w),
                   ),
                   // List of settings
@@ -75,7 +78,8 @@ class ProfileView extends StatelessWidget {
                     },
                     title: Text(
                       "Log Out",
-                      style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 15.sp, fontWeight: FontWeight.w400),
                     ),
                     leading: const Icon(Icons.logout_outlined),
                     contentPadding: EdgeInsets.symmetric(horizontal: 2.w),

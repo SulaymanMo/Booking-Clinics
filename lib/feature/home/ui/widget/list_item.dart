@@ -1,10 +1,10 @@
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/common/custom_image.dart';
 import '../../../../core/common/rate.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/data/models/doctor_model.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class ListItem extends StatelessWidget {
   final DoctorModel doctor;
@@ -17,21 +17,7 @@ class ListItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        CachedNetworkImage(
-          imageUrl: doctor.imageUrl ?? "",
-          height: 20.h,
-          fit: BoxFit.cover,
-          width: double.infinity,
-          placeholder: (_, url) => SizedBox(
-            height: 20.h,
-            width: double.infinity,
-          ),
-          errorWidget: (_, url, error) => Image.asset(
-            "assets/images/center_2.jpg",
-            fit: BoxFit.cover,
-          ),
-          errorListener: (val) => debugPrint('$val'),
-        ),
+        CustomImage(image: doctor.imageUrl),
         const Spacer(),
         ListTile(
           dense: true,

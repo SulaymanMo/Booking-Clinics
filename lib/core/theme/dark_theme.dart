@@ -13,10 +13,10 @@ ThemeData darkTheme() {
     appBarTheme: AppBarTheme(
       titleTextStyle: TextStyle(
         fontSize: 18.sp,
-        color: Colors.white,
         fontWeight: FontWeight.w500,
+        color: ConstColor.secondary.color,
       ),
-      titleSpacing: 4.w,
+      titleSpacing: 0,
       centerTitle: true,
       scrolledUnderElevation: 0,
       backgroundColor: ConstColor.dark.color,
@@ -28,11 +28,11 @@ ThemeData darkTheme() {
       ),
       iconTheme: IconThemeData(
         size: 20.sp,
-        color: ConstColor.secondary.color,
+        color: ConstColor.icon.color,
       ),
       actionsIconTheme: IconThemeData(
         size: 20.sp,
-        color: ConstColor.secondary.color,
+        color: ConstColor.icon.color,
       ),
     ),
     // ! _____ TabBar _____ ! //
@@ -52,7 +52,7 @@ ThemeData darkTheme() {
       indicator: ShapeDecoration(
         color: ConstColor.dark.color,
         shape: StadiumBorder(
-          side: BorderSide(color: ConstColor.secondary.color),
+          side: BorderSide(color: ConstColor.primary.color, width: 0.5.w),
         ),
       ),
     ),
@@ -168,7 +168,10 @@ ThemeData darkTheme() {
     // ! _____ Dialog Theme _____ ! //
     dialogTheme: DialogTheme(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(4.w),
+          topRight: Radius.circular(4.w),
+        ),
       ),
       backgroundColor: ConstColor.dark.color,
     ),
