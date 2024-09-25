@@ -1,5 +1,5 @@
 class Booking {
-  final String docName,
+  final  String docName,
       docAddress,
       docSpeciality,
       docImageUrl,
