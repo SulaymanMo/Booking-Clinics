@@ -173,23 +173,7 @@ class _AppointmentViewState extends State<AppointmentView>
               textSize: 13,
               padding: const EdgeInsets.all(12),
               textColor: isDark ? MyColors.dark : Colors.white,
-              onTap: () async {
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BookAppointmentView(
-                      doctorId:
-                          booking['doctorId'], // Access from the booking map
-                      doctorName: booking['docName'],
-                      doctorSpeciality: booking['docSpeciality'],
-                      doctorAddress: booking['docAddress'],
-                      doctorImageUrl: booking['docImageUrl'],
-                      patientName: booking['patientName'],
-                    ),
-                  ),
-                );
-                setState(() {});
-              },
+
             ),
           ),
         ],
@@ -232,10 +216,7 @@ class _AppointmentViewState extends State<AppointmentView>
               textSize: 13,
               padding: const EdgeInsets.all(15),
               textColor: isDark ? MyColors.dark : Colors.white,
-              onTap: () async {
-                await _bookingService.updateBookingStatus(booking['id'],'Pending');
-                setState(() {});
-              },
+
             ),
           ),
         ],

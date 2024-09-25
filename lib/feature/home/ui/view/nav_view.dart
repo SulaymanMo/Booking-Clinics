@@ -41,9 +41,7 @@ class _NavViewState extends State<NavView> {
       )..predectPlaces(),
       child: const MapView(),
     ),
-
     const AppointmentView(),
-    
     BlocProvider<ProfileCubit>(
       create: (_) => ProfileCubit(
         getIt.get<FirebaseAuthService>(),
@@ -71,7 +69,10 @@ class _NavViewState extends State<NavView> {
       resizeToAvoidBottomInset: false,
       body: _pages[_index],
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.circular(4.w),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(4.w),
+          topRight: Radius.circular(4.w),
+        ),
         child: BottomAppBar(
           height: 7.5.h,
           child: Row(

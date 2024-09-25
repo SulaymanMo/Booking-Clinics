@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:booking_clinics/data/models/doctor_model.dart';
 import 'package:booking_clinics/feature/see_all/data/see_all_repo.dart';
@@ -13,9 +14,8 @@ class AllDoctorsCubit extends Cubit<AllDoctorsState> {
     final result = await seeAllRepo.getAllDoctors();
     result.fold(
       (failure) {
-        emit(
-          AllDoctorsFailure(failure.ex),
-        );
+        debugPrint(failure.ex);
+        emit(AllDoctorsFailure(failure.ex));
       },
       (doctors) {
         emit(AllDoctorsSuccess(doctors));

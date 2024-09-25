@@ -1,5 +1,4 @@
 import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/feature/map/data/model/place_details_model/place_details_model.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/constant/const_string.dart';
 import '../../../home/ui/widget/list_item.dart';
@@ -105,9 +104,7 @@ class _MapViewState extends State<MapView> {
                 ),
               ),
             if (state is MapLoading)
-              const Center(
-                child: CircularProgressIndicator(),
-              ),
+              const Center(child: CircularProgressIndicator()),
           ],
         );
       },

@@ -17,7 +17,7 @@ ThemeData lightTheme() {
         fontWeight: FontWeight.w500,
       ),
       centerTitle: true,
-      titleSpacing: 4.w,
+      titleSpacing:0,
       scrolledUnderElevation: 0,
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
@@ -48,7 +48,7 @@ ThemeData lightTheme() {
       indicator: ShapeDecoration(
         color: ConstColor.main.color,
         shape: StadiumBorder(
-          side: BorderSide(color: ConstColor.main.color),
+          side: BorderSide(color: ConstColor.main.color, width: .5.w),
         ),
       ),
     ),
@@ -164,7 +164,10 @@ ThemeData lightTheme() {
     // ! _____ Dialog Theme _____ ! //
     dialogTheme: DialogTheme(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(4.w),
+          topRight: Radius.circular(4.w),
+        ),
       ),
       backgroundColor: ConstColor.secondary.color,
     ),
