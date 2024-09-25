@@ -1,6 +1,4 @@
 import 'package:booking_clinics/core/common/custom_button.dart';
-import 'package:booking_clinics/data/models/booking.dart';
-import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constant/const_color.dart';
@@ -33,7 +31,7 @@ class BookingService {
       }
       return [];
     } catch (e) {
-      print('Error fetching bookings : $e');
+      debugPrint('Error fetching bookings : $e');
       throw Exception('Failed to fetch bookings');
     }
   }
@@ -62,7 +60,7 @@ class BookingService {
         }
       }
     } catch (e) {
-      print('Error updating booking status: $e');
+      debugPrint('Error updating booking status: $e');
       throw Exception('Failed to update booking status');
     }
   }
@@ -156,7 +154,7 @@ class _AppointmentViewState extends State<AppointmentView>
               text: 'Cancel',
               color: MyColors.gray,
               textSize: 13,
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               textColor: MyColors.dark2,
               onTap: () async {
                 await _bookingService.updateBookingStatus(

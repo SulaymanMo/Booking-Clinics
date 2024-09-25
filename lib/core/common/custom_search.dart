@@ -1,9 +1,9 @@
 import 'package:sizer/sizer.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter/material.dart';
-import '../manager/search/search_cubit.dart';
+import '../../feature/home/ui/manager/search/search_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constant/const_string.dart';
+import '../constant/const_string.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/core/constant/const_color.dart';
 

@@ -1,5 +1,6 @@
 import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
+import '../../../../core/common/custom_search.dart';
 import '../widget/see_all_tab.dart';
 import '../manager/seeall_cubit.dart';
 import 'package:flutter/material.dart';
@@ -66,14 +67,18 @@ class _SeeAllViewState extends State<SeeAllView>
           centerTitle: false,
           toolbarHeight: 7.h,
           title: Text("All Specialties", style: context.bold18),
-          leading: BackButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-            ),
+          leading: IconButton(
+            onPressed: () => context.nav.pop(),
+            icon: const Icon(Iconsax.arrow_left_2),
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: CustomSearch(),
+                );
+              },
               icon: const Icon(Iconsax.search_normal),
             ),
           ],
