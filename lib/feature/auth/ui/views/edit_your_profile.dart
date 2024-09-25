@@ -52,10 +52,9 @@ class _EditYourProfileState extends State<EditYourProfile> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Fill your Profile"),
-        leading: BackButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-          ),
+        leading: IconButton(
+          onPressed: () => context.nav.pop(),
+          icon: const Icon(Iconsax.arrow_left_2),
         ),
       ),
       body: Form(

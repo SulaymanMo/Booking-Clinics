@@ -6,7 +6,7 @@ import '../../../../core/common/see_all.dart';
 import '../widget/carousel/carousel_slider.dart';
 import '../widget/custom_carousel.dart';
 import '../widget/categories.dart';
-import '../widget/custom_search.dart';
+import '../../../../core/common/custom_search.dart';
 import '../widget/home_appbar.dart';
 
 class HomeView extends StatelessWidget {

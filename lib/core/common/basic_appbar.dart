@@ -1,4 +1,6 @@
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -18,6 +20,10 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
+      leading: IconButton(
+        onPressed: () => context.nav.pop(),
+        icon: const Icon(Iconsax.arrow_left_2),
+      ),
       automaticallyImplyLeading: showBackArrow,
       title: Text(title),
       actions: actionIcon != null

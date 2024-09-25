@@ -27,10 +27,9 @@ class DoctorDetailsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Doctor Details'),
-        leading: BackButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-          ),
+        leading: IconButton(
+          onPressed: () => context.nav.pop(),
+          icon: const Icon(Iconsax.arrow_left_2),
         ),
         actions: [
           Padding(
