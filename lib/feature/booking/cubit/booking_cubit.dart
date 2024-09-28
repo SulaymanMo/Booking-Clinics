@@ -9,19 +9,19 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
   String? _selectedHour;
 
   List<String> get hours => [
-    "09.00 AM",
-    "09.30 AM",
-    "10.00 AM",
-    "10.30 AM",
-    "11.00 AM",
-    "11.30 AM",
-    "3.00 PM",
-    "3.30 PM",
-    "4.00 PM",
-    "4.30 PM",
-    "5.00 PM",
-    "5.30 PM",
-  ];
+        "09.00 AM",
+        "09.30 AM",
+        "10.00 AM",
+        "10.30 AM",
+        "11.00 AM",
+        "11.30 AM",
+        "3.00 PM",
+        "3.30 PM",
+        "4.00 PM",
+        "4.30 PM",
+        "5.00 PM",
+        "5.30 PM",
+      ];
 
   void selectDate(DateTime date) {
     _selectedDate = date;

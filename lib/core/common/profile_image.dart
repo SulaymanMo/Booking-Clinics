@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:sizer/sizer.dart';
 import '../constant/const_color.dart';
 import 'package:iconsax/iconsax.dart';
