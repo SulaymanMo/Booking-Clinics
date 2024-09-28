@@ -14,3 +14,8 @@ final class AppointmentFailure extends AppointmentState {
 }
 
 final class ActionClicked extends AppointmentState {}
+
+final class CancelBooking extends AppointmentState {
+  final Booking booking;
+  CancelBooking(this.booking);
+}

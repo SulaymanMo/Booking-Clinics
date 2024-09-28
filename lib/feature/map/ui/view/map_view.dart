@@ -39,7 +39,6 @@ class _MapViewState extends State<MapView> {
               markers: mapCubit.markers,
               onTap: (val) {
                 if (state is MapLoading) return;
-                print("Hello");
                 if (state is MarkerClicked) mapCubit.emitInitial();
               },
               onMapCreated: (controller) async {

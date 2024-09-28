@@ -16,7 +16,9 @@ class BookingTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppointmentCubit, AppointmentState>(
-      listener: (_, state) {},
+      listener: (_, state) {
+        if (state is CancelBooking) {}
+      },
       builder: (_, state) {
         if (state is AppointmentLoading) {
           return const LoadingIndicator();
