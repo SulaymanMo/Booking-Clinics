@@ -66,20 +66,23 @@ class _SeeAllViewState extends State<SeeAllView>
         appBar: AppBar(
           centerTitle: false,
           toolbarHeight: 7.h,
-          title: Text("All Specialties", style: context.bold18),
+          title: Text("All Doctors", style: context.bold18),
           leading: IconButton(
             onPressed: () => context.nav.pop(),
             icon: const Icon(Iconsax.arrow_left_2),
           ),
           actions: [
-            IconButton(
-              onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: CustomSearch(),
-                );
-              },
-              icon: const Icon(Iconsax.search_normal),
+            Padding(
+              padding: EdgeInsets.only(right: 4.w),
+              child: IconButton(
+                onPressed: () {
+                  showSearch(
+                    context: context,
+                    delegate: CustomSearch(),
+                  );
+                },
+                icon: const Icon(Iconsax.search_normal),
+              ),
             ),
           ],
           bottom: TabBar(
@@ -89,7 +92,6 @@ class _SeeAllViewState extends State<SeeAllView>
             isScrollable: true,
             controller: _tabController,
             tabAlignment: TabAlignment.start,
-            dividerColor: Colors.transparent,
             padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.h),
             tabs: List.generate(
               _specialty.length,

@@ -1,4 +1,5 @@
 import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:booking_clinics/feature/appointment/manager/appointment_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
@@ -6,6 +7,7 @@ import 'package:table_calendar/table_calendar.dart';
 import '../../../../core/common/basic_appbar.dart';
 import '../../../../core/common/custom_button.dart';
 import '../../../../core/constant/const_color.dart';
+import '../../../../core/helper/service_locator.dart';
 import '../../../../data/models/booking.dart';
 import '../../../../data/services/remote/firebase_auth.dart';
 import '../../../../data/services/remote/firebase_firestore.dart';
@@ -16,6 +18,9 @@ import '../widgets/custom_dialog.dart';
 class BookAppointmentView extends StatelessWidget {
   const BookAppointmentView({
     super.key,
+    this.isReBooking = false,
+    this.isReschedule = false,
+    this.isRebookCompleted = false,
     required this.doctorId,
     required this.doctorName,
     required this.doctorSpeciality,
@@ -24,6 +29,9 @@ class BookAppointmentView extends StatelessWidget {
     required this.patientName,
   });
 
+  final bool? isReschedule;
+  final bool? isReBooking;
+  final bool? isRebookCompleted;
   final String doctorId;
   final String doctorName;
   final String doctorSpeciality;
@@ -139,42 +147,59 @@ class BookAppointmentView extends StatelessWidget {
                     text: "Confirm",
                     textSize: 17.sp,
                     height: 15.w,
-                    onTap: cubit.selectedHour != null
-                        ? () async {
-                            // start loading
-                            final newBooking = Booking(
-                              docName: doctorName,
-                              docAddress: doctorAddress,
-                              docSpeciality: doctorSpeciality,
-                              docImageUrl: doctorImageUrl,
+                    onTap: () async {
+                      if (cubit.selectedHour == null) return;
+                      if (isReBooking!) {
+                        await context.read<AppointmentCubit>().reBook(
                               date: cubit.getFormattedDate(),
                               time: cubit.selectedHour!,
-                              bookingStatus: 'Pending',
-                              patientName: patientName,
                             );
-                            String? patientUid =
-                                await FirebaseAuthService().getUid();
-                            print(patientUid);
-                            // Add the booking to Firestore
-                            try {
-                              FirebaseFirestoreService()
-                                  .addBookingToPatient(patientUid!, newBooking);
-
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AppointmentDialog(
-                                    doctorName: doctorName,
-                                    appointmentDate: cubit.getFormattedDate(),
-                                    appointmentTime: '${cubit.selectedHour}',
-                                  );
-                                },
-                              );
-                            } catch (e) {
-                              print('Error ______ $e');
-                            }
+                      } else if (isReschedule!) {
+                        await context.read<AppointmentCubit>().reschadule(
+                              date: cubit.getFormattedDate(),
+                              time: cubit.selectedHour!,
+                            );
+                      } else if (isRebookCompleted!) {
+                        await context.read<AppointmentCubit>().rebookCompleted(
+                              date: cubit.getFormattedDate(),
+                              time: cubit.selectedHour!,
+                            );
+                      } else {
+                        final Booking newBooking = Booking(
+                          doctorId: doctorId,
+                          docName: doctorName,
+                          docAddress: doctorAddress,
+                          docSpeciality: doctorSpeciality,
+                          docImageUrl: doctorImageUrl,
+                          date: cubit.getFormattedDate(),
+                          time: cubit.selectedHour!,
+                          bookingStatus: 'Pending',
+                          patientName: patientName,
+                        );
+                        String? patientUid =
+                            await getIt.get<FirebaseAuthService>().getUid();
+                        // ! Add the booking to Firestore
+                        try {
+                          await getIt
+                              .get<FirebaseFirestoreService>()
+                              .addBookingToPatient(patientUid!, newBooking);
+                          if (context.mounted) {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AppointmentDialog(
+                                  doctorName: doctorName,
+                                  appointmentDate: cubit.getFormattedDate(),
+                                  appointmentTime: '${cubit.selectedHour}',
+                                );
+                              },
+                            );
                           }
-                        : null,
+                        } catch (e) {
+                          print('Error ______ $e');
+                        }
+                      }
+                    },
                   );
                 },
               ),

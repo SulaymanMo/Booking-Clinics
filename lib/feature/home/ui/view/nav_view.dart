@@ -14,7 +14,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/feature/home/ui/view/home_view.dart';
-import '../../../appointment/ui/appointment_view.dart';
+import '../../../appointment/manager/appointment_cubit.dart';
+import '../../../appointment/view/appointment_view.dart';
 import '../../../profile/ui/profile_manager/profile_cubit.dart';
 
 class NavView extends StatefulWidget {
@@ -41,7 +42,10 @@ class _NavViewState extends State<NavView> {
       )..predectPlaces(),
       child: const MapView(),
     ),
-    const AppointmentView(),
+    BlocProvider<AppointmentCubit>(
+      create: (_) => AppointmentCubit(getIt.get<FirebaseAuthService>()),
+      child: const AppointmentView(),
+    ),
     BlocProvider<ProfileCubit>(
       create: (_) => ProfileCubit(
         getIt.get<FirebaseAuthService>(),
