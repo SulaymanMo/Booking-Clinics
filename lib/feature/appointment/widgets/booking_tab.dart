@@ -15,9 +15,21 @@ class BookingTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppointmentCubit, AppointmentState>(
+    return BlocConsumer<AppointmentCubit, AppointmentState>(
+      listener: (_, state) {},
       builder: (_, state) {
-        if (state is AppointmentSuccess) {
+        if (state is AppointmentLoading) {
+          return const LoadingIndicator();
+        } else if (state is AppointmentFailure) {
+          return Center(
+            child: Text(
+              "Oops... Can't loading bookings for now, Please try later!",
+              style: context.regular14,
+            ),
+          );
+        } else if (state is AppointmentInitial) {
+          return const SizedBox();
+        } else {
           return ListView.separated(
             itemCount: bookings.length,
             separatorBuilder: (_, __) => SizedBox(height: 1.5.h),
@@ -38,15 +50,6 @@ class BookingTab extends StatelessWidget {
               );
             },
           );
-        } else if (state is AppointmentFailure) {
-          return Center(
-            child: Text(
-              'Error loading bookings',
-              style: context.regular14,
-            ),
-          );
-        } else {
-          return const LoadingIndicator();
         }
       },
     );

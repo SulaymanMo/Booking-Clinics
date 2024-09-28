@@ -12,3 +12,5 @@ final class AppointmentFailure extends AppointmentState {
   final String error;
   AppointmentFailure(this.error);
 }
+
+final class ActionClicked extends AppointmentState {}
