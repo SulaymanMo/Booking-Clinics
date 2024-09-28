@@ -40,4 +40,8 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
   String getFormattedDate() {
     return DateFormat('yyyy-MM-dd').format(_selectedDate);
   }
+
+  // bool checkDate() {
+  //   return;
+  // }
 }
