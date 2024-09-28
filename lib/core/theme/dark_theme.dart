@@ -58,7 +58,7 @@ ThemeData darkTheme() {
     ),
     // ! _____ Card Theme _____ ! //
     cardTheme: CardTheme(
-      elevation: 3,
+      elevation: 0,
       margin: EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
       color: ConstColor.iconDark.color,
@@ -105,11 +105,11 @@ ThemeData darkTheme() {
     // ! _____ OutlinedButton _____ ! //
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        backgroundColor: ConstColor.iconDark.color,
+        // backgroundColor: ConstColor.iconDark.color,
         foregroundColor: ConstColor.secondary.color,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(3.w),
-          side: BorderSide(color: ConstColor.dark.color),
+          borderRadius: BorderRadius.circular(50),
+          side: BorderSide(color: ConstColor.primary.color),
         ),
         textStyle: TextStyle(
           inherit: false,
@@ -173,7 +173,7 @@ ThemeData darkTheme() {
           topRight: Radius.circular(4.w),
         ),
       ),
-      backgroundColor: ConstColor.dark.color,
+      backgroundColor: ConstColor.iconDark.color,
     ),
     // ! _____ Switch Theme _____ ! //
     switchTheme: SwitchThemeData(

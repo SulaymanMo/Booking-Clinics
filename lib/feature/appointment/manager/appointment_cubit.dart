@@ -40,8 +40,8 @@ class AppointmentCubit extends Cubit<AppointmentState> {
 
   // ! Cancel in pending
   Future<void> cancelBooking({required int index}) async {
-    emit(ActionClicked());
     try {
+      emit(CancelBooking(pending[index]));
       final ref = await _getRef;
       pending[index].bookingStatus = "Canceled";
       await ref.update({
