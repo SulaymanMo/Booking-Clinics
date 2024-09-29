@@ -25,8 +25,12 @@ class Patient {
       phone: json["phone"],
       birthDate: json["birth_date"],
       profileImg: json["profile_image"],
-      bookings: List<Booking>.from(json["bookings"].map((x) => Booking.fromJson(x))),
-      favorites: List<Favorite>.from(json["favorites"].map((x) => Favorite.fromJson(x))),
+      bookings: List<Booking>.from(
+        json["bookings"].map((x) => Booking.fromJson(x)),
+      ),
+      favorites: List<Favorite>.from(
+        json["favorites"].map((x) => Favorite.fromJson(x)),
+      ),
     );
   }
 

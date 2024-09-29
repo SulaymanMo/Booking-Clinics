@@ -20,7 +20,7 @@ class SeeAllRepoImpl implements SeeAllRepo {
       }).toList();
       return right(doctors);
     } catch (e) {
-      return left(const UnknownFailure("oops... Something went wrong!"));
+      return left(UnknownFailure("$e"));
     }
   }
 
@@ -41,7 +41,7 @@ class SeeAllRepoImpl implements SeeAllRepo {
       ).toList();
       return right(doctors);
     } catch (e) {
-      return left(const UnknownFailure("Oops... Something went wrong!"));
+      return left(UnknownFailure("$e"));
     }
   }
 }
