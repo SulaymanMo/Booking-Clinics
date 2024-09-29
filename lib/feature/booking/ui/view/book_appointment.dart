@@ -138,7 +138,6 @@ class BookAppointmentView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 2.w),
-
               // Confirm Button
               BlocBuilder<BookAppointmentCubit, BookAppointmentState>(
                 builder: (context, state) {
@@ -154,49 +153,48 @@ class BookAppointmentView extends StatelessWidget {
                               date: cubit.getFormattedDate(),
                               time: cubit.selectedHour!,
                             );
+                        if (context.mounted) bookingDialog(context, cubit);
                       } else if (isReschedule!) {
                         await context.read<AppointmentCubit>().reschadule(
                               date: cubit.getFormattedDate(),
                               time: cubit.selectedHour!,
                             );
+                        if (context.mounted) bookingDialog(context, cubit);
                       } else if (isRebookCompleted!) {
                         await context.read<AppointmentCubit>().rebookCompleted(
                               date: cubit.getFormattedDate(),
                               time: cubit.selectedHour!,
                             );
+                        if (context.mounted) bookingDialog(context, cubit);
                       } else {
                         final Booking newBooking = Booking(
-                          doctorId: doctorId,
+                          id: doctorId,
                           docName: doctorName,
-                          docAddress: doctorAddress,
-                          docSpeciality: doctorSpeciality,
-                          docImageUrl: doctorImageUrl,
+                          address: doctorAddress,
+                          specialty: doctorSpeciality,
+                          imageUrl: doctorImageUrl,
                           date: cubit.getFormattedDate(),
                           time: cubit.selectedHour!,
                           bookingStatus: 'Pending',
                           patientName: patientName,
                         );
-                        String? patientUid =
+                        String? patientId =
                             await getIt.get<FirebaseAuthService>().getUid();
-                        // ! Add the booking to Firestore
                         try {
+                          // ! Add to patient
                           await getIt
                               .get<FirebaseFirestoreService>()
-                              .addBookingToPatient(patientUid!, newBooking);
-                          if (context.mounted) {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AppointmentDialog(
-                                  doctorName: doctorName,
-                                  appointmentDate: cubit.getFormattedDate(),
-                                  appointmentTime: '${cubit.selectedHour}',
-                                );
-                              },
-                            );
-                          }
+                              .addBookingToPatient(patientId!, newBooking);
+                          // ! Add to doctor
+                          await getIt
+                              .get<FirebaseFirestoreService>()
+                              .addBookingToDoctor(
+                                newBooking.id,
+                                newBooking,
+                              );
+                          if (context.mounted) bookingDialog(context, cubit);
                         } catch (e) {
-                          print('Error ______ $e');
+                          debugPrint('Error ______ $e');
                         }
                       }
                     },
@@ -207,6 +205,19 @@ class BookAppointmentView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void bookingDialog(BuildContext context, BookAppointmentCubit cubit) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AppointmentDialog(
+          doctorName: doctorName,
+          appointmentDate: cubit.getFormattedDate(),
+          appointmentTime: '${cubit.selectedHour}',
+        );
+      },
     );
   }
 }

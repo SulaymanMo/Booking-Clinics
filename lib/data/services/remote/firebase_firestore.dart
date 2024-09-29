@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import '../../models/booking.dart';
 import '../../models/doctor_model.dart';
 import '../../models/favorite.dart';
@@ -23,7 +24,8 @@ class FirebaseFirestoreService {
   }
 
   /// Updates specific fields in a patient document.
-  Future<void> updatePatientFields(String uid, Map<String, dynamic> updatedFields) async {
+  Future<void> updatePatientFields(
+      String uid, Map<String, dynamic> updatedFields) async {
     try {
       await _firestore
           .collection(_patientsCollection)
@@ -51,7 +53,8 @@ class FirebaseFirestoreService {
   /// Fetches all doctors from the doctors collection.
   Future<List<DoctorModel>> getDoctors() async {
     try {
-      final querySnapshot = await _firestore.collection(_doctorsCollection).get();
+      final querySnapshot =
+          await _firestore.collection(_doctorsCollection).get();
       return querySnapshot.docs
           .map((doc) => DoctorModel.fromJson(doc.data()))
           .toList();
@@ -64,7 +67,8 @@ class FirebaseFirestoreService {
   /// Fetches a doctor by ID from the doctors collection.
   Future<DoctorModel?> getDoctorById(String doctorId) async {
     try {
-      final docSnapshot = await _firestore.collection(_doctorsCollection).doc(doctorId).get();
+      final docSnapshot =
+          await _firestore.collection(_doctorsCollection).doc(doctorId).get();
       if (docSnapshot.exists) {
         return DoctorModel.fromJson(docSnapshot.data() as Map<String, dynamic>);
       }
@@ -78,7 +82,8 @@ class FirebaseFirestoreService {
   /// Fetches a Patient by ID.
   Future<Patient?> getPatientById(String patientId) async {
     try {
-      final docSnapshot = await _firestore.collection(_patientsCollection).doc(patientId).get();
+      final docSnapshot =
+          await _firestore.collection(_patientsCollection).doc(patientId).get();
       if (docSnapshot.exists) {
         return Patient.fromJson(docSnapshot.data() as Map<String, dynamic>);
       }
@@ -92,21 +97,31 @@ class FirebaseFirestoreService {
   /// Adds a booking to the patient's list of bookings in Firestore.
   Future<void> addBookingToPatient(String patientUid, Booking booking) async {
     try {
-      await _firestore
-          .collection(_patientsCollection)
-          .doc(patientUid)
-          .update({
+      await _firestore.collection(_patientsCollection).doc(patientUid).update({
         'bookings': FieldValue.arrayUnion([booking.toJson()]),
       });
     } catch (e) {
-      print('Error adding booking: $e');
+      debugPrint('Error adding booking: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> addBookingToDoctor(String doctorId, Booking booking) async {
+    try {
+      await _firestore.collection(_doctorsCollection).doc(doctorId).update({
+        'bookings': FieldValue.arrayUnion([booking.toJson()]),
+      });
+      debugPrint(booking.id);
+    } catch (e) {
+      debugPrint('Error adding booking: $e');
       rethrow;
     }
   }
 
   Future<void> addFavoriteToPatient(String patientId, Favorite favorite) async {
     try {
-      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+      final patientRef =
+          _firestore.collection(_patientsCollection).doc(patientId);
 
       // Add the favorite to the favorites array
       await patientRef.update({
@@ -119,12 +134,14 @@ class FirebaseFirestoreService {
 
   Future<List<Favorite>> getFavoritesForPatient(String patientId) async {
     try {
-      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+      final patientRef =
+          _firestore.collection(_patientsCollection).doc(patientId);
       final doc = await patientRef.get();
       if (doc.exists) {
         final data = doc.data();
         if (data != null && data['favorites'] != null) {
-          final favoritesJson = List<Map<String, dynamic>>.from(data['favorites']);
+          final favoritesJson =
+              List<Map<String, dynamic>>.from(data['favorites']);
           print("fetched favorites: $favoritesJson");
           return favoritesJson.map((json) => Favorite.fromJson(json)).toList();
         } else {
@@ -138,9 +155,11 @@ class FirebaseFirestoreService {
     }
   }
 
-  Future<void> removeFavoriteFromPatient(String patientId, Favorite favorite) async {
+  Future<void> removeFavoriteFromPatient(
+      String patientId, Favorite favorite) async {
     try {
-      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+      final patientRef =
+          _firestore.collection(_patientsCollection).doc(patientId);
 
       // Remove the favorite from the favorites array
       await patientRef.update({
@@ -152,16 +171,17 @@ class FirebaseFirestoreService {
   }
 
   Future<List<Booking>> getBookingsForPatient(String patientId) async {
-
     try {
-      final patientRef = _firestore.collection(_patientsCollection).doc(patientId);
+      final patientRef =
+          _firestore.collection(_patientsCollection).doc(patientId);
       final docSnapshot = await patientRef.get();
 
       if (docSnapshot.exists) {
         final data = docSnapshot.data();
         if (data != null && data['bookings'] != null) {
           // Convert the list of JSON bookings into a List<Booking> object
-          final bookingsJson = List<Map<String, dynamic>>.from(data['bookings']);
+          final bookingsJson =
+              List<Map<String, dynamic>>.from(data['bookings']);
           return bookingsJson.map((json) => Booking.fromJson(json)).toList();
         }
       }
@@ -172,5 +192,4 @@ class FirebaseFirestoreService {
       throw Exception('Failed to get bookings for patient: $e');
     }
   }
-
 }

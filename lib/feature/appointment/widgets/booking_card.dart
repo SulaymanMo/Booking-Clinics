@@ -32,7 +32,7 @@ class BookingCard extends StatelessWidget {
             Row(
               children: [
                 CustomNetworkImage(
-                  imageUrl: booking.docImageUrl,
+                  imageUrl: booking.imageUrl,
                   fallbackAsset: MyImages.doctorAvatar,
                   height: 35.w,
                   width: 35.w,
@@ -54,7 +54,7 @@ class BookingCard extends StatelessWidget {
                         ),
                         SizedBox(height: 2.w),
                         // Specialization
-                        Text(booking.docSpeciality, style: context.regular14),
+                        Text(booking.specialty, style: context.regular14),
                         SizedBox(height: 1.w),
                         // Clinic
                         Row(
@@ -66,7 +66,7 @@ class BookingCard extends StatelessWidget {
                             ),
                             Expanded(
                               child: Text(
-                                booking.docAddress,
+                                booking.address,
                                 style:
                                     const TextStyle(color: MyColors.softGray),
                                 maxLines: 1,

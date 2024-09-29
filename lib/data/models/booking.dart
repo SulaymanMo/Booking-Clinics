@@ -1,51 +1,51 @@
 class Booking {
-  String docName,
-      docAddress,
-      doctorId,
-      docSpeciality,
-      docImageUrl,
+  String id,
       date,
       time,
-      bookingStatus,
-      patientName;
+      docName,
+      address,
+      imageUrl,
+      specialty,
+      patientName,
+      bookingStatus;
 
   Booking({
-    required this.docName,
-    required this.docAddress,
-    required this.docSpeciality,
-    required this.docImageUrl,
+    required this.id,
     required this.date,
     required this.time,
-    required this.doctorId,
-    required this.bookingStatus,
+    required this.docName,
+    required this.address,
+    required this.imageUrl,
+    required this.specialty,
     required this.patientName,
+    required this.bookingStatus,
   });
 
   factory Booking.fromJson(Map<String, dynamic> json) {
     return Booking(
-      docName: json['docName'],
-      doctorId: json['doctorId'],
-      docAddress: json['docAddress'],
-      docSpeciality: json['docSpeciality'],
-      docImageUrl: json['docImageUrl'],
+      id: json['id'],
       date: json['date'],
       time: json['time'],
-      bookingStatus: json['bookingStatus'],
-      patientName: json['patientName'],
+      docName: json['doc_name'],
+      address: json['address'],
+      imageUrl: json['image_url'],
+      specialty: json['specialty'],
+      patientName: json["patient_name"],
+      bookingStatus: json["booking_status"],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'docName': docName,
-      'doctorId': doctorId,
-      'docAddress': docAddress,
-      'docSpeciality': docSpeciality,
-      'docImageUrl': docImageUrl,
+      'id': id,
       'date': date,
       'time': time,
-      'bookingStatus': bookingStatus,
-      'patientName': patientName,
+      'doc_name': docName,
+      'address': address,
+      'image_url': imageUrl,
+      'specialty': specialty,
+      'patient_name': patientName,
+      'booking_status': bookingStatus,
     };
   }
 }
