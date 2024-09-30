@@ -17,7 +17,7 @@ ThemeData lightTheme() {
         fontWeight: FontWeight.w500,
       ),
       centerTitle: true,
-      titleSpacing:0,
+      titleSpacing: 0,
       scrolledUnderElevation: 0,
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
@@ -34,21 +34,18 @@ ThemeData lightTheme() {
     // ! _____ TabBar _____ ! //
     tabBarTheme: TabBarTheme(
       dividerHeight: 0.6,
-      labelColor: Colors.white,
+      labelColor: ConstColor.dark.color,
       dividerColor: Colors.transparent,
       indicatorSize: TabBarIndicatorSize.tab,
       unselectedLabelColor: ConstColor.textBtn.color,
       splashFactory: NoSplash.splashFactory,
-      labelStyle: TextStyle(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w500,
-      ),
+      labelStyle: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
       unselectedLabelStyle: TextStyle(fontSize: 14.sp),
       labelPadding: EdgeInsets.symmetric(horizontal: 0.5.w),
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       indicator: ShapeDecoration(
-        color: ConstColor.main.color,
         shape: StadiumBorder(
-          side: BorderSide(color: ConstColor.main.color, width: .5.w),
+          side: BorderSide(color: ConstColor.dark.color, width: .5.w),
         ),
       ),
     ),
@@ -87,6 +84,7 @@ ThemeData lightTheme() {
     // ! _____ ElevatedButton _____ ! //
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        elevation: 0,
         foregroundColor: ConstColor.secondary.color,
         backgroundColor: ConstColor.dark.color,
         // shape: RoundedRectangleBorder(
@@ -149,11 +147,11 @@ ThemeData lightTheme() {
     ),
     // ! _____ Fixed Bottom Sheet _____ ! //
     bottomSheetTheme: BottomSheetThemeData(
-      constraints: BoxConstraints(
-        maxHeight: 35.h,
-        minHeight: 10.h,
+      showDragHandle: true,
+      constraints: const BoxConstraints(
         minWidth: double.infinity,
       ),
+      dragHandleColor: ConstColor.dark.color,
       backgroundColor: Colors.white,
     ),
     // ! _____ Vertical & Horizontal Divider Theme _____ ! //

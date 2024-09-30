@@ -1,36 +1,46 @@
 class Booking {
+  /* Attributes that didn't specified with doctor or patient, are shared
+     fo both doctor and patient model.
+     for example:
+        in patient app the id is for patient.
+        in doctor app the id is for doctor.
+
+     person_id:
+        in patient app is for doctorId.
+        in patient app is for personId.
+  */
   String id,
+      name, 
       date,
       time,
-      docName,
       address,
       imageUrl,
       specialty,
-      patientName,
+      personId,
       bookingStatus;
 
   Booking({
     required this.id,
+    required this.name,
     required this.date,
     required this.time,
-    required this.docName,
     required this.address,
     required this.imageUrl,
     required this.specialty,
-    required this.patientName,
+    required this.personId,
     required this.bookingStatus,
   });
 
   factory Booking.fromJson(Map<String, dynamic> json) {
     return Booking(
       id: json['id'],
+      name: json['name'],
       date: json['date'],
       time: json['time'],
-      docName: json['doc_name'],
       address: json['address'],
       imageUrl: json['image_url'],
       specialty: json['specialty'],
-      patientName: json["patient_name"],
+      personId: json["person_id"],
       bookingStatus: json["booking_status"],
     );
   }
@@ -38,13 +48,13 @@ class Booking {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'name': name,
       'date': date,
       'time': time,
-      'doc_name': docName,
       'address': address,
       'image_url': imageUrl,
       'specialty': specialty,
-      'patient_name': patientName,
+      'person_id': personId,
       'booking_status': bookingStatus,
     };
   }

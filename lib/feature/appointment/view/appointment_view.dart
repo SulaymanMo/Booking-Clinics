@@ -35,6 +35,7 @@ class _AppointmentViewState extends State<AppointmentView>
     return DefaultTabController(
       length: _status.length,
       child: Scaffold(
+        // extendBody: true,
         appBar: AppBar(
           centerTitle: true,
           title: const Text('My Bookings'),
