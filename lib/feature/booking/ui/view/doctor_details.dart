@@ -135,6 +135,7 @@ class DoctorDetailsView extends StatelessWidget {
           builder: (context, state) {
             if (state is DoctorLoaded && state.doctors.isNotEmpty) {
               final doctor = state.doctors.first;
+              print(doctor.imageUrl);
               return CustomButton(
                 text: 'Book Appointment',
                 height: 15.w,
@@ -144,6 +145,7 @@ class DoctorDetailsView extends StatelessWidget {
                     arguments: DoctorModel(
                       id: doctor.id,
                       name: doctor.name,
+                      imageUrl: doctor.imageUrl,
                       speciality: doctor.speciality,
                       address: doctor.address,
                       email: doctor.email,
