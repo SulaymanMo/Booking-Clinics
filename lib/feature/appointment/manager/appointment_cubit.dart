@@ -85,7 +85,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         )
       });
       // ! Update doctor bookings
-      final doctorRef = await _doctorRef(pending[index].id);
+      final doctorRef = await _doctorRef(pending[index].personId);
       await doctorRef.update({
         'bookings': List<dynamic>.from(
           _compineBookings.map((booking) => booking.toJson()),
@@ -116,7 +116,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         )
       });
       // ! Update doctor bookings
-      final doctorRef = await _doctorRef(canceled[index!].id);
+      final doctorRef = await _doctorRef(canceled[index!].personId);
       await doctorRef.update({
         'bookings': List<dynamic>.from(
           _compineBookings.map((booking) => booking.toJson()),
@@ -149,7 +149,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         )
       });
       // ! Update doctor bookings
-      final doctorRef = await _doctorRef(pending[index!].id);
+      final doctorRef = await _doctorRef(pending[index!].personId);
       await doctorRef.update({
         'bookings': List<dynamic>.from(
           _compineBookings.map((booking) => booking.toJson()),
@@ -180,7 +180,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         )
       });
       // ! Update doctor bookings
-      final doctorRef = await _doctorRef(completed[index!].id);
+      final doctorRef = await _doctorRef(completed[index!].personId);
       await doctorRef.update({
         'bookings': List<dynamic>.from(
           _compineBookings.map((booking) => booking.toJson()),
