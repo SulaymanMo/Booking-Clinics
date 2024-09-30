@@ -37,22 +37,19 @@ ThemeData darkTheme() {
     ),
     // ! _____ TabBar _____ ! //
     tabBarTheme: TabBarTheme(
-      dividerHeight: 0,
+      dividerHeight: 0.6,
       labelColor: Colors.white,
       dividerColor: Colors.transparent,
       indicatorSize: TabBarIndicatorSize.tab,
       unselectedLabelColor: ConstColor.icon.color,
-      labelStyle: TextStyle(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w500,
-      ),
+      splashFactory: NoSplash.splashFactory,
+      labelStyle: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
       unselectedLabelStyle: TextStyle(fontSize: 14.sp),
       labelPadding: EdgeInsets.symmetric(horizontal: 0.5.w),
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       indicator: ShapeDecoration(
-        color: ConstColor.dark.color,
         shape: StadiumBorder(
-          side: BorderSide(color: ConstColor.primary.color, width: 0.5.w),
+          side: BorderSide(color: ConstColor.primary.color, width: .5.w),
         ),
       ),
     ),
@@ -153,12 +150,12 @@ ThemeData darkTheme() {
     ),
     // ! _____ Fixed Bottom Sheet _____ ! //
     bottomSheetTheme: BottomSheetThemeData(
-      constraints: BoxConstraints(
-        maxHeight: 35.h,
-        minHeight: 10.h,
+      showDragHandle: true,
+      constraints: const BoxConstraints(
         minWidth: double.infinity,
       ),
-      backgroundColor: Colors.white,
+      dragHandleColor: ConstColor.primary.color,
+      backgroundColor: ConstColor.dark.color,
     ),
     // ! _____ Vertical & Horizontal Divider Theme _____ ! //
     dividerTheme: DividerThemeData(

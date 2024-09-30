@@ -56,7 +56,7 @@ class AppointmentDialog extends StatelessWidget {
               onTap: () {
                 context.nav.pop();
                 context.nav.pop();
-                context.nav.pop();
+                // context.nav.pop();
               }
             ),
             // Edit Appointment Link

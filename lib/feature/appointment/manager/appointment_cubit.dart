@@ -1,4 +1,5 @@
 import 'package:booking_clinics/data/models/booking.dart';
+import 'package:booking_clinics/data/models/review.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,6 +19,39 @@ class AppointmentCubit extends Cubit<AppointmentState> {
   final FirebaseAuthService _authService;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   AppointmentCubit(this._authService) : super(AppointmentLoading());
+
+  // ! Post Feedback
+  Future<void> postReview({
+    required String content,
+    required double rating,
+    required String doctorId,
+  }) async {
+    try {
+      emit(PostFeedBackLoading());
+      final patientDoc = await _patientDoc;
+      final doctorRef = await _doctorRef(doctorId);
+
+      if (patientDoc.exists) {
+        final Patient patient = Patient.fromJson(
+          patientDoc.data() as Map<String, dynamic>,
+        );
+        doctorRef.update({
+          "reviews": FieldValue.arrayUnion([
+            ReviewModel(
+              rating: rating,
+              content: content,
+              name: patient.name,
+              imageUrl: patient.profileImg,
+            ).toJson()
+          ])
+        });
+      }
+      debugPrint("Review Posted Successfully");
+      emit(PostFeedBackSuccess());
+    } catch (e) {
+      debugPrint("Failed to Post Review: $e");
+    }
+  }
 
   // ! Get bookings when open the page first time
   Future<void> fetchBookings() async {
@@ -160,7 +194,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     }
   }
 
-  // ! Update status before filtering
+  // ! Update status for both user & doctor before filtering
   Future<void> _updateStatus(Patient patient) async {
     bool statusUpdated = false;
     DateTime currentDate = DateTime.now();
@@ -181,12 +215,12 @@ class AppointmentCubit extends Cubit<AppointmentState> {
           patient.bookings.map((e) => e.toJson()).toList();
       await ref.update({'bookings': bookings});
       // ! Update doctor bookings
-      final doctorRef = await _doctorRef(canceled[index!].id);
-      await doctorRef.update({
-        'bookings': List<dynamic>.from(
-          _compineBookings.map((booking) => booking.toJson()),
-        )
-      });
+      // final doctorRef = await _doctorRef(patient.bookings[index!].id);
+      // await doctorRef.update({
+      //   'bookings': List<dynamic>.from(
+      //     _compineBookings.map((booking) => booking.toJson()),
+      //   )
+      // });
       debugPrint('Pending bookings updated to Completed');
     }
   }

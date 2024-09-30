@@ -47,7 +47,7 @@ class BookingCard extends StatelessWidget {
                       children: [
                         // Doctor Name
                         Text(
-                          booking.docName,
+                          booking.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: context.bold16,

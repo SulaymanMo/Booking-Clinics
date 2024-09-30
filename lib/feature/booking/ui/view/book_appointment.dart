@@ -1,4 +1,5 @@
 import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:booking_clinics/data/models/doctor_model.dart';
 import 'package:booking_clinics/feature/appointment/manager/appointment_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +10,7 @@ import '../../../../core/common/custom_button.dart';
 import '../../../../core/constant/const_color.dart';
 import '../../../../core/helper/service_locator.dart';
 import '../../../../data/models/booking.dart';
+import '../../../../data/models/patient.dart';
 import '../../../../data/services/remote/firebase_auth.dart';
 import '../../../../data/services/remote/firebase_firestore.dart';
 import '../../cubit/booking_cubit.dart';
@@ -21,23 +23,25 @@ class BookAppointmentView extends StatelessWidget {
     this.isReBooking = false,
     this.isReschedule = false,
     this.isRebookCompleted = false,
-    required this.doctorId,
-    required this.doctorName,
-    required this.doctorSpeciality,
-    required this.doctorAddress,
-    required this.doctorImageUrl,
-    required this.patientName,
+    required this.model,
+    // required this.doctorId,
+    // required this.doctorName,
+    // required this.doctorSpeciality,
+    // required this.doctorAddress,
+    // required this.doctorImageUrl,
+    // required this.patientName,
   });
 
   final bool? isReschedule;
   final bool? isReBooking;
   final bool? isRebookCompleted;
-  final String doctorId;
-  final String doctorName;
-  final String doctorSpeciality;
-  final String doctorAddress;
-  final String doctorImageUrl;
-  final String patientName;
+  final DoctorModel model;
+  // final String doctorId;
+  // final String doctorName;
+  // final String doctorSpeciality;
+  // final String doctorAddress;
+  // final String doctorImageUrl;
+  // final String patientName;
 
   @override
   Widget build(BuildContext context) {
@@ -167,30 +171,45 @@ class BookAppointmentView extends StatelessWidget {
                             );
                         if (context.mounted) bookingDialog(context, cubit);
                       } else {
-                        final Booking newBooking = Booking(
-                          id: doctorId,
-                          docName: doctorName,
-                          address: doctorAddress,
-                          specialty: doctorSpeciality,
-                          imageUrl: doctorImageUrl,
-                          date: cubit.getFormattedDate(),
-                          time: cubit.selectedHour!,
-                          bookingStatus: 'Pending',
-                          patientName: patientName,
-                        );
-                        String? patientId =
-                            await getIt.get<FirebaseAuthService>().getUid();
                         try {
+                          final date = cubit.getFormattedDate();
+                          String? patientId =
+                              await getIt.get<FirebaseAuthService>().getUid();
                           // ! Add to patient
+                          final Booking patientBooking = Booking(
+                            id: patientId!,
+                            name: model.name,
+                            address: model.address ?? "",
+                            specialty: model.speciality,
+                            imageUrl: model.imageUrl ?? "",
+                            date: date,
+                            time: cubit.selectedHour!,
+                            bookingStatus: 'Pending',
+                            personId: model.id,
+                          );
                           await getIt
                               .get<FirebaseFirestoreService>()
-                              .addBookingToPatient(patientId!, newBooking);
+                              .addBookingToPatient(patientId, patientBooking);
                           // ! Add to doctor
+                          final Patient? patient = await getIt
+                              .get<FirebaseFirestoreService>()
+                              .getPatientById(patientId);
+                          final Booking doctorBooking = Booking(
+                            id: model.id,
+                            name: patient!.name,
+                            address: "Unknown",
+                            specialty: model.speciality,
+                            imageUrl: patient.profileImg,
+                            date: date,
+                            time: cubit.selectedHour!,
+                            bookingStatus: 'Pending',
+                            personId: patientId,
+                          );
                           await getIt
                               .get<FirebaseFirestoreService>()
                               .addBookingToDoctor(
-                                newBooking.id,
-                                newBooking,
+                                model.id,
+                                doctorBooking,
                               );
                           if (context.mounted) bookingDialog(context, cubit);
                         } catch (e) {
@@ -213,7 +232,7 @@ class BookAppointmentView extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AppointmentDialog(
-          doctorName: doctorName,
+          doctorName: model.name,
           appointmentDate: cubit.getFormattedDate(),
           appointmentTime: '${cubit.selectedHour}',
         );

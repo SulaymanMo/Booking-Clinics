@@ -1,5 +1,6 @@
 import 'package:booking_clinics/core/common/custom_button.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:booking_clinics/data/models/doctor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -139,17 +140,26 @@ class DoctorDetailsView extends StatelessWidget {
                 height: 15.w,
                 textSize: 17.sp,
                 padding: EdgeInsets.zero,
-                onTap: () => context.nav.pushNamed(
-                  Routes.bookAppointmentRoute,
-                  arguments: {
-                    'doctorId': doctor.id,
-                    'doctorName': doctor.name,
-                    'doctorImageUrl': doctor.imageUrl ?? '',
-                    'doctorSpeciality': doctor.speciality,
-                    'doctorAddress': doctor.address ?? '',
-                    'patientName': patientName,
-                  },
-                ),
+                onTap: () => context.nav.pushNamed(Routes.bookAppointmentRoute,
+                    arguments: DoctorModel(
+                      id: doctor.id,
+                      name: doctor.name,
+                      speciality: doctor.speciality,
+                      address: doctor.address,
+                      email: doctor.email,
+                      location: doctor.location,
+                      bookings: doctor.bookings,
+                      reviews: doctor.reviews,
+                    )
+                    // arguments: {
+                    //   'doctorId': doctor.id,
+                    //   'doctorName': doctor.name,
+                    //   'doctorImageUrl': doctor.imageUrl ?? '',
+                    //   'doctorSpeciality': doctor.speciality,
+                    //   'doctorAddress': doctor.address ?? '',
+                    //   'patientName': patientName,
+                    // },
+                    ),
               );
             } else {
               return const SizedBox();

@@ -1,4 +1,5 @@
 import 'package:booking_clinics/core/constant/const_string.dart';
+import 'package:booking_clinics/core/helper/service_locator.dart';
 import 'package:sizer/sizer.dart';
 import '../../data/services/remote/firebase_auth.dart';
 import '../common/custom_button.dart';
@@ -11,23 +12,16 @@ class LogoutBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkTheme =
-        MediaQuery.of(context).platformBrightness == Brightness.dark;
+    // bool isDarkTheme =
+    //     MediaQuery.of(context).platformBrightness == Brightness.dark;
 
-    return Container(
-      padding: const EdgeInsets.all(25),
-      decoration: BoxDecoration(
-        color: isDarkTheme ? MyColors.dark : Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(4.w),
-          topRight: Radius.circular(4.w),
-        ),
-      ),
+    return Padding(
+      padding: EdgeInsets.fromLTRB(6.w, 0, 6.w, 3.h),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text("Logout", style: context.semi20),
-          Divider(color: ConstColor.secondary.color, height: 4.h),
+          Divider(height: 4.h),
           Text(
             "Are you sure you want to log out?",
             style: context.semi16?.copyWith(
@@ -53,12 +47,14 @@ class LogoutBottomSheet extends StatelessWidget {
                   text: 'Yes, Logout',
                   borderRadius: 3.5.w,
                   textSize: context.bold14?.fontSize,
-                  onTap: () {
-                    FirebaseAuthService().signOut();
-                    context.nav.pushNamedAndRemoveUntil(
-                      Routes.signin,
-                      (route) => false,
-                    );
+                  onTap: () async {
+                    await getIt.get<FirebaseAuthService>().signOut();
+                    if (context.mounted) {
+                      context.nav.pushNamedAndRemoveUntil(
+                        Routes.signin,
+                        (route) => false,
+                      );
+                    }
                   },
                 ),
               ),

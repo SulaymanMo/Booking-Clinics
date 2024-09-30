@@ -1,5 +1,7 @@
 import 'package:booking_clinics/core/constant/const_color.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:booking_clinics/core/helper/service_locator.dart';
+import 'package:booking_clinics/data/services/remote/firebase_auth.dart';
 import 'package:booking_clinics/feature/home/ui/manager/all_doctors/all_doctors_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,12 +22,14 @@ class CarouselSlider extends StatelessWidget {
         builder: (_, state) {
           if (state is AllDoctorsSuccess) {
             return CarouselView(
-              onTap: (index) {
+              onTap: (index) async {
+                final patientId =
+                    await getIt.get<FirebaseAuthService>().getUid();
                 context.nav.pushNamed(
                   Routes.doctorDetailsRoute,
                   arguments: {
                     "doctorId": state.doctors[index].id,
-                    "patientName": state.doctors[index].name,
+                    "patientName": patientId,
                   },
                 );
               },

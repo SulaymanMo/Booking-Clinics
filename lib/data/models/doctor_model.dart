@@ -1,5 +1,5 @@
-import 'booking.dart';
 import 'review.dart';
+import 'booking.dart';
 
 final class DoctorModel {
   final String id, name, speciality, email;
@@ -9,7 +9,7 @@ final class DoctorModel {
 
   final Map<String, dynamic> location;
   final List<Booking> bookings;
-  final List<Review> reviews;
+  final List<ReviewModel> reviews;
 
   const DoctorModel({
     required this.id,
@@ -45,7 +45,7 @@ final class DoctorModel {
       phone: json['phone'],
       about: json['about'],
       bookings: List<Booking>.from(json['bookings'].map((x) => Booking.fromJson(x))),
-      reviews: List<Review>.from(json['reviews'].map((x) => Review.fromJson(x))),
+      reviews: List<ReviewModel>.from(json['reviews'].map((x) => ReviewModel.fromJson(x))),
     );
   }
 

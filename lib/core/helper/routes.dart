@@ -1,3 +1,4 @@
+import 'package:booking_clinics/data/models/doctor_model.dart';
 import 'package:booking_clinics/data/services/remote/firebase_firestore.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
@@ -58,14 +59,14 @@ class AppRouter {
         );
       case Routes.bookAppointmentRoute:
         return MaterialPageRoute(builder: (_) {
-          final args = settings.arguments as Map<String, dynamic>;
           return BookAppointmentView(
-            doctorId: args['doctorId'],
-            doctorName: args['doctorName'],
-            doctorSpeciality: args['doctorSpeciality'],
-            doctorAddress: args['doctorAddress'],
-            doctorImageUrl: args['doctorImageUrl'],
-            patientName: args['patientName'],
+            model: settings.arguments as DoctorModel,
+            // doctorId: args['doctorId'],
+            // doctorName: args['doctorName'],
+            // doctorSpeciality: args['doctorSpeciality'],
+            // doctorAddress: args['doctorAddress'],
+            // doctorImageUrl: args['doctorImageUrl'],
+            // patientName: args['patientName'],
           );
         });
       case Routes.seeAll:

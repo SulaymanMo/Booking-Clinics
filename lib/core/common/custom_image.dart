@@ -4,7 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomImage extends StatelessWidget {
   final String? image;
-  const CustomImage({super.key, this.image});
+  final Widget? errorWidget;
+  const CustomImage({super.key, this.errorWidget, this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +18,13 @@ class CustomImage extends StatelessWidget {
         height: 20.h,
         width: double.infinity,
       ),
-      errorWidget: (_, url, error) => Image.asset(
-        "assets/images/center_2.jpg",
-        fit: BoxFit.cover,
-      ),
-      errorListener: (val) => debugPrint('$val'),
+      errorWidget: (_, url, error) =>
+          errorWidget ??
+          Image.asset(
+            "assets/images/center_2.jpg",
+            fit: BoxFit.cover,
+          ),
+      errorListener: null,
     );
   }
-
 }

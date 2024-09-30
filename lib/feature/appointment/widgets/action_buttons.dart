@@ -1,4 +1,4 @@
-import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:booking_clinics/data/models/doctor_model.dart';
 import 'package:booking_clinics/feature/appointment/manager/appointment_cubit.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +9,7 @@ import '../../../core/common/custom_button.dart';
 import '../../../core/constant/const_color.dart';
 import '../../../core/helper/show_msg.dart';
 import '../../../data/models/booking.dart';
+import 'review_bottom_sheet.dart';
 
 class ActionButtons extends StatelessWidget {
   final String status;
@@ -40,7 +41,7 @@ class ActionButtons extends StatelessWidget {
                   context,
                   title: "Cancel",
                   msg:
-                      "Are you sure? This appointment for Dr. ${bookings[bookingId].docName} will be canceled!",
+                      "Are you sure? This appointment for Dr. ${bookings[bookingId].name} will be canceled!",
                   alertWidget: Icon(
                     Iconsax.danger,
                     size: 35.sp,
@@ -91,6 +92,7 @@ class ActionButtons extends StatelessWidget {
               textSize: 14.5.sp,
               padding: const EdgeInsets.all(12),
               textColor: isDark ? MyColors.dark : Colors.white,
+              onTap: () => postReview(context),
             ),
           ),
         ],
@@ -107,6 +109,17 @@ class ActionButtons extends StatelessWidget {
     } else {
       return const SizedBox.shrink();
     }
+  }
+
+  Future<Widget?> postReview(BuildContext context) {
+    return showModalBottomSheet<Widget>(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => BlocProvider<AppointmentCubit>.value(
+        value: context.read<AppointmentCubit>(),
+        child: ReviewSheet(booking: bookings[bookingId]),
+      ),
+    );
   }
 
   void reBook(
@@ -126,12 +139,21 @@ class ActionButtons extends StatelessWidget {
               isReBooking: isRebook,
               isReschedule: isReschedule,
               isRebookCompleted: isRebookCompleted,
-              doctorId: bookings[bookingId].id,
-              doctorName: bookings[bookingId].docName,
-              doctorSpeciality: bookings[bookingId].specialty,
-              doctorAddress: bookings[bookingId].address,
-              doctorImageUrl: bookings[bookingId].imageUrl,
-              patientName: bookings[bookingId].patientName,
+              model: DoctorModel(
+                id: bookings[bookingId].id,
+                name: bookings[bookingId].name,
+                speciality: bookings[bookingId].specialty,
+                email: "",
+                location: {},
+                bookings: [],
+                reviews: [],
+              ),
+              // doctorId: bookings[bookingId].id,
+              // doctorName: bookings[bookingId].name,
+              // doctorSpeciality: bookings[bookingId].specialty,
+              // doctorAddress: bookings[bookingId].address,
+              // doctorImageUrl: bookings[bookingId].imageUrl,
+              // patientName: bookings[bookingId].personId,
             ),
           );
         },
