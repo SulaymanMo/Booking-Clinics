@@ -3,32 +3,45 @@ import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:sizer/sizer.dart';
 
-class DropDown extends StatelessWidget {
+class DropDown extends StatefulWidget {
+  final int? value;
   final List<String> titles;
-  const DropDown({required this.titles, super.key});
+  final void Function(int? val)? onSelect;
+  const DropDown({
+    super.key,
+    this.onSelect,
+    this.value = 0,
+    required this.titles,
+  });
 
+  @override
+  State<DropDown> createState() => _DropDownState();
+}
+
+class _DropDownState extends State<DropDown> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<int>(
-      value: 0,
+      value: widget.value,
       isDense: true,
-      dropdownColor:
-          MediaQuery.of(context).platformBrightness == Brightness.dark
-              ? ConstColor.iconDark.color
-              : null,
+      dropdownColor: Theme.of(context).brightness == Brightness.dark
+          ? ConstColor.iconDark.color
+          : null,
       menuWidth: 50.w,
       padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 0.5.h),
-      style: context.semi14,
+      style: context.regular14,
       borderRadius: BorderRadius.circular(3.5.w),
       underline: const Divider(color: Colors.transparent),
       items: List.generate(
-        titles.length,
+        widget.titles.length,
         (index) => DropdownMenuItem(
           value: index,
-          child: Text(titles[index]),
+          child: Text(widget.titles[index]),
         ),
       ),
-      onChanged: (val) {},
+      onChanged: (val) {
+        if (widget.onSelect != null) widget.onSelect!(val);
+      },
     );
   }
 }

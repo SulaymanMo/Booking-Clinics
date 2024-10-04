@@ -68,11 +68,13 @@ class _SigninFormState extends State<SigninForm> {
       setState(() => _isLoading = false);
       if (user != null && user.emailVerified) {
         // fetch patient object from firestore
-        Patient? patient = await FirebaseFirestoreService().getPatientById(user.uid);
+        Patient? patient =
+            await FirebaseFirestoreService().getPatientById(user.uid);
         if (patient != null) {
           // save patient object in SharedPreference
           await SharedPrefServices().savePatient(patient);
-          context.nav.pushNamedAndRemoveUntil(Routes.navRoute, (route) => false);
+          context.nav
+              .pushNamedAndRemoveUntil(Routes.navRoute, (route) => false);
         }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

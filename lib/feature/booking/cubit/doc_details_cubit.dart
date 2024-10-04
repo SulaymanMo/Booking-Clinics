@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/models/doctor_model.dart';
 import '../../../../data/models/favorite.dart';
@@ -67,7 +68,7 @@ class DoctorCubit extends Cubit<DoctorState> {
       _favorites = await _firebaseFirestoreService.getFavoritesForPatient(
         patientId,
       );
-      print(_favorites);
+      debugPrint("$_favorites");
       // emit(DoctorFavoritesLoaded(_favorites));
     } catch (e) {
       emit(DoctorError('Failed to load favorites: $e'));
@@ -76,7 +77,7 @@ class DoctorCubit extends Cubit<DoctorState> {
 
   bool isFavoriteDoctor(String doctorName) {
     final bool test = _favorites.any((fav) => fav.docName == doctorName);
-    print(test);
+    debugPrint("$test");
     return test;
   }
 }

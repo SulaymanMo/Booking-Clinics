@@ -6,9 +6,11 @@ class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // Sign Up with Email and Password
-  Future<User?> signUpWithEmailAndPassword(String email, String password) async {
+  Future<User?> signUpWithEmailAndPassword(
+      String email, String password) async {
     try {
-      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -25,7 +27,8 @@ class FirebaseAuthService {
   }
 
   // Login with Email and Password
-  Future<User?> loginWithEmailAndPassword(String email, String password, BuildContext context) async {
+  Future<User?> loginWithEmailAndPassword(
+      String email, String password, BuildContext context) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: email,
@@ -39,19 +42,20 @@ class FirebaseAuthService {
           await _saveUid(user.uid); // Save UID and login status in SharedPref
           await _setLoginStatus(true);
           return user;
-        }
-        else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Please verify your email first'),
-              backgroundColor: Colors.red,
-            ),
-          );
+        } else {
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Please verify your email first'),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
           return null;
         }
       }
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
       return null;
     }
     return null;
@@ -62,7 +66,7 @@ class FirebaseAuthService {
     try {
       await _auth.sendPasswordResetEmail(email: email);
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 

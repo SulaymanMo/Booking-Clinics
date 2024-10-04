@@ -50,10 +50,10 @@ class MapCubit extends Cubit<MapState> {
       final QuerySnapshot query =
           await FirebaseFirestore.instance.collection('doctors').get();
       final List<DoctorModel> doctors = query.docs.map((doc) {
-        print(doc.id);
+        debugPrint(doc.id);
         return DoctorModel.fromJson(doc.data() as Map<String, dynamic>);
       }).toList();
-      print("Hello");
+      debugPrint("Hello");
       if (doctors.isNotEmpty) {
         for (int i = 0; i < doctors.length; i++) {
           markers.add(

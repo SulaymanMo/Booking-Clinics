@@ -79,7 +79,9 @@ class ProfileView extends StatelessWidget {
                     title: Text(
                       "Log Out",
                       style: TextStyle(
-                          fontSize: 15.sp, fontWeight: FontWeight.w400),
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                     leading: const Icon(Icons.logout_outlined),
                     contentPadding: EdgeInsets.symmetric(horizontal: 2.w),

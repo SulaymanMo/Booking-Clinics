@@ -24,7 +24,7 @@ class ActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     if (status == 'Pending') {
       return Row(
         children: [
@@ -45,10 +45,7 @@ class ActionButtons extends StatelessWidget {
                   alertWidget: Icon(
                     Iconsax.danger,
                     size: 35.sp,
-                    color: MediaQuery.of(context).platformBrightness ==
-                            Brightness.light
-                        ? Colors.black
-                        : ConstColor.primary.color,
+                    color: isDark ? Colors.black : ConstColor.primary.color,
                   ),
                   onPressed: () async {
                     await read.cancelBooking(index: read.index!);
@@ -88,10 +85,14 @@ class ActionButtons extends StatelessWidget {
           Expanded(
             child: CustomButton(
               text: 'Add Review',
-              color: isDark ? MyColors.primary : MyColors.dark,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? MyColors.primary
+                  : MyColors.dark,
               textSize: 14.5.sp,
               padding: const EdgeInsets.all(12),
-              textColor: isDark ? MyColors.dark : Colors.white,
+              textColor: Theme.of(context).brightness == Brightness.dark
+                  ? MyColors.dark
+                  : Colors.white,
               onTap: () => postReview(context),
             ),
           ),
