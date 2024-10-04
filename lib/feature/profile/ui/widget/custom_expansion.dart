@@ -40,19 +40,18 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
       elevation: 0,
       expandIconColor: ConstColor.icon.color,
       expandedHeaderPadding: EdgeInsets.zero,
-      dividerColor: MediaQuery.of(context).platformBrightness == Brightness.light
-              ? ConstColor.secondary.color
-              : ConstColor.dark.color,
+      dividerColor: Theme.of(context).brightness == Brightness.dark
+          ? ConstColor.dark.color
+          : ConstColor.secondary.color,
       expansionCallback: (int index, bool isExpanded) {},
       children: List.generate(
         _headers.length,
         (index) => ExpansionPanelRadio(
           value: index,
           canTapOnHeader: true,
-          backgroundColor:
-              MediaQuery.of(context).platformBrightness == Brightness.light
-                  ? Colors.white
-                  : ConstColor.dark.color,
+          backgroundColor: Theme.of(context).brightness == Brightness.dark
+              ? ConstColor.dark.color
+              : Colors.white,
           headerBuilder: (_, isExpanded) {
             return ListTile(
               leading: Icon(_icons[index]),

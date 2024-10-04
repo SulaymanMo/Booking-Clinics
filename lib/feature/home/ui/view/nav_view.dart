@@ -89,8 +89,7 @@ class _NavViewState extends State<NavView> {
                   },
                   style: IconButton.styleFrom(
                     backgroundColor: _index == index &&
-                            MediaQuery.of(context).platformBrightness ==
-                                Brightness.dark
+                            Theme.of(context).brightness == Brightness.dark
                         ? ConstColor.primary.color
                         : _index == index
                             ? ConstColor.secondary.color
@@ -98,8 +97,7 @@ class _NavViewState extends State<NavView> {
                   ),
                   icon: Icon(
                     index == _index ? _iconsFill[index] : _icons[index],
-                    color: MediaQuery.of(context).platformBrightness ==
-                            Brightness.dark
+                    color:Theme.of(context).brightness == Brightness.dark
                         ? _index == index
                             ? ConstColor.dark.color
                             : ConstColor.secondary.color

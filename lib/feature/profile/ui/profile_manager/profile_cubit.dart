@@ -57,7 +57,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> updateUserData(Map<String, dynamic> data) async {
     try {
       // if (data.isEmpty && image == null) return;
-      print("object ========================");
+      debugPrint("object ========================");
       emit(UpdateProfileLoading());
       // await uploadImage();
       final String? uid = await _service.getUid();

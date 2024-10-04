@@ -18,7 +18,7 @@ class FirebaseFirestoreService {
           .doc(patient.uid)
           .set(patient.toJson());
     } catch (e) {
-      print('Error adding patient: $e');
+      debugPrint('Error adding patient: $e');
       rethrow;
     }
   }
@@ -32,7 +32,7 @@ class FirebaseFirestoreService {
           .doc(uid)
           .update(updatedFields);
     } catch (e) {
-      print('Error updating user fields: $e');
+      debugPrint('Error updating user fields: $e');
       rethrow;
     }
   }
@@ -45,7 +45,7 @@ class FirebaseFirestoreService {
           .doc(updatedPatient.uid)
           .set(updatedPatient.toJson());
     } catch (e) {
-      print('Error updating user: $e');
+      debugPrint('Error updating user: $e');
       rethrow;
     }
   }
@@ -59,7 +59,7 @@ class FirebaseFirestoreService {
           .map((doc) => DoctorModel.fromJson(doc.data()))
           .toList();
     } catch (e) {
-      print('Error fetching doctors: $e');
+      debugPrint('Error fetching doctors: $e');
       rethrow;
     }
   }
@@ -74,7 +74,7 @@ class FirebaseFirestoreService {
       }
       return null;
     } catch (e) {
-      print('Error fetching doctor by ID: $e');
+      debugPrint('Error fetching doctor by ID: $e');
       rethrow;
     }
   }
@@ -89,7 +89,7 @@ class FirebaseFirestoreService {
       }
       return null;
     } catch (e) {
-      print('Error fetching doctor by ID: $e');
+      debugPrint('Error fetching doctor by ID: $e');
       rethrow;
     }
   }
@@ -142,10 +142,10 @@ class FirebaseFirestoreService {
         if (data != null && data['favorites'] != null) {
           final favoritesJson =
               List<Map<String, dynamic>>.from(data['favorites']);
-          print("fetched favorites: $favoritesJson");
+          debugPrint("fetched favorites: $favoritesJson");
           return favoritesJson.map((json) => Favorite.fromJson(json)).toList();
         } else {
-          print("No favorites found for patient: $patientId");
+          debugPrint("No favorites found for patient: $patientId");
           return [];
         }
       }
@@ -188,7 +188,7 @@ class FirebaseFirestoreService {
       // If no bookings exist, return an empty list
       return [];
     } catch (e) {
-      print('Error fetching bookings: $e');
+      debugPrint('Error fetching bookings: $e');
       throw Exception('Failed to get bookings for patient: $e');
     }
   }
