@@ -1,4 +1,5 @@
 import 'package:booking_clinics/data/models/booking.dart';
+import 'package:booking_clinics/data/models/doctor_model.dart';
 import 'package:booking_clinics/data/models/review.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -72,6 +73,41 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     }
   }
 
+  // ! Retrive, Search then Update doctor bookings in firestore
+  Future<void> _updateDoctorBookings({
+    required int index,
+    required Booking updatedBooking,
+    required List<Booking> bookings,
+  }) async {
+    try {
+      final snapshot = await _doctorDoc(bookings[index].personId);
+      if (snapshot.exists) {
+        DoctorModel doctor = DoctorModel.fromJson(
+          snapshot.data() as Map<String, dynamic>,
+        );
+        final int bookingIndex = doctor.bookings.indexWhere(
+          (booking) =>
+              booking.personId == bookings[index].id &&
+              booking.time == bookings[index].time,
+        );
+        if (bookingIndex != -1) {
+          doctor.bookings[bookingIndex].bookingStatus =
+              updatedBooking.bookingStatus;
+          doctor.bookings[bookingIndex].date = updatedBooking.date;
+          doctor.bookings[bookingIndex].time = updatedBooking.time;
+          final ref = await _doctorRef(bookings[index].personId);
+          await ref.update({
+            'bookings': List.from(
+              doctor.bookings.map((booking) => booking.toJson()),
+            ),
+          });
+        }
+      }
+    } catch (e) {
+      debugPrint("Error Update Doctor Bookings: $e");
+    }
+  }
+
   // ! Cancel in pending
   Future<void> cancelBooking({required int index}) async {
     try {
@@ -84,16 +120,14 @@ class AppointmentCubit extends Cubit<AppointmentState> {
           _compineBookings.map((booking) => booking.toJson()),
         )
       });
-      // ! Update doctor bookings
-      final doctorRef = await _doctorRef(pending[index].personId);
-      await doctorRef.update({
-        'bookings': List<dynamic>.from(
-          _compineBookings.map((booking) => booking.toJson()),
-        )
-      });
-      debugPrint("Canceled Succesfully!");
+      await _updateDoctorBookings(
+        index: index,
+        bookings: pending,
+        updatedBooking: pending[index],
+      );
       canceled.insert(0, pending[index]);
       pending.removeAt(index);
+      debugPrint("Canceled Succesfully!");
       emit(AppointmentSuccess());
     } catch (e) {
       debugPrint("$e");
@@ -116,12 +150,11 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         )
       });
       // ! Update doctor bookings
-      final doctorRef = await _doctorRef(canceled[index!].personId);
-      await doctorRef.update({
-        'bookings': List<dynamic>.from(
-          _compineBookings.map((booking) => booking.toJson()),
-        )
-      });
+      await _updateDoctorBookings(
+        index: index!,
+        bookings: canceled,
+        updatedBooking: canceled[index!],
+      );
       pending.insert(0, canceled[index!]);
       canceled.removeAt(index!);
       emit(AppointmentSuccess());
@@ -149,12 +182,11 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         )
       });
       // ! Update doctor bookings
-      final doctorRef = await _doctorRef(pending[index!].personId);
-      await doctorRef.update({
-        'bookings': List<dynamic>.from(
-          _compineBookings.map((booking) => booking.toJson()),
-        )
-      });
+      await _updateDoctorBookings(
+        index: index!,
+        bookings: pending,
+        updatedBooking: pending[index!],
+      );
       emit(AppointmentSuccess());
     } catch (e) {
       debugPrint("$e");
@@ -180,12 +212,11 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         )
       });
       // ! Update doctor bookings
-      final doctorRef = await _doctorRef(completed[index!].personId);
-      await doctorRef.update({
-        'bookings': List<dynamic>.from(
-          _compineBookings.map((booking) => booking.toJson()),
-        )
-      });
+      await _updateDoctorBookings(
+        index: index!,
+        bookings: completed,
+        updatedBooking: completed[index!],
+      );
       pending.insert(0, completed[index!]);
       completed.removeAt(index!);
       emit(AppointmentSuccess());
@@ -194,7 +225,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     }
   }
 
-  // ! Update status for both user & doctor before filtering
+  // ! Update booking status for user before filtering
   Future<void> _updateStatus(Patient patient) async {
     bool statusUpdated = false;
     DateTime currentDate = DateTime.now();
@@ -214,13 +245,6 @@ class AppointmentCubit extends Cubit<AppointmentState> {
       List<Map<String, dynamic>> bookings =
           patient.bookings.map((e) => e.toJson()).toList();
       await ref.update({'bookings': bookings});
-      // ! Update doctor bookings
-      // final doctorRef = await _doctorRef(patient.bookings[index!].id);
-      // await doctorRef.update({
-      //   'bookings': List<dynamic>.from(
-      //     _compineBookings.map((booking) => booking.toJson()),
-      //   )
-      // });
       debugPrint('Pending bookings updated to Completed');
     }
   }
@@ -267,4 +291,8 @@ class AppointmentCubit extends Cubit<AppointmentState> {
           .collection(ConstString.patientsCollection)
           .doc(await _authService.getUid())
           .get();
+
+  // ! (3)
+  Future<DocumentSnapshot<Map<String, dynamic>>> _doctorDoc(String id) async =>
+      await _firestore.collection(ConstString.doctorsCollection).doc(id).get();
 }
