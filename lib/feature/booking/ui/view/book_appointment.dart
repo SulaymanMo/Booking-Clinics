@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:uuid/uuid.dart';
 import '../../../../core/common/basic_appbar.dart';
 import '../../../../core/common/custom_button.dart';
 import '../../../../core/constant/const_color.dart';
@@ -175,6 +176,8 @@ class BookAppointmentView extends StatelessWidget {
                           final date = cubit.getFormattedDate();
                           String? patientId =
                               await getIt.get<FirebaseAuthService>().getUid();
+                          const Uuid uuid = Uuid();
+                          final String bookingId = uuid.v4();
                           // ! Add to patient
                           final Booking patientBooking = Booking(
                             id: patientId!,
@@ -186,6 +189,7 @@ class BookAppointmentView extends StatelessWidget {
                             time: cubit.selectedHour!,
                             bookingStatus: 'Pending',
                             personId: model.id,
+                            bookingId: bookingId,
                           );
                           await getIt
                               .get<FirebaseFirestoreService>()
@@ -204,6 +208,7 @@ class BookAppointmentView extends StatelessWidget {
                             time: cubit.selectedHour!,
                             bookingStatus: 'Pending',
                             personId: patientId,
+                            bookingId: bookingId,
                           );
                           await getIt
                               .get<FirebaseFirestoreService>()

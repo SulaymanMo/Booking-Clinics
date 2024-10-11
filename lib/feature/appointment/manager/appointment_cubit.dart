@@ -88,7 +88,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         final int bookingIndex = doctor.bookings.indexWhere(
           (booking) =>
               booking.personId == bookings[index].id &&
-              booking.time == bookings[index].time,
+              booking.bookingId == bookings[index].bookingId,
         );
         if (bookingIndex != -1) {
           doctor.bookings[bookingIndex].bookingStatus =
