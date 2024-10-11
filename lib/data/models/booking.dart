@@ -10,13 +10,14 @@ class Booking {
         in patient app is for personId.
   */
   String id,
-      name, 
+      name,
       date,
       time,
       address,
       imageUrl,
       specialty,
       personId,
+      bookingId,
       bookingStatus;
 
   Booking({
@@ -28,6 +29,7 @@ class Booking {
     required this.imageUrl,
     required this.specialty,
     required this.personId,
+    required this.bookingId,
     required this.bookingStatus,
   });
 
@@ -41,6 +43,7 @@ class Booking {
       imageUrl: json['image_url'],
       specialty: json['specialty'],
       personId: json["person_id"],
+      bookingId: json["booking_id"],
       bookingStatus: json["booking_status"],
     );
   }
@@ -55,6 +58,7 @@ class Booking {
       'image_url': imageUrl,
       'specialty': specialty,
       'person_id': personId,
+      'booking_id': bookingId,
       'booking_status': bookingStatus,
     };
   }
