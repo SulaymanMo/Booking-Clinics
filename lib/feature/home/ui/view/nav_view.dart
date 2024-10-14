@@ -71,7 +71,7 @@ class _NavViewState extends State<NavView> {
     return Scaffold(
       extendBody: _index == 1,
       resizeToAvoidBottomInset: false,
-      body: _pages[_index],
+      body: SafeArea(child: _pages[_index]),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(4.w),
