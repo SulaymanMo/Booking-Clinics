@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/common/loading_indicator.dart';
 import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:booking_clinics/feature/profile/ui/image_manager/pick_image_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -93,11 +94,7 @@ class ProfileView extends StatelessWidget {
                 child: Text(state.error, style: context.semi16),
               );
             } else if (state is ProfileLoading) {
-              return Center(
-                child: CircularProgressIndicator(
-                  color: ConstColor.primary.color,
-                ),
-              );
+              return const LoadingIndicator();
             } else {
               return const Center();
             }

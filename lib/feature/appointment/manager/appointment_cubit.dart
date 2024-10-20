@@ -118,7 +118,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
       await patientRef.update({
         'bookings': List<dynamic>.from(
           _compineBookings.map((booking) => booking.toJson()),
-        )
+        ),
       });
       await _updateDoctorBookings(
         index: index,
@@ -225,11 +225,11 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     }
   }
 
-  // ! Update booking status for user before filtering
   Future<void> _updateStatus(Patient patient) async {
     bool statusUpdated = false;
     DateTime currentDate = DateTime.now();
 
+    // Check and update booking status
     for (int i = 0; i < patient.bookings.length; i++) {
       if (patient.bookings[i].bookingStatus == 'Pending') {
         DateTime bookingDate = DateTime.parse(patient.bookings[i].date);
@@ -239,13 +239,26 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         }
       }
     }
-    if (statusUpdated) {
-      // ! Update patient bookings
+
+    // * Remove bookings that are either 'Completed' or 'Canceled' and older than a week
+    patient.bookings.removeWhere((booking) {
+      if (booking.bookingStatus == 'Completed' ||
+          booking.bookingStatus == 'Canceled') {
+        DateTime bookingDate = DateTime.parse(booking.date);
+        return bookingDate
+            .isBefore(currentDate.subtract(const Duration(days: 7)));
+      }
+      return false;
+    });
+
+    // * Update patient bookings if there were any changes
+    if (statusUpdated || patient.bookings.length < patient.bookings.length) {
       final ref = await _patientRef;
       List<Map<String, dynamic>> bookings =
           patient.bookings.map((e) => e.toJson()).toList();
       await ref.update({'bookings': bookings});
-      debugPrint('Pending bookings updated to Completed');
+      debugPrint(
+          'Pending bookings updated to Completed and old bookings removed.');
     }
   }
 

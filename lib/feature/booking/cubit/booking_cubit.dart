@@ -24,6 +24,12 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
       ];
 
   void selectDate(DateTime date) {
+    DateTime now = DateTime.now();
+    if (date.isBefore(DateTime(now.year, now.month, now.day))) {
+      emit(BookAppointmentFailure(
+          "You cannot select a date before today, Please select a date that is today or later."));
+      return;
+    }
     _selectedDate = date;
     emit(DateSelectedState(date));
   }
