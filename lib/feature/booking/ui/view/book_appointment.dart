@@ -1,8 +1,10 @@
 import 'package:booking_clinics/core/constant/extension.dart';
+import 'package:booking_clinics/core/helper/show_msg.dart';
 import 'package:booking_clinics/data/models/doctor_model.dart';
 import 'package:booking_clinics/feature/appointment/manager/appointment_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sizer/sizer.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:uuid/uuid.dart';
@@ -144,7 +146,18 @@ class BookAppointmentView extends StatelessWidget {
               ),
               SizedBox(height: 2.w),
               // Confirm Button
-              BlocBuilder<BookAppointmentCubit, BookAppointmentState>(
+              BlocConsumer<BookAppointmentCubit, BookAppointmentState>(
+                listener: (context, state) {
+                  if (state is BookAppointmentFailure) {
+                    showMsg(
+                      context,
+                      title: "Hint",
+                      msg: state.error,
+                      alertWidget: Icon(Iconsax.danger, size: 35.sp),
+                      onPressed: () async {},
+                    );
+                  }
+                },
                 builder: (context, state) {
                   final cubit = context.read<BookAppointmentCubit>();
                   return CustomButton(
@@ -189,6 +202,7 @@ class BookAppointmentView extends StatelessWidget {
                             time: cubit.selectedHour!,
                             bookingStatus: 'Pending',
                             personId: model.id,
+                            isAccepted: 0,
                             bookingId: bookingId,
                           );
                           await getIt
@@ -208,6 +222,7 @@ class BookAppointmentView extends StatelessWidget {
                             time: cubit.selectedHour!,
                             bookingStatus: 'Pending',
                             personId: patientId,
+                            isAccepted: 0,
                             bookingId: bookingId,
                           );
                           await getIt

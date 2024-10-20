@@ -9,6 +9,7 @@ class Booking {
         in patient app is for doctorId.
         in patient app is for personId.
   */
+  int isAccepted;
   String id,
       name,
       date,
@@ -30,6 +31,7 @@ class Booking {
     required this.specialty,
     required this.personId,
     required this.bookingId,
+    required this.isAccepted,
     required this.bookingStatus,
   });
 
@@ -44,6 +46,7 @@ class Booking {
       specialty: json['specialty'],
       personId: json["person_id"],
       bookingId: json["booking_id"],
+      isAccepted: json["is_accepted"],
       bookingStatus: json["booking_status"],
     );
   }
@@ -59,6 +62,7 @@ class Booking {
       'specialty': specialty,
       'person_id': personId,
       'booking_id': bookingId,
+      'is_accepted': isAccepted,
       'booking_status': bookingStatus,
     };
   }

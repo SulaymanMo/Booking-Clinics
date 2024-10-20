@@ -12,22 +12,19 @@ class LogoutBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // bool isDarkTheme =
-    //     MediaQuery.of(context).platformBrightness == Brightness.dark;
-
     return Padding(
       padding: EdgeInsets.fromLTRB(6.w, 0, 6.w, 3.h),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text("Logout", style: context.semi20),
-          Divider(height: 4.h),
           Text(
-            "Are you sure you want to log out?",
-            style: context.semi16?.copyWith(
+            "Logout",
+            style: context.semi20?.copyWith(
               color: ConstColor.icon.color,
             ),
           ),
+          Divider(height: 4.h),
+          Text("Are you sure you want to log out?", style: context.semi16),
           SizedBox(height: 3.h),
           Row(
             children: [
