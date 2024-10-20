@@ -229,30 +229,35 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     bool statusUpdated = false;
     DateTime currentDate = DateTime.now();
 
-    // Check and update booking status
+    // Check and update booking status for pending bookings
     for (int i = 0; i < patient.bookings.length; i++) {
       if (patient.bookings[i].bookingStatus == 'Pending') {
         DateTime bookingDate = DateTime.parse(patient.bookings[i].date);
-        if (bookingDate.isBefore(currentDate)) {
+        // Only mark as completed if the booking date is strictly in the past (not today)
+        if (bookingDate.isBefore(
+          DateTime(currentDate.year, currentDate.month, currentDate.day),
+        )) {
           patient.bookings[i].bookingStatus = 'Completed';
           statusUpdated = true;
         }
       }
     }
 
-    // * Remove bookings that are either 'Completed' or 'Canceled' and older than a week
+    // * Remove bookings that are either 'Completed' or 'Canceled' and are older than a week
     patient.bookings.removeWhere((booking) {
       if (booking.bookingStatus == 'Completed' ||
           booking.bookingStatus == 'Canceled') {
         DateTime bookingDate = DateTime.parse(booking.date);
-        return bookingDate
-            .isBefore(currentDate.subtract(const Duration(days: 7)));
+        return bookingDate.isBefore(
+          DateTime(currentDate.year, currentDate.month, currentDate.day)
+              .subtract(const Duration(days: 7)),
+        );
       }
       return false;
     });
 
     // * Update patient bookings if there were any changes
-    if (statusUpdated || patient.bookings.length < patient.bookings.length) {
+    if (statusUpdated) {
       final ref = await _patientRef;
       List<Map<String, dynamic>> bookings =
           patient.bookings.map((e) => e.toJson()).toList();
