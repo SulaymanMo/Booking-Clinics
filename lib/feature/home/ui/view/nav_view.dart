@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:booking_clinics/feature/home/ui/view/home_view.dart';
 import '../../../appointment/manager/appointment_cubit.dart';
 import '../../../appointment/view/appointment_view.dart';
+import '../../../chats/ui/chats_view.dart';
 import '../../../profile/ui/profile_manager/profile_cubit.dart';
 
 class NavView extends StatefulWidget {
@@ -46,6 +47,9 @@ class _NavViewState extends State<NavView> {
       create: (_) => AppointmentCubit(getIt.get<FirebaseAuthService>()),
       child: const AppointmentView(),
     ),
+    // Chat
+    const ChatListScreen(),
+    // Profile
     BlocProvider<ProfileCubit>(
       create: (_) => ProfileCubit(
         getIt.get<FirebaseAuthService>(),
@@ -57,12 +61,14 @@ class _NavViewState extends State<NavView> {
     Iconsax.home,
     Iconsax.location4,
     Iconsax.calendar_1,
+    Iconsax.messages,
     Iconsax.user4,
   ];
   static const List<IconData> _iconsFill = [
     Iconsax.home1,
     Iconsax.location5,
     Iconsax.calendar5,
+    Iconsax.messages_15,
     Icons.person,
   ];
 

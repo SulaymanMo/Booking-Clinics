@@ -3,14 +3,18 @@ import 'package:booking_clinics/data/services/remote/firebase_firestore.dart';
 import 'package:booking_clinics/feature/booking/ui/view/book_appointment.dart';
 import 'package:booking_clinics/feature/booking/ui/view/doctor_details.dart';
 import 'package:booking_clinics/feature/see_all/ui/view/see_all_view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/models/chat_model.dart';
 import '../../feature/auth/ui/views/edit_your_profile.dart';
 import '../../feature/auth/ui/views/forget_password.dart';
 import '../../feature/auth/ui/views/onboarding_screen2.dart';
 import '../../feature/auth/ui/views/signin.dart';
 import '../../feature/auth/ui/views/signup.dart';
 import '../../feature/booking/cubit/doc_details_cubit.dart';
+import '../../feature/chats/cubit/chat_details_cubit.dart';
+import '../../feature/chats/ui/chat_details.dart';
 import '../../feature/favorite/favorite_view.dart';
 import '../../feature/profile/ui/profile_manager/profile_cubit.dart';
 import '../../feature/see_all/data/see_all_repo_impl.dart';
@@ -31,12 +35,9 @@ class AppRouter {
             final args = settings.arguments as Map<String, dynamic>;
             return BlocProvider<DoctorCubit>(
               create: (_) => DoctorCubit(getIt.get<FirebaseFirestoreService>())
-                ..fetchFavorites(args["patientName"])
+                ..fetchFavorites(args["patientId"])
                 ..fetchDoctorById(args["doctorId"]),
-              child: DoctorDetailsView(
-                doctorId: args['doctorId'],
-                patientName: args['patientName'],
-              ),
+              child: const DoctorDetailsView(),
             );
           },
         );
@@ -74,6 +75,21 @@ class AppRouter {
           builder: (_) => BlocProvider<SeeAllCubit>(
             create: (_) => SeeAllCubit(getIt.get<SeeAllRepoImpl>()),
             child: SeeAllView(firstIndex: settings.arguments as int?),
+          ),
+        );
+      case Routes.chatDetailsRoute:
+        final chatModel = settings.arguments as ChatModel;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => ChatDetailCubit(
+              FirebaseFirestore.instance,
+              chatModel.chatId,
+            )..listenToMessages(),
+            child: ChatDetailScreen(
+              chatId: chatModel.chatId,
+              chatPartnerName: chatModel.chatPartnerName,
+              chatPartnerId: chatModel.chatPartnerId,
+            ),
           ),
         );
       default:
