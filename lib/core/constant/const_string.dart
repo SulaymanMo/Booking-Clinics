@@ -14,6 +14,7 @@ class Routes {
   static const profileScreenRoute = "/profileScreenRoute";
   static const seeAll = "/seeAll";
   static const favoriteView = "/favoriteView";
+  static const chatDetailsRoute = "/chatDetailsRoute";
 }
 
 class ConstString {

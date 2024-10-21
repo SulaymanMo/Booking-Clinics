@@ -30,7 +30,7 @@ class CarouselSlider extends StatelessWidget {
                     Routes.doctorDetailsRoute,
                     arguments: {
                       "doctorId": state.doctors[index].id,
-                      "patientName": patientId,
+                      "patientId": patientId,
                     },
                   );
                 }

@@ -24,7 +24,7 @@ class SeeAllTab extends StatelessWidget {
               Routes.doctorDetailsRoute,
               arguments: {
                 'doctorId': doctors[index].id,
-                'patientName': await FirebaseAuthService().getUid(),
+                'patientId': await FirebaseAuthService().getUid(),
               },
             );
           },
