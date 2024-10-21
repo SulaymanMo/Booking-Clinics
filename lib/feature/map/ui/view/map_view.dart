@@ -1,6 +1,8 @@
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../core/constant/const_string.dart';
+import '../../../../core/helper/service_locator.dart';
+import '../../../../data/services/remote/firebase_auth.dart';
 import '../../../home/ui/widget/list_item.dart';
 import '../../data/model/location_model.dart';
 import '../manager/map_cubit.dart';
@@ -79,14 +81,18 @@ class _MapViewState extends State<MapView> {
                 bottom: 10.h,
                 height: 30.h,
                 child: GestureDetector(
-                  onTap: () {
-                    context.nav.pushNamed(
-                      Routes.doctorDetailsRoute,
-                      arguments: {
-                        "doctorId": state.model.id,
-                        "patientName": state.model.name,
-                      },
-                    );
+                  onTap: () async {
+                    final patientId =
+                        await getIt.get<FirebaseAuthService>().getUid();
+                    if (context.mounted) {
+                      context.nav.pushNamed(
+                        Routes.doctorDetailsRoute,
+                        arguments: {
+                          "doctorId": state.model.id,
+                          "patientId": patientId,
+                        },
+                      );
+                    }
                   },
                   child: Card(
                     child: ListItem(

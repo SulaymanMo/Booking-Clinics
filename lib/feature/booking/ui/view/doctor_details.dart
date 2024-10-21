@@ -63,7 +63,7 @@ class DoctorDetailsView extends StatelessWidget {
           } else if (state is DoctorLoaded && state.doctors.isNotEmpty) {
             final doctor = state.doctors.first;
             return ListView(
-              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+              padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
               children: [
                 // Doctor Card
                 RoundedDoctorCard(doctor: doctor),
@@ -78,9 +78,10 @@ class DoctorDetailsView extends StatelessWidget {
                   rating: doctor.rating ?? 0.0,
                   reviews: doctor.reviews.length,
                 ),
-                SizedBox(height: 2.h),
+                SizedBox(height: 1.h),
                 // About me
-                const SectionHeading(title: 'About me', showActionButton: false),
+                const SectionHeading(
+                    title: 'About me', showActionButton: false),
                 SizedBox(height: 1.h),
                 Text(
                   doctor.about ?? "No information provided.",
@@ -91,7 +92,8 @@ class DoctorDetailsView extends StatelessWidget {
                 SizedBox(height: 2.h),
 
                 // Working Time
-                const SectionHeading(title: 'Working Time', showActionButton: false),
+                const SectionHeading(
+                    title: 'Working Time', showActionButton: false),
                 SizedBox(height: 1.h),
                 Text(
                   doctor.workingHours ?? "Not available",
@@ -125,7 +127,7 @@ class DoctorDetailsView extends StatelessWidget {
         },
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+        padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.5.h),
         child: BlocBuilder<DoctorCubit, DoctorState>(
           builder: (context, state) {
             if (state is DoctorLoaded && state.doctors.isNotEmpty) {

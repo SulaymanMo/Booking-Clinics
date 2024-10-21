@@ -33,14 +33,16 @@ class _SigninFormState extends State<SigninForm> {
       child: Column(
         children: [
           Input(
-            controller: emailController,
-            prefix: Iconsax.sms,
             hint: "Your Email",
+            prefix: Iconsax.sms,
+            controller: emailController,
           ),
           SizedBox(height: 1.5.h),
           Input(
             controller: passwordController,
             prefix: Iconsax.lock,
+            maxLines: 1,
+            obscureText: true,
             hint: "Password",
           ),
           SizedBox(height: 3.h),

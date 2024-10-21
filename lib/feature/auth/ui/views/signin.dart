@@ -72,10 +72,10 @@ class SignIn extends StatelessWidget {
                     onTap: () => context.nav.pushNamed(Routes.signup),
                     child: Text(
                       " Sign up",
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        color: ConstColor.blue.color,
+                      style: context.regular14?.copyWith(
+                        color: context.theme.brightness == Brightness.dark
+                            ? ConstColor.primary.color
+                            : ConstColor.textBtn.color,
                       ),
                     ),
                   ),

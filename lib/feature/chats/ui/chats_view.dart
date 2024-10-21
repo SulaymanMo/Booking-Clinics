@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
+import 'package:sizer/sizer.dart';
+import '../../../core/constant/const_color.dart';
 import '../../../core/constant/const_string.dart';
 import '../../../data/models/chat_model.dart';
 import '../cubit/chat_cubit.dart';
@@ -19,7 +22,8 @@ class ChatListScreen extends StatelessWidget {
     String currentUserId = auth.currentUser!.uid;
 
     return BlocProvider(
-      create: (context) => ChatCubit(FirebaseFirestore.instance, currentUserId)..listenToChats(),
+      create: (context) =>
+          ChatCubit(FirebaseFirestore.instance, currentUserId)..listenToChats(),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Chats'),
@@ -35,13 +39,27 @@ class ChatListScreen extends StatelessWidget {
             }
             if (state is ChatLoaded) {
               if (state.chats.isEmpty) {
-                return const Center(child: Text('No chats found'));
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Iconsax.messages, size: 42.sp),
+                      SizedBox(height: 1.5.h),
+                      Text(
+                        'No chats found',
+                        style: context.medium14?.copyWith(
+                          color: ConstColor.icon.color,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
               }
 
               return Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
                 child: ListView.separated(
-                  separatorBuilder: (_, __) => const SizedBox(height: 6),
+                  separatorBuilder: (_, __) => SizedBox(height: 1.5.h),
                   itemCount: state.chats.length,
                   itemBuilder: (context, index) {
                     var chatData = state.chats[index];
@@ -49,16 +67,20 @@ class ChatListScreen extends StatelessWidget {
                     Timestamp lastMessageTime = chatData['lastMessageTime'];
                     List<dynamic> participants = chatData['participants'];
 
-                    String chatPartnerId = participants.firstWhere((id) => id != currentUserId);
+                    String chatPartnerId =
+                        participants.firstWhere((id) => id != currentUserId);
 
                     return FutureBuilder<Map<String, dynamic>?>(
-                      future: context.read<ChatCubit>().getUserData(chatPartnerId),
+                      future:
+                          context.read<ChatCubit>().getUserData(chatPartnerId),
                       builder: (context, userSnapshot) {
-                        if (userSnapshot.connectionState == ConnectionState.waiting) {
+                        if (userSnapshot.connectionState ==
+                            ConnectionState.waiting) {
                           return const ListTile(title: Text('Loading...'));
                         }
 
-                        if (!userSnapshot.hasData || userSnapshot.data == null) {
+                        if (!userSnapshot.hasData ||
+                            userSnapshot.data == null) {
                           return const ListTile(title: Text('User not found'));
                         }
 
