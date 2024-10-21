@@ -10,18 +10,12 @@ import '../../../../core/constant/const_color.dart';
 import '../../../../core/constant/const_string.dart';
 import '../../cubit/doc_details_cubit.dart';
 import '../widgets/achievement_column.dart';
+import '../widgets/chat_button.dart';
 import '../widgets/reviews_item.dart';
 import '../widgets/rounded_doctor_card.dart';
 
 class DoctorDetailsView extends StatelessWidget {
-  final String doctorId;
-  final String patientName;
-
-  const DoctorDetailsView({
-    super.key,
-    required this.doctorId,
-    required this.patientName,
-  });
+  const DoctorDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +68,10 @@ class DoctorDetailsView extends StatelessWidget {
                 // Doctor Card
                 RoundedDoctorCard(doctor: doctor),
                 SizedBox(height: 2.h),
-                // Achievements Row
+
+                ChatButton(doctor: doctor),
+                SizedBox(height: 2.h),
+
                 AchievementRow(
                   patients: doctor.patientsNumber ?? 0,
                   experience: doctor.experience ?? 0,
@@ -83,8 +80,7 @@ class DoctorDetailsView extends StatelessWidget {
                 ),
                 SizedBox(height: 2.h),
                 // About me
-                const SectionHeading(
-                    title: 'About me', showActionButton: false),
+                const SectionHeading(title: 'About me', showActionButton: false),
                 SizedBox(height: 1.h),
                 Text(
                   doctor.about ?? "No information provided.",
@@ -95,8 +91,7 @@ class DoctorDetailsView extends StatelessWidget {
                 SizedBox(height: 2.h),
 
                 // Working Time
-                const SectionHeading(
-                    title: 'Working Time', showActionButton: false),
+                const SectionHeading(title: 'Working Time', showActionButton: false),
                 SizedBox(height: 1.h),
                 Text(
                   doctor.workingHours ?? "Not available",
@@ -152,16 +147,7 @@ class DoctorDetailsView extends StatelessWidget {
                       location: doctor.location,
                       bookings: doctor.bookings,
                       reviews: doctor.reviews,
-                    )
-                    // arguments: {
-                    //   'doctorId': doctor.id,
-                    //   'doctorName': doctor.name,
-                    //   'doctorImageUrl': doctor.imageUrl ?? '',
-                    //   'doctorSpeciality': doctor.speciality,
-                    //   'doctorAddress': doctor.address ?? '',
-                    //   'patientName': patientName,
-                    // },
-                    ),
+                    )),
               );
             } else {
               return const SizedBox();
