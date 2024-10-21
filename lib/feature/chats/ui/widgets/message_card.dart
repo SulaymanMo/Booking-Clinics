@@ -30,7 +30,7 @@ class MessageTile extends StatelessWidget {
                   : ConstColor.secondary.color,
           borderRadius: BorderRadius.only(
             topLeft: isMe ? Radius.circular(4.w) : Radius.circular(0.w),
-            topRight: !isMe ? Radius.circular(4.w) : Radius.circular(0),
+            topRight: !isMe ? Radius.circular(4.w) : const Radius.circular(0),
             bottomLeft: Radius.circular(4.w),
             bottomRight: Radius.circular(4.w),
           ),
