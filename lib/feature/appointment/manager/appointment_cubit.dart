@@ -229,11 +229,10 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     bool statusUpdated = false;
     DateTime currentDate = DateTime.now();
 
-    // Check and update booking status for pending bookings
+    // * Check and update booking status for pending bookings
     for (int i = 0; i < patient.bookings.length; i++) {
       if (patient.bookings[i].bookingStatus == 'Pending') {
         DateTime bookingDate = DateTime.parse(patient.bookings[i].date);
-        // Only mark as completed if the booking date is strictly in the past (not today)
         if (bookingDate.isBefore(
           DateTime(currentDate.year, currentDate.month, currentDate.day),
         )) {
