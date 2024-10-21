@@ -37,7 +37,7 @@ class Categories extends StatelessWidget {
       child: ListView.separated(
         shrinkWrap: true,
         itemCount: _categories.length,
-        padding: EdgeInsets.symmetric(horizontal: 4.w),
+        padding: EdgeInsets.symmetric(horizontal: 6.w),
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           return GestureDetector(

@@ -33,7 +33,7 @@ class HomeView extends StatelessWidget {
             bottom: PreferredSize(
               preferredSize: Size(double.infinity, 2.5.h),
               child: Padding(
-                padding: EdgeInsets.only(left: 4.w, right: 4.w, bottom: 1.25.h),
+                padding: EdgeInsets.only(left: 6.w, right: 6.w, bottom: 1.25.h),
                 child: Input(
                   onTap: () {
                     showSearch(

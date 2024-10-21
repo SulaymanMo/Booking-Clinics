@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/common/custom_image.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class ReviewsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shadowColor: Colors.black12,
+      // shadowColor: Colors.black12,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
         child: Column(
@@ -35,13 +36,7 @@ class ReviewsItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CustomNetworkImage(
-                  imageUrl: image,
-                  height: 7.5.h,
-                  width: 7.5.h,
-                  fallbackAsset: MyImages.boyAvatar,
-                  borderRadius: 50,
-                ),
+                CustomImage(image: image, width: 18.w, height: 18.w),
                 SizedBox(width: 3.w),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +47,8 @@ class ReviewsItem extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const Icon(Icons.star_rounded, color: Colors.orangeAccent),
+                        const Icon(Icons.star_rounded,
+                            color: Colors.orangeAccent),
                         Text(rating, style: context.regular14),
                       ],
                     ),
@@ -60,7 +56,7 @@ class ReviewsItem extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 1.h),
+            SizedBox(height: 1.5.h),
             Text(
               review,
               maxLines: 4,

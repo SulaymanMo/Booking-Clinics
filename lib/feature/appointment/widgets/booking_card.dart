@@ -1,10 +1,9 @@
+import 'package:booking_clinics/core/common/custom_image.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:booking_clinics/data/models/booking.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import '../../../core/common/custom_network_img.dart';
 import '../../../core/constant/const_color.dart';
-import '../../../core/constant/images_path.dart';
 
 class BookingCard extends StatelessWidget {
   final Widget buttons;
@@ -57,17 +56,11 @@ class BookingCard extends StatelessWidget {
             Divider(height: 4.h),
             Row(
               children: [
-                CustomNetworkImage(
-                  imageUrl: booking.imageUrl,
-                  fallbackAsset: MyImages.doctorAvatar,
-                  height: 28.w,
-                  width: 28.w,
-                  borderRadius: 50.w,
-                ),
+                CustomImage(image: booking.imageUrl, height: 32.w, width: 32.w),
                 SizedBox(width: 1.w),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 2.w),
+                    padding: EdgeInsets.only(left: 4.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -75,8 +68,8 @@ class BookingCard extends StatelessWidget {
                         Text(
                           booking.name,
                           maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
                           style: context.bold16,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(height: 2.w),
                         // Specialization
