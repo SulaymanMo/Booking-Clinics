@@ -61,9 +61,11 @@ class SignUp extends StatelessWidget {
                       context.nav.pop();
                     },
                     child: Text(
-                      "Sign In",
-                      style: context.medium14?.copyWith(
-                        color: ConstColor.blue.color,
+                      " Sign In",
+                      style: context.regular14?.copyWith(
+                        color: context.theme.brightness == Brightness.dark
+                            ? ConstColor.primary.color
+                            : ConstColor.textBtn.color,
                       ),
                     ),
                   ),

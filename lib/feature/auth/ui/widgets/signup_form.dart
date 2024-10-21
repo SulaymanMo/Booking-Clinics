@@ -44,10 +44,26 @@ class _SignupFormState extends State<SignupForm> {
             controller: emailController,
           ),
           SizedBox(height: 1.5.h),
-          Input(
-            hint: "Password",
-            prefix: Iconsax.lock,
-            controller: passwordController,
+          Row(
+            children: [
+              Expanded(
+                child: Input(
+                  hint: "Password",
+                  maxLines: 1,
+                  obscureText: true,
+                  controller: passwordController,
+                ),
+              ),
+              SizedBox(width: 4.w),
+              Expanded(
+                child: Input(
+                  hint: "Confirm",
+                  maxLines: 1,
+                  obscureText: true,
+                  controller: passwordController,
+                ),
+              ),
+            ],
           ),
           SizedBox(height: 3.h),
           _isLoading

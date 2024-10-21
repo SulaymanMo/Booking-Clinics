@@ -60,19 +60,28 @@ class AchievementItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.theme.brightness == Brightness.dark;
     return SizedBox(
-      height: 12.h,
+      height: 14.h,
       child: Column(
         children: [
           Container(
             height: 7.h,
             width: 7.h,
-            decoration: const BoxDecoration(
-              color: MyColors.lightGray,
+            decoration: BoxDecoration(
+              color: isDark
+                  ? ConstColor.iconDark.color
+                  : ConstColor.secondary.color,
               shape: BoxShape.circle,
             ),
-            child: Icon(icon, color: MyColors.dark, size: 4.h),
+            child: Icon(
+              icon,
+              color:
+                  isDark ? ConstColor.secondary.color : ConstColor.dark.color,
+              size: 4.h,
+            ),
           ),
+          SizedBox(height: 1.h),
           Text(number, style: context.semi14),
           Text(text, style: context.regular14),
         ],

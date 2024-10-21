@@ -83,7 +83,7 @@ ThemeData darkTheme() {
     // ! _____ Icon _____ ! //
     iconTheme: IconThemeData(
       size: 20.sp,
-      color: ConstColor.secondary.color,
+      color: ConstColor.icon.color,
     ),
     // ! _____ ElevatedButton _____ ! //
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -201,7 +201,7 @@ ThemeData darkTheme() {
     // ! _____ Input Theme _____ ! //
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      isDense: true,
+      // isDense: true,
       fillColor: ConstColor.iconDark.color,
       hintStyle: TextStyle(
         fontSize: 14.5.sp,
