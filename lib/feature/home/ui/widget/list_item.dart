@@ -17,7 +17,12 @@ class ListItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        CustomImage(image: doctor.imageUrl),
+        CustomImage(
+          image: doctor.imageUrl,
+          height: 20.h,
+          borderRadius: 0,
+          errorImage: "assets/images/center_2.jpg",
+        ),
         const Spacer(),
         ListTile(
           dense: true,

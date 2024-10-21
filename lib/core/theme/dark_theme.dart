@@ -55,7 +55,7 @@ ThemeData darkTheme() {
     ),
     // ! _____ Card Theme _____ ! //
     cardTheme: CardTheme(
-      elevation: 0,
+      elevation: 0.5,
       margin: EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
       color: ConstColor.iconDark.color,

@@ -78,37 +78,37 @@ class DoctorDetailsView extends StatelessWidget {
                   rating: doctor.rating ?? 0.0,
                   reviews: doctor.reviews.length,
                 ),
-                SizedBox(height: 1.h),
+                SizedBox(height: 2.h),
                 // About me
                 const SectionHeading(
                     title: 'About me', showActionButton: false),
-                SizedBox(height: 1.h),
+                SizedBox(height: 0.5.h),
                 Text(
                   doctor.about ?? "No information provided.",
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: context.regular14,
                 ),
-                SizedBox(height: 2.h),
+                SizedBox(height: 4.h),
 
                 // Working Time
                 const SectionHeading(
                     title: 'Working Time', showActionButton: false),
-                SizedBox(height: 1.h),
+                SizedBox(height: 0.5.h),
                 Text(
                   doctor.workingHours ?? "Not available",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: context.regular14,
                 ),
-                SizedBox(height: 2.h),
+                SizedBox(height: 4.h),
 
                 // Reviews
                 const SectionHeading(title: 'Reviews', showActionButton: false),
-                SizedBox(height: 0.5.h),
                 ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
+                  padding: EdgeInsets.symmetric(vertical: 0.5.h),
                   itemCount: doctor.reviews.length,
                   itemBuilder: (context, index) => ReviewsItem(
                     image: doctor.reviews[index].imageUrl,
@@ -118,7 +118,6 @@ class DoctorDetailsView extends StatelessWidget {
                   ),
                   separatorBuilder: (_, index) => SizedBox(height: 1.5.h),
                 ),
-                SizedBox(height: 0.5.h),
               ],
             );
           } else {

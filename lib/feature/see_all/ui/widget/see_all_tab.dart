@@ -1,11 +1,10 @@
+import 'package:booking_clinics/core/common/custom_image.dart';
 import 'package:booking_clinics/core/constant/const_string.dart';
 import 'package:booking_clinics/data/models/doctor_model.dart';
 import 'package:sizer/sizer.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-import '../../../../core/common/custom_network_img.dart';
-import '../../../../core/constant/images_path.dart';
 import '../../../../data/services/remote/firebase_auth.dart';
 
 class SeeAllTab extends StatelessWidget {
@@ -16,7 +15,7 @@ class SeeAllTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: doctors.length,
-      padding: EdgeInsets.only(top: 1.h, left: 4.w, right: 4.w, bottom: 2.h),
+      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
       itemBuilder: (_, index) {
         return Card(
           child: InkWell(
@@ -33,13 +32,11 @@ class SeeAllTab extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 2.w, horizontal: 2.w),
               child: Row(
                 children: [
-                  CustomNetworkImage(
-                    imageUrl: doctors[index].imageUrl,
-                    fallbackAsset: MyImages.doctorAvatar,
-                    width: 35.w,
-                    height: 35.w,
+                  CustomImage(
+                    image: doctors[index].imageUrl,
+                    width: 28.w,
+                    height: 28.w,
                     borderRadius: 50.w,
-                    fit: BoxFit.cover,
                   ),
                   Expanded(
                     child: Padding(
@@ -62,8 +59,8 @@ class SeeAllTab extends StatelessWidget {
                           SizedBox(height: 1.h),
                           Row(
                             children: [
-                              const Icon(Iconsax.location4, size: 17),
-                              SizedBox(width: 1.w),
+                              const Icon(Iconsax.location4),
+                              SizedBox(width: 2.w),
                               Flexible(
                                 child: Text(
                                   doctors[index].address ?? "Unknown",
@@ -80,12 +77,12 @@ class SeeAllTab extends StatelessWidget {
                               children: [
                                 const Icon(Iconsax.star1,
                                     color: Colors.orangeAccent),
-                                SizedBox(width: 1.w),
+                                SizedBox(width: 2.w),
                                 Text(
                                   "${doctors[index].rating}",
                                   style: context.regular14,
                                 ),
-                                const VerticalDivider(),
+                                VerticalDivider(width: 8.w),
                                 Text(
                                   "${doctors[index].reviews.length} Reviews",
                                   style: context.regular14,

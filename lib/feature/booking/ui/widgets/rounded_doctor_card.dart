@@ -1,8 +1,7 @@
+import 'package:booking_clinics/core/common/custom_image.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../core/common/custom_network_img.dart';
 import '../../../../core/constant/const_color.dart';
 import '../../../../data/models/doctor_model.dart';
 
@@ -15,34 +14,29 @@ class RoundedDoctorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        padding: const EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(2.w),
         height: 17.5.h,
         child: Row(
           children: [
             // Doctor image
-            CustomNetworkImage(
-              imageUrl: doctor.imageUrl,
-              height: double.infinity,
-              width: 44.sp,
-              borderRadius: 10,
-              fallbackAsset: MyImages.doctorAvatar,
-            ),
-            SizedBox(width: 3.w),
+            CustomImage(image: doctor.imageUrl, width: 32.w, height: 32.w),
+            SizedBox(width: 4.w),
 
             // Doctor Details
             Expanded(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Name
                   Text(
-                    doctor.name.isNotEmpty ? doctor.name : 'No Name',
+                    doctor.name.isNotEmpty ? doctor.name : 'No Name Provided',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: context.bold16,
                   ),
                   const Divider(),
-                  const SizedBox(height: 1),
+                  SizedBox(height: 0.5.h),
                   // Speciality
                   Flexible(
                     child: Text(

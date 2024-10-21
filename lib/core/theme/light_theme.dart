@@ -50,11 +50,11 @@ ThemeData lightTheme() {
       ),
     ),
     // ! _____ Card Theme _____ ! //
-    cardTheme: const CardTheme(
-      elevation: 2,
+    cardTheme: CardTheme(
+      elevation: 0.5,
       margin: EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
-      color: Colors.white,
+      color: ConstColor.secondary.color,
     ),
     // ! _____ Text Theme _____ ! //
     textTheme: textTheme(),

@@ -35,14 +35,14 @@ class CarouselSlider extends StatelessWidget {
                   );
                 }
               },
-              elevation: 2,
+              elevation: 0.5,
               shrinkExtent: 95.w,
               itemSnapping: true,
               itemExtent: double.infinity,
               backgroundColor: Theme.of(context).brightness == Brightness.light
                   ? Colors.white
                   : ConstColor.iconDark.color,
-              padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 4.w),
+              padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 6.w),
               children: List.generate(
                 images.length,
                 (index) => ListItem(doctor: state.doctors[index]),

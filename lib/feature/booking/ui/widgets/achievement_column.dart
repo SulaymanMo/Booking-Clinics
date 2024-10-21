@@ -22,22 +22,22 @@ class AchievementRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         AchievementItem(
-          text: 'patients',
+          text: 'Patients',
           icon: Iconsax.profile_2user5,
           number: patients.toString(),
         ),
         AchievementItem(
-          text: 'experience',
+          text: 'Experience',
           icon: Iconsax.cup5,
           number: experience.toString(),
         ),
         AchievementItem(
-          text: 'rating',
+          text: 'Rating',
           icon: Iconsax.star5,
           number: rating.toString(),
         ),
         AchievementItem(
-          text: 'reviews',
+          text: 'Reviews',
           icon: Iconsax.messages_15,
           number: reviews.toString(),
         ),
