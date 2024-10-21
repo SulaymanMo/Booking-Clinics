@@ -60,8 +60,8 @@ class BookingCard extends StatelessWidget {
                 CustomNetworkImage(
                   imageUrl: booking.imageUrl,
                   fallbackAsset: MyImages.doctorAvatar,
-                  height: 35.w,
-                  width: 35.w,
+                  height: 28.w,
+                  width: 28.w,
                   borderRadius: 50.w,
                 ),
                 SizedBox(width: 1.w),

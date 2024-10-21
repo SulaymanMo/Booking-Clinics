@@ -18,17 +18,17 @@ class SeeAllTab extends StatelessWidget {
       itemCount: doctors.length,
       padding: EdgeInsets.only(top: 1.h, left: 4.w, right: 4.w, bottom: 2.h),
       itemBuilder: (_, index) {
-        return InkWell(
-          onTap: () async {
-            context.nav.pushNamed(
-              Routes.doctorDetailsRoute,
-              arguments: {
-                'doctorId': doctors[index].id,
-                'patientId': await FirebaseAuthService().getUid(),
-              },
-            );
-          },
-          child: Card(
+        return Card(
+          child: InkWell(
+            onTap: () async {
+              context.nav.pushNamed(
+                Routes.doctorDetailsRoute,
+                arguments: {
+                  'doctorId': doctors[index].id,
+                  'patientId': await FirebaseAuthService().getUid(),
+                },
+              );
+            },
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 2.w, horizontal: 2.w),
               child: Row(
@@ -38,12 +38,12 @@ class SeeAllTab extends StatelessWidget {
                     fallbackAsset: MyImages.doctorAvatar,
                     width: 35.w,
                     height: 35.w,
-                    borderRadius: 3.w,
+                    borderRadius: 50.w,
                     fit: BoxFit.cover,
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 2.w),
+                      padding: EdgeInsets.only(left: 4.w),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
