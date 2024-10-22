@@ -105,6 +105,7 @@ class DoctorDetailsView extends StatelessWidget {
 
                 // Reviews
                 const SectionHeading(title: 'Reviews', showActionButton: false),
+                SizedBox(height: 0.5.h),
                 ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -118,6 +119,7 @@ class DoctorDetailsView extends StatelessWidget {
                   ),
                   separatorBuilder: (_, index) => SizedBox(height: 1.5.h),
                 ),
+                SizedBox(height: 0.5.h),
               ],
             );
           } else {

@@ -3,12 +3,12 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 
 void showMsg(
-  BuildContext context, {
-  required String title,
-  required String msg,
-  required Widget alertWidget,
-  required Future Function() onPressed,
-}) {
+    BuildContext context, {
+      required String title,
+      required String msg,
+      required Widget alertWidget,
+      required Future Function() onPressed,
+    }) {
   showDialog(
     context: context,
     builder: (context) => Dialog(
@@ -64,7 +64,7 @@ void showMsg(
                       )),
                     ),
                     child: const Text(
-                      "Yes, Cancel",
+                      "Yes, Sure",
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -77,6 +77,3 @@ void showMsg(
     ),
   );
 }
-
-// "assets/images/success_dialog.png"
-// Your account is ready to use. You will be redirected to the Home Page in a few seconds...

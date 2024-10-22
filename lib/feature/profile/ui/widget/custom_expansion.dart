@@ -1,3 +1,4 @@
+import 'package:booking_clinics/core/constant/extension.dart';
 import 'package:sizer/sizer.dart';
 import 'custom_expansion_text.dart';
 import 'package:iconsax/iconsax.dart';
@@ -40,22 +41,25 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
       elevation: 0,
       expandIconColor: ConstColor.icon.color,
       expandedHeaderPadding: EdgeInsets.zero,
-      dividerColor: Theme.of(context).brightness == Brightness.dark
-          ? ConstColor.dark.color
-          : ConstColor.secondary.color,
+      dividerColor: context.theme.brightness == Brightness.light
+          ? ConstColor.secondary.color
+          : ConstColor.dark.color,
       expansionCallback: (int index, bool isExpanded) {},
       children: List.generate(
         _headers.length,
         (index) => ExpansionPanelRadio(
           value: index,
           canTapOnHeader: true,
-          backgroundColor: Theme.of(context).brightness == Brightness.dark
-              ? ConstColor.dark.color
-              : Colors.white,
+          backgroundColor: context.theme.brightness == Brightness.light
+              ? ConstColor.secondary.color
+              : ConstColor.iconDark.color,
           headerBuilder: (_, isExpanded) {
             return ListTile(
               leading: Icon(_icons[index]),
-              contentPadding: EdgeInsets.symmetric(horizontal: 2.w),
+              contentPadding: EdgeInsets.symmetric(
+                vertical: 0.5.h,
+                horizontal: 6.w,
+              ),
               title: Text(
                 _headers[index],
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
@@ -63,7 +67,10 @@ class _CustomExpansionListState extends State<CustomExpansionList> {
             );
           },
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+            padding: EdgeInsets.symmetric(
+              vertical: 0.5.h,
+              horizontal: 6.w,
+            ),
             child: _widgets[index],
           ),
         ),

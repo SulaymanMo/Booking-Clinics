@@ -42,7 +42,7 @@ class CarouselSlider extends StatelessWidget {
               backgroundColor: Theme.of(context).brightness == Brightness.light
                   ? Colors.white
                   : ConstColor.iconDark.color,
-              padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 6.w),
+              padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 4.w),
               children: List.generate(
                 images.length,
                 (index) => ListItem(doctor: state.doctors[index]),

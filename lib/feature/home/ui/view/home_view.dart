@@ -52,7 +52,7 @@ class HomeView extends StatelessWidget {
             delegate: SliverChildListDelegate(
               [
                 const CustomPageView(images: _images),
-                const ListHeader(title: "Categories"),
+                const ListHeader(title: "Specialties"),
                 const Categories(),
                 const ListHeader(title: "Nearby Medical Centers"),
                 const CarouselSlider(
@@ -82,7 +82,7 @@ class HomeView extends StatelessWidget {
                 //     ),
                 //   ),
                 // ),
-                SizedBox(height: 8.h),
+                // SizedBox(height: 8.h),
               ],
             ),
           ),
