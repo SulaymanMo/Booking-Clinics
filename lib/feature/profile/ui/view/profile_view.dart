@@ -21,7 +21,6 @@ class ProfileView extends StatelessWidget {
     return Align(
       alignment: const Alignment(0, 0.25),
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
         child: BlocConsumer<ProfileCubit, ProfileState>(
           listener: (_, state) {
             if (state is UpdateProfileLoading) {}
@@ -63,7 +62,10 @@ class ProfileView extends StatelessWidget {
                     leading: const Icon(
                       Iconsax.heart,
                     ),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 2.w),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 0.5.h,
+                      horizontal: 6.w,
+                    ),
                   ),
                   // List of settings
                   const CustomExpansionList(),
@@ -85,7 +87,10 @@ class ProfileView extends StatelessWidget {
                       ),
                     ),
                     leading: const Icon(Icons.logout_outlined),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 2.w),
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 0.5.h,
+                      horizontal: 6.w,
+                    ),
                   ),
                 ],
               );

@@ -1,10 +1,7 @@
 import 'package:booking_clinics/core/common/custom_image.dart';
 import 'package:booking_clinics/core/constant/extension.dart';
-import 'package:booking_clinics/core/constant/images_path.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
-import '../../../../core/common/custom_network_img.dart';
 import '../../../../core/constant/const_string.dart';
 
 class ReviewsItem extends StatelessWidget {
