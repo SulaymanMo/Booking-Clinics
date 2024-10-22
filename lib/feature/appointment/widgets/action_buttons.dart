@@ -45,7 +45,7 @@ class ActionButtons extends StatelessWidget {
                   alertWidget: Icon(
                     Iconsax.danger,
                     size: 35.sp,
-                    color: isDark ? Colors.black : ConstColor.primary.color,
+                    color: isDark ? ConstColor.primary.color : ConstColor.iconDark.color,
                   ),
                   onPressed: () async {
                     await read.cancelBooking(index: read.index!);

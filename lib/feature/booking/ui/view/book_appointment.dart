@@ -48,12 +48,13 @@ class BookAppointmentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.theme.brightness == Brightness.dark;
     return BlocProvider(
       create: (context) => BookAppointmentCubit(),
       child: Scaffold(
         appBar: const BasicAppBar(title: 'Book Appointment'),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+          padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -88,8 +89,13 @@ class BookAppointmentView extends StatelessWidget {
                         titleCentered: true,
                       ),
                       calendarStyle: CalendarStyle(
+                        selectedTextStyle: TextStyle(
+                          color: isDark ? ConstColor.dark.color : Colors.white,
+                        ),
                         selectedDecoration: BoxDecoration(
-                          color: ConstColor.dark.color,
+                          color: isDark
+                              ? ConstColor.primary.color
+                              : ConstColor.dark.color,
                           shape: BoxShape.circle,
                         ),
                         todayDecoration: BoxDecoration(
@@ -132,11 +138,19 @@ class BookAppointmentView extends StatelessWidget {
                           text: hour,
                           textSize: 14.sp,
                           color: selectedHour == hour
-                              ? ConstColor.dark.color
-                              : ConstColor.secondary.color,
+                              ? isDark
+                                  ? ConstColor.primary.color
+                                  : ConstColor.dark.color
+                              : isDark
+                                  ? ConstColor.iconDark.color
+                                  : ConstColor.secondary.color,
                           textColor: selectedHour == hour
-                              ? Colors.white
-                              : Colors.black,
+                              ? isDark
+                                  ? ConstColor.dark.color
+                                  : Colors.white
+                              : isDark
+                                  ? ConstColor.secondary.color
+                                  : ConstColor.dark.color,
                           onTap: () => cubit.selectHour(hour),
                         );
                       },

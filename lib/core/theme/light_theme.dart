@@ -54,7 +54,7 @@ ThemeData lightTheme() {
       elevation: 0.5,
       margin: EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
-      color: ConstColor.secondary.color,
+      color: Colors.grey.shade50,
     ),
     // ! _____ Text Theme _____ ! //
     textTheme: textTheme(),
