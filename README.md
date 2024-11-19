@@ -1,7 +1,7 @@
 ## Booking Clinics Patient Version
  Medical Clinics Booking for DEPI Project.
 ## Booking Clinics Doctor Version
- [Doctor Version](https://github.com/SulaymanMo/Booking-Clinics-Doctor)
+ [Doctor Version, GitHub Link!](https://github.com/SulaymanMo/Booking-Clinics-Doctor)
 
  ### 😍 Figma Design 
  [Click Me!]( https://www.figma.com/design/Jrgw3g9ydg0qD5dLIEjFl2/Doctor-Appointment-App-UI-Kit-(Community)?node-id=2-3&t=D3qDlOHx2PZ3gDrt-0)
